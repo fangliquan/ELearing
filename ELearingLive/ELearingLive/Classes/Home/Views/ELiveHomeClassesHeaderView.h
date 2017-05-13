@@ -10,4 +10,6 @@
 
 @interface ELiveHomeClassesHeaderView : UIView
 
+@property (nonatomic, copy) void (^lookCourseListHandler)(void);
+
 @end

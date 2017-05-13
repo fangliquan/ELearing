@@ -31,6 +31,8 @@
     iconView.backgroundColor = [UIColor greenColor];
     iconView.contentMode = UIViewContentModeScaleAspectFill;
     iconView.layer.masksToBounds = YES;
+    iconView.userInteractionEnabled = YES;
+    [iconView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(couseItemClick)]];
     [self addSubview:iconView];
     
     CGFloat iconH =  Main_Screen_Width/3.0 * 0.5;
@@ -53,6 +55,12 @@
         make.top.equalTo(titleLabel.mas_bottom).offset(8);
         make.width.height.equalTo(@(iconH));
     }];
+    
 }
 
+-(void)couseItemClick{
+    if (self.lookCourseListHandler) {
+        self.lookCourseListHandler();
+    }
+}
 @end

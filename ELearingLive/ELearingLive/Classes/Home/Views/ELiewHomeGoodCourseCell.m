@@ -34,6 +34,7 @@
 
 -(void)configUI{
     
+
     self.contentView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     bgView = [[UIView alloc] init];
     bgView.backgroundColor = [UIColor whiteColor];

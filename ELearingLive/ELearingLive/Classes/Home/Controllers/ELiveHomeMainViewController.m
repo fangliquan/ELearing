@@ -8,12 +8,12 @@
 
 #import "ELiveHomeMainViewController.h"
 #import "MJRefresh.h"
-#import "ELeaingNewsItemCell.h"
 #import "LoopView.h"
-
 #import "ELiveNewsDetialViewController.h"
 #import "ELiveHomeClassesHeaderView.h"
 #import "ELiewHomeGoodCourseCell.h"
+#import "ELiveCourseListViewController.h"
+#import "ELiveClassificationCataViewController.h"
 @interface ELiveHomeMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) NSMutableArray *newsArrays;
@@ -27,9 +27,9 @@
     [super viewDidLoad];
     self.newsArrays = [NSMutableArray array];
     for (int i = 0; i <10; i++) {
-        ELeaingNewsItemCellFrame *itemF = [[ELeaingNewsItemCellFrame alloc]init];
-        itemF.temp = @"aijda;kdf;af";
-        [self.newsArrays addObject:itemF];
+//        ELeaingNewsItemCellFrame *itemF = [[ELeaingNewsItemCellFrame alloc]init];
+//        itemF.temp = @"aijda;kdf;af";
+        [self.newsArrays addObject:@""];
     }
     [self configtableView];
     [self createHeaderView];
@@ -60,6 +60,11 @@
     courseView.backgroundColor = [UIColor whiteColor];
     for (int i = 0; i <3; i ++) {
         ELiveHomeClassesHeaderView *headerItem = [[ELiveHomeClassesHeaderView alloc]initWithFrame:CGRectMake(i *itemWidth, margingY, itemWidth, itemWidth *68/98.0)];
+        headerItem.lookCourseListHandler =^(){
+            ELiveCourseListViewController *eliveVc = [[ELiveCourseListViewController alloc]init];
+            eliveVc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:eliveVc animated:YES];
+        };
         [courseView addSubview:headerItem];
     }
     
@@ -68,6 +73,8 @@
     moreLabel.text= @"更多课程>";
     moreLabel.textColor = EL_TEXTCOLOR_GRAY;
     moreLabel.font = [UIFont systemFontOfSize:14];
+    moreLabel.userInteractionEnabled = YES;
+    [moreLabel addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(moreCourseClick)]];
     [courseView addSubview:moreLabel];
     
     [headerView addSubview:courseView];
@@ -78,6 +85,12 @@
     
     headerView.frame = oldFrame;
     self.tableView.tableHeaderView = headerView;
+}
+
+-(void)moreCourseClick{
+    ELiveClassificationCataViewController *eclassVc = [[ELiveClassificationCataViewController alloc]init];
+    eclassVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:eclassVc animated:YES];
 }
 
 -(void)loadData{
