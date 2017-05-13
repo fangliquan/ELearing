@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ELiveNewsDetialViewController : UITableViewController
+@interface ELiveCourseDetailViewController : UITableViewController
 
 @end

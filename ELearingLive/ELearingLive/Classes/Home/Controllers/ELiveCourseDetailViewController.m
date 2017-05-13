@@ -6,13 +6,13 @@
 //  Copyright © 2017年 leo. All rights reserved.
 //
 
-#import "ELiveNewsDetialViewController.h"
+#import "ELiveCourseDetailViewController.h"
 
-@interface ELiveNewsDetialViewController ()
+@interface ELiveCourseDetailViewController ()
 
 @end
 
-@implementation ELiveNewsDetialViewController
+@implementation ELiveCourseDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

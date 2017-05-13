@@ -9,7 +9,7 @@
 #import "ELiveHomeMainViewController.h"
 #import "MJRefresh.h"
 #import "LoopView.h"
-#import "ELiveNewsDetialViewController.h"
+#import "ELiveCourseDetailViewController.h"
 #import "ELiveHomeClassesHeaderView.h"
 #import "ELiewHomeGoodCourseCell.h"
 #import "ELiveCourseListViewController.h"
@@ -149,7 +149,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ELiveNewsDetialViewController *detailVc = [[ELiveNewsDetialViewController alloc]init];
+    ELiveCourseDetailViewController *detailVc = [[ELiveCourseDetailViewController alloc]init];
     detailVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVc animated:YES];
     

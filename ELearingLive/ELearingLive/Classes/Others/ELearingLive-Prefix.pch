@@ -39,6 +39,12 @@
 #define Main_Screen_Height      [[UIScreen mainScreen] bounds].size.height
 #define Main_Screen_Width       [[UIScreen mainScreen] bounds].size.width
 
+#define CELL_BORDER_COLOR [UIColor colorWithRed:223/255.0 green:223/255.0 blue:223/255.0 alpha:1]
+#define INPUT_TINT_COLOR [UIColor colorWithRed:44/255.0 green:122/255.0 blue:255/255.0 alpha:1]
+#define LineColor [UIColor colorWithRed:0 green:0 blue:0 alpha:0.15]
+
+
+
 #define EL_COLOR_BLUE [UIColor colorWithRed:64/255.0 green:177/255.0 blue:253/255.0 alpha:1.0f]
 #define EL_COLOR_RED [UIColor colorWithRed:248/255.0 green:102/255.0 blue:66/255.0 alpha:1]
 #define EL_COLOR_RED_Selected [UIColor colorWithRed:0.672 green:0.282 blue:0.184 alpha:1.000]
