@@ -10,12 +10,8 @@
 #import <objc/runtime.h>
 #import <QuartzCore/QuartzCore.h>
 #import "PureLayout.h"
-//#import "WWCommunityCircleHeaderView.h"
-//#import "ReadPlanDetailHeaderView.h"
 
-#ifdef RELEASE_TEACHER
-
-#endif
+#import "ELiveCourseDetailHeaderView.h"
 
 static char UIScrollViewVGParallaxHeader;
 static char UIScrollViewScrollCurrentViewDidScroll;
@@ -57,6 +53,7 @@ static void *VGParallaxHeaderObserverContext = &VGParallaxHeaderObserverContext;
 
 #pragma mark - UIScrollView (Implementation)
 @implementation UIScrollView (VGParallaxHeader)
+
 
 - (void)setScrollCurrentViewDidScroll:(void (^)(CGFloat))scrollCurrentViewDidScroll
 {
@@ -163,10 +160,21 @@ static void *VGParallaxHeaderObserverContext = &VGParallaxHeaderObserverContext;
 
 - (void)positionScrollViewParallaxHeader
 {
+    CGFloat heightN = self.contentOffset.y * -1 +44;
+    CGFloat scaleProgressN = fmaxf(0, (heightN / (self.parallaxHeader.originalHeight + self.parallaxHeader.originalTopInset-44)));
+    scaleProgressN = [[NSString stringWithFormat:@"%0.3f",scaleProgressN]floatValue];
+    if (scaleProgressN >=2.443 || scaleProgressN ==0.000) {
+        // 每次进入前台同步 userDataSum
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%0.3f",scaleProgressN] forKey:@"scaleProgressN"];
+        
+        // [userInfo setValue: forUndefinedKey:];
+       // [[NSNotificationCenter defaultCenter] postNotificationName:CurrentOffsetYNotification object:userInfo];
+    }
+    
     CGFloat height = self.contentOffset.y * -1;
     CGFloat scaleProgress = fmaxf(0, (height / (self.parallaxHeader.originalHeight + self.parallaxHeader.originalTopInset)));
     self.parallaxHeader.progress = scaleProgress;
-    
+   
     if (self.contentOffset.y < 0) {
         // This is where the magic is happening
         self.parallaxHeader.frame = CGRectMake(0, self.contentOffset.y, CGRectGetWidth(self.frame), height);
@@ -176,19 +184,22 @@ static void *VGParallaxHeaderObserverContext = &VGParallaxHeaderObserverContext;
             
             if([iv.subviews count] > 0) {
                 [iv.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                    
-//                    if ([obj isMemberOfClass:[WWCommunityCircleHeaderView class]]) {
-//                        WWCommunityCircleHeaderView * circleHeaderView = (WWCommunityCircleHeaderView *)obj;
-//                        circleHeaderView.frame = CGRectMake(0, -self.contentOffset.y - self.parallaxHeader.updateHeight, CGRectGetWidth(circleHeaderView.frame), self.parallaxHeader.updateHeight);
-//                    }
-//                    if ([obj isMemberOfClass:[ReadPlanDetailHeaderView class]]) {
-//                        ReadPlanDetailHeaderView * planDetailHeaderView = (ReadPlanDetailHeaderView *)obj;
-//                        planDetailHeaderView.frame = CGRectMake(0, -self.contentOffset.y - self.parallaxHeader.updateHeight, CGRectGetWidth(planDetailHeaderView.frame), self.parallaxHeader.updateHeight);
-//                    }
+
+                    if ([obj isMemberOfClass:[ELiveCourseDetailHeaderView class]]) {
+                        ELiveCourseDetailHeaderView * showView = (ELiveCourseDetailHeaderView *)obj;
+                        showView.frame = CGRectMake(0, -self.contentOffset.y - self.parallaxHeader.updateHeight, CGRectGetWidth(showView.frame), self.parallaxHeader.updateHeight);
+                        [self postNotificationWithContentOffsetY:-self.contentOffset.y];
+                    }
+                
                 }];
             }
         }
     }
+}
+
+- (void)postNotificationWithContentOffsetY:(CGFloat)offsetY
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:ContentOffsetKey object:[NSNumber numberWithFloat:offsetY]];
 }
 
 - (void)setParallaxHeader:(VGParallaxHeader *)parallaxHeader
@@ -220,10 +231,6 @@ static void *VGParallaxHeaderObserverContext = &VGParallaxHeaderObserverContext;
 - (VGParallaxHeader *)parallaxHeader
 {
     return objc_getAssociatedObject(self, &UIScrollViewVGParallaxHeader);
-}
-
-- (CGFloat)getUpdateHeight {
-    return self.parallaxHeader.updateHeight;
 }
 
 @end
@@ -272,10 +279,6 @@ static void *VGParallaxHeaderObserverContext = &VGParallaxHeaderObserverContext;
     [self addSubview:self.containerView];
     
     self.contentView = view;
-    
-    // 禁止竖直方向的弹簧效果 (indexPage 为tableView时可以有下拉刷新)
-    self.scrollView.alwaysBounceVertical = NO;
-    self.scrollView.bounces = NO;
     
     return self;
 }

@@ -53,29 +53,37 @@
     [headerView addSubview:headerLoopView];
     CGFloat margingY = 8;
     offsetY +=margingY;
-    CGFloat itemWidth = Main_Screen_Width/3.0;
+    CGFloat itemWidth = Main_Screen_Width/5.0;
     CGFloat itemHeight = itemWidth *68/98.0;
-    CGFloat height = itemHeight + margingY + 20 + margingY *2.5;
+    CGFloat height = itemHeight + margingY + 20 + margingY;
     UIView *courseView = [[UIView alloc]initWithFrame:CGRectMake(0, offsetY, Main_Screen_Width, height)];
     courseView.backgroundColor = [UIColor whiteColor];
-    for (int i = 0; i <3; i ++) {
-        ELiveHomeClassesHeaderView *headerItem = [[ELiveHomeClassesHeaderView alloc]initWithFrame:CGRectMake(i *itemWidth, margingY, itemWidth, itemWidth *68/98.0)];
-        headerItem.lookCourseListHandler =^(){
-            ELiveCourseListViewController *eliveVc = [[ELiveCourseListViewController alloc]init];
-            eliveVc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:eliveVc animated:YES];
+    for (int i = 1; i <6; i ++) {
+        ELiveHomeClassesHeaderView *headerItem = [[ELiveHomeClassesHeaderView alloc]initWithFrame:CGRectMake((i -1) *itemWidth, margingY, itemWidth, itemWidth *68/98.0)];
+        headerItem.titleStr = i ==5? @"更多":[NSString stringWithFormat:@"课程%d",i];
+        headerItem.imageStr = [NSString stringWithFormat:@"home_tt_0%d_",i];
+        headerItem.tag = i;
+        headerItem.lookCourseListHandler =^(NSInteger index){
+            if (index ==5) {
+                [self moreCourseClick];
+            }else{
+                ELiveCourseListViewController *eliveVc = [[ELiveCourseListViewController alloc]init];
+                eliveVc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:eliveVc animated:YES];
+            }
+
         };
         [courseView addSubview:headerItem];
     }
     
-    UILabel *moreLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, margingY + itemHeight + margingY *1.8, Main_Screen_Width - 20, 17)];
-    moreLabel.textAlignment = NSTextAlignmentRight;
-    moreLabel.text= @"更多课程>";
-    moreLabel.textColor = EL_TEXTCOLOR_GRAY;
-    moreLabel.font = [UIFont systemFontOfSize:14];
-    moreLabel.userInteractionEnabled = YES;
-    [moreLabel addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(moreCourseClick)]];
-    [courseView addSubview:moreLabel];
+//    UILabel *moreLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, margingY + itemHeight + margingY *1.8, Main_Screen_Width - 20, 17)];
+//    moreLabel.textAlignment = NSTextAlignmentRight;
+//    moreLabel.text= @"更多课程>";
+//    moreLabel.textColor = EL_TEXTCOLOR_GRAY;
+//    moreLabel.font = [UIFont systemFontOfSize:14];
+//    moreLabel.userInteractionEnabled = YES;
+//    [moreLabel addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(moreCourseClick)]];
+    //[courseView addSubview:moreLabel];
     
     [headerView addSubview:courseView];
     offsetY +=height;

@@ -76,7 +76,7 @@
     //XAppDelegate.picture = picture;
     
     ELiveMainClassesViewController *about = [[ELiveMainClassesViewController alloc] init];
-    [self setupChildViewController:about title:@"消息" imageName:@"tabbar_pics" selectedImageName:nil];
+    [self setupChildViewController:about title:@"消息" imageName:@"tabbar_message" selectedImageName:nil];
     
     ELiveSettingMainViewController *setting = [[ELiveSettingMainViewController alloc] init];
     [self setupChildViewController:setting title:@"我" imageName:@"tabbar_about" selectedImageName:nil];

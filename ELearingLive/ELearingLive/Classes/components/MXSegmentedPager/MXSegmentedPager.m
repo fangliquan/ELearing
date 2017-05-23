@@ -175,7 +175,12 @@
     
     if ([self.delegate respondsToSelector:@selector(segmentedPager:didSelectView:)]) {
         [self.delegate segmentedPager:self didSelectView:view];
-    }  
+    }
+    
+    
+    
+    
+    
 }
 
 - (void) layoutWithHeight:(CGFloat)height {

@@ -9,6 +9,7 @@
 #import "ELiveCourseListViewController.h"
 #import "ELiveCourseItemCell.h"
 #import "ELiveClassificationCataViewController.h"
+#import "ELiveCourseDetailViewController.h"
 @interface ELiveCourseListViewController ()
 
 @end
@@ -62,6 +63,10 @@
     // Configure the cell...
     
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ELiveCourseDetailViewController *detailVc = [[ELiveCourseDetailViewController alloc]init];
+    [self.navigationController pushViewController:detailVc animated:YES];
 }
 
 

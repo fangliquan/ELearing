@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HMSegmentedControl.h"
-#import "BaseViewController.h"
 
-@interface THSegmentedPager : BaseViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
+@interface THSegmentedPager : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 
 @property (strong, nonatomic)UIPageViewController *pageViewController;
 @property (assign, nonatomic) BOOL disableSlide;

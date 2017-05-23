@@ -10,6 +10,9 @@
 
 @interface ELiveHomeClassesHeaderView : UIView
 
-@property (nonatomic, copy) void (^lookCourseListHandler)(void);
+@property (nonatomic, copy) void (^lookCourseListHandler)(NSInteger index);
 
+@property(nonatomic,strong) NSString *titleStr;
+
+@property(nonatomic,strong) NSString *imageStr;
 @end

@@ -9,6 +9,7 @@
 #import "THSegmentedPager.h"
 #import "THSegmentedPageViewControllerDelegate.h"
 
+
 @interface THSegmentedPager ()
 
 @end
@@ -52,14 +53,14 @@
     [self.pageControl setTitleTextAttributes:textAttrs];
     
     NSMutableDictionary *textAttrsSel=[NSMutableDictionary dictionary];
-    textAttrsSel[NSForegroundColorAttributeName]= EL_COLOR_RED;
+    textAttrsSel[NSForegroundColorAttributeName]= [UIColor colorWithRed:0.820 green:0.161 blue:0.176 alpha:1.00];;
     textAttrsSel[UITextAttributeTextShadowOffset]=[NSValue valueWithUIOffset:UIOffsetZero];
     textAttrsSel[NSFontAttributeName]=[UIFont systemFontOfSize:15];
     [self.pageControl setSelectedTitleTextAttributes:textAttrsSel];
     //self.pageControl.textColor = [UIColor darkTextColor];
    // self.pageControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
    // self.pageControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : WAWA_COLOR_RED};
-    self.pageControl.selectionIndicatorColor = EL_COLOR_RED;
+    self.pageControl.selectionIndicatorColor = [UIColor colorWithRed:0.820 green:0.161 blue:0.176 alpha:1.00];;
     self.pageControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
    // self.pageControl.selectedTextColor = WAWA_COLOR_RED;
     self.pageControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;

@@ -12,7 +12,7 @@
 @interface LoopView()<UIScrollViewDelegate> {
     UIScrollView *_sc;
     UIPageControl *_pageControl;
-    //UILabel *_tilteLabel;
+    UILabel *_tilteLabel;
     NSArray *_dataSource;
     NSArray *_loopPicturesArray;
     NSTimer *_timer;
@@ -126,18 +126,19 @@
         }];
         lastView = btn;
         
-//        UILabel *titleLabel = [[UILabel alloc]init];
-//        titleLabel.text = @"xxxx";
-//        titleLabel.textColor= [UIColor whiteColor];
-//        titleLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
-//        titleLabel.font = [UIFont systemFontOfSize:16];
-//        [btn addSubview:titleLabel];
-//        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.bottom.equalTo(btn.mas_bottom);
-//            make.left.equalTo(btn.mas_left).offset(0);
-//            make.width.equalTo(@(Main_Screen_Width));
-//            make.height.equalTo(@26);
-//        }];
+        UILabel *titleLabel = [[UILabel alloc]init];
+        titleLabel.text = @"xxxx";
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.textColor= [UIColor whiteColor];
+        //titleLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+        titleLabel.font = [UIFont systemFontOfSize:16];
+        [btn addSubview:titleLabel];
+        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(btn.mas_bottom).mas_offset(-15);
+            make.left.equalTo(btn.mas_left).offset(0);
+            make.width.equalTo(@(Main_Screen_Width));
+            make.height.equalTo(@18);
+        }];
         
     }
     

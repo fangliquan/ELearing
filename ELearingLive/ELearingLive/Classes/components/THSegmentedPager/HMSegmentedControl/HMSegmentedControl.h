@@ -137,9 +137,6 @@ typedef enum {
  */
 @property (nonatomic, assign) HMSegmentedControlSegmentWidthStyle segmentWidthStyle;
 
-// HMSegmentedControlSegmentWidthStyleDynamic 类型是否不需要平分布局
-@property (nonatomic, assign) BOOL segmentWidthStyle_Dynamic_NeedFixed;
-
 /**
  Specifies the location of the selection indicator.
  
@@ -187,11 +184,6 @@ typedef enum {
  Index of the currently selected segment.
  */
 @property (nonatomic, assign) NSInteger selectedSegmentIndex;
-
-/**
- wawa segment.
- */
-@property (nonatomic, assign) BOOL wawaSegment;
 
 /**
  Height of the selection indicator. Only effective when `HMSegmentedControlSelectionStyle` is either `HMSegmentedControlSelectionStyleTextWidthStripe` or `HMSegmentedControlSelectionStyleFullWidthStripe`.

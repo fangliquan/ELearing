@@ -22,7 +22,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MXSegmentedPager.h"
-#import "BaseViewController.h"
 
 /**
  The MXSegmentedPager's data source object may adopt the MXSegmentedPagerControllerDataSource protocol in order to use the MXSegmentedPagerController with child UIViewController.
@@ -46,7 +45,7 @@
 /**
  The MXSegmentedPagerController class creates a controller object that manages a segmengted-pager view.
  */
-@interface MXSegmentedPagerController : BaseViewController <MXSegmentedPagerDelegate, MXSegmentedPagerControllerDataSource>
+@interface MXSegmentedPagerController : UIViewController <MXSegmentedPagerDelegate, MXSegmentedPagerControllerDataSource>
 
 /**
  Returns the segmengted-pager view managed by the controller object.

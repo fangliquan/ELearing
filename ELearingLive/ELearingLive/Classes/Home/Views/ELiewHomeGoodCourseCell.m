@@ -61,13 +61,15 @@
     
     
     bottomLight = [[UIView alloc]init];
-    bottomLight.backgroundColor = [UIColor blackColor];
-    bottomLight.alpha = 0.2;
+    bottomLight.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2];
+   // bottomLight.alpha = 0.2;
     [self.contentView addSubview:bottomLight];
 
     
     
     userHeaderIcon = [[UIImageView alloc]init];
+    userHeaderIcon.layer.masksToBounds = YES;
+    userHeaderIcon.layer.cornerRadius = 19;
     userHeaderIcon.image = [UIImage imageNamed:@"image_default_userheader"];
     [bottomLight addSubview:userHeaderIcon];
     
@@ -109,14 +111,14 @@
         make.right.equalTo(self.contentView.mas_right).offset(-8);
         make.left.equalTo(self.contentView.mas_left).offset(8);
         make.bottom.equalTo(self.contentView.mas_bottom).offset(-6);
-        make.height.equalTo(@45);
+        make.height.equalTo(@50);
     }];
     
     [userHeaderIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(bottomLight.mas_left).offset(8);
         make.top.equalTo(bottomLight.mas_top).offset(6);
-        make.height.equalTo(@35);
-        make.width.equalTo(@35);
+        make.height.equalTo(@38);
+        make.width.equalTo(@38);
     }];
     
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

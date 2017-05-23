@@ -110,22 +110,7 @@ static NSString* const kContentOffsetKeyPath = @"contentOffset";
     if ([page respondsToSelector:@selector(segmentedPager:shouldScrollWithView:)]) {
         shouldScroll = [page segmentedPager:self.segmentedPager shouldScrollWithView:otherGestureRecognizer.view];
     }
-    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
-        CGFloat differ = [self getUpdateHeight] + self.contentOffset.y;
-        MXPanGestureDirection direction = [self getDirectionOfPanGestureRecognizer:(UIPanGestureRecognizer*)gestureRecognizer];
-        
-        if (direction == MXPanGestureDirectionUp && differ == 0) {
-            shouldScroll = YES;
-        }
-        if (direction == MXPanGestureDirectionDown && differ == 0) {
-            shouldScroll = NO;
-            
-            if ([self.observedViews containsObject:otherGestureRecognizer.view]) {
-                [self.observedViews removeObject:otherGestureRecognizer.view];
-                [self removeObserverFromView:otherGestureRecognizer.view];
-            }
-        }
-    }
+    
     if (shouldScroll) {
         [self addObservedView:otherGestureRecognizer.view];
     }

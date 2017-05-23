@@ -7,6 +7,10 @@
 
 #import <UIKit/UIKit.h>
 
+
+#define ContentOffsetKey    @"ContentOffset_Key"
+
+
 typedef NS_ENUM(NSInteger, VGParallaxHeaderMode) {
     VGParallaxHeaderModeCenter = 0,
     VGParallaxHeaderModeFill,
@@ -68,6 +72,6 @@ typedef void(^ScrollCurrentViewDidScroll)(CGFloat contentOffset);
 - (void)updateParallaxHeaderViewHeight:(CGFloat)height;
 
 - (void)shouldPositionParallaxHeader;
-- (CGFloat)getUpdateHeight; // 获取自定义headerView 的高度
+
 
 @end
