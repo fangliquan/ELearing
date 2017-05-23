@@ -27,6 +27,7 @@
 #import "UIButton+WebCache.h"
 #import "BlocksKit+UIKit.h"
 #import "Masonry.h"
+#import "ELiveVCManagerHelper.h"
 //#import "DateHelper.h"
 //#import "MBProgressHUD+Add.h"
 //#import "UIImage+Expand.h"

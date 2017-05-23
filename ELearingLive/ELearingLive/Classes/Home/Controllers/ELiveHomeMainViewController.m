@@ -14,6 +14,8 @@
 #import "ELiewHomeGoodCourseCell.h"
 #import "ELiveCourseListViewController.h"
 #import "ELiveClassificationCataViewController.h"
+#import "ELiveSearchViewController.h"
+#import "GDSearchBar.h"
 @interface ELiveHomeMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) NSMutableArray *newsArrays;
@@ -33,8 +35,37 @@
     }
     [self configtableView];
     [self createHeaderView];
+    [self setupNavigationBar];
     // Do any additional setup after loading the view.
 }
+
+- (void)setupNavigationBar {
+    GDSearchBar *searchBar = [GDSearchBar searchBarWithPlaceholder:@"搜科目 老师 课程"];
+    UIImage* searchBarBg = [ELiveVCManagerHelper GetImageWithColor:[UIColor clearColor] andHeight:32.0f];
+    //设置背景图片
+    [searchBar setBackgroundImage:searchBarBg];
+    //设置背景色
+    [searchBar setBackgroundColor:[UIColor clearColor]];
+    //设置文本框背景
+    [searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
+    searchBar.backgroundImage = [UIImage imageNamed:@"search_bg.png"];
+    //    searchBar.delegate = self;
+    UITextField *searchField = [searchBar valueForKey:@"searchField"];
+    if (searchField) {
+        [searchField setBackgroundColor:[UIColor whiteColor]];
+        searchField.layer.cornerRadius = 5.0f;
+        searchField.layer.borderColor = [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:1.00].CGColor;
+        searchField.layer.borderWidth = 1;
+        searchField.layer.masksToBounds = YES;
+    }
+    self.navigationItem.titleView = searchBar;
+    __weak ELiveHomeMainViewController *weakSelf = self;
+    searchBar.searchBarShouldBeginEditingBlock = ^{
+        ELiveSearchViewController *searchVC = [[ELiveSearchViewController alloc] init];
+        [weakSelf.navigationController pushViewController:searchVC animated:YES];
+    };
+}
+
 
 -(void)createHeaderView{
     
