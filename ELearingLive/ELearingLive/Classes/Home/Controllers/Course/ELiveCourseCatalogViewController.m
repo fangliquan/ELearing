@@ -7,16 +7,18 @@
 //
 
 #import "ELiveCourseCatalogViewController.h"
-
+#import "ELiveCourseCatalogCell.h"
+#import "ELiveCourseDetailViewController.h"
 @interface ELiveCourseCatalogViewController ()
-
+@property(nonatomic,strong) NSMutableArray *courseArrays;
 @end
 
 @implementation ELiveCourseCatalogViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.courseArrays = [NSMutableArray array];
+    [self configtableView];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -30,73 +32,68 @@
 }
 
 - (void)updateViewControllerFrame:(CGRect)frame {
-    self.view.frame = frame;
-    self.tableView.frame = self.view.bounds;
+
 }
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    
+    return 10;//self.courseArrays.count;
 }
 
-/*
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    ELiveCourseCatalogCellFrame *cellFrem =[[ELiveCourseCatalogCellFrame alloc]init];
+    cellFrem.temp =@"  ";
+    return cellFrem.cellHeight;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    ELiveCourseCatalogCell *cell = [ELiveCourseCatalogCell cellWithTableView:tableView];
     
+    ELiveCourseCatalogCellFrame *cellFrem =[[ELiveCourseCatalogCellFrame alloc]init];
+    cellFrem.temp =@"  ";
+    cell.cellFrame = cellFrem;
     // Configure the cell...
     
     return cell;
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ELiveCourseDetailViewController *detailVc = [[ELiveCourseDetailViewController alloc]init];
+    [self.navigationController pushViewController:detailVc animated:YES];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+#pragma mark- TableView Line Width
+- (void )configtableView {
+    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0.0001f)];
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

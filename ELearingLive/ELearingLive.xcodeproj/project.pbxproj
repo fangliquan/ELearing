@@ -43,6 +43,7 @@
 		0A54A3BF1ED4795200421CC5 /* GDSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3BE1ED4795200421CC5 /* GDSearchBar.m */; };
 		0A54A3C21ED47BA900421CC5 /* ELiveSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3C11ED47BA900421CC5 /* ELiveSearchViewController.m */; };
 		0A54A3C51ED47C2500421CC5 /* ELiveVCManagerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3C41ED47C2500421CC5 /* ELiveVCManagerHelper.m */; };
+		0A54A3C91ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3C81ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m */; };
 		0A6944FD1EC6D56600D83DC1 /* ELiveClassificationCataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6944FC1EC6D56600D83DC1 /* ELiveClassificationCataViewController.m */; };
 		0A6945001EC6D86000D83DC1 /* title_moreBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A6944FE1EC6D86000D83DC1 /* title_moreBtn@2x.png */; };
 		0A6945011EC6D86000D83DC1 /* title_moreBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A6944FF1EC6D86000D83DC1 /* title_moreBtn@3x.png */; };
@@ -240,6 +241,8 @@
 		0A54A3C11ED47BA900421CC5 /* ELiveSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSearchViewController.m; sourceTree = "<group>"; };
 		0A54A3C31ED47C2500421CC5 /* ELiveVCManagerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveVCManagerHelper.h; sourceTree = "<group>"; };
 		0A54A3C41ED47C2500421CC5 /* ELiveVCManagerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveVCManagerHelper.m; sourceTree = "<group>"; };
+		0A54A3C71ED5B8DC00421CC5 /* ELiveCourseCatalogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCourseCatalogCell.h; sourceTree = "<group>"; };
+		0A54A3C81ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseCatalogCell.m; sourceTree = "<group>"; };
 		0A6944FB1EC6D56600D83DC1 /* ELiveClassificationCataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveClassificationCataViewController.h; sourceTree = "<group>"; };
 		0A6944FC1EC6D56600D83DC1 /* ELiveClassificationCataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveClassificationCataViewController.m; sourceTree = "<group>"; };
 		0A6944FE1EC6D86000D83DC1 /* title_moreBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title_moreBtn@2x.png"; sourceTree = "<group>"; };
@@ -651,9 +654,19 @@
 			path = GDSearchBar;
 			sourceTree = "<group>";
 		};
+		0A54A3C61ED5B87E00421CC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A54A3C71ED5B8DC00421CC5 /* ELiveCourseCatalogCell.h */,
+				0A54A3C81ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0A69452F1EC7012C00D83DC1 /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				0A54A3C61ED5B87E00421CC5 /* View */,
 				0A6945311EC7018F00D83DC1 /* ELiveCourseIntroViewController.h */,
 				0A6945321EC7018F00D83DC1 /* ELiveCourseIntroViewController.m */,
 				0A6945341EC701C400D83DC1 /* ELiveCourseCatalogViewController.h */,
@@ -1506,6 +1519,7 @@
 				0AEF09461EBECF900065A22B /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				0A54A3891ED31F3200421CC5 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				0AEF08521EBA310E0065A22B /* AFSecurityPolicy.m in Sources */,
+				0A54A3C91ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m in Sources */,
 				0AEF08611EBA310E0065A22B /* MJType.m in Sources */,
 				0AEF09361EBECF900065A22B /* NSObject+BKBlockObservation.m in Sources */,
 				0AEF08741EBA310F0065A22B /* NSData+ImageContentType.m in Sources */,
