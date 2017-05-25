@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ELiveCourseEvaluateViewController : UITableViewController
+@interface ELiveCourseEvaluateViewController : UIViewController
 
 // 更新view frame 和 tableView frame
 - (void)updateViewControllerFrame:(CGRect)frame;

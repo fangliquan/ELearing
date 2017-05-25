@@ -103,7 +103,7 @@
     catelogVC.title = @"目录";
     [self.pages addObject:catelogVC];
     
-    ELiveCourseEvaluateViewController * evaluteVC = [[ELiveCourseEvaluateViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    ELiveCourseEvaluateViewController * evaluteVC = [[ELiveCourseEvaluateViewController alloc] init];
     evaluteVC.title =@"评论";
     [self.pages addObject:evaluteVC];
     

@@ -10,7 +10,7 @@
 #import "ELiveHomeMainViewController.h"
 #import "ELiveMineFocusViewController.h"
 #import "ELiveCastMainViewController.h"
-#import "ELiveMainClassesViewController.h"
+#import "ELiveMainMessageViewController.h"
 #import "ELiveSettingMainViewController.h"
 
 #import "ELiveNavigationViewController.h"
@@ -75,7 +75,7 @@
     [self setupChildViewController:picture title:@"直播" imageName:@"tabbar_video" selectedImageName:nil];
     //XAppDelegate.picture = picture;
     
-    ELiveMainClassesViewController *about = [[ELiveMainClassesViewController alloc] init];
+    ELiveMainMessageViewController *about = [[ELiveMainMessageViewController alloc] init];
     [self setupChildViewController:about title:@"消息" imageName:@"tabbar_message" selectedImageName:nil];
     
     ELiveSettingMainViewController *setting = [[ELiveSettingMainViewController alloc] init];

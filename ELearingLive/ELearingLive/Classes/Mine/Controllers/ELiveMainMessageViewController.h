@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ELiveMainClassesViewController : UIViewController
+@interface ELiveMainMessageViewController : UIViewController
 
 @end
