@@ -29,6 +29,7 @@
     iconView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Width *9/16.0)];
     iconView.contentMode = UIViewContentModeScaleAspectFill;
     iconView.layer.masksToBounds = YES;
+
     iconView.image = [UIImage imageNamed:@"sl_07_3x"];
     [self addSubview:iconView];
     
@@ -44,6 +45,7 @@
     userHeader.layer.masksToBounds = YES;
     userHeader.layer.cornerRadius = userHeaderH/2.0;
     userHeader.userInteractionEnabled = YES;
+    [userHeader addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userHeaderClick)]];
     //[userHeader addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userHomePageClick)]];
     userHeader.image = [UIImage imageNamed:@"image_default_userheader"];
     [self addSubview:userHeader];
@@ -130,6 +132,12 @@
     
     
     
+}
+
+-(void)userHeaderClick{
+    if (self.userHeaderViewHandler) {
+        self.userHeaderViewHandler();
+    }
 }
 
 -(void)earningClick{

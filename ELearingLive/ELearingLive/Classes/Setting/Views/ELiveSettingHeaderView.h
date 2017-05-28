@@ -14,4 +14,6 @@
 
 @property (nonatomic, copy) void (^openMineEarningHandler)(void);
 
+
+@property (nonatomic, copy) void (^userHeaderViewHandler)(void);
 @end

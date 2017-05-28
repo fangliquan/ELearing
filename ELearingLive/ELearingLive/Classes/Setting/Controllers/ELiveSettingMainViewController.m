@@ -19,6 +19,8 @@
 #import "ELiveSettingMineInfoViewController.h"
 #import "ELiveMineEarningsViewController.h"
 
+#import "ELiveLoginViewController.h"
+
 @interface ELiveSettingMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) NSMutableArray *section1Arrays;
@@ -83,6 +85,11 @@
         ELiveMineEarningsViewController *focusVc = [[ELiveMineEarningsViewController alloc]init];
         focusVc.title = @"收益";
         [unself.navigationController pushViewController:focusVc animated:YES];
+    };
+    self.headerView.userHeaderViewHandler = ^{
+        ELiveLoginViewController *loginVc = [[ELiveLoginViewController alloc]init];
+        loginVc.title = @"登录";
+        [unself.navigationController pushViewController:loginVc animated:YES];
     };
     self.tableView.tableHeaderView = self.headerView;
 }
@@ -157,6 +164,7 @@
         [self.navigationController pushViewController:courseVc animated:YES];
     }else if(settingModel.type == Setting_FaceBook){
         ELiveSettingFaceBackViewController *courseVc = [[ELiveSettingFaceBackViewController alloc]init];
+        courseVc.title = @"意见反馈";
         [self.navigationController pushViewController:courseVc animated:YES];
     }else if(settingModel.type == Setting_UpdateInfo){
         ELiveSettingMineInfoViewController *courseVc = [[ELiveSettingMineInfoViewController alloc]init];
