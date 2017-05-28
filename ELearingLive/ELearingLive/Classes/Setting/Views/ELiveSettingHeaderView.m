@@ -68,6 +68,8 @@
     inPriceL.textColor = [UIColor whiteColor];
     inPriceL.text = @"12345";
     inPriceL.font = [UIFont systemFontOfSize:15];
+    inPriceL.userInteractionEnabled = YES;
+    [inPriceL addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(earningClick)]];
     [bottomView addSubview:inPriceL];
     
     UILabel *inPriceTitleL = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(inPriceL.frame), itemWidth, 20)];
@@ -75,6 +77,8 @@
     inPriceTitleL.textColor = CELL_BORDER_COLOR;
     inPriceTitleL.text = @"收益";
     inPriceTitleL.font = [UIFont systemFontOfSize:15];
+    inPriceTitleL.userInteractionEnabled = YES;
+    [inPriceTitleL addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(earningClick)]];
     [bottomView addSubview:inPriceTitleL];
     
     
@@ -111,6 +115,8 @@
     fansL.textColor = [UIColor whiteColor];
     fansL.text = @"12345";
     fansL.font = [UIFont systemFontOfSize:15];
+    fansL.userInteractionEnabled = YES;
+    [fansL addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(fansLableClick)]];
     [bottomView addSubview:fansL];
     
     UILabel *fansLTitleL = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(splitL2.frame), CGRectGetMaxY(fansL.frame), itemWidth, 20)];
@@ -118,12 +124,24 @@
     fansLTitleL.textColor = CELL_BORDER_COLOR;
     fansLTitleL.text = @"粉丝";
     fansLTitleL.font = [UIFont systemFontOfSize:15];
+    fansLTitleL.userInteractionEnabled = YES;
+    [fansLTitleL addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(fansLableClick)]];
     [bottomView addSubview:fansLTitleL];
     
     
     
 }
 
+-(void)earningClick{
+    if (self.openMineEarningHandler) {
+        self.openMineEarningHandler();
+    }
+}
+-(void)fansLableClick{
+    if (self.openMineFansHomeHandler) {
+        self.openMineFansHomeHandler();
+    }
+}
 +(CGFloat)eLiveHomeHeaderHeight{
     CGFloat height = Main_Screen_Width *9/16.0;
     return height;

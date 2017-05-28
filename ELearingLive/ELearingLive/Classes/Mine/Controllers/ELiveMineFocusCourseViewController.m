@@ -22,10 +22,12 @@
     self.title = @"课程";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"title_moreBtn"] style:UIBarButtonItemStylePlain target:self action:@selector(searchMoreClick)];
-    
+    if (self.showMoreBtn) {
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"title_moreBtn"] style:UIBarButtonItemStylePlain target:self action:@selector(searchMoreClick)];
+        
+    }
+
 }
 -(void)searchMoreClick{
     ELiveClassificationCataViewController *eClassVc = [[ELiveClassificationCataViewController alloc]init];

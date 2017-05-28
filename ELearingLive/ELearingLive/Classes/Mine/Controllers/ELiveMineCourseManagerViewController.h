@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MXSegmentedPagerController.h"
+@interface ELiveMineCourseManagerViewController : MXSegmentedPagerController
 
-@interface ELiveMineCourseManagerViewController : UIViewController
 
 @end

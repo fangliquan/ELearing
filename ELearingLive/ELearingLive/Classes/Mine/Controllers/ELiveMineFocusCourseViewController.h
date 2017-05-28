@@ -10,4 +10,5 @@
 
 @interface ELiveMineFocusCourseViewController : UITableViewController
 
+@property(nonatomic,assign) BOOL showMoreBtn;
 @end

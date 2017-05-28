@@ -10,4 +10,8 @@
 
 @interface ELiveSettingHeaderView : UIView
 
+@property (nonatomic, copy) void (^openMineFansHomeHandler)(void);
+
+@property (nonatomic, copy) void (^openMineEarningHandler)(void);
+
 @end

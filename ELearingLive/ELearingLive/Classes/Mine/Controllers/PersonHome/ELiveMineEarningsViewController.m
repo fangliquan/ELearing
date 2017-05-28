@@ -1,21 +1,20 @@
 //
-//  ELiveMineFocusViewController.m
+//  ELiveMineEarningsViewController.m
 //  ELearingLive
 //
-//  Created by microleo on 2017/5/3.
+//  Created by microleo on 2017/5/28.
 //  Copyright © 2017年 leo. All rights reserved.
 //
 
-#import "ELiveMineFocusViewController.h"
-#import "ELiveFansFocusCell.h"
-#include "ELivePersonHomeViewController.h"
-@interface ELiveMineFocusViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "ELiveMineEarningsViewController.h"
+#import "ELiveEarningsCell.h"
+@interface ELiveMineEarningsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) UITableView *tableView;
 
 @end
 
-@implementation ELiveMineFocusViewController
+@implementation ELiveMineEarningsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,19 +48,18 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     // ELeaingNewsItemCellFrame *itemFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
     
-    return 66;
+    return 60;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ELiveFansFocusCell *cell = [ELiveFansFocusCell cellWithTableView:tableView];
+    ELiveEarningsCell *cell = [ELiveEarningsCell cellWithTableView:tableView];
     //cell.eLeaingNewsItemCellFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ELivePersonHomeViewController *homeVc = [[ELivePersonHomeViewController alloc]init];
-    [self.navigationController pushViewController:homeVc animated:YES];
+    
 }
 
 

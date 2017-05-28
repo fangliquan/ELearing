@@ -17,6 +17,7 @@
 
 #import "ELiveSettingFaceBackViewController.h"
 #import "ELiveSettingMineInfoViewController.h"
+#import "ELiveMineEarningsViewController.h"
 
 @interface ELiveSettingMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -42,9 +43,9 @@
         } else if (i ==1) {
             settingModel.title = @"课程管理";
         }else if (i ==2) {
-            settingModel.title = @"关注的讲师";
+            settingModel.title = @"我的讲师";
         }else if (i ==3) {
-            settingModel.title = @"关注的课程";
+            settingModel.title = @"我的课程";
         }
         [self.section1Arrays addObject:settingModel];
     }
@@ -71,6 +72,18 @@
 -(void)createHeaderView{
     
     self.headerView = [[ELiveSettingHeaderView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Width *9/16.0)];
+    __unsafe_unretained typeof(self) unself = self;
+    self.headerView.openMineFansHomeHandler =^(){
+        ELiveMineFocusViewController *focusVc = [[ELiveMineFocusViewController alloc]init];
+        focusVc.title = @"粉丝";
+        focusVc.isFans = YES;
+        [unself.navigationController pushViewController:focusVc animated:YES];
+    };
+    self.headerView.openMineEarningHandler = ^{
+        ELiveMineEarningsViewController *focusVc = [[ELiveMineEarningsViewController alloc]init];
+        focusVc.title = @"收益";
+        [unself.navigationController pushViewController:focusVc animated:YES];
+    };
     self.tableView.tableHeaderView = self.headerView;
 }
 
@@ -131,9 +144,13 @@
         [self.navigationController pushViewController:homeVc animated:YES];
     }else if (settingModel.type ==Setting_Focus_Teacher){
         ELiveMineFocusViewController *focusVc = [[ELiveMineFocusViewController alloc]init];
+        focusVc.title = @"我的讲师";
+        focusVc.isFans = NO;
         [self.navigationController pushViewController:focusVc animated:YES];
     }else if(settingModel.type == Setting_Focus_Course){
         ELiveMineFocusCourseViewController *courseVc = [[ELiveMineFocusCourseViewController alloc]init];
+        courseVc.title = @"我的课程";
+        courseVc.showMoreBtn = NO;
         [self.navigationController pushViewController:courseVc animated:YES];
     }else if(settingModel.type == Setting_CouserM){
         ELiveMineCourseManagerViewController *courseVc = [[ELiveMineCourseManagerViewController alloc]init];

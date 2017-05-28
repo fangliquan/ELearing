@@ -25,6 +25,10 @@
 		0A46AA7D1EDA85A10087E078 /* ELiveMineCourseManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA7C1EDA85A10087E078 /* ELiveMineCourseManagerViewController.m */; };
 		0A46AA801EDA85D10087E078 /* ELiveSettingFaceBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA7F1EDA85D10087E078 /* ELiveSettingFaceBackViewController.m */; };
 		0A46AA831EDA86280087E078 /* ELiveSettingMineInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA821EDA86280087E078 /* ELiveSettingMineInfoViewController.m */; };
+		0A46AA861EDA9A110087E078 /* ELiveFansFocusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA851EDA9A110087E078 /* ELiveFansFocusCell.m */; };
+		0A46AA891EDA9E590087E078 /* ELiveMineEarningsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA881EDA9E590087E078 /* ELiveMineEarningsViewController.m */; };
+		0A46AA8C1EDA9E780087E078 /* ELiveEarningsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA8B1EDA9E780087E078 /* ELiveEarningsCell.m */; };
+		0A46AA921EDAA8A30087E078 /* ELiveMineShopCarCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA911EDAA8A30087E078 /* ELiveMineShopCarCourseViewController.m */; };
 		0A54A3831ED31F3200421CC5 /* MXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3681ED31F3100421CC5 /* MXPagerView.m */; };
 		0A54A3841ED31F3200421CC5 /* MXSegmentedPager+ParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A36A1ED31F3100421CC5 /* MXSegmentedPager+ParallaxHeader.m */; };
 		0A54A3851ED31F3200421CC5 /* MXSegmentedPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A36C1ED31F3100421CC5 /* MXSegmentedPager.m */; };
@@ -233,6 +237,14 @@
 		0A46AA7F1EDA85D10087E078 /* ELiveSettingFaceBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ELiveSettingFaceBackViewController.m; path = ../ELiveSettingFaceBackViewController.m; sourceTree = "<group>"; };
 		0A46AA811EDA86280087E078 /* ELiveSettingMineInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingMineInfoViewController.h; sourceTree = "<group>"; };
 		0A46AA821EDA86280087E078 /* ELiveSettingMineInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingMineInfoViewController.m; sourceTree = "<group>"; };
+		0A46AA841EDA9A110087E078 /* ELiveFansFocusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveFansFocusCell.h; sourceTree = "<group>"; };
+		0A46AA851EDA9A110087E078 /* ELiveFansFocusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveFansFocusCell.m; sourceTree = "<group>"; };
+		0A46AA871EDA9E590087E078 /* ELiveMineEarningsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELiveMineEarningsViewController.h; path = PersonHome/ELiveMineEarningsViewController.h; sourceTree = "<group>"; };
+		0A46AA881EDA9E590087E078 /* ELiveMineEarningsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ELiveMineEarningsViewController.m; path = PersonHome/ELiveMineEarningsViewController.m; sourceTree = "<group>"; };
+		0A46AA8A1EDA9E780087E078 /* ELiveEarningsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveEarningsCell.h; sourceTree = "<group>"; };
+		0A46AA8B1EDA9E780087E078 /* ELiveEarningsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveEarningsCell.m; sourceTree = "<group>"; };
+		0A46AA901EDAA8A30087E078 /* ELiveMineShopCarCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMineShopCarCourseViewController.h; sourceTree = "<group>"; };
+		0A46AA911EDAA8A30087E078 /* ELiveMineShopCarCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveMineShopCarCourseViewController.m; sourceTree = "<group>"; };
 		0A54A3671ED31F3100421CC5 /* MXPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXPagerView.h; sourceTree = "<group>"; };
 		0A54A3681ED31F3100421CC5 /* MXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXPagerView.m; sourceTree = "<group>"; };
 		0A54A3691ED31F3100421CC5 /* MXSegmentedPager+ParallaxHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MXSegmentedPager+ParallaxHeader.h"; sourceTree = "<group>"; };
@@ -962,6 +974,8 @@
 				0A46AA481ED872520087E078 /* PersonHome */,
 				0AEF088A1EBA338E0065A22B /* ELiveMineMainViewController.h */,
 				0AEF088B1EBA338E0065A22B /* ELiveMineMainViewController.m */,
+				0A46AA871EDA9E590087E078 /* ELiveMineEarningsViewController.h */,
+				0A46AA881EDA9E590087E078 /* ELiveMineEarningsViewController.m */,
 				0AEF088D1EBA33B20065A22B /* ELiveMineFocusViewController.h */,
 				0AEF088E1EBA33B20065A22B /* ELiveMineFocusViewController.m */,
 				0AEF08A21EBA3A3A0065A22B /* ELiveMainMessageViewController.h */,
@@ -970,6 +984,8 @@
 				0A46AA791EDA850D0087E078 /* ELiveMineFocusCourseViewController.m */,
 				0A46AA7B1EDA85A10087E078 /* ELiveMineCourseManagerViewController.h */,
 				0A46AA7C1EDA85A10087E078 /* ELiveMineCourseManagerViewController.m */,
+				0A46AA901EDAA8A30087E078 /* ELiveMineShopCarCourseViewController.h */,
+				0A46AA911EDAA8A30087E078 /* ELiveMineShopCarCourseViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -979,6 +995,10 @@
 			children = (
 				0A46AA451ED7291D0087E078 /* ELiveMessageViewCell.h */,
 				0A46AA461ED7291D0087E078 /* ELiveMessageViewCell.m */,
+				0A46AA841EDA9A110087E078 /* ELiveFansFocusCell.h */,
+				0A46AA851EDA9A110087E078 /* ELiveFansFocusCell.m */,
+				0A46AA8A1EDA9E780087E078 /* ELiveEarningsCell.h */,
+				0A46AA8B1EDA9E780087E078 /* ELiveEarningsCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1019,7 +1039,6 @@
 			children = (
 				0A46AA711EDA6D880087E078 /* Views */,
 				0AEF07DE1EBA30C80065A22B /* Controllers */,
-				0AEF07DF1EBA30C80065A22B /* Views */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1035,13 +1054,6 @@
 				0A46AA821EDA86280087E078 /* ELiveSettingMineInfoViewController.m */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		0AEF07DF1EBA30C80065A22B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		0AEF07E01EBA310E0065A22B /* AFNetworking */ = {
@@ -1621,6 +1633,7 @@
 				0AEF094A1EBECF900065A22B /* UIView+BlocksKit.m in Sources */,
 				0AEF08641EBA310E0065A22B /* NSObject+MJKeyValue.m in Sources */,
 				0AEF088F1EBA33B20065A22B /* ELiveMineFocusViewController.m in Sources */,
+				0A46AA861EDA9A110087E078 /* ELiveFansFocusCell.m in Sources */,
 				0AEF09431EBECF900065A22B /* UIAlertView+BlocksKit.m in Sources */,
 				0AEF09481EBECF900065A22B /* UIPopoverController+BlocksKit.m in Sources */,
 				0AEF09BE1EBF4B1F0065A22B /* DateHelper.m in Sources */,
@@ -1644,6 +1657,7 @@
 				0AEF09881EBED84E0065A22B /* MJRefreshBackFooter.m in Sources */,
 				0AEF092C1EBECF900065A22B /* NSDictionary+BlocksKit.m in Sources */,
 				0AEF09451EBECF900065A22B /* UIControl+BlocksKit.m in Sources */,
+				0A46AA8C1EDA9E780087E078 /* ELiveEarningsCell.m in Sources */,
 				0AEF08691EBA310E0065A22B /* MJPhotoLoadingView.m in Sources */,
 				0AEF08801EBA310F0065A22B /* UIImageView+WebCache.m in Sources */,
 				0AEF089E1EBA36090065A22B /* main.m in Sources */,
@@ -1694,6 +1708,7 @@
 				0AEF099E1EBED9520065A22B /* PinYin.m in Sources */,
 				0AEF08751EBA310F0065A22B /* SDImageCache.m in Sources */,
 				0A46AA771EDA7E780087E078 /* ELiveSettingCell.m in Sources */,
+				0A46AA921EDAA8A30087E078 /* ELiveMineShopCarCourseViewController.m in Sources */,
 				0A92A2811EC20D87002C2811 /* ELiewHomeGoodCourseCell.m in Sources */,
 				0A46AA741EDA6DB00087E078 /* ELiveSettingHeaderView.m in Sources */,
 				0A54A3BF1ED4795200421CC5 /* GDSearchBar.m in Sources */,
@@ -1704,6 +1719,7 @@
 				0AEF085A1EBA310E0065A22B /* MBProgressHUD+MJ.m in Sources */,
 				0A92A27E1EC200B0002C2811 /* ELiveHomeClassesHeaderView.m in Sources */,
 				0A54A3881ED31F3200421CC5 /* NSArray+PureLayout.m in Sources */,
+				0A46AA891EDA9E590087E078 /* ELiveMineEarningsViewController.m in Sources */,
 				0AEF08731EBA310F0065A22B /* MKAnnotationView+WebCache.m in Sources */,
 				0AEF088C1EBA338E0065A22B /* ELiveMineMainViewController.m in Sources */,
 				0A69452B1EC6FC8800D83DC1 /* BaseViewController.m in Sources */,

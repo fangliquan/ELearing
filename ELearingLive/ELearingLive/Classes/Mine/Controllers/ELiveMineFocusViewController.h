@@ -10,4 +10,5 @@
 
 @interface ELiveMineFocusViewController : UIViewController
 
+@property(nonatomic,assign) BOOL isFans;
 @end
