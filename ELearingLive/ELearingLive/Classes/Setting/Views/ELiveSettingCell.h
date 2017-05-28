@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    Setting_MineHome,
+    Setting_MineHome =0,
     Setting_CouserM,
     Setting_Focus_Teacher,
     Setting_Focus_Course,

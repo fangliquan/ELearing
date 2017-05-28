@@ -21,6 +21,10 @@
 		0A46AA701EDA6AC90087E078 /* sl_08_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA601EDA6AC90087E078 /* sl_08_3x.png */; };
 		0A46AA741EDA6DB00087E078 /* ELiveSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA731EDA6DB00087E078 /* ELiveSettingHeaderView.m */; };
 		0A46AA771EDA7E780087E078 /* ELiveSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA761EDA7E780087E078 /* ELiveSettingCell.m */; };
+		0A46AA7A1EDA850D0087E078 /* ELiveMineFocusCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA791EDA850D0087E078 /* ELiveMineFocusCourseViewController.m */; };
+		0A46AA7D1EDA85A10087E078 /* ELiveMineCourseManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA7C1EDA85A10087E078 /* ELiveMineCourseManagerViewController.m */; };
+		0A46AA801EDA85D10087E078 /* ELiveSettingFaceBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA7F1EDA85D10087E078 /* ELiveSettingFaceBackViewController.m */; };
+		0A46AA831EDA86280087E078 /* ELiveSettingMineInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA821EDA86280087E078 /* ELiveSettingMineInfoViewController.m */; };
 		0A54A3831ED31F3200421CC5 /* MXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3681ED31F3100421CC5 /* MXPagerView.m */; };
 		0A54A3841ED31F3200421CC5 /* MXSegmentedPager+ParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A36A1ED31F3100421CC5 /* MXSegmentedPager+ParallaxHeader.m */; };
 		0A54A3851ED31F3200421CC5 /* MXSegmentedPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A36C1ED31F3100421CC5 /* MXSegmentedPager.m */; };
@@ -221,6 +225,14 @@
 		0A46AA731EDA6DB00087E078 /* ELiveSettingHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingHeaderView.m; sourceTree = "<group>"; };
 		0A46AA751EDA7E780087E078 /* ELiveSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingCell.h; sourceTree = "<group>"; };
 		0A46AA761EDA7E780087E078 /* ELiveSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingCell.m; sourceTree = "<group>"; };
+		0A46AA781EDA850D0087E078 /* ELiveMineFocusCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMineFocusCourseViewController.h; sourceTree = "<group>"; };
+		0A46AA791EDA850D0087E078 /* ELiveMineFocusCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveMineFocusCourseViewController.m; sourceTree = "<group>"; };
+		0A46AA7B1EDA85A10087E078 /* ELiveMineCourseManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMineCourseManagerViewController.h; sourceTree = "<group>"; };
+		0A46AA7C1EDA85A10087E078 /* ELiveMineCourseManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveMineCourseManagerViewController.m; sourceTree = "<group>"; };
+		0A46AA7E1EDA85D10087E078 /* ELiveSettingFaceBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELiveSettingFaceBackViewController.h; path = ../ELiveSettingFaceBackViewController.h; sourceTree = "<group>"; };
+		0A46AA7F1EDA85D10087E078 /* ELiveSettingFaceBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ELiveSettingFaceBackViewController.m; path = ../ELiveSettingFaceBackViewController.m; sourceTree = "<group>"; };
+		0A46AA811EDA86280087E078 /* ELiveSettingMineInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingMineInfoViewController.h; sourceTree = "<group>"; };
+		0A46AA821EDA86280087E078 /* ELiveSettingMineInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingMineInfoViewController.m; sourceTree = "<group>"; };
 		0A54A3671ED31F3100421CC5 /* MXPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXPagerView.h; sourceTree = "<group>"; };
 		0A54A3681ED31F3100421CC5 /* MXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXPagerView.m; sourceTree = "<group>"; };
 		0A54A3691ED31F3100421CC5 /* MXSegmentedPager+ParallaxHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MXSegmentedPager+ParallaxHeader.h"; sourceTree = "<group>"; };
@@ -954,6 +966,10 @@
 				0AEF088E1EBA33B20065A22B /* ELiveMineFocusViewController.m */,
 				0AEF08A21EBA3A3A0065A22B /* ELiveMainMessageViewController.h */,
 				0AEF08A31EBA3A3A0065A22B /* ELiveMainMessageViewController.m */,
+				0A46AA781EDA850D0087E078 /* ELiveMineFocusCourseViewController.h */,
+				0A46AA791EDA850D0087E078 /* ELiveMineFocusCourseViewController.m */,
+				0A46AA7B1EDA85A10087E078 /* ELiveMineCourseManagerViewController.h */,
+				0A46AA7C1EDA85A10087E078 /* ELiveMineCourseManagerViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1011,8 +1027,12 @@
 		0AEF07DE1EBA30C80065A22B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0A46AA7E1EDA85D10087E078 /* ELiveSettingFaceBackViewController.h */,
+				0A46AA7F1EDA85D10087E078 /* ELiveSettingFaceBackViewController.m */,
 				0AEF08901EBA33FB0065A22B /* ELiveSettingMainViewController.h */,
 				0AEF08911EBA33FB0065A22B /* ELiveSettingMainViewController.m */,
+				0A46AA811EDA86280087E078 /* ELiveSettingMineInfoViewController.h */,
+				0A46AA821EDA86280087E078 /* ELiveSettingMineInfoViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1595,6 +1615,7 @@
 				0AEF087D1EBA310F0065A22B /* UIImage+GIF.m in Sources */,
 				0AEF08681EBA310E0065A22B /* MJPhotoBrowser.m in Sources */,
 				0A6945331EC7018F00D83DC1 /* ELiveCourseIntroViewController.m in Sources */,
+				0A46AA831EDA86280087E078 /* ELiveSettingMineInfoViewController.m in Sources */,
 				0A46AA4F1EDA6A5A0087E078 /* ELiveHomeHeaderView.m in Sources */,
 				0AEF08791EBA310F0065A22B /* SDWebImageDownloaderOperation.m in Sources */,
 				0AEF094A1EBECF900065A22B /* UIView+BlocksKit.m in Sources */,
@@ -1629,9 +1650,11 @@
 				0AEF094D1EBECF900065A22B /* LoopView.m in Sources */,
 				0AEF09551EBECF900065A22B /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				0A46AA471ED7291D0087E078 /* ELiveMessageViewCell.m in Sources */,
+				0A46AA7D1EDA85A10087E078 /* ELiveMineCourseManagerViewController.m in Sources */,
 				0AEF093F1EBECF900065A22B /* NSObject+A2DynamicDelegate.m in Sources */,
 				0AEF09491EBECF900065A22B /* UITextField+BlocksKit.m in Sources */,
 				0AEF09301EBECF900065A22B /* NSMutableDictionary+BlocksKit.m in Sources */,
+				0A46AA7A1EDA850D0087E078 /* ELiveMineFocusCourseViewController.m in Sources */,
 				0AEF09371EBECF900065A22B /* NSOrderedSet+BlocksKit.m in Sources */,
 				0AEF09941EBED84E0065A22B /* MJRefreshStateHeader.m in Sources */,
 				0AEF085F1EBA310E0065A22B /* MJMember.m in Sources */,
@@ -1640,6 +1663,7 @@
 				0AEF09441EBECF900065A22B /* UIBarButtonItem+BlocksKit.m in Sources */,
 				0AEF08651EBA310E0065A22B /* NSObject+MJMember.m in Sources */,
 				0A54A38B1ED31F3200421CC5 /* THSegmentedPager.m in Sources */,
+				0A46AA801EDA85D10087E078 /* ELiveSettingFaceBackViewController.m in Sources */,
 				0AEF08951EBA34350065A22B /* ELiveCastMainViewController.m in Sources */,
 				0AEF08B31EBECDB80065A22B /* WWTextManager.m in Sources */,
 				0AEF08BC1EBECE0A0065A22B /* NSObject+CommonBlock.m in Sources */,

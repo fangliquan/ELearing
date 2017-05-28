@@ -10,6 +10,14 @@
 #import "ELiveSettingHeaderView.h"
 #import "ELiveSettingCell.h"
 
+#import "ELivePersonHomeViewController.h"
+#import "ELiveMineFocusViewController.h"
+#import "ELiveMineFocusCourseViewController.h"
+#import "ELiveMineCourseManagerViewController.h"
+
+#import "ELiveSettingFaceBackViewController.h"
+#import "ELiveSettingMineInfoViewController.h"
+
 @interface ELiveSettingMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) NSMutableArray *section1Arrays;
@@ -42,10 +50,12 @@
     }
     for (int i =0; i <2; i ++) {
         ELiveSettingModel *settingModel = [[ELiveSettingModel alloc]init];
-        settingModel.type = i;
+        
         if (i ==0) {
+            settingModel.type = 4;
             settingModel.title = @"意见反馈";
         } else if (i ==1) {
+            settingModel.type = 5;
             settingModel.title = @"设置和资料";
         }
         [self.section2Arrays addObject:settingModel];
@@ -76,7 +86,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section ==1) {
+    if (section ==0) {
         return self.section1Arrays.count;
     }else{
         return self.section2Arrays.count;
@@ -99,7 +109,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELiveSettingCell *cell = [ELiveSettingCell cellWithTableView:tableView];
-    if (indexPath.section ==1) {
+    if (indexPath.section ==0) {
         cell.eLiveSettingModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
     }else{
         cell.eLiveSettingModel = self.section2Arrays.count >indexPath.row ?self.section2Arrays[indexPath.row]:nil;
@@ -110,7 +120,32 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    ELiveSettingModel *settingModel;
+    if (indexPath.section ==0) {
+        settingModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
+    }else{
+        settingModel = self.section2Arrays.count >indexPath.row ?self.section2Arrays[indexPath.row]:nil;
+    }
+    if (settingModel.type ==Setting_MineHome) {
+        ELivePersonHomeViewController *homeVc = [[ELivePersonHomeViewController alloc]init];
+        [self.navigationController pushViewController:homeVc animated:YES];
+    }else if (settingModel.type ==Setting_Focus_Teacher){
+        ELiveMineFocusViewController *focusVc = [[ELiveMineFocusViewController alloc]init];
+        [self.navigationController pushViewController:focusVc animated:YES];
+    }else if(settingModel.type == Setting_Focus_Course){
+        ELiveMineFocusCourseViewController *courseVc = [[ELiveMineFocusCourseViewController alloc]init];
+        [self.navigationController pushViewController:courseVc animated:YES];
+    }else if(settingModel.type == Setting_CouserM){
+        ELiveMineCourseManagerViewController *courseVc = [[ELiveMineCourseManagerViewController alloc]init];
+        [self.navigationController pushViewController:courseVc animated:YES];
+    }else if(settingModel.type == Setting_FaceBook){
+        ELiveSettingFaceBackViewController *courseVc = [[ELiveSettingFaceBackViewController alloc]init];
+        [self.navigationController pushViewController:courseVc animated:YES];
+    }else if(settingModel.type == Setting_UpdateInfo){
+        ELiveSettingMineInfoViewController *courseVc = [[ELiveSettingMineInfoViewController alloc]init];
+        [self.navigationController pushViewController:courseVc animated:YES];
+    }
+    
 }
 
 
