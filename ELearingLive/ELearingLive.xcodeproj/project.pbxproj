@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		0A3A75221EC6C6BE000DE748 /* ELiveCourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */; };
 		0A46AA471ED7291D0087E078 /* ELiveMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA461ED7291D0087E078 /* ELiveMessageViewCell.m */; };
+		0A46AA4B1ED8729A0087E078 /* ELivePersonHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA4A1ED8729A0087E078 /* ELivePersonHomeViewController.m */; };
+		0A46AA4F1EDA6A5A0087E078 /* ELiveHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA4E1EDA6A5A0087E078 /* ELiveHomeHeaderView.m */; };
+		0A46AA621EDA6AC90087E078 /* sl_01_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA521EDA6AC90087E078 /* sl_01_3x.png */; };
+		0A46AA641EDA6AC90087E078 /* sl_02_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA541EDA6AC90087E078 /* sl_02_3x.png */; };
+		0A46AA661EDA6AC90087E078 /* sl_03_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA561EDA6AC90087E078 /* sl_03_3x.png */; };
+		0A46AA681EDA6AC90087E078 /* sl_04_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA581EDA6AC90087E078 /* sl_04_3x.png */; };
+		0A46AA6A1EDA6AC90087E078 /* sl_05_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA5A1EDA6AC90087E078 /* sl_05_3x.png */; };
+		0A46AA6C1EDA6AC90087E078 /* sl_06_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA5C1EDA6AC90087E078 /* sl_06_3x.png */; };
+		0A46AA6E1EDA6AC90087E078 /* sl_07_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA5E1EDA6AC90087E078 /* sl_07_3x.png */; };
+		0A46AA701EDA6AC90087E078 /* sl_08_3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA601EDA6AC90087E078 /* sl_08_3x.png */; };
+		0A46AA741EDA6DB00087E078 /* ELiveSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA731EDA6DB00087E078 /* ELiveSettingHeaderView.m */; };
+		0A46AA771EDA7E780087E078 /* ELiveSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA761EDA7E780087E078 /* ELiveSettingCell.m */; };
 		0A54A3831ED31F3200421CC5 /* MXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3681ED31F3100421CC5 /* MXPagerView.m */; };
 		0A54A3841ED31F3200421CC5 /* MXSegmentedPager+ParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A36A1ED31F3100421CC5 /* MXSegmentedPager+ParallaxHeader.m */; };
 		0A54A3851ED31F3200421CC5 /* MXSegmentedPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A36C1ED31F3100421CC5 /* MXSegmentedPager.m */; };
@@ -193,6 +205,22 @@
 		0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseListViewController.m; sourceTree = "<group>"; };
 		0A46AA451ED7291D0087E078 /* ELiveMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMessageViewCell.h; sourceTree = "<group>"; };
 		0A46AA461ED7291D0087E078 /* ELiveMessageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveMessageViewCell.m; sourceTree = "<group>"; };
+		0A46AA491ED8729A0087E078 /* ELivePersonHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELivePersonHomeViewController.h; sourceTree = "<group>"; };
+		0A46AA4A1ED8729A0087E078 /* ELivePersonHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELivePersonHomeViewController.m; sourceTree = "<group>"; };
+		0A46AA4D1EDA6A5A0087E078 /* ELiveHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveHomeHeaderView.h; sourceTree = "<group>"; };
+		0A46AA4E1EDA6A5A0087E078 /* ELiveHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveHomeHeaderView.m; sourceTree = "<group>"; };
+		0A46AA521EDA6AC90087E078 /* sl_01_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sl_01_3x.png; sourceTree = "<group>"; };
+		0A46AA541EDA6AC90087E078 /* sl_02_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sl_02_3x.png; sourceTree = "<group>"; };
+		0A46AA561EDA6AC90087E078 /* sl_03_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sl_03_3x.png; sourceTree = "<group>"; };
+		0A46AA581EDA6AC90087E078 /* sl_04_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sl_04_3x.png; sourceTree = "<group>"; };
+		0A46AA5A1EDA6AC90087E078 /* sl_05_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sl_05_3x.png; sourceTree = "<group>"; };
+		0A46AA5C1EDA6AC90087E078 /* sl_06_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sl_06_3x.png; sourceTree = "<group>"; };
+		0A46AA5E1EDA6AC90087E078 /* sl_07_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sl_07_3x.png; sourceTree = "<group>"; };
+		0A46AA601EDA6AC90087E078 /* sl_08_3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sl_08_3x.png; sourceTree = "<group>"; };
+		0A46AA721EDA6DB00087E078 /* ELiveSettingHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingHeaderView.h; sourceTree = "<group>"; };
+		0A46AA731EDA6DB00087E078 /* ELiveSettingHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingHeaderView.m; sourceTree = "<group>"; };
+		0A46AA751EDA7E780087E078 /* ELiveSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingCell.h; sourceTree = "<group>"; };
+		0A46AA761EDA7E780087E078 /* ELiveSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingCell.m; sourceTree = "<group>"; };
 		0A54A3671ED31F3100421CC5 /* MXPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXPagerView.h; sourceTree = "<group>"; };
 		0A54A3681ED31F3100421CC5 /* MXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXPagerView.m; sourceTree = "<group>"; };
 		0A54A3691ED31F3100421CC5 /* MXSegmentedPager+ParallaxHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MXSegmentedPager+ParallaxHeader.h"; sourceTree = "<group>"; };
@@ -548,6 +576,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A46AA481ED872520087E078 /* PersonHome */ = {
+			isa = PBXGroup;
+			children = (
+				0A46AA4C1EDA6A290087E078 /* View */,
+				0A46AA491ED8729A0087E078 /* ELivePersonHomeViewController.h */,
+				0A46AA4A1ED8729A0087E078 /* ELivePersonHomeViewController.m */,
+			);
+			path = PersonHome;
+			sourceTree = "<group>";
+		};
+		0A46AA4C1EDA6A290087E078 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A46AA4D1EDA6A5A0087E078 /* ELiveHomeHeaderView.h */,
+				0A46AA4E1EDA6A5A0087E078 /* ELiveHomeHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A46AA501EDA6AC90087E078 /* 示意图 */ = {
+			isa = PBXGroup;
+			children = (
+				0A46AA521EDA6AC90087E078 /* sl_01_3x.png */,
+				0A46AA541EDA6AC90087E078 /* sl_02_3x.png */,
+				0A46AA561EDA6AC90087E078 /* sl_03_3x.png */,
+				0A46AA581EDA6AC90087E078 /* sl_04_3x.png */,
+				0A46AA5A1EDA6AC90087E078 /* sl_05_3x.png */,
+				0A46AA5C1EDA6AC90087E078 /* sl_06_3x.png */,
+				0A46AA5E1EDA6AC90087E078 /* sl_07_3x.png */,
+				0A46AA601EDA6AC90087E078 /* sl_08_3x.png */,
+			);
+			path = "示意图";
+			sourceTree = "<group>";
+		};
+		0A46AA711EDA6D880087E078 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0A46AA721EDA6DB00087E078 /* ELiveSettingHeaderView.h */,
+				0A46AA731EDA6DB00087E078 /* ELiveSettingHeaderView.m */,
+				0A46AA751EDA7E780087E078 /* ELiveSettingCell.h */,
+				0A46AA761EDA7E780087E078 /* ELiveSettingCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0A54A3661ED31F3100421CC5 /* MXSegmentedPager */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +684,7 @@
 		0A54A38D1ED46DF900421CC5 /* test */ = {
 			isa = PBXGroup;
 			children = (
+				0A46AA501EDA6AC90087E078 /* 示意图 */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -873,6 +947,7 @@
 		0AEF07D51EBA30C80065A22B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0A46AA481ED872520087E078 /* PersonHome */,
 				0AEF088A1EBA338E0065A22B /* ELiveMineMainViewController.h */,
 				0AEF088B1EBA338E0065A22B /* ELiveMineMainViewController.m */,
 				0AEF088D1EBA33B20065A22B /* ELiveMineFocusViewController.h */,
@@ -926,6 +1001,7 @@
 		0AEF07DD1EBA30C80065A22B /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				0A46AA711EDA6D880087E078 /* Views */,
 				0AEF07DE1EBA30C80065A22B /* Controllers */,
 				0AEF07DF1EBA30C80065A22B /* Views */,
 			);
@@ -1461,6 +1537,8 @@
 				0A54A3B01ED4742500421CC5 /* tabbar_news1@2x.png in Resources */,
 				0A54A3A11ED4724100421CC5 /* home_tt_05_@2x.png in Resources */,
 				0A54A39D1ED4724100421CC5 /* home_tt_03_@2x.png in Resources */,
+				0A46AA681EDA6AC90087E078 /* sl_04_3x.png in Resources */,
+				0A46AA6C1EDA6AC90087E078 /* sl_06_3x.png in Resources */,
 				0A54A39B1ED4724100421CC5 /* home_tt_02_@2x.png in Resources */,
 				0A54A39A1ED4724100421CC5 /* home_tt_01_@3x.png in Resources */,
 				0A54A3B21ED4742500421CC5 /* tabbar_news@2x.png in Resources */,
@@ -1468,19 +1546,25 @@
 				0AEF085B1EBA310E0065A22B /* MBProgressHUD.bundle in Resources */,
 				0A54A3A21ED4724100421CC5 /* home_tt_05_@3x.png in Resources */,
 				0A54A3B61ED4742500421CC5 /* tabbar_video@2x.png in Resources */,
+				0A46AA701EDA6AC90087E078 /* sl_08_3x.png in Resources */,
 				0A54A39F1ED4724100421CC5 /* home_tt_04_@2x.png in Resources */,
 				0A54A3991ED4724100421CC5 /* home_tt_01_@2x.png in Resources */,
 				0A54A3B71ED4742500421CC5 /* tabbar_video@3x.png in Resources */,
 				0AEF09951EBED84E0065A22B /* MJRefresh.bundle in Resources */,
 				0A54A3B31ED4742500421CC5 /* tabbar_news@3x.png in Resources */,
 				0AEF08AE1EBD57480065A22B /* image_default_userheader.png in Resources */,
+				0A46AA641EDA6AC90087E078 /* sl_02_3x.png in Resources */,
+				0A46AA661EDA6AC90087E078 /* sl_03_3x.png in Resources */,
 				0A6945001EC6D86000D83DC1 /* title_moreBtn@2x.png in Resources */,
 				0A54A39C1ED4724100421CC5 /* home_tt_02_@3x.png in Resources */,
+				0A46AA621EDA6AC90087E078 /* sl_01_3x.png in Resources */,
 				0A54A3B51ED4742500421CC5 /* tabbar_pics@3x.png in Resources */,
 				0AEF08AD1EBD57480065A22B /* image_default_placeholder.png in Resources */,
 				0A54A3A01ED4724100421CC5 /* home_tt_04_@3x.png in Resources */,
 				0A54A3BA1ED4769400421CC5 /* tabbar_message@2x.png in Resources */,
 				0A6945011EC6D86000D83DC1 /* title_moreBtn@3x.png in Resources */,
+				0A46AA6E1EDA6AC90087E078 /* sl_07_3x.png in Resources */,
+				0A46AA6A1EDA6AC90087E078 /* sl_05_3x.png in Resources */,
 				0AEF07C21EBA2D8B0065A22B /* Assets.xcassets in Resources */,
 				0A54A3B41ED4742500421CC5 /* tabbar_pics@2x.png in Resources */,
 				0A54A39E1ED4724100421CC5 /* home_tt_03_@3x.png in Resources */,
@@ -1511,6 +1595,7 @@
 				0AEF087D1EBA310F0065A22B /* UIImage+GIF.m in Sources */,
 				0AEF08681EBA310E0065A22B /* MJPhotoBrowser.m in Sources */,
 				0A6945331EC7018F00D83DC1 /* ELiveCourseIntroViewController.m in Sources */,
+				0A46AA4F1EDA6A5A0087E078 /* ELiveHomeHeaderView.m in Sources */,
 				0AEF08791EBA310F0065A22B /* SDWebImageDownloaderOperation.m in Sources */,
 				0AEF094A1EBECF900065A22B /* UIView+BlocksKit.m in Sources */,
 				0AEF08641EBA310E0065A22B /* NSObject+MJKeyValue.m in Sources */,
@@ -1584,7 +1669,9 @@
 				0AEF087A1EBA310F0065A22B /* SDWebImageManager.m in Sources */,
 				0AEF099E1EBED9520065A22B /* PinYin.m in Sources */,
 				0AEF08751EBA310F0065A22B /* SDImageCache.m in Sources */,
+				0A46AA771EDA7E780087E078 /* ELiveSettingCell.m in Sources */,
 				0A92A2811EC20D87002C2811 /* ELiewHomeGoodCourseCell.m in Sources */,
+				0A46AA741EDA6DB00087E078 /* ELiveSettingHeaderView.m in Sources */,
 				0A54A3BF1ED4795200421CC5 /* GDSearchBar.m in Sources */,
 				0AEF093C1EBECF900065A22B /* NSCache+BlocksKit.m in Sources */,
 				0AEF084E1EBA310E0065A22B /* AFHTTPRequestOperation.m in Sources */,
@@ -1608,6 +1695,7 @@
 				0AEF08501EBA310E0065A22B /* AFHTTPSessionManager.m in Sources */,
 				0AEF08771EBA310F0065A22B /* SDWebImageDecoder.m in Sources */,
 				0AEF08A41EBA3A3A0065A22B /* ELiveMainMessageViewController.m in Sources */,
+				0A46AA4B1ED8729A0087E078 /* ELivePersonHomeViewController.m in Sources */,
 				0AEF08861EBA32B40065A22B /* ELiveNavigationViewController.m in Sources */,
 				0AEF098E1EBED84E0065A22B /* MJRefreshAutoStateFooter.m in Sources */,
 				0AEF08511EBA310E0065A22B /* AFNetworkReachabilityManager.m in Sources */,

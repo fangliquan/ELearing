@@ -28,6 +28,7 @@
     iconView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Width *9/16.0)];
     iconView.contentMode = UIViewContentModeScaleAspectFill;
     iconView.layer.masksToBounds = YES;
+    iconView.image = [UIImage imageNamed:@"sl_08_3x"];
     [self addSubview:iconView];
     
     

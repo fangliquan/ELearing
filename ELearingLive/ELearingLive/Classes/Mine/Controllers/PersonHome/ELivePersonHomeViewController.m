@@ -1,36 +1,36 @@
 //
-//  ELiveNewsDetialViewController.m
+//  ELivePersonHomeViewController.m
 //  ELearingLive
 //
-//  Created by microleo on 2017/5/7.
+//  Created by microleo on 2017/5/26.
 //  Copyright © 2017年 leo. All rights reserved.
 //
 
-#import "ELiveCourseDetailViewController.h"
-#import "ELiveCourseDetailHeaderView.h"
+#import "ELivePersonHomeViewController.h"
+
+#import "ELiveHomeHeaderView.h"
 #import "MXSegmentedPager+ParallaxHeader.h"
 #import "ELiveCourseIntroViewController.h"
 #import "ELiveCourseCatalogViewController.h"
 #import "ELiveCourseEvaluateViewController.h"
-#import "ELivePersonHomeViewController.h"
-@interface ELiveCourseDetailViewController (){
+@interface ELivePersonHomeViewController (){
     
 }
 
 @property (nonatomic, strong) NSMutableArray * pages;
 @property (nonatomic, strong) NSMutableArray * pageTitles;
 @property (nonatomic, assign) NSInteger selectIndex;
-@property (nonatomic, strong) ELiveCourseDetailHeaderView * headerView;
+@property (nonatomic, strong) ELiveHomeHeaderView * headerView;
 
 @end
 
-@implementation ELiveCourseDetailViewController
+@implementation ELivePersonHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pageTitles = [NSMutableArray array];
     self.title = @"详情";
-
+    
     [self configSegmentPager];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars = YES;
@@ -63,24 +63,24 @@
     self.segmentedPager.segmentedControl.selectedSegmentIndex = 0;
     [self configPages];
     [self configHeaderView];
-
+    
 }
 
 
 -(void)configHeaderView{
     UIView * bgView = [[UIView alloc] init];
     bgView.backgroundColor = [UIColor whiteColor];
-    self.headerView = [[ELiveCourseDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Width *9/16.0)];
+    self.headerView = [[ELiveHomeHeaderView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Width *9/16.0)];
     [bgView addSubview:self.headerView];
     [self.segmentedPager setParallaxHeaderView:bgView mode:VGParallaxHeaderModeTopFill height:CGRectGetHeight(self.headerView.frame)];
     [self addSegmentControlLine];
-
+    
 }
 
 - (void)addSegmentControlLine {
     UILabel * topLine =  [[UILabel alloc] init];
     topLine.backgroundColor = CELL_BORDER_COLOR;
-
+    
     UILabel * bottomLine =  [[UILabel alloc] init];
     bottomLine.backgroundColor = CELL_BORDER_COLOR;
     
@@ -92,15 +92,11 @@
 
 #pragma mark- config pages
 - (void)configPages {
-
+    
     self.pageTitles = [NSMutableArray arrayWithArray: @[@"简介", @"目录", @"评论"]];
     self.pages = [NSMutableArray array];
     
     ELiveCourseIntroViewController * introVC = [[ELiveCourseIntroViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    introVC.userHomePageHandler =^(){
-        ELivePersonHomeViewController *eliveVc = [[ELivePersonHomeViewController alloc]init];
-        [self.navigationController pushViewController:eliveVc animated:YES];
-    };
     introVC.title = @"简介";
     [self.pages addObject:introVC];
     
@@ -132,7 +128,7 @@
 }
 
 - (UIViewController *)segmentedPager:(MXSegmentedPager *)segmentedPager viewControllerForPageAtIndex:(NSInteger)index {
-
+    
     UIViewController * circleVC = self.pages.count > index ? self.pages[index] : nil;
     
     
@@ -148,6 +144,5 @@
     }
     return circleVC;
 }
-
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ELiveCourseIntroViewController.h"
-
+#import "ELivePersonHomeViewController.h"
 @interface ELiveCourseIntroViewController ()
 
 @end
@@ -93,6 +93,8 @@
     UIImageView *userHeader = [[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(line2.frame) + 20, 50, 50)];
     userHeader.layer.masksToBounds = YES;
     userHeader.layer.cornerRadius = 25;
+    userHeader.userInteractionEnabled = YES;
+    [userHeader addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userHomePageClick)]];
     userHeader.image = [UIImage imageNamed:@"image_default_userheader"];
     [headerView addSubview:userHeader];
     
@@ -109,6 +111,12 @@
     self.tableView.tableHeaderView = headerView;
 }
 
+-(void)userHomePageClick{
+    if (self.userHomePageHandler) {
+        self.userHomePageHandler();
+    }
+
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
