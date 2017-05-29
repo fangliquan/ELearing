@@ -16,6 +16,18 @@ typedef enum : NSUInteger {
     
     Setting_FaceBook,
     Setting_UpdateInfo,
+    
+    Setting_BindPhone  = 6,
+    Setting_BindOtherApp,
+    Setting_ComplateInfo,
+    
+    Setting_Notification = 9,
+    
+    Setting_Enable3G4GWatchVideo = 10,
+    Setting_Enable3G4GDownLoad,
+    Setting_ClearCache,
+    Setting_AboutMe,
+    
 } ELiveSetingType;
 @class ELiveSettingModel;
 
