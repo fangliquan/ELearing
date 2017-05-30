@@ -12,6 +12,7 @@
 #import "ELiveSettingBindPhoneViewController.h"
 #import "ELiveSettingUserInfoViewController.h"
 #import "ELiveSettingBindOtherAppViewController.h"
+#import "ELiveSettingAboutViewController.h"
 @interface ELiveSettingMineInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) NSMutableArray *section1Arrays;
@@ -158,6 +159,9 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if (settingModel.type == Setting_BindOtherApp){
         ELiveSettingBindOtherAppViewController *vc = [[ELiveSettingBindOtherAppViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (settingModel.type ==Setting_AboutMe){
+        ELiveSettingAboutViewController *vc =[[ELiveSettingAboutViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

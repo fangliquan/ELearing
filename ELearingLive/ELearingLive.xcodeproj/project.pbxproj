@@ -95,6 +95,7 @@
 		0AB0ED371EDD1B3D00270C9C /* ELiveSettingUserInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED361EDD1B3D00270C9C /* ELiveSettingUserInfoViewCell.m */; };
 		0AB0ED3A1EDD35A600270C9C /* ELiveSettingBindAppViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED391EDD35A600270C9C /* ELiveSettingBindAppViewCell.m */; };
 		0AB0ED3D1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED3C1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m */; };
+		0AB0ED401EDD3FA900270C9C /* ELiveSettingAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED3F1EDD3FA900270C9C /* ELiveSettingAboutViewController.m */; };
 		0AEF07C21EBA2D8B0065A22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */; };
 		0AEF084E1EBA310E0065A22B /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF07E21EBA310E0065A22B /* AFHTTPRequestOperation.m */; };
 		0AEF084F1EBA310E0065A22B /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF07E41EBA310E0065A22B /* AFHTTPRequestOperationManager.m */; };
@@ -365,6 +366,8 @@
 		0AB0ED391EDD35A600270C9C /* ELiveSettingBindAppViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ELiveSettingBindAppViewCell.m; path = ../Controllers/ELiveSettingBindAppViewCell.m; sourceTree = "<group>"; };
 		0AB0ED3B1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingBindOtherAppViewController.h; sourceTree = "<group>"; };
 		0AB0ED3C1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingBindOtherAppViewController.m; sourceTree = "<group>"; };
+		0AB0ED3E1EDD3FA900270C9C /* ELiveSettingAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingAboutViewController.h; sourceTree = "<group>"; };
+		0AB0ED3F1EDD3FA900270C9C /* ELiveSettingAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingAboutViewController.m; sourceTree = "<group>"; };
 		0AEF07AF1EBA2D8B0065A22B /* ELearingLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELearingLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AEF07E11EBA310E0065A22B /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -1132,6 +1135,8 @@
 				0AB0ED331EDD1A2200270C9C /* ELiveSettingUserInfoViewController.m */,
 				0AB0ED3B1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.h */,
 				0AB0ED3C1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m */,
+				0AB0ED3E1EDD3FA900270C9C /* ELiveSettingAboutViewController.h */,
+				0AB0ED3F1EDD3FA900270C9C /* ELiveSettingAboutViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1712,6 +1717,7 @@
 				0A54A3871ED31F3200421CC5 /* ALView+PureLayout.m in Sources */,
 				0AEF09511EBECF900065A22B /* MASLayoutConstraint.m in Sources */,
 				0AEF09421EBECF900065A22B /* UIActionSheet+BlocksKit.m in Sources */,
+				0AB0ED401EDD3FA900270C9C /* ELiveSettingAboutViewController.m in Sources */,
 				0AEF092D1EBECF900065A22B /* NSIndexSet+BlocksKit.m in Sources */,
 				0AEF09891EBED84E0065A22B /* MJRefreshComponent.m in Sources */,
 				0AEF087D1EBA310F0065A22B /* UIImage+GIF.m in Sources */,
