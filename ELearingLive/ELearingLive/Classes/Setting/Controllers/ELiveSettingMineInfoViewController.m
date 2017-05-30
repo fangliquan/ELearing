@@ -8,6 +8,10 @@
 
 #import "ELiveSettingMineInfoViewController.h"
 #import "ELiveSettingCell.h"
+#import "ELiveSettingEnabelViewController.h"
+#import "ELiveSettingBindPhoneViewController.h"
+#import "ELiveSettingUserInfoViewController.h"
+#import "ELiveSettingBindOtherAppViewController.h"
 @interface ELiveSettingMineInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) NSMutableArray *section1Arrays;
@@ -142,7 +146,20 @@
         settingModel = self.section3Arrays.count >indexPath.row ?self.section3Arrays[indexPath.row]:nil;
 
     }
-
+    if (settingModel.type == Setting_Notification ||settingModel.type == Setting_Enable3G4GDownLoad||settingModel.type == Setting_Enable3G4GWatchVideo) {
+        ELiveSettingEnabelViewController *settingEVc = [[ELiveSettingEnabelViewController alloc]init];
+        settingEVc.type = settingModel.type;
+        [self.navigationController pushViewController:settingEVc animated:YES];
+    }else if (settingModel.type ==Setting_BindPhone){
+        ELiveSettingBindPhoneViewController *vc = [[ELiveSettingBindPhoneViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (settingModel.type == Setting_ComplateInfo){
+        ELiveSettingUserInfoViewController *vc = [[ELiveSettingUserInfoViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (settingModel.type == Setting_BindOtherApp){
+        ELiveSettingBindOtherAppViewController *vc = [[ELiveSettingBindOtherAppViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 

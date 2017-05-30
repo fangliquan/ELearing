@@ -28,6 +28,10 @@ typedef enum : NSUInteger {
     Setting_ClearCache,
     Setting_AboutMe,
     
+    Setting_Bind_WeiChat,
+    Setting_Bind_Sina,
+    Setting_Bind_Qq,
+
 } ELiveSetingType;
 @class ELiveSettingModel;
 

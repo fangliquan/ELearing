@@ -88,6 +88,13 @@
 		0A92A27B1EC1FF7F002C2811 /* ELiveCourseItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A92A2781EC1FF7F002C2811 /* ELiveCourseItemCell.m */; };
 		0A92A27E1EC200B0002C2811 /* ELiveHomeClassesHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A92A27D1EC200B0002C2811 /* ELiveHomeClassesHeaderView.m */; };
 		0A92A2811EC20D87002C2811 /* ELiewHomeGoodCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A92A2801EC20D87002C2811 /* ELiewHomeGoodCourseCell.m */; };
+		0AB0ED2B1EDD116B00270C9C /* ELiveSettingEnabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED2A1EDD116B00270C9C /* ELiveSettingEnabelViewController.m */; };
+		0AB0ED2E1EDD129300270C9C /* ELiveSettingEnableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED2D1EDD129300270C9C /* ELiveSettingEnableCell.m */; };
+		0AB0ED311EDD171900270C9C /* ELiveSettingBindPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED301EDD171900270C9C /* ELiveSettingBindPhoneViewController.m */; };
+		0AB0ED341EDD1A2200270C9C /* ELiveSettingUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED331EDD1A2200270C9C /* ELiveSettingUserInfoViewController.m */; };
+		0AB0ED371EDD1B3D00270C9C /* ELiveSettingUserInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED361EDD1B3D00270C9C /* ELiveSettingUserInfoViewCell.m */; };
+		0AB0ED3A1EDD35A600270C9C /* ELiveSettingBindAppViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED391EDD35A600270C9C /* ELiveSettingBindAppViewCell.m */; };
+		0AB0ED3D1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED3C1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m */; };
 		0AEF07C21EBA2D8B0065A22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */; };
 		0AEF084E1EBA310E0065A22B /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF07E21EBA310E0065A22B /* AFHTTPRequestOperation.m */; };
 		0AEF084F1EBA310E0065A22B /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF07E41EBA310E0065A22B /* AFHTTPRequestOperationManager.m */; };
@@ -344,6 +351,20 @@
 		0A92A27D1EC200B0002C2811 /* ELiveHomeClassesHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveHomeClassesHeaderView.m; sourceTree = "<group>"; };
 		0A92A27F1EC20D87002C2811 /* ELiewHomeGoodCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiewHomeGoodCourseCell.h; sourceTree = "<group>"; };
 		0A92A2801EC20D87002C2811 /* ELiewHomeGoodCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiewHomeGoodCourseCell.m; sourceTree = "<group>"; };
+		0AB0ED291EDD116B00270C9C /* ELiveSettingEnabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingEnabelViewController.h; sourceTree = "<group>"; };
+		0AB0ED2A1EDD116B00270C9C /* ELiveSettingEnabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingEnabelViewController.m; sourceTree = "<group>"; };
+		0AB0ED2C1EDD129300270C9C /* ELiveSettingEnableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingEnableCell.h; sourceTree = "<group>"; };
+		0AB0ED2D1EDD129300270C9C /* ELiveSettingEnableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingEnableCell.m; sourceTree = "<group>"; };
+		0AB0ED2F1EDD171900270C9C /* ELiveSettingBindPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingBindPhoneViewController.h; sourceTree = "<group>"; };
+		0AB0ED301EDD171900270C9C /* ELiveSettingBindPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingBindPhoneViewController.m; sourceTree = "<group>"; };
+		0AB0ED321EDD1A2200270C9C /* ELiveSettingUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingUserInfoViewController.h; sourceTree = "<group>"; };
+		0AB0ED331EDD1A2200270C9C /* ELiveSettingUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingUserInfoViewController.m; sourceTree = "<group>"; };
+		0AB0ED351EDD1B3D00270C9C /* ELiveSettingUserInfoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingUserInfoViewCell.h; sourceTree = "<group>"; };
+		0AB0ED361EDD1B3D00270C9C /* ELiveSettingUserInfoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingUserInfoViewCell.m; sourceTree = "<group>"; };
+		0AB0ED381EDD35A500270C9C /* ELiveSettingBindAppViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELiveSettingBindAppViewCell.h; path = ../Controllers/ELiveSettingBindAppViewCell.h; sourceTree = "<group>"; };
+		0AB0ED391EDD35A600270C9C /* ELiveSettingBindAppViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ELiveSettingBindAppViewCell.m; path = ../Controllers/ELiveSettingBindAppViewCell.m; sourceTree = "<group>"; };
+		0AB0ED3B1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingBindOtherAppViewController.h; sourceTree = "<group>"; };
+		0AB0ED3C1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingBindOtherAppViewController.m; sourceTree = "<group>"; };
 		0AEF07AF1EBA2D8B0065A22B /* ELearingLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELearingLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AEF07E11EBA310E0065A22B /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -660,6 +681,12 @@
 				0A46AA731EDA6DB00087E078 /* ELiveSettingHeaderView.m */,
 				0A46AA751EDA7E780087E078 /* ELiveSettingCell.h */,
 				0A46AA761EDA7E780087E078 /* ELiveSettingCell.m */,
+				0AB0ED2C1EDD129300270C9C /* ELiveSettingEnableCell.h */,
+				0AB0ED2D1EDD129300270C9C /* ELiveSettingEnableCell.m */,
+				0AB0ED351EDD1B3D00270C9C /* ELiveSettingUserInfoViewCell.h */,
+				0AB0ED361EDD1B3D00270C9C /* ELiveSettingUserInfoViewCell.m */,
+				0AB0ED381EDD35A500270C9C /* ELiveSettingBindAppViewCell.h */,
+				0AB0ED391EDD35A600270C9C /* ELiveSettingBindAppViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1097,6 +1124,14 @@
 				0AEF08911EBA33FB0065A22B /* ELiveSettingMainViewController.m */,
 				0A46AA811EDA86280087E078 /* ELiveSettingMineInfoViewController.h */,
 				0A46AA821EDA86280087E078 /* ELiveSettingMineInfoViewController.m */,
+				0AB0ED291EDD116B00270C9C /* ELiveSettingEnabelViewController.h */,
+				0AB0ED2A1EDD116B00270C9C /* ELiveSettingEnabelViewController.m */,
+				0AB0ED2F1EDD171900270C9C /* ELiveSettingBindPhoneViewController.h */,
+				0AB0ED301EDD171900270C9C /* ELiveSettingBindPhoneViewController.m */,
+				0AB0ED321EDD1A2200270C9C /* ELiveSettingUserInfoViewController.h */,
+				0AB0ED331EDD1A2200270C9C /* ELiveSettingUserInfoViewController.m */,
+				0AB0ED3B1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.h */,
+				0AB0ED3C1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1669,6 +1704,7 @@
 			files = (
 				0AEF085E1EBA310E0065A22B /* MJIvar.m in Sources */,
 				0AEF086C1EBA310E0065A22B /* MJPhotoView.m in Sources */,
+				0AB0ED371EDD1B3D00270C9C /* ELiveSettingUserInfoViewCell.m in Sources */,
 				0AEF08661EBA310E0065A22B /* MJPhoto.m in Sources */,
 				0AEF08BD1EBECE0A0065A22B /* NSString+Common.m in Sources */,
 				0AEF094C1EBECF900065A22B /* JSONKit.m in Sources */,
@@ -1679,12 +1715,14 @@
 				0AEF092D1EBECF900065A22B /* NSIndexSet+BlocksKit.m in Sources */,
 				0AEF09891EBED84E0065A22B /* MJRefreshComponent.m in Sources */,
 				0AEF087D1EBA310F0065A22B /* UIImage+GIF.m in Sources */,
+				0AB0ED2E1EDD129300270C9C /* ELiveSettingEnableCell.m in Sources */,
 				0AEF08681EBA310E0065A22B /* MJPhotoBrowser.m in Sources */,
 				0A6945331EC7018F00D83DC1 /* ELiveCourseIntroViewController.m in Sources */,
 				0A46AA831EDA86280087E078 /* ELiveSettingMineInfoViewController.m in Sources */,
 				0A46AA4F1EDA6A5A0087E078 /* ELiveHomeHeaderView.m in Sources */,
 				0AEF08791EBA310F0065A22B /* SDWebImageDownloaderOperation.m in Sources */,
 				0AEF094A1EBECF900065A22B /* UIView+BlocksKit.m in Sources */,
+				0AB0ED2B1EDD116B00270C9C /* ELiveSettingEnabelViewController.m in Sources */,
 				0AEF08641EBA310E0065A22B /* NSObject+MJKeyValue.m in Sources */,
 				0AEF088F1EBA33B20065A22B /* ELiveMineFocusViewController.m in Sources */,
 				0A46AA861EDA9A110087E078 /* ELiveFansFocusCell.m in Sources */,
@@ -1755,6 +1793,7 @@
 				0AEF087F1EBA310F0065A22B /* UIImage+WebP.m in Sources */,
 				0AEF09561EBECF900065A22B /* View+MASAdditions.m in Sources */,
 				0AEF098B1EBED84E0065A22B /* MJRefreshHeader.m in Sources */,
+				0AB0ED3A1EDD35A600270C9C /* ELiveSettingBindAppViewCell.m in Sources */,
 				0AEF09471EBECF900065A22B /* UIImagePickerController+BlocksKit.m in Sources */,
 				0A3A75221EC6C6BE000DE748 /* ELiveCourseListViewController.m in Sources */,
 				0AEF08BB1EBECE0A0065A22B /* NSData+Common.m in Sources */,
@@ -1772,6 +1811,7 @@
 				0AEF087B1EBA310F0065A22B /* SDWebImagePrefetcher.m in Sources */,
 				0AEF085A1EBA310E0065A22B /* MBProgressHUD+MJ.m in Sources */,
 				0A92A27E1EC200B0002C2811 /* ELiveHomeClassesHeaderView.m in Sources */,
+				0AB0ED3D1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m in Sources */,
 				0A54A3881ED31F3200421CC5 /* NSArray+PureLayout.m in Sources */,
 				0A46AA891EDA9E590087E078 /* ELiveMineEarningsViewController.m in Sources */,
 				0AEF08731EBA310F0065A22B /* MKAnnotationView+WebCache.m in Sources */,
@@ -1820,12 +1860,14 @@
 				0AEF09341EBECF900065A22B /* NSObject+BKAssociatedObjects.m in Sources */,
 				0AEF09411EBECF900065A22B /* MFMessageComposeViewController+BlocksKit.m in Sources */,
 				0AEF08561EBA310E0065A22B /* AFURLSessionManager.m in Sources */,
+				0AB0ED341EDD1A2200270C9C /* ELiveSettingUserInfoViewController.m in Sources */,
 				0A46AA961EDAC5590087E078 /* ELiveLoginViewController.m in Sources */,
 				0AEF085D1EBA310E0065A22B /* MJArgument.m in Sources */,
 				0A6944FD1EC6D56600D83DC1 /* ELiveClassificationCataViewController.m in Sources */,
 				0AEF09981EBED84E0065A22B /* UIScrollView+MJRefresh.m in Sources */,
 				0AEF09991EBED84E0065A22B /* UIView+MJExtension.m in Sources */,
 				0AEF086B1EBA310E0065A22B /* MJPhotoToolbar.m in Sources */,
+				0AB0ED311EDD171900270C9C /* ELiveSettingBindPhoneViewController.m in Sources */,
 				0AEF094B1EBECF900065A22B /* UIWebView+BlocksKit.m in Sources */,
 				0AEF098A1EBED84E0065A22B /* MJRefreshFooter.m in Sources */,
 			);
