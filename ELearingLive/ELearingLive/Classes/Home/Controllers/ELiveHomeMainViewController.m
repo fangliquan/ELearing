@@ -13,7 +13,7 @@
 #import "ELiveHomeClassesHeaderView.h"
 #import "ELiewHomeGoodCourseCell.h"
 #import "ELiveCourseListViewController.h"
-#import "ELiveClassificationCataViewController.h"
+#import "ELiveSearchCourseCateViewController.h"
 #import "ELiveSearchViewController.h"
 #import "GDSearchBar.h"
 @interface ELiveHomeMainViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -36,6 +36,7 @@
     [self configtableView];
     [self createHeaderView];
     [self setupNavigationBar];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:nil action:nil];
     // Do any additional setup after loading the view.
 }
 
@@ -127,7 +128,7 @@
 }
 
 -(void)moreCourseClick{
-    ELiveClassificationCataViewController *eclassVc = [[ELiveClassificationCataViewController alloc]init];
+    ELiveSearchCourseCateViewController *eclassVc = [[ELiveSearchCourseCateViewController alloc]init];
     eclassVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:eclassVc animated:YES];
 }

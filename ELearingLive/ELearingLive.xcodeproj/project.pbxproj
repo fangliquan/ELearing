@@ -75,7 +75,6 @@
 		0A54A3C51ED47C2500421CC5 /* ELiveVCManagerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3C41ED47C2500421CC5 /* ELiveVCManagerHelper.m */; };
 		0A54A3C91ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3C81ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m */; };
 		0A54A3CC1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3CB1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.m */; };
-		0A6944FD1EC6D56600D83DC1 /* ELiveClassificationCataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A6944FC1EC6D56600D83DC1 /* ELiveClassificationCataViewController.m */; };
 		0A6945001EC6D86000D83DC1 /* title_moreBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A6944FE1EC6D86000D83DC1 /* title_moreBtn@2x.png */; };
 		0A6945011EC6D86000D83DC1 /* title_moreBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A6944FF1EC6D86000D83DC1 /* title_moreBtn@3x.png */; };
 		0A69452B1EC6FC8800D83DC1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A69452A1EC6FC8800D83DC1 /* BaseViewController.m */; };
@@ -96,6 +95,9 @@
 		0AB0ED3A1EDD35A600270C9C /* ELiveSettingBindAppViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED391EDD35A600270C9C /* ELiveSettingBindAppViewCell.m */; };
 		0AB0ED3D1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED3C1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m */; };
 		0AB0ED401EDD3FA900270C9C /* ELiveSettingAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED3F1EDD3FA900270C9C /* ELiveSettingAboutViewController.m */; };
+		0AB0ED431EDD881300270C9C /* UISearchBar+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED421EDD881300270C9C /* UISearchBar+Expand.m */; };
+		0AB0ED461EDD90D100270C9C /* ELiveMainCateViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED451EDD90D100270C9C /* ELiveMainCateViewCell.m */; };
+		0AB0ED4C1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED4B1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m */; };
 		0AEF07C21EBA2D8B0065A22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */; };
 		0AEF084E1EBA310E0065A22B /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF07E21EBA310E0065A22B /* AFHTTPRequestOperation.m */; };
 		0AEF084F1EBA310E0065A22B /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF07E41EBA310E0065A22B /* AFHTTPRequestOperationManager.m */; };
@@ -328,8 +330,6 @@
 		0A54A3C81ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseCatalogCell.m; sourceTree = "<group>"; };
 		0A54A3CA1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCourseEvaluateCell.h; sourceTree = "<group>"; };
 		0A54A3CB1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseEvaluateCell.m; sourceTree = "<group>"; };
-		0A6944FB1EC6D56600D83DC1 /* ELiveClassificationCataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveClassificationCataViewController.h; sourceTree = "<group>"; };
-		0A6944FC1EC6D56600D83DC1 /* ELiveClassificationCataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveClassificationCataViewController.m; sourceTree = "<group>"; };
 		0A6944FE1EC6D86000D83DC1 /* title_moreBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title_moreBtn@2x.png"; sourceTree = "<group>"; };
 		0A6944FF1EC6D86000D83DC1 /* title_moreBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title_moreBtn@3x.png"; sourceTree = "<group>"; };
 		0A6945291EC6FC8800D83DC1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -368,6 +368,12 @@
 		0AB0ED3C1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingBindOtherAppViewController.m; sourceTree = "<group>"; };
 		0AB0ED3E1EDD3FA900270C9C /* ELiveSettingAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingAboutViewController.h; sourceTree = "<group>"; };
 		0AB0ED3F1EDD3FA900270C9C /* ELiveSettingAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingAboutViewController.m; sourceTree = "<group>"; };
+		0AB0ED411EDD881300270C9C /* UISearchBar+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+Expand.h"; sourceTree = "<group>"; };
+		0AB0ED421EDD881300270C9C /* UISearchBar+Expand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+Expand.m"; sourceTree = "<group>"; };
+		0AB0ED441EDD90D100270C9C /* ELiveMainCateViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMainCateViewCell.h; sourceTree = "<group>"; };
+		0AB0ED451EDD90D100270C9C /* ELiveMainCateViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveMainCateViewCell.m; sourceTree = "<group>"; };
+		0AB0ED4A1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSearchCourseCateViewController.h; sourceTree = "<group>"; };
+		0AB0ED4B1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSearchCourseCateViewController.m; sourceTree = "<group>"; };
 		0AEF07AF1EBA2D8B0065A22B /* ELearingLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELearingLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AEF07E11EBA310E0065A22B /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -828,6 +834,8 @@
 			children = (
 				0A54A3BD1ED4795200421CC5 /* GDSearchBar.h */,
 				0A54A3BE1ED4795200421CC5 /* GDSearchBar.m */,
+				0AB0ED411EDD881300270C9C /* UISearchBar+Expand.h */,
+				0AB0ED421EDD881300270C9C /* UISearchBar+Expand.m */,
 			);
 			path = GDSearchBar;
 			sourceTree = "<group>";
@@ -857,13 +865,6 @@
 			path = Course;
 			sourceTree = "<group>";
 		};
-		0A6945301EC7014300D83DC1 /* Course */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Course;
-			sourceTree = "<group>";
-		};
 		0A92A2701EC1FF7F002C2811 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -883,10 +884,10 @@
 				0A92A2751EC1FF7F002C2811 /* ELiveCourseDetailViewController.m */,
 				0A3A75201EC6C6BE000DE748 /* ELiveCourseListViewController.h */,
 				0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */,
-				0A6944FB1EC6D56600D83DC1 /* ELiveClassificationCataViewController.h */,
-				0A6944FC1EC6D56600D83DC1 /* ELiveClassificationCataViewController.m */,
 				0A54A3C01ED47BA900421CC5 /* ELiveSearchViewController.h */,
 				0A54A3C11ED47BA900421CC5 /* ELiveSearchViewController.m */,
+				0AB0ED4A1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.h */,
+				0AB0ED4B1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -894,7 +895,6 @@
 		0A92A2761EC1FF7F002C2811 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0A6945301EC7014300D83DC1 /* Course */,
 				0A92A2771EC1FF7F002C2811 /* ELiveCourseItemCell.h */,
 				0A92A2781EC1FF7F002C2811 /* ELiveCourseItemCell.m */,
 				0A92A27C1EC200B0002C2811 /* ELiveHomeClassesHeaderView.h */,
@@ -903,6 +903,8 @@
 				0A92A2801EC20D87002C2811 /* ELiewHomeGoodCourseCell.m */,
 				0A69452C1EC6FF2400D83DC1 /* ELiveCourseDetailHeaderView.h */,
 				0A69452D1EC6FF2400D83DC1 /* ELiveCourseDetailHeaderView.m */,
+				0AB0ED441EDD90D100270C9C /* ELiveMainCateViewCell.h */,
+				0AB0ED451EDD90D100270C9C /* ELiveMainCateViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1714,6 +1716,7 @@
 				0AEF08BD1EBECE0A0065A22B /* NSString+Common.m in Sources */,
 				0AEF094C1EBECF900065A22B /* JSONKit.m in Sources */,
 				0A54A3831ED31F3200421CC5 /* MXPagerView.m in Sources */,
+				0AB0ED431EDD881300270C9C /* UISearchBar+Expand.m in Sources */,
 				0A54A3871ED31F3200421CC5 /* ALView+PureLayout.m in Sources */,
 				0AEF09511EBECF900065A22B /* MASLayoutConstraint.m in Sources */,
 				0AEF09421EBECF900065A22B /* UIActionSheet+BlocksKit.m in Sources */,
@@ -1746,6 +1749,7 @@
 				0AEF09461EBECF900065A22B /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				0A54A3891ED31F3200421CC5 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				0AEF08521EBA310E0065A22B /* AFSecurityPolicy.m in Sources */,
+				0AB0ED4C1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m in Sources */,
 				0A54A3C91ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m in Sources */,
 				0AEF08611EBA310E0065A22B /* MJType.m in Sources */,
 				0AEF09361EBECF900065A22B /* NSObject+BKBlockObservation.m in Sources */,
@@ -1827,6 +1831,7 @@
 				0A92A27B1EC1FF7F002C2811 /* ELiveCourseItemCell.m in Sources */,
 				0AEF09911EBED84E0065A22B /* MJRefreshBackStateFooter.m in Sources */,
 				0AEF099A1EBED84E0065A22B /* WWRefreshStyle.m in Sources */,
+				0AB0ED461EDD90D100270C9C /* ELiveMainCateViewCell.m in Sources */,
 				0A92A27A1EC1FF7F002C2811 /* ELiveCourseDetailViewController.m in Sources */,
 				0AEF093B1EBECF900065A22B /* A2DynamicDelegate.m in Sources */,
 				0AEF09531EBECF900065A22B /* MASViewConstraint.m in Sources */,
@@ -1869,7 +1874,6 @@
 				0AB0ED341EDD1A2200270C9C /* ELiveSettingUserInfoViewController.m in Sources */,
 				0A46AA961EDAC5590087E078 /* ELiveLoginViewController.m in Sources */,
 				0AEF085D1EBA310E0065A22B /* MJArgument.m in Sources */,
-				0A6944FD1EC6D56600D83DC1 /* ELiveClassificationCataViewController.m in Sources */,
 				0AEF09981EBED84E0065A22B /* UIScrollView+MJRefresh.m in Sources */,
 				0AEF09991EBED84E0065A22B /* UIView+MJExtension.m in Sources */,
 				0AEF086B1EBA310E0065A22B /* MJPhotoToolbar.m in Sources */,

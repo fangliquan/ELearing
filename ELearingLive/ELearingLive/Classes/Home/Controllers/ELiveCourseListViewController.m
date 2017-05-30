@@ -8,7 +8,7 @@
 
 #import "ELiveCourseListViewController.h"
 #import "ELiveCourseItemCell.h"
-#import "ELiveClassificationCataViewController.h"
+#import "ELiveSearchCourseCateViewController.h"
 #import "ELiveCourseDetailViewController.h"
 @interface ELiveCourseListViewController ()
 
@@ -28,7 +28,7 @@
     
 }
 -(void)searchMoreClick{
-    ELiveClassificationCataViewController *eClassVc = [[ELiveClassificationCataViewController alloc]init];
+    ELiveSearchCourseCateViewController *eClassVc = [[ELiveSearchCourseCateViewController alloc]init];
     eClassVc.title= @"检索";
     [self.navigationController pushViewController:eClassVc animated:YES];
     
