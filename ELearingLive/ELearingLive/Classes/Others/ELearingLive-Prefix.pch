@@ -9,6 +9,10 @@
 #ifndef ELearingLive_Prefix_pch
 #define ELearingLive_Prefix_pch
 
+#ifdef __OBJC__
+#import "WWToolManager.h"
+#endif
+
 #endif
 
 // 1.判断是否为iOS8
@@ -75,4 +79,4 @@
 #define EL_Default_Image [UIImage imageNamed:@"image_default_placeholder"]
 #define EL_Default_Image_header [UIImage imageNamed:@"image_default_userheader"]
 
-#import "WWToolManager.h"
+
