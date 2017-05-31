@@ -4,7 +4,7 @@
 #import "CloudManagerDelegate.h"
 #import "GCDMulticastDelegate.h"
 #import <CoreLocation/CoreLocation.h>
-#import "UserLoginResponse.h"
+//#import "UserLoginResponse.h"
 #import "AccountInfo.h"
 #define kOneSecond 1000000000ul
 #define LOOP_INTERVAL 10*kOneSecond

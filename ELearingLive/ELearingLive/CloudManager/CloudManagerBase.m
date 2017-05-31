@@ -64,18 +64,18 @@ static CloudManager *_sharedInstance = nil;
 
 - (AccountInfo *)currentAccount {
     if (!_currentAccount) {
-        AccountInfo *tempInfo = [[DBManager sharedInstance]loadAccountInfo];
-        _currentAccount = tempInfo;
+        //AccountInfo *tempInfo = [[DBManager sharedInstance]loadAccountInfo];
+        //_currentAccount = tempInfo;
     }
     return _currentAccount;
 }
 
 -(NSString *)getLoginToken{
     if (!_currentAccount) {
-        AccountInfo *tempInfo = [[DBManager sharedInstance]loadAccountInfo];
-        _currentAccount = tempInfo;
+        //AccountInfo *tempInfo = [[DBManager sharedInstance]loadAccountInfo];
+        //_currentAccount = tempInfo;
     }
-    return  _currentAccount.userLoginResponse.token ?  _currentAccount.userLoginResponse.token:@"";
+    return @"";// _currentAccount.userLoginResponse.token ?  _currentAccount.userLoginResponse.token:@"";
 }
 
 @end

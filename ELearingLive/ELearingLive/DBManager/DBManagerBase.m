@@ -32,8 +32,7 @@ static DBManager *_sharedInstance = nil;
                                     nil];
     
     // user db
-    NSArray *userDBTables = [[NSArray alloc] initWithObjects:[UserLoginResponse class],
-                                [UserAddressInfo class], [GoodsShoppingOrder class],
+    NSArray *userDBTables = [[NSArray alloc] initWithObjects: [GoodsShoppingOrder class],
                                 nil];
     
     _dbDef = [[NSDictionary alloc] initWithObjectsAndKeys:systemDBTables, SYSTEM_DATABASE_NAME_PREFIX, userDBTables, USER_DATABASE_NAME_PREFIX, nil];

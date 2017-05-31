@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "CMError.h"
 //宏定义成功block 回调成功后得到的信息
 typedef void (^HttpSuccess)(id data);
 //宏定义失败block 回调失败信息

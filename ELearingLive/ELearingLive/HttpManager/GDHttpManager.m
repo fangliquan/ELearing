@@ -7,10 +7,10 @@
 //
 
 #import "GDHttpManager.h"
-#import <AFNetworking.h>
+#import "AFNetworking.h"
 
 #import "NSDictionary+JSONExtensions.h"
-#import "CloudManager+Login.h"
+//#import "CloudManager+Login.h"
 
 @implementation GDHttpManager
 
@@ -239,7 +239,7 @@
             status = [[ret objectForKey:@"status"] integerValue];
             //删除保存信息，重新登录
             if (status == 302 || status == 490 || status == 491) {
-                [[CloudManager sharedInstance] loginOutCurentUser];
+                //[[CloudManager sharedInstance] loginOutCurentUser];
             }
         }
         NSString *message = @"";

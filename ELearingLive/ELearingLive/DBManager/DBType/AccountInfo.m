@@ -1,7 +1,7 @@
 
 #import "AccountInfo.h"
 #import "MJExtension.h"
-#import "Goods.h"
+//#import "Goods.h"
 
 #define kShoppingCarCount    @"kShoppingCarCount"   // 购物车数字提示
 
@@ -24,10 +24,11 @@
 // 添加到购物车
 + (void)addShoppingCar:(NSObject *)addOrder {
     long long orderId = 0;
-    if ([addOrder isKindOfClass:[Goods class]]) {
-        Goods * picBook = (Goods *)addOrder;
-        orderId = (long long)picBook.goodsId;
-    } else if ([addOrder isKindOfClass:[GoodsShoppingOrder class]]) {
+//    if ([addOrder isKindOfClass:[Goods class]]) {
+//        Goods * picBook = (Goods *)addOrder;
+//        orderId = (long long)picBook.goodsId;
+//    } else
+    if ([addOrder isKindOfClass:[GoodsShoppingOrder class]]) {
         GoodsShoppingOrder * addBookOrder = (GoodsShoppingOrder *)addOrder;
         orderId = addBookOrder.goodsId;
     }
@@ -37,23 +38,23 @@
         [[DBManager sharedInstance] cleanTableData:[GoodsShoppingOrder class] PrimaryKey:(long)orderId];
         [bookOrder save];
     } else {    // 不存在直接存储
-        if ([addOrder isKindOfClass:[Goods class]]) {
-            Goods * picBook = (Goods *)addOrder;
-            GoodsShoppingOrder * addBookOrder = [[GoodsShoppingOrder alloc] init];
-            addBookOrder.goodsId = picBook.goodsId;
-            addBookOrder.discountPrice = picBook.discountPrice;
-            addBookOrder.price = picBook.price;
-            addBookOrder.buyCount = 1;
-            addBookOrder.title = picBook.title;
-            addBookOrder.desp = picBook.purchaseNote;
-            addBookOrder.cover = picBook.thumb;
-            addBookOrder.name = picBook.name;
-            addBookOrder.isSelect = YES;
-            addBookOrder.type = picBook.type;
-            addBookOrder.shopId = picBook.shopId;
-            [[DBManager sharedInstance] cleanTableData:[GoodsShoppingOrder class] PrimaryKey:(long)orderId];
-            [addBookOrder save];
-        }
+//        if ([addOrder isKindOfClass:[Goods class]]) {
+//            Goods * picBook = (Goods *)addOrder;
+//            GoodsShoppingOrder * addBookOrder = [[GoodsShoppingOrder alloc] init];
+//            addBookOrder.goodsId = picBook.goodsId;
+//            addBookOrder.discountPrice = picBook.discountPrice;
+//            addBookOrder.price = picBook.price;
+//            addBookOrder.buyCount = 1;
+//            addBookOrder.title = picBook.title;
+//            addBookOrder.desp = picBook.purchaseNote;
+//            addBookOrder.cover = picBook.thumb;
+//            addBookOrder.name = picBook.name;
+//            addBookOrder.isSelect = YES;
+//            addBookOrder.type = picBook.type;
+//            addBookOrder.shopId = picBook.shopId;
+//            [[DBManager sharedInstance] cleanTableData:[GoodsShoppingOrder class] PrimaryKey:(long)orderId];
+//            [addBookOrder save];
+//        }
     }
     [GoodsShoppingOrder addShoppingCount];
 }

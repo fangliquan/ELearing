@@ -3,7 +3,7 @@
 #define iOSUI_DBManager_h
 
 #import "DBManager+SystemInfo.h"
-#import "DBManager+Login.h"
+//#import "DBManager+Login.h"
 #import "DBManagerDelegate.h"
 #import "DBManagerDefs.h"
 #import "BaseModel.h"
