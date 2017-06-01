@@ -12,6 +12,7 @@
 
 
 -(NSString *)uriBase;
+-(NSString *)uriAppInit;
 -(NSString *)uriPhoneLogin;
 -(NSString *)uriPhoneRegister;
 -(NSString *)uriRegisterCode;

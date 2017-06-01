@@ -13,15 +13,22 @@
 -(NSString *)uriBase {
     return [NSString stringWithFormat:@"%@", DEFAULT_SERVER_ADDRESS];
 }
+-(NSString*)uriAppInit{
+    NSString *ret = @"";
+    ret = [self uriBaseUser];
+    ret = [[NSString alloc] initWithFormat:@"%@/index/init", ret];
+    
+    return ret;
+}
 
 -(NSString *)uriBaseUser {
-    return [NSString stringWithFormat:@"%@/api/user", [self uriBase]];
+    return [NSString stringWithFormat:@"%@", [self uriBase]];
 }
 
 -(NSString *)uriPhoneLogin {
     NSString *ret = @"";
     ret = [self uriBaseUser];
-    ret = [[NSString alloc] initWithFormat:@"%@/phone-login", ret];
+    ret = [[NSString alloc] initWithFormat:@"%@/passport/login", ret];
     
     return ret;
 }

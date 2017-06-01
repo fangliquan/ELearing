@@ -139,64 +139,11 @@
     [manager.requestSerializer setValue:sysVersion forHTTPHeaderField:@"sysVersion"];
     [manager.requestSerializer setValue:@"ios" forHTTPHeaderField:@"sysType"];
     [manager.requestSerializer setValue:deviceid forHTTPHeaderField:@"deviceId"];
-    [manager.requestSerializer setValue:[CloudManager sharedInstance].getLoginToken forHTTPHeaderField:@"token"];
+    [manager.requestSerializer setValue:deviceid forHTTPHeaderField:@"token"];
     
     //post请求
     NSLog(@"Post: %@", urlString);
-    
-//    [manager POST:urlString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
-//        //数据请求的进度
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        //NSLog(@"JSON: %@", responseObject);
-//        NSString *josnStr =[[ NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//        NSLog(@"JSON: %@",josnStr);
-//        NSDictionary *ret = nil;
-//        NSError *error = nil;
-//        
-//        @try {
-//            if (responseObject) {
-//                ret = [NSDictionary dictionaryWithJSONData:responseObject error:&error];
-//            }
-////            if (ret) {
-////                ret = JSONObjectByRemovingKeysWithNullValues(ret, NSJSONReadingMutableContainers);
-////            }
-//        }
-//        
-//        @catch (NSException *exception) {
-//            NSLog(@"catch exception when processing response data , exception:%@", exception);
-//        }
-//        if(error || !ret) {
-//            NSLog(@"convert to json data failed while processing response data, error:%@", error);
-//            NSString *responseString = (NSString *)responseObject;
-//            if (responseString) {
-//                NSLog(@"response url:%@", responseString);
-//                ret = @{@"value":responseString};
-//            }
-//        }
-//        if (responseObject && !ret) {
-//            ret = (NSDictionary*)responseObject;
-//        }
-//        NSInteger status = 0;
-//        if ([[ret allKeys]containsObject:@"status"]) {
-//            status = [[ret objectForKey:@"status"] integerValue];
-//            //删除保存信息，重新登录
-//            if (status == 302 || status == 490 || status == 491) {
-//                [[CloudManager sharedInstance] loginOutCurentUser];
-//            }
-//        }
-//        NSString *message = @"";
-//        if ([[ret allKeys]containsObject:@"message"]) {
-//            message = [ret objectForKey:@"message"];
-//        }
-//        CMError *cMError = [CMError errorWithHttpStatus:0 serviceStatus:status andErrorInfo:[NSString stringWithFormat:@"%@",message]];
-//        completion(ret,cMError);
-//        
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        CMError *cMError = [CMError errorWithHttpStatus:0 serviceStatus:0 andErrorInfo:[NSString stringWithFormat:@"%@",error]];
-//        completion(nil,cMError);
-//        NSLog(@"Error: %@", error);
-//    }];
-//    
+
     [manager POST:urlString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
         for (NSString *key in parameters) {

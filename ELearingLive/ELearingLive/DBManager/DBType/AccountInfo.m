@@ -176,3 +176,9 @@
 
 
 @end
+
+@implementation UserLoginResponse
+
+
+
+@end

@@ -14,7 +14,7 @@
 #import "ELiveMineFocusViewController.h"
 #import "ELiveMineFocusCourseViewController.h"
 #import "ELiveMineCourseManagerViewController.h"
-
+#import "ELiveSettingApplyTeacherViewController.h"
 #import "ELiveSettingFaceBackViewController.h"
 #import "ELiveSettingMineInfoViewController.h"
 #import "ELiveMineEarningsViewController.h"
@@ -37,6 +37,12 @@
     self.section1Arrays = [NSMutableArray array];
     self.section2Arrays = [NSMutableArray array];
     
+    ELiveSettingModel *settingModel1 = [[ELiveSettingModel alloc]init];
+    settingModel1.type = Setting_Bind_Teacher;
+    settingModel1.title = @"讲师资格申请";
+    [self.section1Arrays addObject:settingModel1];
+    
+    
     for (int i =0; i <4; i ++) {
         ELiveSettingModel *settingModel = [[ELiveSettingModel alloc]init];
         settingModel.type = i;
@@ -51,6 +57,9 @@
         }
         [self.section1Arrays addObject:settingModel];
     }
+    
+
+    
     for (int i =0; i <2; i ++) {
         ELiveSettingModel *settingModel = [[ELiveSettingModel alloc]init];
         
@@ -168,6 +177,9 @@
         [self.navigationController pushViewController:courseVc animated:YES];
     }else if(settingModel.type == Setting_UpdateInfo){
         ELiveSettingMineInfoViewController *courseVc = [[ELiveSettingMineInfoViewController alloc]init];
+        [self.navigationController pushViewController:courseVc animated:YES];
+    }else if(settingModel.type == Setting_Bind_Teacher){
+        ELiveSettingApplyTeacherViewController *courseVc = [[ELiveSettingApplyTeacherViewController alloc]init];
         [self.navigationController pushViewController:courseVc animated:YES];
     }
     

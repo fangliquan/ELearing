@@ -4,7 +4,7 @@
 
 #import "CloudManagerDelegate.h"
 #import "GDHttpManager.h"
-//#import "CloudManager+Login.h"
+#import "CloudManager+Login.h"
 #import "CloudManager+Private.h"
 //#import "CloudManager+Product.h"
 //#import "CloudManager+Address.h"

@@ -30,4 +30,10 @@
 
 +(int)getTextMaxFontWithMaxSize:(CGSize)size andDespStr:(NSString *)desp andCurrentFontSize:(int) fontSize andMaxFontSize:(int) maxFontSize;
 
+//md5 32 小写
++ (NSString *)md5:(NSString *)str;
+
++ (BOOL)isAllowedNotification;
+
+
 @end

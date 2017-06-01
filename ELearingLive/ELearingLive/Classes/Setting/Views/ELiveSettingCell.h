@@ -31,6 +31,8 @@ typedef enum : NSUInteger {
     Setting_Bind_WeiChat,
     Setting_Bind_Sina,
     Setting_Bind_Qq,
+    
+    Setting_Bind_Teacher,
 
 } ELiveSetingType;
 @class ELiveSettingModel;

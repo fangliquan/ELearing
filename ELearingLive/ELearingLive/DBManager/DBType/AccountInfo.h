@@ -72,6 +72,17 @@
 
 @end
 
+@interface UserLoginResponse : BaseModel
+
+@property(nonatomic,assign) long long  userId;
+
+@property(copy,nonatomic) NSString *nickname;
+
+@property(copy,nonatomic) NSString *avatar;
+
+@property(nonatomic,assign) int  is_teacher;
+
+@end
 
 
 

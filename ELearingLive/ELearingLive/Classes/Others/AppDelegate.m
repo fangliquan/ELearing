@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ELiveTabBarViewController.h"
-
+#import "CloudManager+Login.h"
 @interface AppDelegate ()
 
 @end
@@ -27,6 +27,10 @@
     ELiveTabBarViewController *vc = [[ELiveTabBarViewController alloc] init];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
+    
+    [[CloudManager sharedInstance]asyncCurrrentDeviceInit:^(NSString *ret, CMError *error) {
+        
+    }];
     return YES;
 }
 

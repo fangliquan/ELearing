@@ -2,21 +2,14 @@
 #import "VersionInfo.h"
 
 @implementation VersionInfo
-@synthesize version;
-@synthesize minSupport;
-@synthesize buildTime;
-@synthesize relativePath;
-@synthesize revision;
-@synthesize releaseNote;
+@synthesize result;
+@synthesize downfile;
+
 
 +(bool)isInSystemDB {
     return YES;
 }
 
-+(NSString *)getPrimaryKey
-{
-    return @"rowid";
-}
 
 +(NSString *)getTableName
 {
