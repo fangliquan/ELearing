@@ -48,22 +48,22 @@
     phTextView.placeholder = @"请输入...";
     phTextView.tintColor = EL_TEXTCOLOR_GRAY;
     phTextView.keyboardType = UIKeyboardTypeDefault;
-    phTextView.backgroundColor = [UIColor whiteColor];
+    phTextView.backgroundColor = [UIColor colorWithRed:223/255.0 green:223/255.0 blue:223/255.0 alpha:0.6];
     phTextView.textColor = EL_TEXTCOLOR_DARKGRAY;
     phTextView.font = [UIFont systemFontOfSize:15];
     [self.contentView addSubview:phTextView];
     
     [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.mas_left).offset(10);
-        make.width.equalTo(@60);
-        make.top.equalTo (self.contentView.mas_top).offset (15);
+        make.width.equalTo(@75);
+        make.top.equalTo (self.contentView.mas_top).offset (18);
     }];
     
     [phTextView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(titleLable.mas_right).offset(4);
         make.right.equalTo(self.contentView.mas_right).offset(-10);
         make.top.equalTo (self.contentView.mas_top).offset(8);
-        make.height.equalTo(@40);
+        make.bottom.equalTo(self.contentView.mas_bottom).offset(-8);
     }];
 }
 
@@ -77,6 +77,7 @@
     }else{
         phTextView.editable = YES;
     }
+
 }
 
 

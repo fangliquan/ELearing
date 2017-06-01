@@ -15,6 +15,9 @@ typedef enum : NSUInteger {
     ELive_Set_User_Profession,
     ELive_Set_User_Commpany,
     ELive_Set_User_Phone,
+    ELive_Set_User_ID,
+    ELive_Set_User_Email,
+    ELive_Set_User_Desp,
 } ELive_Set_UserInfoType;
 @class ELiveSettingUserInfoModel;
 @interface ELiveSettingUserInfoViewCell : UITableViewCell
