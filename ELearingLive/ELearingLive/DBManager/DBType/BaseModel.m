@@ -3,7 +3,7 @@
 #include <sqlite3.h>
 @implementation BaseModel
 
-@synthesize updateTime, deleted;
+@synthesize updateTime, deleted,error_msg,error_code;
 
 +(bool)isInSystemDB {
     return NO;

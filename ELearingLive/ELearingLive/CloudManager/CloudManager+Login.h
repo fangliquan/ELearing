@@ -8,14 +8,20 @@
 
 #import "CloudManagerBase.h"
 
-@class UserLoginResponse;
+@class UserLoginResponse,VersionInfo;
 @interface CloudManager (Login)
 
 //init
-- (void)asyncCurrrentDeviceInit:(void (^)(NSString *ret,CMError *error))completion;
+- (void)asyncCurrrentDeviceInit:(void (^)(VersionInfo *ret,CMError *error))completion;
 
 
 - (void)asyncUserLoginWithPhoneNumber:(NSString *)phoneNumber password:(NSString *)password completion:(void (^)(UserLoginResponse *ret, CMError * error))completion ;
+
+
+- (void)asyncUserFeedBackWithContent:(NSString *)content completion:(void (^)(NSString *ret, CMError * error))completion ;
+//注册
+
+
 //注册
 - (void)asyncUserRegisterWithPhoneNumber:(NSString *)phoneNumber password:(NSString *)password code:(NSString *)code completion:(void (^)(UserLoginResponse *ret, CMError * error))completion ;
 //获取验证码

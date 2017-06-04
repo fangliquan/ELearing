@@ -17,7 +17,13 @@
     NSString *ret = @"";
     ret = [self uriBaseUser];
     ret = [[NSString alloc] initWithFormat:@"%@/index/init", ret];
-    
+    return ret;
+}
+
+-(NSString *)uriAppFeedback{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/index/feedback", ret];
     return ret;
 }
 

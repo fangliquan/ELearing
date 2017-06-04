@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ELiveCastMainViewController : UITableViewController
+@interface ELiveCastMainViewController : UIViewController
 
 @end

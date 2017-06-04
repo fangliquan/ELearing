@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0A56361EE3E27100418F9A /* ELiveCastMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0A56351EE3E27100418F9A /* ELiveCastMainCell.m */; };
 		0A3A75221EC6C6BE000DE748 /* ELiveCourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */; };
 		0A46AA471ED7291D0087E078 /* ELiveMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA461ED7291D0087E078 /* ELiveMessageViewCell.m */; };
 		0A46AA4B1ED8729A0087E078 /* ELivePersonHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA4A1ED8729A0087E078 /* ELivePersonHomeViewController.m */; };
@@ -306,6 +307,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0A56341EE3E27100418F9A /* ELiveCastMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCastMainCell.h; sourceTree = "<group>"; };
+		0A0A56351EE3E27100418F9A /* ELiveCastMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCastMainCell.m; sourceTree = "<group>"; };
 		0A3A75201EC6C6BE000DE748 /* ELiveCourseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCourseListViewController.h; sourceTree = "<group>"; };
 		0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseListViewController.m; sourceTree = "<group>"; };
 		0A46AA451ED7291D0087E078 /* ELiveMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMessageViewCell.h; sourceTree = "<group>"; };
@@ -1604,6 +1607,8 @@
 		0AEF07D01EBA30C80065A22B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A0A56341EE3E27100418F9A /* ELiveCastMainCell.h */,
+				0A0A56351EE3E27100418F9A /* ELiveCastMainCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2469,6 +2474,7 @@
 				0AEF09381EBECF900065A22B /* NSSet+BlocksKit.m in Sources */,
 				0A69452E1EC6FF2400D83DC1 /* ELiveCourseDetailHeaderView.m in Sources */,
 				0A54A38A1ED31F3200421CC5 /* HMSegmentedControl.m in Sources */,
+				0A0A56361EE3E27100418F9A /* ELiveCastMainCell.m in Sources */,
 				0AEF09341EBECF900065A22B /* NSObject+BKAssociatedObjects.m in Sources */,
 				0AEF09411EBECF900065A22B /* MFMessageComposeViewController+BlocksKit.m in Sources */,
 				0A6603671EDF026200927433 /* FMDatabase.m in Sources */,

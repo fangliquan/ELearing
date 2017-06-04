@@ -13,6 +13,8 @@
 
 -(NSString *)uriBase;
 -(NSString *)uriAppInit;
+//反馈
+-(NSString *)uriAppFeedback;
 -(NSString *)uriPhoneLogin;
 -(NSString *)uriPhoneRegister;
 -(NSString *)uriRegisterCode;

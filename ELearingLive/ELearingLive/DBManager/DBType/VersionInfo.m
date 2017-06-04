@@ -2,8 +2,9 @@
 #import "VersionInfo.h"
 
 @implementation VersionInfo
-@synthesize result;
-@synthesize downfile;
+@synthesize lastversion;
+@synthesize lastfile;
+@synthesize token;
 
 
 +(bool)isInSystemDB {

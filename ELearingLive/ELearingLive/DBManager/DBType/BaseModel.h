@@ -10,6 +10,8 @@
 @property (nonatomic) long long updateTime;
 @property (nonatomic) bool deleted;
 
+@property(copy,nonatomic) NSString *error_code;
+@property(copy,nonatomic) NSString *error_msg;
 +(bool)isInSystemDB;
 
 +(bool)isOrderDesc;

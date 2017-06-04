@@ -15,13 +15,13 @@
 
 
 //init
-- (void)asyncCurrrentDeviceInit:(void (^)(NSString *ret,CMError *error))completion{
+- (void)asyncCurrrentDeviceInit:(void (^)(VersionInfo *ret,CMError *error))completion{
     
     NSString *url = [NSString stringWithFormat:@"%@",[self uriAppInit]];
     NSString *time = [NSString stringWithFormat:@"%f", [DateHelper timeIntervalNow]];
     NSString *token = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString * moreinfo = [PublicUtil getDeviceMoreInfo];
-    NSLog(@"-----------init token%@",token);
+    DLog(@"-----------init token%@",token);
    // NSString *sign = [WWTextManager md5:[NSString stringWithFormat:@"%@-%@-%@",password,time,DEFAULT_APP_KEY]];
     NSDictionary *tempDic = @{
                               @"token" : token,
@@ -35,13 +35,10 @@
     [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
         if (ret) {
             NSDictionary *retDict =ret;
-            VersionInfo * userLoginResponse =nil;
-            if ([[retDict allKeys]containsObject:@"reasult"]) {
-                userLoginResponse = [VersionInfo mj_objectWithKeyValues:retDict];
-            }
-            if (completion) {
-                completion(@"OK",error);
-                //[_delegates didUpdateUserInfoWithUserInfoResponse:userLoginResponse];
+            VersionInfo * initResponse = [VersionInfo mj_objectWithKeyValues:retDict];
+            DLog(@"--------------------init Dict: %@",ret);
+            if (completion){
+                completion(initResponse,error);
             }
         }else{
             if (completion) {
@@ -90,6 +87,34 @@
         }
     }];
     
+}
+
+- (void)asyncUserFeedBackWithContent:(NSString *)content completion:(void (^)(NSString *ret, CMError * error))completion{
+    
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriAppFeedback]];
+    // NSString *pwd = [WWTextManager md5:password];
+    NSString *token = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSDictionary *tempDic = @{
+                              @"token" : token,
+                              @"content" : content,
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            NSString *message;
+            if ([[ret allKeys]containsObject:@"message"]) {
+                message = [ret objectForKey:@"message"];
+            }
+            if (completion) {
+                completion(message,error);
+            }
+      
+        }else{
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
 }
 
 

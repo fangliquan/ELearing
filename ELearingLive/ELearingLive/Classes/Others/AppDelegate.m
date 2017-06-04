@@ -28,7 +28,7 @@
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     
-    [[CloudManager sharedInstance]asyncCurrrentDeviceInit:^(NSString *ret, CMError *error) {
+    [[CloudManager sharedInstance]asyncCurrrentDeviceInit:^(VersionInfo *ret, CMError *error) {
         
     }];
     return YES;
