@@ -21,6 +21,7 @@
 
 #import "ELiveLoginViewController.h"
 
+#import "CloudManager+Teacher.h"
 @interface ELiveSettingMainViewController ()<UITableViewDelegate,UITableViewDataSource,CloudManagerDelegate>
 
 @property(nonatomic,strong) NSMutableArray *section1Arrays;
@@ -85,12 +86,19 @@
     
     [self configtableView];
     [self createHeaderView];
-
+    [self loadApplyState];
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[CloudManager sharedInstance] removeDelegate:self];
+}
+
+
+-(void)loadApplyState{
+    [[CloudManager sharedInstance]asyncUserIsApplyForTeacher:^(NSInteger ret, CMError *error) {
+        [self didUpdateUserInfoWithUserInfoResponse:nil];
+    }];
 }
 
 

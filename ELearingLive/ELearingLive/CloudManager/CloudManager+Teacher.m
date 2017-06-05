@@ -46,7 +46,17 @@
 
 }
 
-
+-(void) updateCurrentIsTeacher:(NSInteger)isTeacher
+{
+    DBManager *dbm = [DBManager sharedInstance];
+    UserLoginResponse *loginRespone = [CloudManager sharedInstance].currentAccount.userLoginResponse;
+    loginRespone.is_teacher = isTeacher;
+    [dbm saveSyncDataLoginResultInfoWithUserLoginReslut:loginRespone];
+    _currentAccount = [dbm loadAccountInfo];//must reload from db again!!!
+    
+    [_delegates didUpdateUserInfoWithUserInfoResponse:loginRespone];
+    
+}
 - (void)asyncUserIsApplyForTeacher:(void (^)(NSInteger ret, CMError *error))completion{
     NSString *url = [NSString stringWithFormat:@"%@",[self uriUcIsTeacher]];
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
@@ -58,8 +68,10 @@
         if (ret) {
             UserApplyTeacherState * baseModel = [UserApplyTeacherState mj_objectWithKeyValues:ret];
             if ([baseModel.error_code isEqualToString:@"0"]) {
+                [self updateCurrentIsTeacher:baseModel.is_teacher];
                 if (completion) {
                     completion(baseModel.is_teacher,nil);
+                    
                 }
             }else{
                 if (completion) {
