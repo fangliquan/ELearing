@@ -21,7 +21,7 @@
 
 #import "ELiveLoginViewController.h"
 
-@interface ELiveSettingMainViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ELiveSettingMainViewController ()<UITableViewDelegate,UITableViewDataSource,CloudManagerDelegate>
 
 @property(nonatomic,strong) NSMutableArray *section1Arrays;
 @property(nonatomic,strong) NSMutableArray *section2Arrays;
@@ -37,17 +37,19 @@
     self.section1Arrays = [NSMutableArray array];
     self.section2Arrays = [NSMutableArray array];
     
-    ELiveSettingModel *settingModel1 = [[ELiveSettingModel alloc]init];
-    settingModel1.type = Setting_Bind_Teacher;
-    settingModel1.title = @"讲师资格申请";
-    [self.section1Arrays addObject:settingModel1];
+    [[CloudManager sharedInstance] addDelegate:self];
+    //ELiveSettingModel *settingModel1 = [[ELiveSettingModel alloc]init];
+
+    //[self.section1Arrays addObject:settingModel1];
     
     
     for (int i =0; i <4; i ++) {
         ELiveSettingModel *settingModel = [[ELiveSettingModel alloc]init];
         settingModel.type = i;
         if (i ==0) {
-            settingModel.title = @"我的主页";
+            settingModel.type = Setting_Bind_Teacher;
+            settingModel.title = @"讲师资格申请";
+            //settingModel.title = @"我的主页";
         } else if (i ==1) {
             settingModel.title = @"课程管理";
         }else if (i ==2) {
@@ -78,6 +80,10 @@
 
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[CloudManager sharedInstance] removeDelegate:self];
+}
 
 
 -(void)createHeaderView{
@@ -237,4 +243,25 @@
     }
 }
 
+
+#pragma mark- Delegate
+
+-(void)didUpdateUserInfoWithUserInfoResponse:(UserLoginResponse *)userLoginResponse{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self createHeaderView];
+        ELiveSettingModel *settingModel = [[ELiveSettingModel alloc]init];
+        if (userLoginResponse.is_teacher) {
+            settingModel.type = Setting_Bind_Teacher;
+            settingModel.title = @"申请讲师资格";
+        }else{
+            settingModel.type = Setting_MineHome;
+            settingModel.title = @"我的主页";
+        }
+        
+        [self.section1Arrays removeObjectAtIndex:0];
+        [self.section1Arrays insertObject:settingModel atIndex:0];
+        [self.tableView reloadData];
+    });
+
+}
 @end
