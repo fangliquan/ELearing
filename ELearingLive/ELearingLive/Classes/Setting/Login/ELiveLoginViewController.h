@@ -10,4 +10,6 @@
 
 @interface ELiveLoginViewController : UIViewController
 
+@property (nonatomic, copy) void (^loginSuccessRefreshHandler)(void);
+
 @end

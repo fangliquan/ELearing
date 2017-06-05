@@ -13,6 +13,8 @@
 #import "ELiveSettingUserInfoViewController.h"
 #import "ELiveSettingBindOtherAppViewController.h"
 #import "ELiveSettingAboutViewController.h"
+
+#import "CloudManager+Login.h"
 @interface ELiveSettingMineInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) NSMutableArray *section1Arrays;
@@ -85,7 +87,15 @@
 }
 
 -(void)quitAppClick{
-    
+
+    [[CloudManager sharedInstance]asyncUserLogout:^(NSString *ret, CMError *error) {
+        if (ret) {
+            if (self.reloadCurrentLoginStateHandler) {
+                self.reloadCurrentLoginStateHandler();
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

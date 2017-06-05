@@ -98,10 +98,16 @@
     self.headerView.userHeaderViewHandler = ^{
         if ([CloudManager sharedInstance].currentAccount.loginInfo.isLogined) {
             ELiveSettingMineInfoViewController *courseVc = [[ELiveSettingMineInfoViewController alloc]init];
+            courseVc.reloadCurrentLoginStateHandler = ^{
+                [unself createHeaderView];
+            };
             [unself.navigationController pushViewController:courseVc animated:YES];
         }else{
             ELiveLoginViewController *loginVc = [[ELiveLoginViewController alloc]init];
             loginVc.title = @"登录";
+            loginVc.loginSuccessRefreshHandler = ^{
+                [unself createHeaderView];
+            };
             [unself.navigationController pushViewController:loginVc animated:YES];
         }
 
@@ -156,6 +162,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ELiveSettingModel *settingModel;
+    __unsafe_unretained typeof(self) unself = self;
     if (indexPath.section ==0) {
         settingModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
     }else{
@@ -183,6 +190,9 @@
         [self.navigationController pushViewController:courseVc animated:YES];
     }else if(settingModel.type == Setting_UpdateInfo){
         ELiveSettingMineInfoViewController *courseVc = [[ELiveSettingMineInfoViewController alloc]init];
+        courseVc.reloadCurrentLoginStateHandler = ^{
+            [unself createHeaderView];
+        };
         [self.navigationController pushViewController:courseVc animated:YES];
     }else if(settingModel.type == Setting_Bind_Teacher){
         ELiveSettingApplyTeacherViewController *courseVc = [[ELiveSettingApplyTeacherViewController alloc]init];

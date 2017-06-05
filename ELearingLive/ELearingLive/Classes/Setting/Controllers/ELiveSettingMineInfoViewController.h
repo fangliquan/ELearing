@@ -10,4 +10,6 @@
 
 @interface ELiveSettingMineInfoViewController : UIViewController
 
+@property (nonatomic, copy) void (^reloadCurrentLoginStateHandler)(void);
+
 @end

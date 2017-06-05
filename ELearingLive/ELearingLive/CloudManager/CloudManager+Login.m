@@ -112,11 +112,15 @@
                 }
                 
                 [_delegates didUpdateUserInfoWithUserInfoResponse:userLoginResponse];
-                
+                if (completion) {
+                    completion(userLoginResponse,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
             }
-            if (completion) {
-                completion(userLoginResponse,error);
-            }
+       
         }else{
             if (completion) {
                 completion(nil,error);
@@ -341,9 +345,22 @@
 //退出登录
 - (void)asyncUserLogout:(void (^)(NSString *ret,CMError *error))completion {
     NSString *url = [NSString stringWithFormat:@"%@",[self uriLogout]];
-    [GDHttpManager postWithUrlStringComplate:url parameters:nil completion:^(NSDictionary *ret, CMError *error) {
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token,
+                              };
+
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
         if (ret) {
-            [self loginOutCurentUser];
+            if ([[ret allKeys]containsObject:@"error_code"]) {
+                NSString *error_code = [ret objectForKey:@"error_code"];
+                if ([error_code isEqualToString:@"0"]) {
+                    [self loginOutCurentUser];
+                    if (completion) {
+                        completion(@"YES",error);
+                    }
+                }
+            }
         }else {
             if (completion) {
                 completion(nil,error);

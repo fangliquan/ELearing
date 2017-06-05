@@ -58,7 +58,7 @@
 -(NSString *)uriLogout {
     NSString *ret = @"";
     ret = [self uriBaseUser];
-    ret = [[NSString alloc] initWithFormat:@"%@/logout", ret];
+    ret = [[NSString alloc] initWithFormat:@"%@/passport/logout", ret];
     return ret;
 }
 

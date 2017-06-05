@@ -130,7 +130,12 @@
     }
     
     [[CloudManager sharedInstance]asyncUserLoginWithPhoneNumber:phoneTextL.text password:pswTextL.text completion:^(UserLoginResponse *ret, CMError *error) {
-        
+        if (error ==nil &&ret) {
+            if (self.loginSuccessRefreshHandler) {
+                self.loginSuccessRefreshHandler();
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }];
 }
 
