@@ -96,9 +96,15 @@
         [unself.navigationController pushViewController:focusVc animated:YES];
     };
     self.headerView.userHeaderViewHandler = ^{
-        ELiveLoginViewController *loginVc = [[ELiveLoginViewController alloc]init];
-        loginVc.title = @"登录";
-        [unself.navigationController pushViewController:loginVc animated:YES];
+        if ([CloudManager sharedInstance].currentAccount.loginInfo.isLogined) {
+            ELiveSettingMineInfoViewController *courseVc = [[ELiveSettingMineInfoViewController alloc]init];
+            [unself.navigationController pushViewController:courseVc animated:YES];
+        }else{
+            ELiveLoginViewController *loginVc = [[ELiveLoginViewController alloc]init];
+            loginVc.title = @"登录";
+            [unself.navigationController pushViewController:loginVc animated:YES];
+        }
+
     };
     self.tableView.tableHeaderView = self.headerView;
 }

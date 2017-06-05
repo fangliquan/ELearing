@@ -13,6 +13,36 @@
 #import "PublicUtil.h"
 @implementation CloudManager (Login)
 
+#pragma mark - api
+
+-(void) _operationsAfterLogin
+{
+    _isLogined = YES;
+    
+//    [self bindGeTuiAlias];
+//    
+//    //set userId to Bugly's CrashReporter
+//    [Bugly setUserIdentifier:_currentAccount.userProfile.account];
+//    [self initQupaiSdkWithUserId];
+}
+
+-(void) _updatePersist:(UserLoginResponse *)loginRe
+{
+    DBManager *dbm = [DBManager sharedInstance];
+    
+    [dbm saveSyncDataLoginResultInfoWithUserLoginReslut:loginRe];
+    _currentAccount = [dbm loadAccountInfo];//must reload from db again!!!
+}
+
+-(void) loginOutCurentUser
+{
+    DBManager *dbm = [DBManager sharedInstance];
+    
+    [dbm loginOutClearUserData];
+    [[CloudManager sharedInstance].getDelegate didUpdateUserInfoWithUserInfoResponse:nil];
+    _currentAccount = [dbm loadAccountInfo];
+}
+
 
 //init
 - (void)asyncCurrrentDeviceInit:(void (^)(VersionInfo *ret,CMError *error))completion{
@@ -36,6 +66,10 @@
         if (ret) {
             NSDictionary *retDict =ret;
             VersionInfo * initResponse = [VersionInfo mj_objectWithKeyValues:retDict];
+            if ([initResponse.error_code isEqualToString:@"0"]) {
+                 [[DBManager sharedInstance]cleanTableData:[VersionInfo class]];
+                 [[DBManager sharedInstance]saveData:initResponse];
+             }
             DLog(@"--------------------init Dict: %@",ret);
             if (completion){
                 completion(initResponse,error);
@@ -52,7 +86,8 @@
     
     NSString *url = [NSString stringWithFormat:@"%@",[self uriPhoneLogin]];
    // NSString *pwd = [WWTextManager md5:password];
-    NSString *token = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    VersionInfo *versionInfo = [[DBManager sharedInstance]loadTableFirstData:[VersionInfo class] Condition:@""];
+    NSString *token = versionInfo.token?versionInfo.token: [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString *time = [NSString stringWithFormat:@"%f", [DateHelper timeIntervalNow]];
     NSLog(@"-----------login token%@",token);
     NSString *sign = [WWTextManager md5:[NSString stringWithFormat:@"%@-%@-%@",password,time,DEFAULT_APP_KEY]];
@@ -67,18 +102,20 @@
     [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
         if (ret) {
             NSDictionary *retDict =ret;
-            UserLoginResponse * userLoginResponse =nil;
-            if ([[retDict allKeys]containsObject:@"userid"]) {
-                userLoginResponse = [UserLoginResponse mj_objectWithKeyValues:retDict];
+            UserLoginResponse * userLoginResponse = [UserLoginResponse mj_objectWithKeyValues:retDict];
+            if ([userLoginResponse.error_code isEqualToString:@"0"]) {
+                userLoginResponse.token = token;
+                userLoginResponse.phone = phoneNumber;
+                [self _operationsAfterLogin];
+                if (userLoginResponse) {
+                    [self _updatePersist:userLoginResponse];
+                }
+                
+                [_delegates didUpdateUserInfoWithUserInfoResponse:userLoginResponse];
+                
             }
             if (completion) {
                 completion(userLoginResponse,error);
-                if (userLoginResponse) {
-                   // [self _updatePersist:userLoginResponse];
-                }
-              
-                [_delegates didUpdateUserInfoWithUserInfoResponse:userLoginResponse];
-                
             }
         }else{
             if (completion) {

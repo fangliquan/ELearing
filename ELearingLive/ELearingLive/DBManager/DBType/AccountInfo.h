@@ -76,11 +76,15 @@
 
 @property(nonatomic,assign) long long  userId;
 
+@property(copy,nonatomic) NSString *phone;
+
 @property(copy,nonatomic) NSString *nickname;
 
 @property(copy,nonatomic) NSString *avatar;
 
-@property(nonatomic,assign) int  is_teacher;
+@property(nonatomic,assign) NSInteger  is_teacher;
+
+@property (nonatomic, copy)  NSString *token;
 
 @end
 

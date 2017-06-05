@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0A0A56361EE3E27100418F9A /* ELiveCastMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0A56351EE3E27100418F9A /* ELiveCastMainCell.m */; };
+		0A0A56391EE4D56B00418F9A /* DBManager+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0A56381EE4D56B00418F9A /* DBManager+Login.m */; };
+		0A0A563E1EE4DD6D00418F9A /* notLogin_circle_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0A563A1EE4DD6D00418F9A /* notLogin_circle_default@2x.png */; };
+		0A0A563F1EE4DD6D00418F9A /* notLogin_circle_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0A563B1EE4DD6D00418F9A /* notLogin_circle_default@3x.png */; };
+		0A0A56401EE4DD6D00418F9A /* notLogin_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0A563C1EE4DD6D00418F9A /* notLogin_default@2x.png */; };
+		0A0A56411EE4DD6D00418F9A /* notLogin_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0A563D1EE4DD6D00418F9A /* notLogin_default@3x.png */; };
 		0A3A75221EC6C6BE000DE748 /* ELiveCourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */; };
 		0A46AA471ED7291D0087E078 /* ELiveMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA461ED7291D0087E078 /* ELiveMessageViewCell.m */; };
 		0A46AA4B1ED8729A0087E078 /* ELivePersonHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA4A1ED8729A0087E078 /* ELivePersonHomeViewController.m */; };
@@ -309,6 +314,12 @@
 /* Begin PBXFileReference section */
 		0A0A56341EE3E27100418F9A /* ELiveCastMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCastMainCell.h; sourceTree = "<group>"; };
 		0A0A56351EE3E27100418F9A /* ELiveCastMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCastMainCell.m; sourceTree = "<group>"; };
+		0A0A56371EE4D56B00418F9A /* DBManager+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBManager+Login.h"; sourceTree = "<group>"; };
+		0A0A56381EE4D56B00418F9A /* DBManager+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBManager+Login.m"; sourceTree = "<group>"; };
+		0A0A563A1EE4DD6D00418F9A /* notLogin_circle_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notLogin_circle_default@2x.png"; sourceTree = "<group>"; };
+		0A0A563B1EE4DD6D00418F9A /* notLogin_circle_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notLogin_circle_default@3x.png"; sourceTree = "<group>"; };
+		0A0A563C1EE4DD6D00418F9A /* notLogin_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notLogin_default@2x.png"; sourceTree = "<group>"; };
+		0A0A563D1EE4DD6D00418F9A /* notLogin_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notLogin_default@3x.png"; sourceTree = "<group>"; };
 		0A3A75201EC6C6BE000DE748 /* ELiveCourseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCourseListViewController.h; sourceTree = "<group>"; };
 		0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseListViewController.m; sourceTree = "<group>"; };
 		0A46AA451ED7291D0087E078 /* ELiveMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMessageViewCell.h; sourceTree = "<group>"; };
@@ -952,6 +963,10 @@
 		0A46AA971EDAC6360087E078 /* login */ = {
 			isa = PBXGroup;
 			children = (
+				0A0A563A1EE4DD6D00418F9A /* notLogin_circle_default@2x.png */,
+				0A0A563B1EE4DD6D00418F9A /* notLogin_circle_default@3x.png */,
+				0A0A563C1EE4DD6D00418F9A /* notLogin_default@2x.png */,
+				0A0A563D1EE4DD6D00418F9A /* notLogin_default@3x.png */,
 				0A46AA981EDAC6360087E078 /* login_phone_icon@2x.png */,
 				0A46AA991EDAC6360087E078 /* login_phone_icon@3x.png */,
 				0A46AA9A1EDAC6360087E078 /* login_qq_icon@3x.png */,
@@ -1363,6 +1378,8 @@
 		0A6603E61EDF064400927433 /* DBManager */ = {
 			isa = PBXGroup;
 			children = (
+				0A0A56371EE4D56B00418F9A /* DBManager+Login.h */,
+				0A0A56381EE4D56B00418F9A /* DBManager+Login.m */,
 				0A6603E71EDF064400927433 /* DBManager+SystemInfo.h */,
 				0A6603E81EDF064400927433 /* DBManager+SystemInfo.m */,
 				0A6603E91EDF064400927433 /* DBManager.h */,
@@ -2219,6 +2236,7 @@
 				0A46AAA31EDAC6360087E078 /* login_qq_icon@2x.png in Resources */,
 				0A6604281EDFA82000927433 /* Info.plist in Resources */,
 				0A54A3B21ED4742500421CC5 /* tabbar_news@2x.png in Resources */,
+				0A0A563E1EE4DD6D00418F9A /* notLogin_circle_default@2x.png in Resources */,
 				0A6603651EDF026200927433 /* LICENSE.txt in Resources */,
 				0A54A3BB1ED4769400421CC5 /* tabbar_message@3x.png in Resources */,
 				0AEF085B1EBA310E0065A22B /* MBProgressHUD.bundle in Resources */,
@@ -2229,6 +2247,7 @@
 				0A54A3991ED4724100421CC5 /* home_tt_01_@2x.png in Resources */,
 				0A54A3B71ED4742500421CC5 /* tabbar_video@3x.png in Resources */,
 				0AEF09951EBED84E0065A22B /* MJRefresh.bundle in Resources */,
+				0A0A56401EE4DD6D00418F9A /* notLogin_default@2x.png in Resources */,
 				0A54A3B31ED4742500421CC5 /* tabbar_news@3x.png in Resources */,
 				0A46AAA11EDAC6360087E078 /* login_phone_icon@3x.png in Resources */,
 				0AEF08AE1EBD57480065A22B /* image_default_userheader.png in Resources */,
@@ -2246,6 +2265,7 @@
 				0A54A3BA1ED4769400421CC5 /* tabbar_message@2x.png in Resources */,
 				0A46AAA01EDAC6360087E078 /* login_phone_icon@2x.png in Resources */,
 				0A6945011EC6D86000D83DC1 /* title_moreBtn@3x.png in Resources */,
+				0A0A56411EE4DD6D00418F9A /* notLogin_default@3x.png in Resources */,
 				0A46AA6E1EDA6AC90087E078 /* sl_07_3x.png in Resources */,
 				0A46AA6A1EDA6AC90087E078 /* sl_05_3x.png in Resources */,
 				0A6603D11EDF05B500927433 /* LICENSE in Resources */,
@@ -2257,6 +2277,7 @@
 				0A46AAA51EDAC6360087E078 /* login_sina_icon@3x.png in Resources */,
 				0A54A3AF1ED4742500421CC5 /* tabbar_about@3x.png in Resources */,
 				0AEF08671EBA310E0065A22B /* MJPhotoBrowser.bundle in Resources */,
+				0A0A563F1EE4DD6D00418F9A /* notLogin_circle_default@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2307,6 +2328,7 @@
 				0A6604311EDFA82000927433 /* NSObject+MJProperty.m in Sources */,
 				0AEF09481EBECF900065A22B /* UIPopoverController+BlocksKit.m in Sources */,
 				0AEF09871EBED84E0065A22B /* MJRefreshAutoFooter.m in Sources */,
+				0A0A56391EE4D56B00418F9A /* DBManager+Login.m in Sources */,
 				0A54A3841ED31F3200421CC5 /* MXSegmentedPager+ParallaxHeader.m in Sources */,
 				0A6603731EDF026200927433 /* README.md in Sources */,
 				0A54A3C51ED47C2500421CC5 /* ELiveVCManagerHelper.m in Sources */,

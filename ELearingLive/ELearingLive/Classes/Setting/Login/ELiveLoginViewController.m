@@ -44,11 +44,13 @@
     phoneTextL.backgroundColor = [UIColor whiteColor];
     phoneTextL.textColor = EL_TEXTCOLOR_DARKGRAY;
     phoneTextL.font = [UIFont systemFontOfSize:15];
+    phoneTextL.text = @"18618462132";
     [self.view addSubview:phoneTextL];
     
     pswTextL = [[UITextField alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(phoneTextL.frame) + 10, Main_Screen_Width - 150, 40)];
     pswTextL.placeholder = @"  输入验证码";
     pswTextL.tintColor = EL_TEXTCOLOR_GRAY;
+    pswTextL.text = @"123456";
     pswTextL.keyboardType = UIKeyboardTypeDefault;
     pswTextL.backgroundColor = [UIColor whiteColor];
     pswTextL.textColor = EL_TEXTCOLOR_DARKGRAY;

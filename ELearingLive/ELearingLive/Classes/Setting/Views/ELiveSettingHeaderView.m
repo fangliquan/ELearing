@@ -47,19 +47,26 @@
     userHeader.userInteractionEnabled = YES;
     [userHeader addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userHeaderClick)]];
     //[userHeader addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userHomePageClick)]];
-    userHeader.image = [UIImage imageNamed:@"image_default_userheader"];
+   
     [self addSubview:userHeader];
     
     
     
     UILabel *userNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(60, CGRectGetMaxY(userHeader.frame) + 5, Main_Screen_Width - 120,20)];
     userNameLabel.numberOfLines = 2;
-    userNameLabel.text = @"王大大";
+    
     userNameLabel.textAlignment = NSTextAlignmentCenter;
     userNameLabel.font = [UIFont systemFontOfSize:EL_TEXTFONT_FLOAT_TITLE];
     userNameLabel.textColor = [UIColor whiteColor];
     [self addSubview:userNameLabel];
     
+    if ([CloudManager sharedInstance].currentAccount.loginInfo.isLogined) {
+        [userHeader setImageWithURL:[NSURL URLWithString:[CloudManager sharedInstance].currentAccount.userLoginResponse.avatar] placeholderImage:[UIImage imageNamed:@"image_default_userheader"]];
+         userNameLabel.text = [CloudManager sharedInstance].currentAccount.userLoginResponse.nickname;
+    }else{
+        userHeader.image = [UIImage imageNamed:@"notLogin_default"];
+        userNameLabel.text = @"登录";
+    }
     
     bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, viewHeight - 50, Main_Screen_Width, 50)];
     [self addSubview:bottomView];
