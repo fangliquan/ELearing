@@ -126,5 +126,9 @@
 
 
 
+//讲师申请
+-(NSString *)uriUcAuthTeacher;
+//是否讲师认证
+-(NSString *)uriUcIsTeacher;
 
 @end

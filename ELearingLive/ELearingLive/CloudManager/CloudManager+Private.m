@@ -31,6 +31,9 @@
     return [NSString stringWithFormat:@"%@", [self uriBase]];
 }
 
+
+
+
 -(NSString *)uriPhoneLogin {
     NSString *ret = @"";
     ret = [self uriBaseUser];
@@ -453,6 +456,23 @@
     ret = [[NSString alloc] initWithFormat:@"%@/notify",[self uriBaseWxPay]];
     return ret;
 }
+
+
+//讲师申请
+-(NSString *)uriUcAuthTeacher{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/uc/authteacher",ret];
+    return ret;
+}
+//是否讲师认证
+-(NSString *)uriUcIsTeacher{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/uc/isteacher",ret];
+    return ret;
+}
+
 
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ELiveSettingUserInfoViewCell.h"
 #import "PHTextView.h"
+#import "UserTruthInfo.h"
 @interface ELiveSettingUserInfoViewCell()<UITextViewDelegate> {
     
     UILabel *titleLable;
@@ -51,6 +52,7 @@
     phTextView.backgroundColor = [UIColor colorWithRed:223/255.0 green:223/255.0 blue:223/255.0 alpha:0.6];
     phTextView.textColor = EL_TEXTCOLOR_DARKGRAY;
     phTextView.font = [UIFont systemFontOfSize:15];
+    phTextView.delegate = self;
     [self.contentView addSubview:phTextView];
     
     [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -73,10 +75,19 @@
     titleLable.text = settingUserInfoModel.title;
     phTextView.text = settingUserInfoModel.content;
     if (settingUserInfoModel.type ==ELive_Set_User_Phone) {
-        phTextView.editable = NO;
-    }else{
-        phTextView.editable = YES;
+        phTextView.placeholder = @"请输入手机号";
+        phTextView.text = [CloudManager sharedInstance].currentAccount.userLoginResponse.phone;
+    }else if (settingUserInfoModel.type ==ELive_Set_User_Name) {
+        phTextView.placeholder = @"请输入姓名";
+    }else if (settingUserInfoModel.type ==ELive_Set_User_ID) {
+        phTextView.placeholder = @"请输入身份证";
+    }else if (settingUserInfoModel.type ==ELive_Set_User_Email) {
+        phTextView.placeholder = @"请输入邮箱";
+    }else if (settingUserInfoModel.type ==ELive_Set_User_Desp) {
+        phTextView.placeholder = @"请输入简介";
     }
+    
+    
 
 }
 
@@ -84,6 +95,17 @@
 -(void)textViewDidEndEditing:(UITextView *)textView{
     if (textView.text.length >0) {
         self.settingUserInfoModel.content = textView.text;
+        if (_settingUserInfoModel.type ==ELive_Set_User_Phone) {
+            _userTruthInfo.mobile = phTextView.text;
+        }else if (_settingUserInfoModel.type ==ELive_Set_User_Name) {
+            _userTruthInfo.real_name = phTextView.text;
+        }else if (_settingUserInfoModel.type ==ELive_Set_User_ID) {
+            _userTruthInfo.idcard = phTextView.text;
+        }else if (_settingUserInfoModel.type ==ELive_Set_User_Email) {
+            _userTruthInfo.email = phTextView.text;
+        }else if (_settingUserInfoModel.type ==ELive_Set_User_Desp) {
+           _userTruthInfo.intro = phTextView.text;
+        }
     }
 }
 @end

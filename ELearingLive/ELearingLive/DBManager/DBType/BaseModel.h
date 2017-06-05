@@ -11,7 +11,7 @@
 @property (nonatomic) bool deleted;
 
 @property(copy,nonatomic) NSString *error_code;
-@property(copy,nonatomic) NSString *error_msg;
+@property(copy,nonatomic) NSString *error_desc;
 +(bool)isInSystemDB;
 
 +(bool)isOrderDesc;

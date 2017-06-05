@@ -45,16 +45,24 @@
     
     for (int i =0; i <4; i ++) {
         ELiveSettingModel *settingModel = [[ELiveSettingModel alloc]init];
-        settingModel.type = i;
+        
         if (i ==0) {
-            settingModel.type = Setting_Bind_Teacher;
-            settingModel.title = @"讲师资格申请";
-            //settingModel.title = @"我的主页";
+            if ([CloudManager sharedInstance].currentAccount.userLoginResponse.is_teacher) {
+                settingModel.type = Setting_MineHome;
+                settingModel.title = @"我的主页";
+            }else{
+                settingModel.type = Setting_Bind_Teacher;
+                settingModel.title = @"申请讲师资格";
+            }
+            
         } else if (i ==1) {
+            settingModel.type = i;
             settingModel.title = @"课程管理";
         }else if (i ==2) {
+            settingModel.type = i;
             settingModel.title = @"我的讲师";
         }else if (i ==3) {
+            settingModel.type = i;
             settingModel.title = @"我的课程";
         }
         [self.section1Arrays addObject:settingModel];
@@ -251,11 +259,12 @@
         [self createHeaderView];
         ELiveSettingModel *settingModel = [[ELiveSettingModel alloc]init];
         if (userLoginResponse.is_teacher) {
-            settingModel.type = Setting_Bind_Teacher;
-            settingModel.title = @"申请讲师资格";
-        }else{
+     
             settingModel.type = Setting_MineHome;
             settingModel.title = @"我的主页";
+        }else{
+            settingModel.type = Setting_Bind_Teacher;
+            settingModel.title = @"申请讲师资格";
         }
         
         [self.section1Arrays removeObjectAtIndex:0];

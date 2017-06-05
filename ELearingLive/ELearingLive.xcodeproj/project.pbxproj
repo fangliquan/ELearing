@@ -81,6 +81,8 @@
 		0A54A3C51ED47C2500421CC5 /* ELiveVCManagerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3C41ED47C2500421CC5 /* ELiveVCManagerHelper.m */; };
 		0A54A3C91ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3C81ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m */; };
 		0A54A3CC1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3CB1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.m */; };
+		0A57F5641EE5B4640071D5D6 /* CloudManager+Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A57F5631EE5B4640071D5D6 /* CloudManager+Teacher.m */; };
+		0A57F5671EE5B5980071D5D6 /* UserTruthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A57F5661EE5B5980071D5D6 /* UserTruthInfo.m */; };
 		0A66035E1EDF026200927433 /* RPMDeviceManager+Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A66030B1EDF026200927433 /* RPMDeviceManager+Device.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0A66035F1EDF026200927433 /* RPMDeviceManager+OS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A66030D1EDF026200927433 /* RPMDeviceManager+OS.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0A6603601EDF026200927433 /* RPMDeviceManager+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A66030F1EDF026200927433 /* RPMDeviceManager+Private.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -422,6 +424,10 @@
 		0A54A3C81ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseCatalogCell.m; sourceTree = "<group>"; };
 		0A54A3CA1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCourseEvaluateCell.h; sourceTree = "<group>"; };
 		0A54A3CB1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseEvaluateCell.m; sourceTree = "<group>"; };
+		0A57F5621EE5B4640071D5D6 /* CloudManager+Teacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CloudManager+Teacher.h"; sourceTree = "<group>"; };
+		0A57F5631EE5B4640071D5D6 /* CloudManager+Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CloudManager+Teacher.m"; sourceTree = "<group>"; };
+		0A57F5651EE5B5980071D5D6 /* UserTruthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTruthInfo.h; sourceTree = "<group>"; };
+		0A57F5661EE5B5980071D5D6 /* UserTruthInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTruthInfo.m; sourceTree = "<group>"; };
 		0A66030A1EDF026200927433 /* RPMDeviceManager+Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RPMDeviceManager+Device.h"; sourceTree = "<group>"; };
 		0A66030B1EDF026200927433 /* RPMDeviceManager+Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RPMDeviceManager+Device.m"; sourceTree = "<group>"; };
 		0A66030C1EDF026200927433 /* RPMDeviceManager+OS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RPMDeviceManager+OS.h"; sourceTree = "<group>"; };
@@ -1360,6 +1366,8 @@
 		0A6603DC1EDF064400927433 /* CloudManager */ = {
 			isa = PBXGroup;
 			children = (
+				0A57F5621EE5B4640071D5D6 /* CloudManager+Teacher.h */,
+				0A57F5631EE5B4640071D5D6 /* CloudManager+Teacher.m */,
 				0A66040E1EDFA3F200927433 /* CloudManager+Login.h */,
 				0A66040F1EDFA3F200927433 /* CloudManager+Login.m */,
 				0A6603DD1EDF064400927433 /* CloudManager+Private.h */,
@@ -1407,6 +1415,8 @@
 				0A6603F81EDF064400927433 /* SystemInfo.m */,
 				0A6603F91EDF064400927433 /* VersionInfo.h */,
 				0A6603FA1EDF064400927433 /* VersionInfo.m */,
+				0A57F5651EE5B5980071D5D6 /* UserTruthInfo.h */,
+				0A57F5661EE5B5980071D5D6 /* UserTruthInfo.m */,
 			);
 			path = DBType;
 			sourceTree = "<group>";
@@ -2336,6 +2346,7 @@
 				0AEF092B1EBECF900065A22B /* NSArray+BlocksKit.m in Sources */,
 				0AEF09961EBED84E0065A22B /* MJRefreshConst.m in Sources */,
 				0A6604081EDF064500927433 /* VersionInfo.m in Sources */,
+				0A57F5671EE5B5980071D5D6 /* UserTruthInfo.m in Sources */,
 				0A66037A1EDF026200927433 /* YTKBaseRequest.m in Sources */,
 				0A6945391EC701F200D83DC1 /* ELiveCourseEvaluateViewController.m in Sources */,
 				0AEF09391EBECF900065A22B /* NSTimer+BlocksKit.m in Sources */,
@@ -2343,6 +2354,7 @@
 				0AEF09461EBECF900065A22B /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				0A54A3891ED31F3200421CC5 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				0A66037E1EDF026200927433 /* YTKChainRequestAgent.m in Sources */,
+				0A57F5641EE5B4640071D5D6 /* CloudManager+Teacher.m in Sources */,
 				0AB0ED4C1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m in Sources */,
 				0A54A3C91ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m in Sources */,
 				0A6604061EDF064500927433 /* Informations.m in Sources */,

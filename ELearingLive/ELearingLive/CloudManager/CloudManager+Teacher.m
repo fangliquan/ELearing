@@ -1,0 +1,78 @@
+//
+//  CloudManger+Login.m
+//  GDMall
+//
+//  Created by microleo on 2016/10/29.
+//  Copyright © 2016年 guandaokeji. All rights reserved.
+//
+
+
+#import "CloudManager+Teacher.h"
+#import "CMError.h"
+#import "GCDMulticastDelegate.h"
+#import "PublicUtil.h"
+@implementation CloudManager (Teacher)
+- (void)asyncUserApplyForTeacher:(UserTruthInfo *)info  completion:(void (^)(NSString *ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriUcAuthTeacher]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"real_name" : info.real_name?info.real_name:@" ",
+                              @"idcard" : info.idcard?info.idcard:@"",
+                              @"mobile" : info.mobile?info.mobile:@"",
+                              @"intro" : info.intro?info.intro:@"",
+                              @"email" : info.email?info.email:@"",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(@"OK",nil);
+                }
+            }else{
+                if (completion) {
+                    completion(baseModel.error_desc,error);
+                }
+            }
+           
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+}
+
+
+- (void)asyncUserIsApplyForTeacher:(void (^)(NSInteger ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriUcIsTeacher]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token,
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            UserApplyTeacherState * baseModel = [UserApplyTeacherState mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(baseModel.is_teacher,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(0,error);
+                }
+            }
+        }else {
+            if (completion) {
+                completion(0,error);
+            }
+        }
+    }];
+
+}
+
+@end

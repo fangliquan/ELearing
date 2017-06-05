@@ -19,12 +19,14 @@ typedef enum : NSUInteger {
     ELive_Set_User_Email,
     ELive_Set_User_Desp,
 } ELive_Set_UserInfoType;
-@class ELiveSettingUserInfoModel;
+@class ELiveSettingUserInfoModel,UserTruthInfo;
 @interface ELiveSettingUserInfoViewCell : UITableViewCell
 
 +(instancetype)cellWithTableView:(UITableView *)tableView ;
 
 + (CGFloat)heightForCellWithModel:(NSString *)remark ;
+
+@property(nonatomic,strong) UserTruthInfo *userTruthInfo;
 
 @property(nonatomic,strong) ELiveSettingUserInfoModel *settingUserInfoModel;
 @end
