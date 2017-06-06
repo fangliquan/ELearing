@@ -46,6 +46,68 @@
 
 }
 
+- (void)asyncUpdateUserTruthInfo:(UserTruthInfo *)info  completion:(void (^)(NSString *ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriUcEditUser]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"real_name" : info.real_name?info.real_name:@" ",
+                              @"age" : info.age?info.age:@"",
+                              @"mobile" : info.mobile?info.mobile:@"",
+                              @"company" : info.commpany?info.commpany:@"",
+                              @"position" : info.profession?info.profession:@"",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(@"OK",nil);
+                }
+            }else{
+                if (completion) {
+                    completion(baseModel.error_desc,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+}
+
+
+- (void)asyncUpdateUserTruthInfo:(void (^)(UserTruthInfo *ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriUcUserInfo]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            UserTruthInfo * truthInfo = [UserTruthInfo mj_objectWithKeyValues:ret];
+            if ([truthInfo.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(truthInfo,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+}
 -(void) updateCurrentIsTeacher:(NSInteger)isTeacher
 {
     DBManager *dbm = [DBManager sharedInstance];
@@ -61,7 +123,7 @@
     NSString *url = [NSString stringWithFormat:@"%@",[self uriUcIsTeacher]];
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
-                              @"token" : token,
+                              @"token" : token?token:@"",
                               };
     
     [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
@@ -71,9 +133,9 @@
                 [self updateCurrentIsTeacher:baseModel.is_teacher];
                 if (completion) {
                     completion(baseModel.is_teacher,nil);
-                    
                 }
             }else{
+                
                 if (completion) {
                     completion(0,error);
                 }

@@ -24,8 +24,8 @@
     ret.userLoginResponse = userLoginResponse;
     
     LoginInfo *loginInfo = [self loadTableFirstData:[LoginInfo class] Condition:nil];
-    ret.loginInfo = loginInfo;
-    
+   
+     ret.loginInfo = loginInfo;
     return ret;
 }
 
@@ -39,10 +39,11 @@
     loginInfo.token = result.token;
     loginInfo.phone = result.phone;
     loginInfo.userId = result.userId;
-    loginInfo.isLogined = YES;
-    loginInfo.deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    loginInfo.isLogined = 1;
+    loginInfo.deviceId = result.token;
     [[DBManager sharedInstance] cleanTableData:[LoginInfo class]];
     
+    result.isLogined = 1;
     //[XGPush setAccount:result.phone];//  注册信鸽用户
     
     [self saveData:loginInfo];
@@ -59,8 +60,8 @@
     loginInfo.token = @"";
     loginInfo.phone = @"";
     loginInfo.userId = 0;
-    loginInfo.isLogined = NO;
-    loginInfo.deviceId = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    loginInfo.deviceId = @"";
+    loginInfo.isLogined = 0;
     [[DBManager sharedInstance] cleanTableData:[LoginInfo class]];
     
     [self saveData:loginInfo];

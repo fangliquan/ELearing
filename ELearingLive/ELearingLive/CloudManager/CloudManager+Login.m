@@ -82,7 +82,7 @@
     }];
     
 }
-- (void)asyncUserLoginWithPhoneNumber:(NSString *)phoneNumber password:(NSString *)password completion:(void (^)(UserLoginResponse *ret, CMError * error))completion{
+- (void)asyncUserLoginWithPhoneNumberAndCode:(NSString *)phoneNumber code:(NSString *)code completion:(void (^)(UserLoginResponse *ret, CMError * error))completion{
     
     NSString *url = [NSString stringWithFormat:@"%@",[self uriPhoneLogin]];
    // NSString *pwd = [WWTextManager md5:password];
@@ -90,11 +90,11 @@
     NSString *token = versionInfo.token?versionInfo.token: [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSString *time = [NSString stringWithFormat:@"%f", [DateHelper timeIntervalNow]];
     NSLog(@"-----------login token%@",token);
-    NSString *sign = [WWTextManager md5:[NSString stringWithFormat:@"%@-%@-%@",password,time,DEFAULT_APP_KEY]];
+    NSString *sign = [WWTextManager md5:[NSString stringWithFormat:@"%@-%@-%@",code,time,DEFAULT_APP_KEY]];
     NSDictionary *tempDic = @{
                               @"token" : token,
                               @"mobile" : phoneNumber,
-                              @"code" : password,
+                              @"code" : code,
                               @"sign" : sign,
                               @"time" : time,
                               };
@@ -130,14 +130,53 @@
     
 }
 
+//绑定手机号
+- (void)asyncUserBindPhoneWithCode:(NSString *)phoneNumber code:(NSString *)code completion:(void (^)(NSString *ret, CMError * error))completion {
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriUcBindMobile]];
+    // NSString *pwd = [WWTextManager md5:password];
+    VersionInfo *versionInfo = [[DBManager sharedInstance]loadTableFirstData:[VersionInfo class] Condition:@""];
+    NSString *token = versionInfo.token?versionInfo.token: [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSString *time = [NSString stringWithFormat:@"%f", [DateHelper timeIntervalNow]];
+    NSLog(@"-----------login token%@",token);
+    NSString *sign = [WWTextManager md5:[NSString stringWithFormat:@"%@-%@-%@",code,time,DEFAULT_APP_KEY]];
+    NSDictionary *tempDic = @{
+                              @"token" : token,
+                              @"mobile" : phoneNumber,
+                              @"code" : code,
+                              @"sign" : sign,
+                              @"time" : time,
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(@"OK",nil);
+                }
+            }else{
+                if (completion) {
+                    completion(baseModel.error_desc,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+}
+
 - (void)asyncUserFeedBackWithContent:(NSString *)content completion:(void (^)(NSString *ret, CMError * error))completion{
     
     NSString *url = [NSString stringWithFormat:@"%@",[self uriAppFeedback]];
     // NSString *pwd = [WWTextManager md5:password];
     NSString *token = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSDictionary *tempDic = @{
-                              @"token" : token,
-                              @"content" : content,
+                              @"token" : token?token:@"",
+                              @"content" : content?content:@"",
                               };
     
     [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {

@@ -12,6 +12,8 @@
 @interface ELiveSettingBindPhoneViewController ()
 {
     UIButton *pswNumberbtn;
+    UITextField *phoneTextL;
+    UITextField *pswTextL;
 }
 
 @end
@@ -35,17 +37,17 @@
     
     CGFloat offsetY = 80;
     
-    PHTextView *phoneTextL = [[PHTextView alloc]initWithFrame:CGRectMake(15, offsetY +15, Main_Screen_Width - 30, 40)];
+    phoneTextL = [[UITextField alloc]initWithFrame:CGRectMake(15, offsetY +15, Main_Screen_Width - 30, 40)];
     phoneTextL.keyboardType = UIKeyboardTypePhonePad;
-    phoneTextL.placeholder = @"请输入手机号";
+    phoneTextL.placeholder = @" 请输入手机号";
     phoneTextL.tintColor = EL_TEXTCOLOR_GRAY;
     phoneTextL.backgroundColor = [UIColor whiteColor];
     phoneTextL.textColor = EL_TEXTCOLOR_DARKGRAY;
     phoneTextL.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:phoneTextL];
     
-    PHTextView *pswTextL = [[PHTextView alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(phoneTextL.frame) + 10, Main_Screen_Width - 150, 40)];
-    pswTextL.placeholder = @"输入验证码";
+    pswTextL = [[UITextField alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(phoneTextL.frame) + 10, Main_Screen_Width - 150, 40)];
+    pswTextL.placeholder = @" 输入验证码";
     pswTextL.tintColor = EL_TEXTCOLOR_GRAY;
     pswTextL.keyboardType = UIKeyboardTypeDefault;
     pswTextL.backgroundColor = [UIColor whiteColor];
@@ -77,7 +79,24 @@
 }
 
 -(void)loginBtnClick{
+    if (phoneTextL.text.length <=0) {
+        [MBProgressHUD showError:@"输入手机号" toView:nil];
+        return;
+    }
+    if (pswTextL.text.length <=0) {
+        [MBProgressHUD showError:@"输入验证码" toView:nil];
+        return;
+    }
     
+    [[CloudManager sharedInstance]asyncUserBindPhoneWithCode:phoneTextL.text code:pswTextL.text completion:^(NSString *ret, CMError *error) {
+        if (error ==nil) {
+             [MBProgressHUD showError:@"绑定成功" toView:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [MBProgressHUD showError:@"绑定失败" toView:nil];
+        }
+    }];
+
 }
 
 -(void)pswNumberBtnClick{

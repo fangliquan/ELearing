@@ -118,7 +118,7 @@
         [unself.navigationController pushViewController:focusVc animated:YES];
     };
     self.headerView.userHeaderViewHandler = ^{
-        if ([CloudManager sharedInstance].currentAccount.loginInfo.isLogined) {
+        if ([CloudManager sharedInstance].currentAccount.userLoginResponse.isLogined) {
             ELiveSettingMineInfoViewController *courseVc = [[ELiveSettingMineInfoViewController alloc]init];
             courseVc.reloadCurrentLoginStateHandler = ^{
                 [unself createHeaderView];
@@ -264,7 +264,7 @@
 
 -(void)didUpdateUserInfoWithUserInfoResponse:(UserLoginResponse *)userLoginResponse{
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self createHeaderView];
+    
         ELiveSettingModel *settingModel = [[ELiveSettingModel alloc]init];
         if (userLoginResponse.is_teacher) {
      

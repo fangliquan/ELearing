@@ -30,6 +30,7 @@
 
     [self configtableView];
     [self loadApplyState];
+    [self loadUserInfo];
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenTextView)]];
 }
 
@@ -153,9 +154,17 @@
     
 }
 
--(void)quitAppClick{
-    
+-(void)loadUserInfo{
+    [[CloudManager sharedInstance]asyncUpdateUserTruthInfo:^(UserTruthInfo *ret, CMError *error) {
+        if (error ==nil) {
+            self.userTruthInfo = ret;
+            [self.tableView reloadData];
+        }else{
+            //[MBProgressHUD showError:ret toView:nil];
+        }
+    }];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

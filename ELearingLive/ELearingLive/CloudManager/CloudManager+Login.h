@@ -14,12 +14,15 @@
 //init
 - (void)asyncCurrrentDeviceInit:(void (^)(VersionInfo *ret,CMError *error))completion;
 
+//登录
+- (void)asyncUserLoginWithPhoneNumberAndCode:(NSString *)phoneNumber code:(NSString *)code completion:(void (^)(UserLoginResponse *ret, CMError * error))completion ;
 
-- (void)asyncUserLoginWithPhoneNumber:(NSString *)phoneNumber password:(NSString *)password completion:(void (^)(UserLoginResponse *ret, CMError * error))completion ;
-
-
+//反馈
 - (void)asyncUserFeedBackWithContent:(NSString *)content completion:(void (^)(NSString *ret, CMError * error))completion ;
-//注册
+
+
+//绑定手机号
+- (void)asyncUserBindPhoneWithCode:(NSString *)phoneNumber code:(NSString *)code completion:(void (^)(NSString *ret, CMError * error))completion ;
 
 
 //注册

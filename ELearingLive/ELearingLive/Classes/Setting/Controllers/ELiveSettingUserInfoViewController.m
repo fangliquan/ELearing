@@ -9,12 +9,14 @@
 #import "ELiveSettingUserInfoViewController.h"
 #import "ELiveSettingUserInfoViewCell.h"
 #import "ELiveSettingBindPhoneViewController.h"
+#import "UserTruthInfo.h"
+#import "CloudManager+Teacher.h"
 @interface ELiveSettingUserInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) NSMutableArray *section1Arrays;
 
 @property(nonatomic,strong) UITableView *tableView;
-
+@property(nonatomic,strong) UserTruthInfo *userTruthInfo;
 
 @end
 
@@ -25,39 +27,43 @@
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.section1Arrays = [NSMutableArray array];
     
-
+    self.userTruthInfo = [[UserTruthInfo alloc]init];
+    _userTruthInfo.mobile = [CloudManager sharedInstance].currentAccount.userLoginResponse.phone;
+    _userTruthInfo.real_name = [CloudManager sharedInstance].currentAccount.userLoginResponse.nickname;
     ELiveSettingUserInfoModel *settingModel1 = [[ELiveSettingUserInfoModel alloc]init];
     settingModel1.type =ELive_Set_User_Name;
-    settingModel1.title = @"姓名";
+    settingModel1.title = @"姓名:";
     [self.section1Arrays addObject:settingModel1];
     
     
     ELiveSettingUserInfoModel *settingModel2 = [[ELiveSettingUserInfoModel alloc]init];
     settingModel2.type =ELive_Set_User_Age;
-    settingModel2.title = @"年龄";
+    settingModel2.title = @"年龄:";
     [self.section1Arrays addObject:settingModel2];
     
     
     ELiveSettingUserInfoModel *settingModel3 = [[ELiveSettingUserInfoModel alloc]init];
     settingModel3.type =ELive_Set_User_Profession;
-    settingModel3.title = @"职业";
+    settingModel3.title = @"职业:";
     [self.section1Arrays addObject:settingModel3];
     
     
     ELiveSettingUserInfoModel *settingModel4 = [[ELiveSettingUserInfoModel alloc]init];
     settingModel4.type =ELive_Set_User_Commpany;
-    settingModel4.title = @"公司";
+    settingModel4.title = @"公司:";
     [self.section1Arrays addObject:settingModel4];
     
     
     ELiveSettingUserInfoModel *settingModel5 = [[ELiveSettingUserInfoModel alloc]init];
     settingModel5.type =ELive_Set_User_Phone;
-    settingModel5.title = @"手机";
+    settingModel5.title = @"手机:";
     [self.section1Arrays addObject:settingModel5];
     
     
     [self configtableView];
     [self createFooterView];
+    
+    [self loadUserInfo];
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenTextView)]];
 }
 
@@ -80,12 +86,37 @@
 }
 
 -(void)saveUserInfoClick{
+    if (self.userTruthInfo.real_name.length <=0) {
+        [MBProgressHUD showError:@"输入姓名" toView:nil];
+        return;
+    }
+    if (self.userTruthInfo.mobile.length <=0) {
+        [MBProgressHUD showError:@"输入手机号" toView:nil];
+        return;
+    }
     
+    [[CloudManager sharedInstance]asyncUpdateUserTruthInfo:self.userTruthInfo completion:^(NSString *ret, CMError *error) {
+        if (error ==nil) {
+            [MBProgressHUD showSuccess:@"修改成功" toView:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [MBProgressHUD showError:ret toView:nil];
+        }
+    }];
 }
 
--(void)quitAppClick{
-    
+
+-(void)loadUserInfo{
+    [[CloudManager sharedInstance]asyncUpdateUserTruthInfo:^(UserTruthInfo *ret, CMError *error) {
+        if (error ==nil) {
+            self.userTruthInfo = ret;
+            [self.tableView reloadData];
+        }else{
+            //[MBProgressHUD showError:ret toView:nil];
+        }
+    }];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -120,18 +151,18 @@
     ELiveSettingUserInfoViewCell *cell = [ELiveSettingUserInfoViewCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.settingUserInfoModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
-    
+    cell.userTruthInfo = self.userTruthInfo;
     //cell.eLeaingNewsItemCellFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ELiveSettingUserInfoModel *settingUserInfoModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
-    if (settingUserInfoModel.type ==ELive_Set_User_Phone) {
-        ELiveSettingBindPhoneViewController *vc = [[ELiveSettingBindPhoneViewController alloc]init];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+//    ELiveSettingUserInfoModel *settingUserInfoModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
+//    if (settingUserInfoModel.type ==ELive_Set_User_Phone) {
+//        ELiveSettingBindPhoneViewController *vc = [[ELiveSettingBindPhoneViewController alloc]init];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
 
 }
 

@@ -60,7 +60,7 @@
     userNameLabel.textColor = [UIColor whiteColor];
     [self addSubview:userNameLabel];
     
-    if ([CloudManager sharedInstance].currentAccount.loginInfo.isLogined) {
+    if ([CloudManager sharedInstance].currentAccount.userLoginResponse.isLogined) {
         [userHeader setImageWithURL:[NSURL URLWithString:[CloudManager sharedInstance].currentAccount.userLoginResponse.avatar] placeholderImage:[UIImage imageNamed:@"image_default_userheader"]];
          userNameLabel.text = [CloudManager sharedInstance].currentAccount.userLoginResponse.nickname;
     }else{

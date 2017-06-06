@@ -130,5 +130,11 @@
 -(NSString *)uriUcAuthTeacher;
 //是否讲师认证
 -(NSString *)uriUcIsTeacher;
+//编辑用户信息
+-(NSString *)uriUcEditUser;
+//用户信息
+-(NSString *)uriUcUserInfo;
 
+///uc/bindmobile绑定手机号
+-(NSString *)uriUcBindMobile;
 @end

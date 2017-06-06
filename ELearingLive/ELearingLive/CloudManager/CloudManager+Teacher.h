@@ -13,6 +13,14 @@
 - (void)asyncUserApplyForTeacher:(UserTruthInfo *)info  completion:(void (^)(NSString *ret, CMError *error))completion;
 
 
+- (void)asyncUpdateUserTruthInfo:(UserTruthInfo *)info  completion:(void (^)(NSString *ret, CMError *error))completion;
+
+
+
+- (void)asyncUpdateUserTruthInfo:(void (^)(UserTruthInfo *ret, CMError *error))completion;
+
+
+
 
 - (void)asyncUserIsApplyForTeacher:(void (^)(NSInteger ret, CMError *error))completion;
 

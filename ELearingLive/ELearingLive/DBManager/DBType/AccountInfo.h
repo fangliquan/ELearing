@@ -54,8 +54,8 @@
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *deviceId;
 @property (nonatomic, copy)   NSString * token;
-
 @property(nonatomic,assign) NSInteger isLogined;
+
 
 @end
 
@@ -85,6 +85,8 @@
 @property(nonatomic,assign) NSInteger  is_teacher;
 
 @property (nonatomic, copy)  NSString *token;
+
+@property(nonatomic,assign) NSInteger isLogined;
 
 @end
 

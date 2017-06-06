@@ -65,7 +65,7 @@
     [pswNumberbtn addTarget:self action:@selector(pswNumberBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pswNumberbtn];
     
-   UIButton  *loginbtn = [[UIButton alloc]initWithFrame:CGRectMake(30, CGRectGetMaxY(pswTextL.frame) + 40, Main_Screen_Width - 60, 40)];
+    UIButton  *loginbtn = [[UIButton alloc]initWithFrame:CGRectMake(30, CGRectGetMaxY(pswTextL.frame) + 40, Main_Screen_Width - 60, 40)];
     loginbtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [loginbtn setTitle:@"登录" forState:UIControlStateNormal];
     [loginbtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -129,7 +129,7 @@
         return;
     }
     
-    [[CloudManager sharedInstance]asyncUserLoginWithPhoneNumber:phoneTextL.text password:pswTextL.text completion:^(UserLoginResponse *ret, CMError *error) {
+    [[CloudManager sharedInstance]asyncUserLoginWithPhoneNumberAndCode:phoneTextL.text code:pswTextL.text completion:^(UserLoginResponse *ret, CMError *error) {
         if (error ==nil &&ret) {
             if (self.loginSuccessRefreshHandler) {
                 self.loginSuccessRefreshHandler();

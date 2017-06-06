@@ -74,18 +74,33 @@
     
     titleLable.text = settingUserInfoModel.title;
     phTextView.text = settingUserInfoModel.content;
+
     if (settingUserInfoModel.type ==ELive_Set_User_Phone) {
         phTextView.placeholder = @"请输入手机号";
-        phTextView.text = [CloudManager sharedInstance].currentAccount.userLoginResponse.phone;
+        phTextView.text =_userTruthInfo.mobile;
     }else if (settingUserInfoModel.type ==ELive_Set_User_Name) {
         phTextView.placeholder = @"请输入姓名";
+        phTextView.text = _userTruthInfo.real_name;
     }else if (settingUserInfoModel.type ==ELive_Set_User_ID) {
         phTextView.placeholder = @"请输入身份证";
+        phTextView.text =_userTruthInfo.idcard;
     }else if (settingUserInfoModel.type ==ELive_Set_User_Email) {
         phTextView.placeholder = @"请输入邮箱";
+         phTextView.text =_userTruthInfo.email;
     }else if (settingUserInfoModel.type ==ELive_Set_User_Desp) {
         phTextView.placeholder = @"请输入简介";
+         phTextView.text =_userTruthInfo.intro;
+    }else if (settingUserInfoModel.type ==ELive_Set_User_Commpany) {
+        phTextView.placeholder = @"请输入公司名称";
+         phTextView.text =_userTruthInfo.commpany;
+    }else if (settingUserInfoModel.type ==ELive_Set_User_Profession) {
+        phTextView.placeholder = @"请输入职业";
+         phTextView.text =_userTruthInfo.profession;
+    }else if (settingUserInfoModel.type ==ELive_Set_User_Age) {
+        phTextView.placeholder = @"请输入年龄";
+        phTextView.text =_userTruthInfo.age;
     }
+
     
     
 
@@ -105,6 +120,12 @@
             _userTruthInfo.email = phTextView.text;
         }else if (_settingUserInfoModel.type ==ELive_Set_User_Desp) {
            _userTruthInfo.intro = phTextView.text;
+        }else if (_settingUserInfoModel.type ==ELive_Set_User_Commpany) {
+            _userTruthInfo.commpany = phTextView.text;
+        }else if (_settingUserInfoModel.type ==ELive_Set_User_Profession) {
+            _userTruthInfo.profession = phTextView.text;
+        }else if (_settingUserInfoModel.type ==ELive_Set_User_Age) {
+            _userTruthInfo.age = phTextView.text;
         }
     }
 }

@@ -179,6 +179,29 @@
 
 @implementation UserLoginResponse
 
+@synthesize  userId;
 
+@synthesize phone;
+
+@synthesize nickname;
+
+@synthesize avatar;
+
+@synthesize is_teacher;
+
+@synthesize token;
+
+@synthesize  isLogined;
+
+
++(NSString *)getPrimaryKey
+{
+    return @"userId";
+}
+
++(NSString *)getTableName
+{
+    return @"UserLoginResponse";
+}
 
 @end

@@ -473,6 +473,26 @@
     return ret;
 }
 
+-(NSString *)uriUcEditUser{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/uc/edituser",ret];
+    return ret;
+}
+-(NSString *)uriUcUserInfo{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/uc/userinfo",ret];
+    return ret;
+}
+
+-(NSString *)uriUcBindMobile{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/uc/bindmobile",ret];
+    return ret;
+}
+
 
 
 @end
