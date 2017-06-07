@@ -53,15 +53,9 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width *3.2/5.0, 0)];
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     CGFloat offsetY = 110;
-    NSMutableArray *imageArrays  = [NSMutableArray array];
-    
-    for (int i = 0; i < 3; i ++) {
-        [imageArrays addObject:@"http://www2.autoimg.cn/newsdfs/g13/M06/94/4E/640x320_0_autohomecar__wKjBylkNnG2AcWP1AAr60-uT8BI378.jpg"];
-    }
-    LoopView *headerLoopView =[[LoopView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width *3.2/5.0, 100) imageUrls:imageArrays loopPictures:imageArrays handler:^(UIViewController *vc) {
-        
-    }];
-    
+
+    UIImageView *headerLoopView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width *3.2/5.0, 100)];
+    [headerLoopView setImageWithURL:[NSURL URLWithString:@"http://www2.autoimg.cn/newsdfs/g13/M06/94/4E/640x320_0_autohomecar__wKjBylkNnG2AcWP1AAr60-uT8BI378.jpg"] placeholderImage:EL_Default_Image];
     [headerView addSubview:headerLoopView];
     
     CGRect oldFrame = headerView.frame;

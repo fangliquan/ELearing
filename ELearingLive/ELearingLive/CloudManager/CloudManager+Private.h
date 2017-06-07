@@ -137,4 +137,8 @@
 
 ///uc/bindmobile绑定手机号
 -(NSString *)uriUcBindMobile;
+
+///uc/bindmobile绑定手机号
+-(NSString *)uriHomeIndex;
+
 @end

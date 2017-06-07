@@ -145,7 +145,20 @@
     return cell;
 }
 
-+(CGFloat)cellHeightWithModel:(NSString *)str{
+-(void)setIndexRecommandModel:(IndexRecommandModel *)indexRecommandModel{
+    if (indexRecommandModel) {
+        _indexRecommandModel = indexRecommandModel;
+        [iconView setImageWithURL:[NSURL URLWithString:indexRecommandModel.thumb] placeholderImage:EL_Default_Image];
+        stateLabel.text = indexRecommandModel.status;
+        
+        [userHeaderIcon setImageWithURL:[NSURL URLWithString:indexRecommandModel.teacher_avatar] placeholderImage:EL_Default_Image];
+        
+        titleLabel.text = indexRecommandModel.name;
+        bottomDespLabel.text = [NSString stringWithFormat:@"%@ %@", indexRecommandModel.teacher_name,indexRecommandModel.time];
+    }
+}
+
++(CGFloat)cellHeightWithModel:(IndexRecommandModel *)str{
     CGFloat height = Main_Screen_Width *7/16.0 + 8;
     return height;
 }

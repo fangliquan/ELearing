@@ -59,19 +59,24 @@
     }];
     
 }
--(void)setTitleStr:(NSString *)titleStr{
-    _titleStr = titleStr;
-    titleLabel.text = titleStr;
+
+-(void)setCateModel:(IndexCatesModel *)cateModel{
+    if (cateModel) {
+        _cateModel = cateModel;
+        titleLabel.text = cateModel.name;
+        if ([cateModel.catid isEqualToString:@"-100000"]) {
+            iconView.image = [UIImage imageNamed:@"home_tt_05_"];
+        }else{
+            [iconView setImageWithURL:[NSURL URLWithString:cateModel.thumb] placeholderImage:EL_Default_Image];
+        }
+        
+    }
 }
 
--(void)setImageStr:(NSString *)imageStr{
-    _imageStr = imageStr;
-    iconView.image = [UIImage imageNamed:imageStr];
-}
 
 -(void)couseItemClick{
     if (self.lookCourseListHandler) {
-        self.lookCourseListHandler(self.tag);
+        self.lookCourseListHandler(_cateModel);
     }
 }
 @end

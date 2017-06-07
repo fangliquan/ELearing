@@ -1,6 +1,6 @@
 //
 //  LoopView.m
-//  wwface
+//  GDMall
 //
 //  Created by James on 15/5/8.
 //  Copyright (c) 2015年 WangChongyang. All rights reserved.
@@ -16,10 +16,8 @@
     NSArray *_dataSource;
     NSArray *_loopPicturesArray;
     NSTimer *_timer;
-    
     void (^_callBack)(NSInteger selectIndex);
     void (^_callBackViewController)(UIViewController * vc);
-    void (^_callBackVCAndIndex)(NSString * route, NSInteger currentIndex);
 }
 
 @end
@@ -32,17 +30,10 @@
         _dataSource = urls;
         _callBack = [handler copy];
         [self initialize];
+        
+        
     }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame imageUrls:(NSArray *)imageUrls loopPictures:(NSArray *)loopPictures completion:(void (^)(NSString * route, NSInteger selectIndex))handler {
-    if (self = [super initWithFrame:frame]) {
-        _dataSource = imageUrls;
-        _loopPicturesArray = loopPictures;
-        _callBackVCAndIndex = [handler copy];
-        [self initialize];
-    }
+    
     return self;
 }
 
@@ -51,7 +42,9 @@
         _dataSource = imageUrls;
         _loopPicturesArray = loopPictures;
         _callBackViewController = [handler copy];
+        
         [self initialize];
+        
     }
     return self;
 }
@@ -72,7 +65,7 @@
     _pageControl = [[UIPageControl alloc]init];
     _pageControl.numberOfPages = _dataSource.count;
     _pageControl.hidesForSinglePage = YES;
-    _pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+    _pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     _pageControl.pageIndicatorTintColor = [UIColor colorWithWhite:1 alpha:0.5];
     [self addSubview:_pageControl];
     
@@ -94,68 +87,94 @@
     }
     bool isRetrunVc = _loopPicturesArray.count >0?YES:NO;
     
-    for (NSInteger i = 0; i < count; i++) {
+    if (count <=0) {
         
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        if (isRetrunVc) {
-            [btn addTarget:self action:@selector(clickActionReturnVc:) forControlEvents:UIControlEventTouchUpInside];
-        } else {
-            [btn addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
-        }
+        UIImageView *btn = [[UIImageView alloc]init];
         [contentView addSubview:btn];
-        
-        NSString *url = nil;
-        if (i == 0) {
-            url = [_dataSource lastObject];
-            btn.tag = _dataSource.count - 1;
-        } else if (i == _dataSource.count + 1 && _dataSource.count > 1) {
-            url = [_dataSource firstObject];
-            btn.tag = 0;
-        } else {
-            url = _dataSource[i - 1];
-            btn.tag = i - 1;
-        }
-        btn.imageView.contentMode = UIViewContentModeScaleToFill;
-        btn.imageView.layer.masksToBounds = YES;
-        [btn setImageWithURL:[NSURL URLWithString:url] forState:UIControlStateNormal placeholderImage:EL_Default_Image];
-        
+        btn.tag = 0;
+        btn.contentMode = UIViewContentModeScaleAspectFit;
+        btn.layer.masksToBounds = YES;
+        btn.image = [UIImage imageNamed:@"default_bg.png"];
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.bottom.equalTo(contentView);
             make.left.equalTo(lastView ? lastView.mas_right : @0);
             make.width.equalTo(self.mas_width);
         }];
+        
         lastView = btn;
-        
-        UILabel *titleLabel = [[UILabel alloc]init];
-        titleLabel.text = @"xxxx";
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.textColor= [UIColor whiteColor];
-        //titleLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
-        titleLabel.font = [UIFont systemFontOfSize:16];
-        [btn addSubview:titleLabel];
-        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(btn.mas_bottom).mas_offset(-15);
-            make.left.equalTo(btn.mas_left).offset(0);
-            make.width.equalTo(@(Main_Screen_Width));
-            make.height.equalTo(@18);
-        }];
-        
+    }else{
+        for (NSInteger i = 0; i < count; i++) {
+            
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            if (isRetrunVc) {
+                [btn addTarget:self action:@selector(clickActionReturnVc:) forControlEvents:UIControlEventTouchUpInside];
+            }else{
+                [btn addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            
+            [contentView addSubview:btn];
+            
+            NSString *url = nil;
+            NSString *title = @"";
+            if (i == 0) {
+                url = [_dataSource lastObject];
+                IndexSliderModel *model = [_loopPicturesArray lastObject];
+                title = model.title;
+                btn.tag = _dataSource.count - 1;
+            }else if(i == _dataSource.count + 1 && _dataSource.count > 1) {
+                url = [_dataSource firstObject];
+                btn.tag = 0;
+                IndexSliderModel *model = [_loopPicturesArray firstObject];
+                title = model.title;
+            }else{
+                url = _dataSource[i - 1];
+                btn.tag = i - 1;
+                IndexSliderModel *model = _loopPicturesArray[i - 1];
+                title = model.title;
+            }
+            btn.imageView.contentMode = UIViewContentModeScaleToFill;
+            btn.imageView.layer.masksToBounds = YES;
+            [btn setImageWithURL:[NSURL URLWithString:url] forState:UIControlStateNormal placeholderImage:EL_Default_Image];
+            
+            [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.bottom.equalTo(contentView);
+                make.left.equalTo(lastView ? lastView.mas_right : @0);
+                make.width.equalTo(self.mas_width);
+            }];
+            
+            lastView = btn;
+            
+            
+            UILabel *titleLabel = [[UILabel alloc]init];
+            titleLabel.text = title;
+            titleLabel.textAlignment = NSTextAlignmentCenter;
+            titleLabel.textColor= [UIColor whiteColor];
+            //titleLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+            titleLabel.font = [UIFont systemFontOfSize:16];
+            [btn addSubview:titleLabel];
+            [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.bottom.equalTo(btn.mas_bottom).mas_offset(-15);
+                make.left.equalTo(btn.mas_left).offset(0);
+                make.width.equalTo(@(Main_Screen_Width));
+                make.height.equalTo(@18);
+            }];
+        }
+             
+    
     }
     
     [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(_sc);
         make.height.equalTo(_sc);
-        if (count > 0) {
-            make.right.equalTo(lastView.mas_right);
-        }else {
-            make.right.equalTo(self.mas_left);
-        }
+        
+        make.right.equalTo(lastView.mas_right);
+        
     }];
     
     if (count > 1) {
         _sc.contentSize = CGSizeMake((_dataSource.count + 2) * self.frame.size.width, self.frame.size.height);
         _sc.contentOffset = CGPointMake(self.frame.size.width, 0);
-        _timer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(timerLoop) userInfo:nil repeats:YES];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(timerLoop) userInfo:nil repeats:YES];
     }
 }
 
@@ -168,39 +187,48 @@
     if (point.x == self.frame.size.width * (_dataSource.count + 1)) {
         
         scrollView.contentOffset = CGPointMake(self.frame.size.width, 0);
+        
         _pageControl.currentPage = 0;
         
-    } else if (point.x == 0) {
+    }else if (point.x == 0){
         
         scrollView.contentOffset = CGPointMake(self.frame.size.width * _dataSource.count, 0);
+        
         _pageControl.currentPage = _dataSource.count - 1;
-    } else {
+        
+    }else {
+        
         NSInteger num = point.x/self.frame.size.width - 1;
+        
         _pageControl.currentPage = num;
-    }
-    if (_callBackVCAndIndex) {
-        _callBackVCAndIndex(nil, _pageControl.currentPage);
     }
 }
 
-- (void)timerLoop {
+-(void)timerLoop {
+    
     CGPoint point = _sc.contentOffset;
     
     if (point.x == self.frame.size.width * _dataSource.count) {
-        _sc.contentOffset = CGPointMake(self.frame.size.width, 0);
-        _pageControl.currentPage = 0;
-    } else {
-        CGFloat value = point.x - _pageControl.currentPage*CGRectGetWidth(self.frame);
-        value = fabs(value - CGRectGetWidth(self.frame));
         
-        if (value) return;
+        [UIView animateWithDuration:0.5 animations:^{
+            
+            _sc.contentOffset = CGPointMake(self.frame.size.width, 0);
+            
+            _pageControl.currentPage = 0;
+            
+        }];
+        
+    }else{
         
         point.x = point.x + self.frame.size.width;
         
         [UIView animateWithDuration:0.5 animations:^{
+            
             _sc.contentOffset = point;
         }];
+        
         int num = point.x / self.frame.size.width;
+        
         _pageControl.currentPage = num - 1;
     }
 }
@@ -212,46 +240,30 @@
 }
 
 - (void)clickActionReturnVc:(UIButton *)btn {
-    NSInteger index = btn.tag;
-    NSObject * loopPicModel = _loopPicturesArray.count >index? _loopPicturesArray[index] :nil;
-//    if ([loopPicModel isKindOfClass:[HedoneLoopPictureDTO class]]) {
-//        HedoneLoopPictureDTO *loopPic =(HedoneLoopPictureDTO*)loopPicModel;
-//        if (loopPic) {
-//            [self clickActionOperateWithLinkString:loopPic.location];
-//        }
-//    } else if ([loopPicModel isKindOfClass:[DiscoverLoopPic class]]) {
-//        DiscoverLoopPic *loopPic =(DiscoverLoopPic*)loopPicModel;
-//        if (loopPic) {
-//            [self clickActionOperateWithLinkString:loopPic.location];
-//        }
-//    } else if ([loopPicModel isKindOfClass:[GenDiscoverLoopPicture class]]) {
-//        GenDiscoverLoopPicture *loopPic =(GenDiscoverLoopPicture*)loopPicModel;
-//        if (loopPic) {
-//            [self clickActionOperateWithLinkString:loopPic.location];
-//        }
-//    } else if ([loopPicModel isKindOfClass:[HedoneAdRoute class]]) {
-//        HedoneAdRoute * loopPic = (HedoneAdRoute*)loopPicModel;
-//        if (loopPic) {
-//            [self clickActionOperateWithLinkString:loopPic.route];
-//        }
-//    } else if ([loopPicModel isKindOfClass:[HedoneUnitItem class]]) {
-//        HedoneUnitItem * unitItem = (HedoneUnitItem *)loopPicModel;
-//        if (unitItem) {
-//            [self clickActionOperateWithLinkString:unitItem.route];
-//        }
-//    }
-}
-
-- (void)clickActionOperateWithLinkString:(NSString *)route {
     if (_callBackViewController) {
-//        [WWUrlParsingManager parsingWithActionString:route result:^(UIViewController *viewController, NSURLRequest *request, BOOL succeed,WWUrlParsingModel *model) {
-//            if (viewController) {
-//                _callBackViewController(viewController);
+        
+        NSInteger index = btn.tag;
+        NSObject * loopPicModel = _loopPicturesArray.count >index? _loopPicturesArray[index] :nil;
+        if ([loopPicModel isKindOfClass:[IndexSliderModel class]]) {
+            IndexSliderModel *activity = (IndexSliderModel *)loopPicModel;
+            UIViewController *vc = nil;
+//            //添加判断
+//            
+//            if ([type isEqualToString:@"native"]) {
+//                ProductDetailViewController *vc1 = [[ProductDetailViewController alloc] init];
+//                vc1.hidesBottomBarWhenPushed = YES;
+//                vc1.goodId = [activity.extra.goodsId longLongValue];
+//                vc = vc1;
+//                
+//            }else if([type isEqualToString:@"webview"]){
+//                NSString *url = activity.linkUrl;
+//                TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURLString:url];
+//                webViewController.showActionButton = NO;
+//                webViewController.hidesBottomBarWhenPushed = YES;
+//                vc = webViewController;
 //            }
-//        }];
-    }
-    if (_callBackVCAndIndex) {
-        _callBackVCAndIndex(route, _pageControl.currentPage);
+            _callBackViewController(vc);
+        }
     }
 }
 
@@ -266,5 +278,12 @@
     _timer = nil;
 }
 
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end

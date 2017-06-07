@@ -6,7 +6,7 @@
 #import "GDHttpManager.h"
 #import "CloudManager+Login.h"
 #import "CloudManager+Private.h"
-//#import "CloudManager+Product.h"
+#import "CloudManager+Index.h"
 //#import "CloudManager+Address.h"
 //#import "CloudManager+Order.h"
 //#import "CloudManager+Account.h"

@@ -493,6 +493,13 @@
     return ret;
 }
 
+-(NSString *)uriHomeIndex{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/index/index",ret];
+    return ret;
+}
+
 
 
 @end

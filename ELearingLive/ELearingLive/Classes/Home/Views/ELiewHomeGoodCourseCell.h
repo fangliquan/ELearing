@@ -12,8 +12,8 @@
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 
-@property(nonatomic, strong) NSString *hedoneVedioDTO;
+@property(nonatomic, strong) IndexRecommandModel *indexRecommandModel;
 
 
-+(CGFloat)cellHeightWithModel:(NSString *)str;
++(CGFloat)cellHeightWithModel:(IndexRecommandModel *)str;
 @end

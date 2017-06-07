@@ -16,10 +16,13 @@
 #import "ELiveSearchCourseCateViewController.h"
 #import "ELiveSearchViewController.h"
 #import "GDSearchBar.h"
+#import "CloudManager+Index.h"
 @interface ELiveHomeMainViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) NSMutableArray *newsArrays;
 @property(nonatomic,strong) UITableView *tableView;
+
+@property(nonatomic,strong) HomeIndex *homeIndex;
 
 @end
 
@@ -28,13 +31,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.newsArrays = [NSMutableArray array];
-    for (int i = 0; i <10; i++) {
-//        ELeaingNewsItemCellFrame *itemF = [[ELeaingNewsItemCellFrame alloc]init];
-//        itemF.temp = @"aijda;kdf;af";
-        [self.newsArrays addObject:@""];
-    }
+
     [self configtableView];
-    [self createHeaderView];
+    [self getHomdeIndexData];
+
     [self setupNavigationBar];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:nil action:nil];
     // Do any additional setup after loading the view.
@@ -67,59 +67,77 @@
     };
 }
 
+-(void)getHomdeIndexData{
+    [[CloudManager sharedInstance]asyncGetHomeIndexData:^(HomeIndex *ret, CMError *error) {
+        if (error ==nil) {
+            self.homeIndex = ret;
+            self.newsArrays = [NSMutableArray arrayWithArray:ret.recommand];
+            [self createHeaderView];
+            [self.tableView reloadData];
+        }else{
+            
+        }
+    }];
+}
 
 -(void)createHeaderView{
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0)];
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    CGFloat offsetY = 180;
-    NSMutableArray *imageArrays  = [NSMutableArray array];
-    
-    for (int i = 0; i < 3; i ++) {
-        [imageArrays addObject:@"http://www2.autoimg.cn/newsdfs/g13/M06/94/4E/640x320_0_autohomecar__wKjBylkNnG2AcWP1AAr60-uT8BI378.jpg"];
-    }
-    LoopView *headerLoopView =[[LoopView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 180) imageUrls:imageArrays loopPictures:imageArrays handler:^(UIViewController *vc) {
+    CGFloat offsetY = 0;
+    if (_homeIndex.slider.count >0) {
+        offsetY +=180;
+        NSMutableArray *imageArrays  = [NSMutableArray array];
         
-    }];
-    
-    [headerView addSubview:headerLoopView];
-    CGFloat margingY = 8;
-    offsetY +=margingY;
-    CGFloat itemWidth = Main_Screen_Width/5.0;
-    CGFloat itemHeight = itemWidth *68/98.0;
-    CGFloat height = itemHeight + margingY + 20 + margingY;
-    UIView *courseView = [[UIView alloc]initWithFrame:CGRectMake(0, offsetY, Main_Screen_Width, height)];
-    courseView.backgroundColor = [UIColor whiteColor];
-    for (int i = 1; i <6; i ++) {
-        ELiveHomeClassesHeaderView *headerItem = [[ELiveHomeClassesHeaderView alloc]initWithFrame:CGRectMake((i -1) *itemWidth, margingY, itemWidth, itemWidth *68/98.0)];
-        headerItem.titleStr = i ==5? @"更多":[NSString stringWithFormat:@"课程%d",i];
-        headerItem.imageStr = [NSString stringWithFormat:@"home_tt_0%d_",i];
-        headerItem.tag = i;
-        headerItem.lookCourseListHandler =^(NSInteger index){
-            if (index ==5) {
-                [self moreCourseClick];
-            }else{
-                ELiveCourseListViewController *eliveVc = [[ELiveCourseListViewController alloc]init];
-                eliveVc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:eliveVc animated:YES];
-            }
-
-        };
-        [courseView addSubview:headerItem];
+        for (int i = 0; i < _homeIndex.slider.count; i ++) {
+            IndexSliderModel *slider = _homeIndex.slider[i];
+            [imageArrays addObject:slider.thumb];
+        }
+        LoopView *headerLoopView =[[LoopView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 180) imageUrls:imageArrays loopPictures:_homeIndex.slider handler:^(UIViewController *vc) {
+            
+        }];
+        [headerView addSubview:headerLoopView];
     }
+
+    NSMutableArray *catesArray = [NSMutableArray arrayWithArray:_homeIndex.cates];
+    IndexCatesModel *moreCate  = [[IndexCatesModel alloc]init];
+    moreCate.catid = @"-100000";
+    moreCate.name = @"更多";
+    [catesArray addObject:moreCate];
     
-//    UILabel *moreLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, margingY + itemHeight + margingY *1.8, Main_Screen_Width - 20, 17)];
-//    moreLabel.textAlignment = NSTextAlignmentRight;
-//    moreLabel.text= @"更多课程>";
-//    moreLabel.textColor = EL_TEXTCOLOR_GRAY;
-//    moreLabel.font = [UIFont systemFontOfSize:14];
-//    moreLabel.userInteractionEnabled = YES;
-//    [moreLabel addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(moreCourseClick)]];
-    //[courseView addSubview:moreLabel];
-    
-    [headerView addSubview:courseView];
-    offsetY +=height;
-    offsetY += margingY;
+    if (catesArray.count >0) {
+        CGFloat margingY = 8;
+        offsetY += margingY;
+        CGFloat itemWidth = Main_Screen_Width/5.0;
+        CGFloat itemHeight = itemWidth *68/98.0;
+        CGFloat height = itemHeight + margingY + 20 + margingY;
+        UIView *courseView = [[UIView alloc]initWithFrame:CGRectMake(0, offsetY, Main_Screen_Width, height)];
+        courseView.backgroundColor = [UIColor whiteColor];
+        __unsafe_unretained typeof(self) unself = self;
+        NSInteger catesCount = catesArray.count;
+        for (int i = 1; i <catesCount; i ++) {
+            IndexCatesModel *cateModel = catesArray.count >i?catesArray[i]:nil;
+            ELiveHomeClassesHeaderView *headerItem = [[ELiveHomeClassesHeaderView alloc]initWithFrame:CGRectMake((i -1) *itemWidth, margingY, itemWidth, itemWidth *68/98.0)];
+            headerItem.cateModel = cateModel;
+            headerItem.tag = i;
+            headerItem.lookCourseListHandler =^(IndexCatesModel *model){
+                if ([model.catid isEqualToString:@"-100000"]) {
+                    [unself moreCourseClick];
+                }else{
+                    ELiveCourseListViewController *eliveVc = [[ELiveCourseListViewController alloc]init];
+                    eliveVc.hidesBottomBarWhenPushed = YES;
+                    [unself.navigationController pushViewController:eliveVc animated:YES];
+                }
+                
+            };
+            [courseView addSubview:headerItem];
+        }
+        
+        [headerView addSubview:courseView];
+        offsetY +=height;
+        offsetY += margingY;
+    }
+
     CGRect oldFrame = headerView.frame;
     oldFrame.size.height = offsetY;
     
@@ -176,14 +194,14 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-   // ELeaingNewsItemCellFrame *itemFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
+    IndexRecommandModel *model = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
     
-    return [ELiewHomeGoodCourseCell cellHeightWithModel:@""];
+    return [ELiewHomeGoodCourseCell cellHeightWithModel:model];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELiewHomeGoodCourseCell *cell = [ELiewHomeGoodCourseCell cellWithTableView:tableView];
-   //cell.eLeaingNewsItemCellFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
+    cell.indexRecommandModel = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
     return cell;
 }
 

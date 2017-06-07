@@ -83,6 +83,8 @@
 		0A54A3CC1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3CB1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.m */; };
 		0A57F5641EE5B4640071D5D6 /* CloudManager+Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A57F5631EE5B4640071D5D6 /* CloudManager+Teacher.m */; };
 		0A57F5671EE5B5980071D5D6 /* UserTruthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A57F5661EE5B5980071D5D6 /* UserTruthInfo.m */; };
+		0A57F56A1EE700EE0071D5D6 /* CloudManager+Index.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A57F5691EE700EE0071D5D6 /* CloudManager+Index.m */; };
+		0A57F56D1EE7059A0071D5D6 /* HomeIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A57F56C1EE7059A0071D5D6 /* HomeIndex.m */; };
 		0A66035E1EDF026200927433 /* RPMDeviceManager+Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A66030B1EDF026200927433 /* RPMDeviceManager+Device.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0A66035F1EDF026200927433 /* RPMDeviceManager+OS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A66030D1EDF026200927433 /* RPMDeviceManager+OS.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0A6603601EDF026200927433 /* RPMDeviceManager+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A66030F1EDF026200927433 /* RPMDeviceManager+Private.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -428,6 +430,10 @@
 		0A57F5631EE5B4640071D5D6 /* CloudManager+Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CloudManager+Teacher.m"; sourceTree = "<group>"; };
 		0A57F5651EE5B5980071D5D6 /* UserTruthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTruthInfo.h; sourceTree = "<group>"; };
 		0A57F5661EE5B5980071D5D6 /* UserTruthInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTruthInfo.m; sourceTree = "<group>"; };
+		0A57F5681EE700EE0071D5D6 /* CloudManager+Index.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CloudManager+Index.h"; sourceTree = "<group>"; };
+		0A57F5691EE700EE0071D5D6 /* CloudManager+Index.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CloudManager+Index.m"; sourceTree = "<group>"; };
+		0A57F56B1EE7059A0071D5D6 /* HomeIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeIndex.h; sourceTree = "<group>"; };
+		0A57F56C1EE7059A0071D5D6 /* HomeIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeIndex.m; sourceTree = "<group>"; };
 		0A66030A1EDF026200927433 /* RPMDeviceManager+Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RPMDeviceManager+Device.h"; sourceTree = "<group>"; };
 		0A66030B1EDF026200927433 /* RPMDeviceManager+Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RPMDeviceManager+Device.m"; sourceTree = "<group>"; };
 		0A66030C1EDF026200927433 /* RPMDeviceManager+OS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RPMDeviceManager+OS.h"; sourceTree = "<group>"; };
@@ -1366,6 +1372,8 @@
 		0A6603DC1EDF064400927433 /* CloudManager */ = {
 			isa = PBXGroup;
 			children = (
+				0A57F5681EE700EE0071D5D6 /* CloudManager+Index.h */,
+				0A57F5691EE700EE0071D5D6 /* CloudManager+Index.m */,
 				0A57F5621EE5B4640071D5D6 /* CloudManager+Teacher.h */,
 				0A57F5631EE5B4640071D5D6 /* CloudManager+Teacher.m */,
 				0A66040E1EDFA3F200927433 /* CloudManager+Login.h */,
@@ -1417,6 +1425,8 @@
 				0A6603FA1EDF064400927433 /* VersionInfo.m */,
 				0A57F5651EE5B5980071D5D6 /* UserTruthInfo.h */,
 				0A57F5661EE5B5980071D5D6 /* UserTruthInfo.m */,
+				0A57F56B1EE7059A0071D5D6 /* HomeIndex.h */,
+				0A57F56C1EE7059A0071D5D6 /* HomeIndex.m */,
 			);
 			path = DBType;
 			sourceTree = "<group>";
@@ -2342,6 +2352,7 @@
 				0A54A3841ED31F3200421CC5 /* MXSegmentedPager+ParallaxHeader.m in Sources */,
 				0A6603731EDF026200927433 /* README.md in Sources */,
 				0A54A3C51ED47C2500421CC5 /* ELiveVCManagerHelper.m in Sources */,
+				0A57F56A1EE700EE0071D5D6 /* CloudManager+Index.m in Sources */,
 				0AEF09931EBED84E0065A22B /* MJRefreshNormalHeader.m in Sources */,
 				0AEF092B1EBECF900065A22B /* NSArray+BlocksKit.m in Sources */,
 				0AEF09961EBED84E0065A22B /* MJRefreshConst.m in Sources */,
@@ -2515,6 +2526,7 @@
 				0A6604011EDF064500927433 /* DBManager+SystemInfo.m in Sources */,
 				0A6603D71EDF05B500927433 /* UIButton+AFNetworking.m in Sources */,
 				0A66036B1EDF026200927433 /* FMResultSet.m in Sources */,
+				0A57F56D1EE7059A0071D5D6 /* HomeIndex.m in Sources */,
 				0AB0ED341EDD1A2200270C9C /* ELiveSettingUserInfoViewController.m in Sources */,
 				0A6603701EDF026200927433 /* LKDBUtils.m in Sources */,
 				0A46AA961EDAC5590087E078 /* ELiveLoginViewController.m in Sources */,
