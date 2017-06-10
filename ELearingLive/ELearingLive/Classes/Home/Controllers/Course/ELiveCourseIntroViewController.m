@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createHeaderView];
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -34,11 +34,23 @@
 
 }
 
+-(void)setCourseDetailInfoModel:(CourseDetailInfoModel *)courseDetailInfoModel{
+    if (courseDetailInfoModel) {
+        _courseDetailInfoModel = courseDetailInfoModel;
+        
+        [self createHeaderView];
+    }
+   
+}
+
 -(void)createHeaderView{
+    
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 50)];
     headerView.backgroundColor = [UIColor whiteColor];
-    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 15, 90, 20)];
-    titleLabel.text = @"企业管理秘籍";
+    
+    CGFloat titleW =[WWTextManager textSizeWithStringZeroSpace:_courseDetailInfoModel.name width:Main_Screen_Width -10 - 80 fontSize:17].width + 2;
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 15, titleW, 20)];
+    titleLabel.text = _courseDetailInfoModel.name;
     titleLabel.textColor = EL_TEXTCOLOR_DARKGRAY;
     titleLabel.font = [UIFont systemFontOfSize:17];
     [headerView addSubview:titleLabel];
@@ -50,8 +62,14 @@
     priceLabel.font = [UIFont systemFontOfSize:17];
     [headerView addSubview:priceLabel];
     
+    if ([_courseDetailInfoModel.price isEqualToString:@"0.00"]) {
+        priceLabel.text = @"免费";
+    }else{
+       priceLabel.text = [NSString stringWithFormat:@"%@￥", _courseDetailInfoModel.price];
+    }
+    
     UILabel *commentLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 5,80, 20)];
-    commentLabel.text = @"45人报名";
+    commentLabel.text = [NSString stringWithFormat:@"%@阅读",_courseDetailInfoModel.hits];// @"45人报名";
     commentLabel.textColor = EL_TEXTCOLOR_GRAY;
     commentLabel.font = [UIFont systemFontOfSize:13];
     [headerView addSubview:commentLabel];
@@ -75,9 +93,9 @@
     courseTitleLabel.font = [UIFont systemFontOfSize:15];
     [headerView addSubview:courseTitleLabel];
     
-    
-    UILabel *courseDespLabel = [[UILabel alloc]initWithFrame:CGRectMake(10,CGRectGetMaxY(courseTitleLabel.frame)+ 6, Main_Screen_Width - 20, 70)];
-    courseDespLabel.text = @"课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述";
+    CGFloat courseDespH = [WWTextManager textSizeWithStringZeroSpace:_courseDetailInfoModel.desc width:Main_Screen_Width - 20 fontSize:14].height +2;
+    UILabel *courseDespLabel = [[UILabel alloc]initWithFrame:CGRectMake(10,CGRectGetMaxY(courseTitleLabel.frame)+ 6, Main_Screen_Width - 20, courseDespH)];
+    courseDespLabel.text = _courseDetailInfoModel.desc;
     courseDespLabel.textColor = EL_TEXTCOLOR_GRAY;
     courseDespLabel.font = [UIFont systemFontOfSize:14];
     courseDespLabel.numberOfLines = 0;
@@ -95,92 +113,45 @@
     userHeader.layer.cornerRadius = 25;
     userHeader.userInteractionEnabled = YES;
     [userHeader addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userHomePageClick)]];
-    userHeader.image = [UIImage imageNamed:@"image_default_userheader"];
     [headerView addSubview:userHeader];
     
+    [userHeader setImageWithURL:[NSURL URLWithString:_courseDetailInfoModel.teacehr_avatar] placeholderImage:[UIImage imageNamed:@"image_default_userheader"]];
     
     
     UILabel *userNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(userHeader.frame) +6, CGRectGetMaxY(line2.frame) + 10, Main_Screen_Width - CGRectGetMaxX(userHeader.frame) - 12, 80)];
     userNameLabel.numberOfLines = 2;
-    userNameLabel.text = @"王大大";
+    userNameLabel.text = _courseDetailInfoModel.teacher_name;
     userNameLabel.font = [UIFont systemFontOfSize:EL_TEXTFONT_FLOAT_TITLE];
     userNameLabel.textColor = EL_TEXTCOLOR_DARKGRAY;
     [headerView addSubview:userNameLabel];
     
-    headerView.frame = CGRectMake(0, 0, Main_Screen_Width, CGRectGetMaxY(userNameLabel.frame) + 15);
+    CGFloat teacherIntroDespH = [WWTextManager textSizeWithStringZeroSpace:_courseDetailInfoModel.teacher_intro width:Main_Screen_Width - CGRectGetMaxX(userHeader.frame) - 16 fontSize:14].height +2;
+    UILabel *teacherIntroLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(userHeader.frame) +6,CGRectGetMaxY(userNameLabel.frame)+ 6, Main_Screen_Width - CGRectGetMaxX(userHeader.frame) - 16, teacherIntroDespH)];
+    teacherIntroLabel.text = _courseDetailInfoModel.teacher_intro;
+    teacherIntroLabel.textColor = EL_TEXTCOLOR_GRAY;
+    teacherIntroLabel.font = [UIFont systemFontOfSize:14];
+    teacherIntroLabel.numberOfLines = 0;
+    [headerView addSubview:teacherIntroLabel];
+    
+    headerView.frame = CGRectMake(0, 0, Main_Screen_Width, CGRectGetMaxY(teacherIntroLabel.frame) + 15);
     self.tableView.tableHeaderView = headerView;
 }
 
 -(void)userHomePageClick{
     if (self.userHomePageHandler) {
-        self.userHomePageHandler();
+        self.userHomePageHandler(_courseDetailInfoModel.teacherid);
     }
 
 }
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+ return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+   return 0;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

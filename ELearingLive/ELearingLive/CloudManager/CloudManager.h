@@ -7,7 +7,7 @@
 #import "CloudManager+Login.h"
 #import "CloudManager+Private.h"
 #import "CloudManager+Index.h"
-//#import "CloudManager+Address.h"
+#import "CloudManager+Course.h"
 //#import "CloudManager+Order.h"
 //#import "CloudManager+Account.h"
 //#import "CloudManager+Common.h"

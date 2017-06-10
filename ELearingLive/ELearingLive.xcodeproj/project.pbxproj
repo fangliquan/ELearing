@@ -16,6 +16,8 @@
 		0A252A4A1EEA20A900DF60D7 /* UcTeacherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A252A491EEA20A900DF60D7 /* UcTeacherModel.m */; };
 		0A280DA61EEB8F20005FF3BB /* WWExceptionRemindManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A280DA51EEB8F20005FF3BB /* WWExceptionRemindManager.m */; };
 		0A280DA81EEB8FA7005FF3BB /* exception_EmptyDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A280DA71EEB8FA7005FF3BB /* exception_EmptyDefault.png */; };
+		0A280DAB1EEBA1BE005FF3BB /* CloudManager+Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A280DAA1EEBA1BE005FF3BB /* CloudManager+Course.m */; };
+		0A280DAE1EEBD46A005FF3BB /* UcCourseIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A280DAD1EEBD46A005FF3BB /* UcCourseIndex.m */; };
 		0A3A75221EC6C6BE000DE748 /* ELiveCourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */; };
 		0A46AA471ED7291D0087E078 /* ELiveMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA461ED7291D0087E078 /* ELiveMessageViewCell.m */; };
 		0A46AA4B1ED8729A0087E078 /* ELivePersonHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA4A1ED8729A0087E078 /* ELivePersonHomeViewController.m */; };
@@ -331,6 +333,10 @@
 		0A280DA41EEB8F20005FF3BB /* WWExceptionRemindManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWExceptionRemindManager.h; sourceTree = "<group>"; };
 		0A280DA51EEB8F20005FF3BB /* WWExceptionRemindManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWExceptionRemindManager.m; sourceTree = "<group>"; };
 		0A280DA71EEB8FA7005FF3BB /* exception_EmptyDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exception_EmptyDefault.png; sourceTree = "<group>"; };
+		0A280DA91EEBA1BE005FF3BB /* CloudManager+Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CloudManager+Course.h"; sourceTree = "<group>"; };
+		0A280DAA1EEBA1BE005FF3BB /* CloudManager+Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CloudManager+Course.m"; sourceTree = "<group>"; };
+		0A280DAC1EEBD46A005FF3BB /* UcCourseIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UcCourseIndex.h; sourceTree = "<group>"; };
+		0A280DAD1EEBD46A005FF3BB /* UcCourseIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UcCourseIndex.m; sourceTree = "<group>"; };
 		0A3A75201EC6C6BE000DE748 /* ELiveCourseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCourseListViewController.h; sourceTree = "<group>"; };
 		0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseListViewController.m; sourceTree = "<group>"; };
 		0A46AA451ED7291D0087E078 /* ELiveMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMessageViewCell.h; sourceTree = "<group>"; };
@@ -1377,6 +1383,8 @@
 		0A6603DC1EDF064400927433 /* CloudManager */ = {
 			isa = PBXGroup;
 			children = (
+				0A280DA91EEBA1BE005FF3BB /* CloudManager+Course.h */,
+				0A280DAA1EEBA1BE005FF3BB /* CloudManager+Course.m */,
 				0A57F5681EE700EE0071D5D6 /* CloudManager+Index.h */,
 				0A57F5691EE700EE0071D5D6 /* CloudManager+Index.m */,
 				0A57F5621EE5B4640071D5D6 /* CloudManager+Teacher.h */,
@@ -1432,6 +1440,8 @@
 				0A57F56C1EE7059A0071D5D6 /* HomeIndex.m */,
 				0A252A481EEA20A900DF60D7 /* UcTeacherModel.h */,
 				0A252A491EEA20A900DF60D7 /* UcTeacherModel.m */,
+				0A280DAC1EEBD46A005FF3BB /* UcCourseIndex.h */,
+				0A280DAD1EEBD46A005FF3BB /* UcCourseIndex.m */,
 			);
 			path = DBType;
 			sourceTree = "<group>";
@@ -2373,6 +2383,7 @@
 				0A6604091EDF064500927433 /* GDHttpManager.m in Sources */,
 				0AEF09461EBECF900065A22B /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				0A54A3891ED31F3200421CC5 /* NSLayoutConstraint+PureLayout.m in Sources */,
+				0A280DAB1EEBA1BE005FF3BB /* CloudManager+Course.m in Sources */,
 				0A66037E1EDF026200927433 /* YTKChainRequestAgent.m in Sources */,
 				0A57F5641EE5B4640071D5D6 /* CloudManager+Teacher.m in Sources */,
 				0AB0ED4C1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m in Sources */,
@@ -2483,6 +2494,7 @@
 				0A92A27B1EC1FF7F002C2811 /* ELiveCourseItemCell.m in Sources */,
 				0A66042B1EDFA82000927433 /* MJProperty.m in Sources */,
 				0A6603761EDF026200927433 /* NSDictionary+JSONExtensions.m in Sources */,
+				0A280DAE1EEBD46A005FF3BB /* UcCourseIndex.m in Sources */,
 				0AEF09911EBED84E0065A22B /* MJRefreshBackStateFooter.m in Sources */,
 				0AEF099A1EBED84E0065A22B /* WWRefreshStyle.m in Sources */,
 				0A6603691EDF026200927433 /* FMDatabasePool.m in Sources */,

@@ -11,4 +11,6 @@
 @interface ELiveCourseDetailHeaderView : UIView
 
 +(CGFloat)eLiveCourseDetailHeaderHeight;
+@property(nonatomic,strong) CourseDetailInfoModel *courseDetailInfoModel;
+
 @end

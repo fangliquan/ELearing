@@ -9,11 +9,16 @@
 #import "ELiveCourseCatalogViewController.h"
 #import "ELiveCourseCatalogCell.h"
 #import "ELiveCourseDetailViewController.h"
+#import "UcCourseIndex.h"
+
+#import "CloudManager+Course.h"
 @interface ELiveCourseCatalogViewController ()
 @property(nonatomic,strong) NSMutableArray *courseArrays;
 @end
 
 @implementation ELiveCourseCatalogViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -143,4 +143,21 @@
 ///uc/bindmobile绑定手机号
 -(NSString *)uriHomeIndex;
 
+///teacher/info 讲师主页
+-(NSString *)uriTeacherInfo;
+
+///teacher/courselist 讲师的课程列表
+-(NSString *)uriTeacherCourseList;
+//评价讲师 /teacher/evaluate
+-(NSString *)uriTeacherEvaluate;
+//评价讲师列表 /teacher/evaluatelist
+-(NSString *)uriTeacherEvaluateList;
+
+///course/categires 课程主分类
+-(NSString *)uriCourseCategires;
+///course/info 课程信息
+-(NSString *)uriCourserInfo;
+
+///course/chapterlist 课程详情目录
+-(NSString *)uriCourseChapterlist;
 @end

@@ -10,4 +10,6 @@
 #import "MXSegmentedPagerController.h"
 @interface ELiveCourseDetailViewController : MXSegmentedPagerController
 
+@property(nonatomic,strong) NSString *courseId;
+
 @end

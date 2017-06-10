@@ -509,7 +509,59 @@
     ret = [[NSString alloc] initWithFormat:@"%@/index/index",ret];
     return ret;
 }
+///teacher/info 讲师主页
+-(NSString *)uriTeacherInfo{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/teacher/info",ret];
+    return ret;
+}
+
+///teacher/courselist 讲师的课程列表
+-(NSString *)uriTeacherCourseList{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/teacher/courselist",ret];
+    return ret;
+}
+//评价讲师 /teacher/evaluate
+-(NSString *)uriTeacherEvaluate{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/teacher/evaluate",ret];
+    return ret;
+}
+//评价讲师列表 /teacher/evaluatelist
+-(NSString *)uriTeacherEvaluateList{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/teacher/evaluatelist",ret];
+    return ret;
+}
 
 
+
+///course/categires 课程主分类
+-(NSString *)uriCourseCategires{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/categires",ret];
+    return ret;
+}
+
+///course/info 课程信息
+-(NSString *)uriCourserInfo{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/info",ret];
+    return ret;
+}
+///course/chapterlist 课程详情目录
+-(NSString *)uriCourseChapterlist{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/info",ret];
+    return ret;
+}
 
 @end

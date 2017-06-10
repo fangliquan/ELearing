@@ -207,8 +207,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    IndexRecommandModel *model = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
+    
     ELiveCourseDetailViewController *detailVc = [[ELiveCourseDetailViewController alloc]init];
     detailVc.hidesBottomBarWhenPushed = YES;
+    detailVc.courseId = model.courseid;
     [self.navigationController pushViewController:detailVc animated:YES];
     
 }

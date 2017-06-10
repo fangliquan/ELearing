@@ -13,6 +13,8 @@
 #import "ELiveCourseCatalogViewController.h"
 #import "ELiveCourseEvaluateViewController.h"
 #import "ELivePersonHomeViewController.h"
+#import "CloudManager+Course.h"
+#import "UcCourseIndex.h"
 @interface ELiveCourseDetailViewController (){
     
 }
@@ -22,6 +24,11 @@
 @property (nonatomic, assign) NSInteger selectIndex;
 @property (nonatomic, strong) ELiveCourseDetailHeaderView * headerView;
 
+@property(nonatomic,strong) CourseDetailInfoModel *courseDetailInfoModel;
+
+@property(nonatomic,strong)  ELiveCourseCatalogViewController * catelogVC;
+@property(nonatomic,strong)  ELiveCourseIntroViewController * introVC;
+@property(nonatomic,strong)  ELiveCourseEvaluateViewController * evaluteVC;
 @end
 
 @implementation ELiveCourseDetailViewController
@@ -36,11 +43,28 @@
     self.extendedLayoutIncludesOpaqueBars = YES;
     self.modalPresentationCapturesStatusBarAppearance = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [self getCourseDatail];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+
+-(void)getCourseDatail{
+    __unsafe_unretained typeof(self) unself = self;
+    [[CloudManager sharedInstance]asyncGetCourseDetailInfoWithCateId:_courseId andPeriodid:nil andMore:nil completion:^(CourseDetailInfoModel *ret, CMError *error) {
+        if (error ==nil) {
+            unself.courseDetailInfoModel= ret;
+            [unself configData];
+        }
+    }];
+}
+
+-(void)configData{
+     self.headerView.courseDetailInfoModel = self.courseDetailInfoModel;
+    self.introVC.courseDetailInfoModel = self.courseDetailInfoModel;
 }
 
 #pragma mark- Config SegmentPage
@@ -97,20 +121,25 @@
     self.pages = [NSMutableArray array];
     
     ELiveCourseIntroViewController * introVC = [[ELiveCourseIntroViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    introVC.userHomePageHandler =^(){
+    introVC.userHomePageHandler =^(NSString *teacerId){
         ELivePersonHomeViewController *eliveVc = [[ELivePersonHomeViewController alloc]init];
         [self.navigationController pushViewController:eliveVc animated:YES];
     };
     introVC.title = @"简介";
     [self.pages addObject:introVC];
     
+    self.introVC = introVC;
+    
     ELiveCourseCatalogViewController * catelogVC = [[ELiveCourseCatalogViewController alloc] initWithStyle:UITableViewStyleGrouped];
     catelogVC.title = @"目录";
     [self.pages addObject:catelogVC];
+    self.catelogVC = catelogVC;
     
     ELiveCourseEvaluateViewController * evaluteVC = [[ELiveCourseEvaluateViewController alloc] init];
     evaluteVC.title =@"评论";
     [self.pages addObject:evaluteVC];
+    
+    self.evaluteVC = evaluteVC;
     
     self.segmentedPager.segmentedControl.backgroundColor = [UIColor whiteColor];
     self.segmentedPager.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor], NSFontAttributeName : [UIFont systemFontOfSize:15]};
@@ -120,6 +149,7 @@
     
     //[self.segmentedPager scrollToPageAtIndex:self.selectIndex animated:NO];
 }
+
 
 #pragma mark <MXPageControllerDataSource>
 - (NSString *)segmentedPager:(MXSegmentedPager *)segmentedPager titleForSectionAtIndex:(NSInteger)index {

@@ -25,3 +25,37 @@
 
 
 @end
+
+@implementation TeacherInfoModel
+
+
+@end
+
+@implementation TeacherCourseListModel
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"list":[TeacherCourseListItem class]};
+}
+
+
+@end
+
+
+@implementation TeacherCourseListItem
+
+
+
+@end
+
+@implementation TeacherEvaluateListModel
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"list":[TeacherEvaluateListItem class]};
+}
+
+@end
+
+
+@implementation TeacherEvaluateListItem
+
+
+
+@end
