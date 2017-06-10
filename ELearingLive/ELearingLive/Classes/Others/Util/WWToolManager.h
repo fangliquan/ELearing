@@ -11,8 +11,10 @@
 //#import "WWDigitalManager.h"
 //#import "WWHTTPDNSParsingManager.h"
 //#import "WWCrashLogManager.h"
-//#import "WWExceptionRemindManager.h"
+
 #import "WWTextManager.h"
+
+#import "WWExceptionRemindManager.h"
 //#import "WWPermissionManager.h"
 //#import "WWViewControllerManager.h"
 //#import "WawaAudioBookListView.h"

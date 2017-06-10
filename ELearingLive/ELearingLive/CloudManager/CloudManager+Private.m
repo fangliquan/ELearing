@@ -486,6 +486,16 @@
     return ret;
 }
 
+///uc/myfollowteacher
+//我关注的讲师
+-(NSString *)uriUcMyFollowTeacher{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/uc/myfollowteacher",ret];
+    return ret;
+    
+}
+
 -(NSString *)uriUcBindMobile{
     NSString *ret = @"";
     ret = [self uriBase];

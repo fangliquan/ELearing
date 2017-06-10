@@ -8,11 +8,13 @@
 
 #import "ELiveFansFocusCell.h"
 
-
+#import "UcTeacherModel.h"
 @interface ELiveFansFocusCell(){
     UILabel *titleLabel;
     UILabel *timeLabel;
     UIImageView *userHeaderIcon;
+    UILabel *despLabel;
+    UIButton *uFollowBtn;
 }
 
 @end
@@ -48,6 +50,13 @@
     titleLabel.textAlignment = NSTextAlignmentLeft;
     [self.contentView addSubview:titleLabel];
     
+    uFollowBtn = [[UIButton alloc]initWithFrame:CGRectMake(Main_Screen_Width - 80, 15, 70, 30)];
+    uFollowBtn.backgroundColor = EL_COLOR_RED;
+    [uFollowBtn setTitle:@"取消关注" forState:UIControlStateNormal];
+    [uFollowBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    uFollowBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [self.contentView addSubview:uFollowBtn];
+    
     
     timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(userHeaderIcon.frame) +5, CGRectGetMaxY(titleLabel.frame), Main_Screen_Width, 20)];
     timeLabel.font = [UIFont systemFontOfSize:13];
@@ -55,7 +64,35 @@
     timeLabel.text = @"2014-09-08 12:00";
     timeLabel.textAlignment = NSTextAlignmentLeft;
     [self.contentView addSubview:timeLabel];
+    
+    despLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(userHeaderIcon.frame) +5, CGRectGetMaxY(userHeaderIcon.frame)+5, Main_Screen_Width -CGRectGetMaxX(userHeaderIcon.frame) -20 , 20)];
+    despLabel.font = [UIFont systemFontOfSize:15];
+    despLabel.textColor = EL_TEXTCOLOR_GRAY;
+    despLabel.textAlignment = NSTextAlignmentLeft;
+    [self.contentView addSubview:despLabel];
 }
 
+-(void)setMyFollowTeacherItem:(UcMyFollowTeacherItem *)myFollowTeacherItem{
+    if (myFollowTeacherItem) {
+        _myFollowTeacherItem = myFollowTeacherItem;
+        [userHeaderIcon setImageWithURL:[NSURL URLWithString:myFollowTeacherItem.avatar] placeholderImage:[UIImage imageNamed: @"image_default_userheader"] ];
+        titleLabel.text = myFollowTeacherItem.name;
+        timeLabel.text = [NSString stringWithFormat:@"评分:%@ 粉丝:%@",myFollowTeacherItem.score,myFollowTeacherItem.fans];
+        despLabel.text = myFollowTeacherItem.intro;
+        CGFloat height = [WWTextManager textSizeWithStringZeroSpace:myFollowTeacherItem.intro width: Main_Screen_Width -CGRectGetMaxX(userHeaderIcon.frame) -20  fontSize:15].height + 5;
+        
+        CGRect oldFrame = despLabel.frame;
+        
+        oldFrame.size.height = height;
+        despLabel.frame = oldFrame;
+        
+    }
+}
++ (CGFloat)heightForCellWithModel:(UcMyFollowTeacherItem *)teacherItem{
+    CGFloat height = 66;
+    CGFloat introH = [WWTextManager textSizeWithStringZeroSpace:teacherItem.intro width: Main_Screen_Width -58 -20  fontSize:15].height + 5;
+    height = height +introH;
+    return height;
+}
 
 @end

@@ -134,7 +134,9 @@
 -(NSString *)uriUcEditUser;
 //用户信息
 -(NSString *)uriUcUserInfo;
-
+///uc/myfollowteacher
+//我关注的讲师
+-(NSString *)uriUcMyFollowTeacher;
 ///uc/bindmobile绑定手机号
 -(NSString *)uriUcBindMobile;
 

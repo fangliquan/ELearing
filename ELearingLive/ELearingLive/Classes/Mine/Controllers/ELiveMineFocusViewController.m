@@ -9,9 +9,18 @@
 #import "ELiveMineFocusViewController.h"
 #import "ELiveFansFocusCell.h"
 #include "ELivePersonHomeViewController.h"
-@interface ELiveMineFocusViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+#include "CloudManager+Teacher.h"
+#import "UcTeacherModel.h"
+@interface ELiveMineFocusViewController ()<UITableViewDelegate,UITableViewDataSource>{
+    NSInteger pageIndex;
+}
 
 @property(nonatomic,strong) UITableView *tableView;
+
+@property(nonatomic,strong) NSMutableArray *followTeachers;
+
+@property(nonatomic,strong) NSMutableArray *myfans;
 
 @end
 
@@ -19,10 +28,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    pageIndex = 0;
     [self configtableView];
+    self.followTeachers = [NSMutableArray array];
+    self.myfans = [NSMutableArray array];
+    [self loadData];
     // Do any additional setup after loading the view.
 }
 
+-(void)loadData{
+    if (self.isFans){
+        
+    }else{
+        [self getMyFollerTeacher];
+    }
+}
+
+-(void)getMyFollerTeacher{
+    pageIndex ++;
+    [[CloudManager sharedInstance]asyncMyFollowTeacherWithPage:[NSString stringWithFormat:@"%ld",pageIndex] completion:^(UcMyFollowTeacherModel *ret, CMError *error) {
+        if (error ==nil) {
+            [self.followTeachers addObjectsFromArray:ret.list];
+            [self.tableView reloadData];
+            if (ret.list.count <=0 && self.followTeachers.count <=0) {
+                self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindViewWithType:ExceptionRemindStyle_Empty];
+            }
+        }else{
+            self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindView_LoadfailWithTarget:self action:@selector(loadData)];
+        }
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -35,8 +70,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 10;
+    if (_isFans) {
+        return _myfans.count;
+    }else{
+        return _followTeachers.count;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.001f;

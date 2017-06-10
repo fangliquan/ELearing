@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class UcMyFollowTeacherItem;
 
 @interface ELiveFansFocusCell : UITableViewCell
 
 +(instancetype)cellWithTableView:(UITableView *)tableView ;
 
-+ (CGFloat)heightForCellWithModel:(NSString *)remark ;
+@property(nonatomic,strong) UcMyFollowTeacherItem *myFollowTeacherItem;
+
++ (CGFloat)heightForCellWithModel:(UcMyFollowTeacherItem *)teacherItem;
 @end

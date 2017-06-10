@@ -8,6 +8,7 @@
 
 #import "CloudManagerBase.h"
 #import "UserTruthInfo.h"
+@class UcMyFollowTeacherModel;
 @interface CloudManager (Teacher)
 
 - (void)asyncUserApplyForTeacher:(UserTruthInfo *)info  completion:(void (^)(NSString *ret, CMError *error))completion;
@@ -15,6 +16,9 @@
 
 - (void)asyncUpdateUserTruthInfo:(UserTruthInfo *)info  completion:(void (^)(NSString *ret, CMError *error))completion;
 
+
+
+- (void)asyncMyFollowTeacherWithPage:(NSString *)page  completion:(void (^)(UcMyFollowTeacherModel *ret, CMError *error))completion;
 
 
 - (void)asyncUpdateUserTruthInfo:(void (^)(UserTruthInfo *ret, CMError *error))completion;

@@ -61,10 +61,10 @@
             settingModel.title = @"课程管理";
         }else if (i ==2) {
             settingModel.type = i;
-            settingModel.title = @"我的讲师";
+            settingModel.title = @"我关注的讲师";
         }else if (i ==3) {
             settingModel.type = i;
-            settingModel.title = @"我的课程";
+            settingModel.title = @"我关注的课程";
         }
         [self.section1Arrays addObject:settingModel];
     }
