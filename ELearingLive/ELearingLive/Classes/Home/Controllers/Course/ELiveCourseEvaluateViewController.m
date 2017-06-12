@@ -101,11 +101,18 @@
     commentBtn.text = @"评价课程";
     commentBtn.textColor = EL_COLOR_RED;
     commentBtn.font = [UIFont systemFontOfSize:15];
+    commentBtn.userInteractionEnabled = YES;
+    [commentBtn addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(commentCourseClick)]];
     [headerView addSubview:commentBtn];
     
     self.tableView.tableHeaderView = headerView;
 }
 
+-(void)commentCourseClick{
+    if (self.addCourseEvaluateCommentHandler) {
+        self.addCourseEvaluateCommentHandler();
+    }
+}
 #pragma mark - Table view data source
 #pragma mark - Table view data source
 

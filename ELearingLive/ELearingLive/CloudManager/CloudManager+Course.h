@@ -27,5 +27,6 @@
 //课程详情评价目录
 - (void)asyncGetCourseEvaluateListWithCourseId:(NSString *)courseId andPage:(NSString *)page completion:(void (^)(CourseEvaluateListModel*ret, CMError *error))completion;
 
+- (void)asyncAddCourseEvaluateListWithCourseId:(NSString *)courseId andContent:(NSString *)content andScore:(NSString *)score completion:(void (^)(NSString*ret, CMError *error))completion;
 
 @end

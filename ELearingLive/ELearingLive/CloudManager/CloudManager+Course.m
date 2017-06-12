@@ -165,4 +165,42 @@
         }
     }];
 }
+
+- (void)asyncAddCourseEvaluateListWithCourseId:(NSString *)courseId andContent:(NSString *)content andScore:(NSString *)score completion:(void (^)(NSString*ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseEvaluate]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"courseid" : courseId?courseId:@"",
+                              @"content" : content?content:@"",
+                              @"score" : score?score:@"0",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                NSString *score =nil;
+                if ([[ret allKeys]containsObject:@"score"]) {
+                    score = [ret objectForKey:@"score"];
+                }
+                if (completion) {
+                    completion(score,nil);
+                }
+            }else{
+                [MBProgressHUD showError:baseModel.error_desc toView:nil];
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+}
+
+
 @end

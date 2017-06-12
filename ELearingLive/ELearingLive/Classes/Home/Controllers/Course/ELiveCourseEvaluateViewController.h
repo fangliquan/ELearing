@@ -16,6 +16,7 @@
 
 @property(nonatomic,strong) NSString *courseId;
 
+@property (nonatomic, copy) void (^addCourseEvaluateCommentHandler)(void);
 
 
 @end

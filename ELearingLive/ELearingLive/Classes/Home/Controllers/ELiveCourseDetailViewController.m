@@ -15,6 +15,7 @@
 #import "ELivePersonHomeViewController.h"
 #import "CloudManager+Course.h"
 #import "UcCourseIndex.h"
+#import "ELiveAddEvaluateViewController.h"
 @interface ELiveCourseDetailViewController (){
     
 }
@@ -121,11 +122,11 @@
 
     self.pageTitles = [NSMutableArray arrayWithArray: @[@"简介", @"目录", @"评论"]];
     self.pages = [NSMutableArray array];
-    
+    __unsafe_unretained typeof(self) unself = self;
     ELiveCourseIntroViewController * introVC = [[ELiveCourseIntroViewController alloc] initWithStyle:UITableViewStyleGrouped];
     introVC.userHomePageHandler =^(NSString *teacerId){
         ELivePersonHomeViewController *eliveVc = [[ELivePersonHomeViewController alloc]init];
-        [self.navigationController pushViewController:eliveVc animated:YES];
+        [unself.navigationController pushViewController:eliveVc animated:YES];
     };
     introVC.title = @"简介";
     [self.pages addObject:introVC];
@@ -139,6 +140,11 @@
     
     ELiveCourseEvaluateViewController * evaluteVC = [[ELiveCourseEvaluateViewController alloc] init];
     evaluteVC.title =@"评论";
+    evaluteVC.addCourseEvaluateCommentHandler = ^{
+        ELiveAddEvaluateViewController *addVc = [[ELiveAddEvaluateViewController alloc]init];
+        addVc.courseId = unself.courseId;
+        [unself.navigationController pushViewController:addVc animated:YES];
+    };
     [self.pages addObject:evaluteVC];
     
     self.evaluteVC = evaluteVC;

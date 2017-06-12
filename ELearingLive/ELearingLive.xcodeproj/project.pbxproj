@@ -201,6 +201,7 @@
 		0AB0559E1EEE15EB000A954F /* b27_icon_star_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB0559A1EEE15EB000A954F /* b27_icon_star_gray@2x.png */; };
 		0AB0559F1EEE15EB000A954F /* b27_icon_star_yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB0559B1EEE15EB000A954F /* b27_icon_star_yellow@2x.png */; };
 		0AB055A01EEE15EB000A954F /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0559D1EEE15EB000A954F /* CWStarRateView.m */; };
+		0AB055A31EEECC85000A954F /* ELiveAddEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB055A21EEECC85000A954F /* ELiveAddEvaluateViewController.m */; };
 		0AB0ED2B1EDD116B00270C9C /* ELiveSettingEnabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED2A1EDD116B00270C9C /* ELiveSettingEnabelViewController.m */; };
 		0AB0ED2E1EDD129300270C9C /* ELiveSettingEnableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED2D1EDD129300270C9C /* ELiveSettingEnableCell.m */; };
 		0AB0ED311EDD171900270C9C /* ELiveSettingBindPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED301EDD171900270C9C /* ELiveSettingBindPhoneViewController.m */; };
@@ -656,6 +657,8 @@
 		0AB0559B1EEE15EB000A954F /* b27_icon_star_yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b27_icon_star_yellow@2x.png"; sourceTree = "<group>"; };
 		0AB0559C1EEE15EB000A954F /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
 		0AB0559D1EEE15EB000A954F /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
+		0AB055A11EEECC85000A954F /* ELiveAddEvaluateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveAddEvaluateViewController.h; sourceTree = "<group>"; };
+		0AB055A21EEECC85000A954F /* ELiveAddEvaluateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveAddEvaluateViewController.m; sourceTree = "<group>"; };
 		0AB0ED291EDD116B00270C9C /* ELiveSettingEnabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingEnabelViewController.h; sourceTree = "<group>"; };
 		0AB0ED2A1EDD116B00270C9C /* ELiveSettingEnabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSettingEnabelViewController.m; sourceTree = "<group>"; };
 		0AB0ED2C1EDD129300270C9C /* ELiveSettingEnableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSettingEnableCell.h; sourceTree = "<group>"; };
@@ -1511,6 +1514,8 @@
 				0A6945351EC701C400D83DC1 /* ELiveCourseCatalogViewController.m */,
 				0A6945371EC701F200D83DC1 /* ELiveCourseEvaluateViewController.h */,
 				0A6945381EC701F200D83DC1 /* ELiveCourseEvaluateViewController.m */,
+				0AB055A11EEECC85000A954F /* ELiveAddEvaluateViewController.h */,
+				0AB055A21EEECC85000A954F /* ELiveAddEvaluateViewController.m */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -2458,6 +2463,7 @@
 				0A6604041EDF064500927433 /* BaseModel.m in Sources */,
 				0AEF08951EBA34350065A22B /* ELiveCastMainViewController.m in Sources */,
 				0A6603631EDF026200927433 /* UIDevice-Hardware.m in Sources */,
+				0AB055A31EEECC85000A954F /* ELiveAddEvaluateViewController.m in Sources */,
 				0AEF08B31EBECDB80065A22B /* WWTextManager.m in Sources */,
 				0AEF08BC1EBECE0A0065A22B /* NSObject+CommonBlock.m in Sources */,
 				0AEF09351EBECF900065A22B /* NSObject+BKBlockExecution.m in Sources */,
