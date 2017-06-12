@@ -54,7 +54,7 @@
 
 -(void)getCourseDatail{
     __unsafe_unretained typeof(self) unself = self;
-    [[CloudManager sharedInstance]asyncGetCourseDetailInfoWithCateId:_courseId andPeriodid:nil andMore:nil completion:^(CourseDetailInfoModel *ret, CMError *error) {
+    [[CloudManager sharedInstance]asyncGetCourseDetailInfoWithCourseId:_courseId andPeriodid:nil andMore:nil completion:^(CourseDetailInfoModel *ret, CMError *error) {
         if (error ==nil) {
             unself.courseDetailInfoModel= ret;
             [unself configData];
@@ -65,6 +65,8 @@
 -(void)configData{
      self.headerView.courseDetailInfoModel = self.courseDetailInfoModel;
     self.introVC.courseDetailInfoModel = self.courseDetailInfoModel;
+    self.catelogVC.courseId = self.courseId;
+    self.evaluteVC.courseId = self.courseId;
 }
 
 #pragma mark- Config SegmentPage
@@ -177,6 +179,10 @@
         [evaluateVc updateViewControllerFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height - 64 - 44)];
     }
     return circleVC;
+}
+
+-(void)createFooterView{
+    
 }
 
 

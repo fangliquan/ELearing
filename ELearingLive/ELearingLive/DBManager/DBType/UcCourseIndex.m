@@ -50,3 +50,19 @@
 
 
 @end
+
+
+@implementation CourseEvaluateListModel
+
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"list":[CourseEvaluateListItem class]};
+}
+
+
+@end
+
+@implementation CourseEvaluateListItem
+
+
+
+@end

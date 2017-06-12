@@ -160,4 +160,12 @@
 
 ///course/chapterlist 课程详情目录
 -(NSString *)uriCourseChapterlist;
+
+///course/evaluatelist 课程详情评价列表
+-(NSString *)uriCourseEvaluatelist;
+
+///course/evaluate 课程详情评价
+-(NSString *)uriCourseEvaluate;
+
+
 @end

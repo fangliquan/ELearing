@@ -12,4 +12,6 @@
 
 @property(nonatomic,strong) NSString *courseId;
 
+@property(nonatomic,strong) NSString *chapterid;
+
 @end

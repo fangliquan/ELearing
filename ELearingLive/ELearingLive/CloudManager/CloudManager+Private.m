@@ -560,8 +560,23 @@
 -(NSString *)uriCourseChapterlist{
     NSString *ret = @"";
     ret = [self uriBase];
-    ret = [[NSString alloc] initWithFormat:@"%@/course/info",ret];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/chapterlist",ret];
     return ret;
 }
 
+///course/evaluatelist 课程详情评价列表
+-(NSString *)uriCourseEvaluatelist{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/evaluatelist",ret];
+    return ret;
+}
+
+///course/evaluate 课程详情评价
+-(NSString *)uriCourseEvaluate{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/evaluate",ret];
+    return ret;
+}
 @end

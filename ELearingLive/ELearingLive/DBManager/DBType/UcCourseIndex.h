@@ -31,6 +31,7 @@
 
 @interface CourseDetailInfoModel : BaseModel
 @property(nonatomic,strong) NSString *courseid;
+@property(nonatomic,strong) NSString *periodid;
 
 @property(nonatomic,strong) NSString *name;
 
@@ -41,11 +42,13 @@
 @property(nonatomic,strong) NSString *desc;
 
 @property(nonatomic,strong) NSString *score;
-
+@property(nonatomic,strong) NSString *time;
+@property(nonatomic,strong) NSString *status;
 @property(nonatomic,strong) NSString *hits;
 
 @property(nonatomic,strong) NSString *is_buy;
 @property(nonatomic,strong) NSString *is_follow;
+@property(nonatomic,strong) NSString *is_owner;
 @property(nonatomic,strong) NSString *type;
 
 @property(nonatomic,strong) NSString *teacherid;
@@ -55,7 +58,10 @@
 @property(nonatomic,strong) NSString *teacher_name;
 
 @property(nonatomic,strong) NSString *teacher_intro;
-
+@property(nonatomic,strong) NSString *share_url;
+@property(nonatomic,strong) NSString *share_thumb;
+@property(nonatomic,strong) NSString *share_title;
+@property(nonatomic,strong) NSString *share_desp;
 @end
 
 
@@ -69,7 +75,8 @@
 
 @property(nonatomic,strong) NSString *chapterid;
 @property(nonatomic,strong) NSString *name;
-
+@property(nonatomic,strong) NSString *time;
+@property(nonatomic,strong) NSString *status;
 @property(nonatomic,strong) NSString *period_count;
 @property(nonatomic,strong) NSArray *periods;
 @end
@@ -79,10 +86,36 @@
 @property(nonatomic,strong) NSString *periodid;
 @property(nonatomic,strong) NSString *name;
 @property(nonatomic,strong) NSString *is_download;
-@property(nonatomic,strong) NSArray *is_free;
+@property(nonatomic,strong) NSString *is_free;
 @end
 
 
+
+@interface CourseEvaluateListModel : BaseModel
+
+@property(nonatomic,strong) NSString *count;
+@property(nonatomic,strong) NSString *totalpage;
+
+@property(nonatomic,strong) NSArray *list;
+
+@property(nonatomic,strong) NSString *can_evaluate;
+
+@property(nonatomic,strong) NSString *evaluate_id;
+@property(nonatomic,strong) NSString *evaluate_content;
+
+@property(nonatomic,strong) NSString *evaluate_score;
+
+
+@end
+
+@interface CourseEvaluateListItem : NSObject
+@property(nonatomic,strong) NSString *userid;
+@property(nonatomic,strong) NSString *username;
+@property(nonatomic,strong) NSString *avatar;
+@property(nonatomic,strong) NSString *score;
+@property(nonatomic,strong) NSString *time;
+@property(nonatomic,strong) NSString *content;
+@end
 
 
 

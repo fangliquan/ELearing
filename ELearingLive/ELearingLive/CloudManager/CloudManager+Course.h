@@ -8,7 +8,7 @@
 
 #import "CloudManagerBase.h"
 
-@class UcCourseCategireChildModel,UcCourseCategireModel,CourseDetailInfoModel;
+@class UcCourseCategireChildModel,UcCourseCategireModel,CourseDetailInfoModel,CourseChapterlistModel,CourseEvaluateListModel;
 @interface CloudManager (Course)
 //课程分类
 - (void)asyncGetCourseCategiresInfo:(void (^)(UcCourseCategireModel *ret, CMError *error))completion;
@@ -17,10 +17,15 @@
 
 
 //课程详情
-- (void)asyncGetCourseDetailInfoWithCateId:(NSString *)courseId andPeriodid:(NSString *)periodid andMore:(NSString *)more  completion:(void (^)( CourseDetailInfoModel*ret, CMError *error))completion;
+- (void)asyncGetCourseDetailInfoWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid andMore:(NSString *)more  completion:(void (^)( CourseDetailInfoModel*ret, CMError *error))completion;
 
 ///course/chapterlist 课程详情目录
-//课程详情
-- (void)asyncGetCourseDetailInfoWithCateId:(NSString *)courseId completion:(void (^)( CourseDetailInfoModel*ret, CMError *error))completion;
+//课程x详情目录
+- (void)asyncGetCourseChapterListWithCourseId:(NSString *)courseId completion:(void (^)(CourseChapterlistModel*ret, CMError *error))completion;
+
+
+//课程详情评价目录
+- (void)asyncGetCourseEvaluateListWithCourseId:(NSString *)courseId andPage:(NSString *)page completion:(void (^)(CourseEvaluateListModel*ret, CMError *error))completion;
+
 
 @end

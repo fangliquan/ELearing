@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ELiveCourseCatalogCellFrame;
+@class ELiveCourseCatalogCellFrame,CourseChapterlistItemModel;
 @interface ELiveCourseCatalogCell : UITableViewCell
 
 +(instancetype)cellWithTableView:(UITableView *)tableView ;
@@ -16,7 +16,7 @@
 
 @interface ELiveCourseCatalogCellFrame: NSObject
 
-@property (nonatomic,strong) NSString *temp;
+@property (nonatomic,strong)  CourseChapterlistItemModel *chapterlistItemModel;
 
 @property (nonatomic, assign) CGRect  stateLFrame;
 @property (nonatomic, assign) CGRect  titleLFrame;

@@ -12,8 +12,11 @@
 #import "UcCourseIndex.h"
 
 #import "CloudManager+Course.h"
-@interface ELiveCourseCatalogViewController ()
+@interface ELiveCourseCatalogViewController (){
+    
+}
 @property(nonatomic,strong) NSMutableArray *courseArrays;
+@property(nonatomic,strong) CourseChapterlistModel *chapterlistModel;
 @end
 
 @implementation ELiveCourseCatalogViewController
@@ -29,6 +32,29 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)setCourseId:(NSString *)courseId{
+    _courseId = courseId;
+    [self getCourseData];
+}
+
+-(void)getCourseData{
+    [[CloudManager sharedInstance]asyncGetCourseChapterListWithCourseId:self.courseId completion:^(CourseChapterlistModel *ret, CMError *error) {
+        if (error ==nil) {
+            self.chapterlistModel = ret;
+            [self configData];
+            [self.tableView reloadData];
+        }
+    }];
+}
+
+-(void)configData{
+    for (CourseChapterlistItemModel *itemModel in self.chapterlistModel.list) {
+        ELiveCourseCatalogCellFrame *cellFrem =[[ELiveCourseCatalogCellFrame alloc]init];
+        cellFrem.chapterlistItemModel = itemModel;
+        [self.courseArrays addObject:cellFrem];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,22 +74,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;//self.courseArrays.count;
+    return self.courseArrays.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ELiveCourseCatalogCellFrame *cellFrem =[[ELiveCourseCatalogCellFrame alloc]init];
-    cellFrem.temp =@"  ";
+    ELiveCourseCatalogCellFrame *cellFrem = self.courseArrays.count >indexPath.row?self.courseArrays[indexPath.row]:nil;
+    
     return cellFrem.cellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELiveCourseCatalogCell *cell = [ELiveCourseCatalogCell cellWithTableView:tableView];
-    
-    ELiveCourseCatalogCellFrame *cellFrem =[[ELiveCourseCatalogCellFrame alloc]init];
-    cellFrem.temp =@"  ";
-    cell.cellFrame = cellFrem;
-    // Configure the cell...
+    cell.cellFrame = self.courseArrays.count >indexPath.row?self.courseArrays[indexPath.row]:nil;
     
     return cell;
 }

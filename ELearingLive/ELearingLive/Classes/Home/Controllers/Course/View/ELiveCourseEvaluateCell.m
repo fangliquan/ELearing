@@ -7,6 +7,7 @@
 //
 
 #import "ELiveCourseEvaluateCell.h"
+#import "UcCourseIndex.h"
 @interface ELiveCourseEvaluateCell(){
     UIImageView *headerView;
     UILabel *userNameLabel;
@@ -40,7 +41,7 @@
     headerView = [[UIImageView alloc]init];
     headerView.layer.masksToBounds = YES;
     headerView.layer.cornerRadius = 25;
-    headerView.image = [UIImage imageNamed:@"image_default_userheader"];
+
     [self.contentView addSubview:headerView];
 
     
@@ -82,6 +83,11 @@
         userNameLabel.frame = cellFrame.userNameLFrame;
         timeLabel.frame = cellFrame.timeLFrame;
         commentLabel.frame = cellFrame.commentDespFrame;
+        
+        [headerView setImageWithURL:[NSURL URLWithString:cellFrame.courseEvaluateListItem.avatar] placeholderImage:[UIImage imageNamed:@"image_default_userheader"]];
+        userNameLabel.text = cellFrame.courseEvaluateListItem.username;
+        timeLabel.text = cellFrame.courseEvaluateListItem.time;
+        commentLabel.text = cellFrame.courseEvaluateListItem.content;
     }
 }
 
@@ -100,7 +106,9 @@
 
 @implementation ELiveCourseEvaluateCellFrame
 
--(void)setTemp:(NSString *)temp{
+
+-(void)setCourseEvaluateListItem:(CourseEvaluateListItem *)courseEvaluateListItem{
+    _courseEvaluateListItem = courseEvaluateListItem;
     CGFloat marginX = 8;
     CGFloat offsetY = 8;
     
@@ -110,12 +118,12 @@
     _userNameLFrame = CGRectMake(CGRectGetMaxX(_headerFrame) +marginX, marginX *2, 200, 20);
     _starFrame = CGRectMake(Main_Screen_Width - 90, marginX *2, starWidth, 20);
     _timeLFrame = CGRectMake(CGRectGetMaxX(_headerFrame) + marginX, CGRectGetMaxY(_userNameLFrame) + 5, 220, 18);
-
+    
     CGFloat textW = Main_Screen_Width  - CGRectGetMaxX(_headerFrame) - 2*marginX;
-    CGFloat textH = [WWTextManager textSizeWithStringZeroSpace:@"大家好啊回到家阿里看见法拉第积分卡两地分居阿克鲁塞德"width:textW fontSize:15].height + 2;
+    CGFloat textH = [WWTextManager textSizeWithStringZeroSpace: courseEvaluateListItem.content width:textW fontSize:15].height + 2;
     _commentDespFrame = CGRectMake(CGRectGetMaxX(_headerFrame) + marginX,  CGRectGetMaxY(_headerFrame) + 5, textW, textH);
     _cellHeight = CGRectGetMaxY(_commentDespFrame) + offsetY;
-
 }
+
 
 @end

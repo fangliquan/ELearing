@@ -8,17 +8,29 @@
 
 #import "ELiveCourseEvaluateViewController.h"
 #import "ELiveCourseEvaluateCell.h"
-@interface ELiveCourseEvaluateViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "CloudManager+Course.h"
+#import "UcCourseIndex.h"
+#import "MJRefresh.h"
+#import "CWStarRateView.h"
+@interface ELiveCourseEvaluateViewController ()<UITableViewDelegate,UITableViewDataSource>{
+    NSUInteger page;
+    UILabel *commentLabel;
+    CWStarRateView *starRateView;
+}
 
 @property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,strong) CourseEvaluateListModel *courseEvaluateListModel;
+@property(nonatomic,strong) NSMutableArray *evaluatesArray;
 @end
 
 @implementation ELiveCourseEvaluateViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _evaluatesArray = [NSMutableArray array];
     [self configtableView];
     [self createHeaderView];
+    page = 0;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -26,11 +38,39 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)setCourseId:(NSString *)courseId{
+    _courseId = courseId;
+    [self getCourseEvaluate];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(void)getCourseEvaluate{
+    page ++;
+    __unsafe_unretained typeof(self) unself = self;
+    [[CloudManager sharedInstance]asyncGetCourseEvaluateListWithCourseId:_courseId andPage:[NSString stringWithFormat:@"%ld",page] completion:^(CourseEvaluateListModel *ret, CMError *error) {
+        [unself.tableView.mj_footer endRefreshing];
+        if (error ==nil) {
+            unself.courseEvaluateListModel = ret;
+            commentLabel.text = [NSString stringWithFormat:@"(%@评论)",_courseEvaluateListModel.count] ;
+            starRateView.scorePercent =[_courseEvaluateListModel.evaluate_score floatValue];
+            [unself.tableView reloadData];
+            if (ret.list.count <=0) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+        }
+    }];
+}
+
+-(void)configData{
+    for (CourseEvaluateListItem *commentItem in _courseEvaluateListModel.list) {
+        ELiveCourseEvaluateCellFrame *cellFrame = [[ELiveCourseEvaluateCellFrame alloc]init];
+        cellFrame.courseEvaluateListItem = commentItem;
+        [_evaluatesArray addObject:cellFrame];
+    }
+}
 - (void)updateViewControllerFrame:(CGRect)frame {
 
 }
@@ -43,15 +83,22 @@
     titleLabel.font = [UIFont systemFontOfSize:17];
     [headerView addSubview:titleLabel];
     
-    UILabel *commentLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(titleLabel.frame), 15,Main_Screen_Width -2*70, 20)];
-    commentLabel.text = @"(9345人评分)";
+    starRateView = [[CWStarRateView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(titleLabel.frame), 12,100, 25) numberOfStars:5];
+    starRateView.scorePercent =[_courseEvaluateListModel.evaluate_score floatValue];
+    starRateView.allowIncompleteStar = YES;
+    starRateView.hasAnimation = NO;
+    starRateView.userInteractionEnabled = NO;
+    [headerView addSubview:starRateView];
+    
+    commentLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(starRateView.frame), 15,Main_Screen_Width -2*70, 20)];
+    commentLabel.text = [NSString stringWithFormat:@"(%@评论)",_courseEvaluateListModel.count] ;
     commentLabel.textColor = EL_TEXTCOLOR_GRAY;
     commentLabel.font = [UIFont systemFontOfSize:13];
     [headerView addSubview:commentLabel];
     
     
     UILabel *commentBtn= [[UILabel alloc]initWithFrame:CGRectMake(Main_Screen_Width - 80, 15, 70, 20)];
-    commentBtn.text = @"添加评论";
+    commentBtn.text = @"评价课程";
     commentBtn.textColor = EL_COLOR_RED;
     commentBtn.font = [UIFont systemFontOfSize:15];
     [headerView addSubview:commentBtn];
@@ -69,22 +116,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;//self.courseArrays.count;
+    return _evaluatesArray.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ELiveCourseEvaluateCellFrame *cellFrem =[[ELiveCourseEvaluateCellFrame alloc]init];
-    cellFrem.temp =@"  ";
+    ELiveCourseEvaluateCellFrame *cellFrem  = _evaluatesArray.count >indexPath.row ?_evaluatesArray[indexPath.row]:nil;
     return cellFrem.cellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELiveCourseEvaluateCell *cell = [ELiveCourseEvaluateCell cellWithTableView:tableView];
     
-    ELiveCourseEvaluateCellFrame *cellFrem =[[ELiveCourseEvaluateCellFrame alloc]init];
-    cellFrem.temp =@"  ";
-    cell.cellFrame = cellFrem;
-    // Configure the cell...
+    cell.cellFrame =  _evaluatesArray.count >indexPath.row ?_evaluatesArray[indexPath.row]:nil;
+;
     
     return cell;
 }
@@ -97,10 +141,9 @@
     self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0.0001)];
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0.0001)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getCourseEvaluate)];
     
     [self.view addSubview:self.tableView];
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)])

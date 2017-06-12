@@ -7,7 +7,7 @@
 //
 
 #import "ELiveCourseCatalogCell.h"
-
+#import "UcCourseIndex.h"
 @interface ELiveCourseCatalogCell(){
     UILabel *courseNumLabel;
     UILabel *titleLabel;
@@ -79,6 +79,11 @@
         titleLabel.frame = cellFrame.titleLFrame;
         timeLabel.frame = cellFrame.timeLFrame;
         stateLabel.frame = cellFrame.stateLFrame;
+        
+        courseNumLabel.text = cellFrame.chapterlistItemModel.period_count;
+        
+        titleLabel.text = cellFrame.chapterlistItemModel.name;
+//        stateLabel.text = cellFrame.chapterlistItemModel.
     }
 }
 - (void)awakeFromNib {
@@ -96,8 +101,8 @@
 
 @implementation ELiveCourseCatalogCellFrame
 
--(void)setTemp:(NSString *)temp{
-    
+-(void)setChapterlistItemModel:(CourseChapterlistItemModel *)chapterlistItemModel{
+    _chapterlistItemModel = chapterlistItemModel;
     CGFloat marginX = 8;
     CGFloat offsetY = 8;
     
@@ -105,7 +110,7 @@
     
     _couseNumLFrame = CGRectMake(marginX, offsetY+5, 30, 18);
     CGFloat textW = Main_Screen_Width - stateTagW - CGRectGetMaxX(_couseNumLFrame) - 3 *marginX;
-    CGFloat textH = [WWTextManager textSizeWithStringZeroSpace:@"大家好啊回到家阿里看见法拉第积分卡两地分居阿克鲁塞德"width:textW fontSize:15].height + 2;
+    CGFloat textH = [WWTextManager textSizeWithStringZeroSpace:chapterlistItemModel.name width:textW fontSize:15].height + 2;
     _titleLFrame = CGRectMake(CGRectGetMaxX(_couseNumLFrame) + marginX, offsetY, textW, textH);
     _timeLFrame = CGRectMake(CGRectGetMaxX(_couseNumLFrame) +marginX, CGRectGetMaxY(_titleLFrame) + 5, textW, 18);
     _stateLFrame =  CGRectMake(CGRectGetMaxX(_titleLFrame) + marginX, offsetY *2, stateTagW, 35);
@@ -115,8 +120,7 @@
         _cellHeight = CGRectGetMaxY(_stateLFrame) + offsetY*2;
     }
     
-    
-    
 }
+
 
 @end

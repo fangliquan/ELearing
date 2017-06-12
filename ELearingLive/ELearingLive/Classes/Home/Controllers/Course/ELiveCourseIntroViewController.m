@@ -76,7 +76,7 @@
     
     
     UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(Main_Screen_Width - 210, CGRectGetMaxY(titleLabel.frame) + 5,200, 20)];
-    timeLabel.text = @"直播时间:2016-09-18 13:00";
+    timeLabel.text = _courseDetailInfoModel.time;
     timeLabel.textColor = EL_TEXTCOLOR_GRAY;
     timeLabel.textAlignment = NSTextAlignmentRight;
     timeLabel.font = [UIFont systemFontOfSize:13];
@@ -124,6 +124,8 @@
     userNameLabel.font = [UIFont systemFontOfSize:EL_TEXTFONT_FLOAT_TITLE];
     userNameLabel.textColor = EL_TEXTCOLOR_DARKGRAY;
     [headerView addSubview:userNameLabel];
+    
+    
     
     CGFloat teacherIntroDespH = [WWTextManager textSizeWithStringZeroSpace:_courseDetailInfoModel.teacher_intro width:Main_Screen_Width - CGRectGetMaxX(userHeader.frame) - 16 fontSize:14].height +2;
     UILabel *teacherIntroLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(userHeader.frame) +6,CGRectGetMaxY(userNameLabel.frame)+ 6, Main_Screen_Width - CGRectGetMaxX(userHeader.frame) - 16, teacherIntroDespH)];
