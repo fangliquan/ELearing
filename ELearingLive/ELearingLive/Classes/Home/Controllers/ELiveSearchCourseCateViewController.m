@@ -13,6 +13,8 @@
 #import "ELiveCourseListViewController.h"
 #import "GDSearchBar.h"
 #import "LoopView.h"
+#import "CloudManager+Course.h"
+#import "UcCourseIndex.h"
 @interface ELiveSearchCourseCateViewController()<UITableViewDelegate,UITableViewDataSource>{
     
 }
@@ -21,6 +23,8 @@
 
 @property(nonatomic,strong) UITableView *tableViewContent;
 @property(nonatomic,strong) NSMutableArray *cateMainArray;
+@property(nonatomic,strong) UcCourseCategireChildModel *categireChildModel;
+
 
 @end
 
@@ -33,18 +37,30 @@
     [self configtableViewContent];
     [self setupNavigationBar];
     self.cateMainArray = [NSMutableArray array];
-    
-    
-    
-    
-    for (int i =0;  i< 10;  i++) {
-        ELiveMainCateModel *m1 = [[ELiveMainCateModel alloc]init];
-        m1.title = @"企业管理";
-        [self.cateMainArray addObject:m1];
-    }
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:nil action:nil];
-    // Do any additional setup after loading the view.
-    [self createHeaderView];
+    [self getCourseCategires];
+}
+
+
+-(void)getCourseCategires{
+    [[CloudManager sharedInstance]asyncGetCourseCategiresInfo:^(UcCourseCategireModel *ret, CMError *error) {
+        if (error ==nil) {
+            [self.cateMainArray addObjectsFromArray:ret.list];
+            [self.tableView reloadData];
+            UcCourseCategireMainItem *firstItem = [ret.list firstObject];
+            [self getCourseChildCategiresWithCateId:firstItem.catid];
+        }
+    }];
+}
+
+-(void)getCourseChildCategiresWithCateId:(NSString *)cateId{
+    [[CloudManager sharedInstance]asyncGetCourseChildCategiresWithCateId:cateId completion:^(UcCourseCategireChildModel *ret, CMError *error) {
+        if (error ==nil) {
+            self.categireChildModel = ret;
+            [self createHeaderView];
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 
@@ -52,17 +68,50 @@
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width *3.2/5.0, 0)];
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    CGFloat offsetY = 110;
+    CGFloat offsetAllY = 110;
 
     UIImageView *headerLoopView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width *3.2/5.0, 100)];
-    [headerLoopView setImageWithURL:[NSURL URLWithString:@"http://www2.autoimg.cn/newsdfs/g13/M06/94/4E/640x320_0_autohomecar__wKjBylkNnG2AcWP1AAr60-uT8BI378.jpg"] placeholderImage:EL_Default_Image];
+    [headerLoopView setImageWithURL:[NSURL URLWithString:_categireChildModel.image] placeholderImage:EL_Default_Image];
     [headerView addSubview:headerLoopView];
+    
+    
+    CGFloat growthViewMaxWidth = Main_Screen_Width;
+    
+    offsetAllY = offsetAllY + 8;
+    CGFloat offsetX = 0;
+    CGFloat offsetY = offsetAllY;
+    CGFloat marginX = 6;
+    CGFloat childItemViewHight = 30;
+    __unsafe_unretained typeof(self) unself = self;
+    for (int i = 0; i < _categireChildModel.children.count;  i ++) {
+        UcCourseCategireChildItem *readGrowthItem = _categireChildModel.children[i];
+        CGFloat itemWidth = [ELiveCateChildrenView childrenViewWidth:readGrowthItem.name];
+        offsetX += itemWidth;
+        
+        if (offsetX >= growthViewMaxWidth) {
+            offsetX = itemWidth;
+            offsetY +=1;
+        }
+        offsetX +=marginX;
+        CGRect growthFrame = CGRectMake(offsetX - itemWidth, offsetY *(childItemViewHight + 2), itemWidth, childItemViewHight);
+        
+        ELiveCateChildrenView * growthItemView = [[ELiveCateChildrenView alloc]initWithFrame:growthFrame];
+        growthItemView.courseCategireChildItem = readGrowthItem;
+        growthItemView.courseCateItemHandler = ^(UcCourseCategireChildItem *childItem) {
+            
+        };
+        [headerView addSubview:growthItemView];
+    }
+
+    offsetY +=8;
+    
     
     CGRect oldFrame = headerView.frame;
     oldFrame.size.height = offsetY;
     
     headerView.frame = oldFrame;
     self.tableViewContent.tableHeaderView = headerView;
+    [self.tableView reloadData];
 }
 
 
@@ -114,7 +163,7 @@
     if (tableView.tag ==1) {
         return self.cateMainArray.count;
     }else{
-        return 1;
+        return 0;
     }
 }
 
@@ -132,13 +181,13 @@
     if (tableView.tag ==1) {
         ELiveMainCateViewCell *cell = [ELiveMainCateViewCell cellWithTableView:tableView];
         
-        cell.eLiveMainCateModel = self.cateMainArray.count >indexPath.row ?self.cateMainArray[indexPath.row]:nil;
+        cell.courseCategireMainItem = self.cateMainArray.count >indexPath.row ?self.cateMainArray[indexPath.row]:nil;
         
         return cell;
     }else{
         ELiveMainCateViewCell *cell = [ELiveMainCateViewCell cellWithTableView:tableView];
         
-        cell.eLiveMainCateModel = self.cateMainArray.count >indexPath.row ?self.cateMainArray[indexPath.row]:nil;
+        cell.courseCategireMainItem = self.cateMainArray.count >indexPath.row ?self.cateMainArray[indexPath.row]:nil;
         
         return cell;
     }
@@ -147,6 +196,11 @@
     if (tableView.tag ==2) {
         ELiveCourseListViewController *detailVc = [[ELiveCourseListViewController alloc]init];
         [self.navigationController pushViewController:detailVc animated:YES];
+    }else if (tableView.tag ==1){
+       UcCourseCategireMainItem *mainItem =   self.cateMainArray.count >indexPath.row ?self.cateMainArray[indexPath.row]:nil;
+        if (mainItem) {
+            [self getCourseChildCategiresWithCateId:mainItem.catid];
+        }
     }
 }
 
@@ -182,7 +236,6 @@
     self.tableViewContent.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.tableViewContent.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
     self.tableViewContent.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width *3.5/5.0, 0.0001)];
-    self.tableViewContent.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width *3.5/5.0, 0.0001)];
     self.tableViewContent.dataSource = self;
     self.tableViewContent.delegate = self;
     

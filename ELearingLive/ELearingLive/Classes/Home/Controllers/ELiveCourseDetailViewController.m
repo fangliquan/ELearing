@@ -30,6 +30,8 @@
 @property(nonatomic,strong)  ELiveCourseCatalogViewController * catelogVC;
 @property(nonatomic,strong)  ELiveCourseIntroViewController * introVC;
 @property(nonatomic,strong)  ELiveCourseEvaluateViewController * evaluteVC;
+
+@property(nonatomic,strong) UIView * footerView;
 @end
 
 @implementation ELiveCourseDetailViewController
@@ -91,6 +93,112 @@
     [self configPages];
     [self configHeaderView];
 
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self createFooterView];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveCurrentOffsetYNotification:) name:CurrentOffsetYNotification object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self hideToolView];
+    
+}
+
+
+
+-(void)hideToolView
+{
+    UIWindow * keyWindow = [[UIApplication sharedApplication] keyWindow];
+    
+    if (!keyWindow) {
+        keyWindow = [[[UIApplication sharedApplication] windows] firstObject];
+    }
+    UIView * tempView = [keyWindow viewWithTag:1234561234];
+    
+    if (tempView) {
+        [tempView removeFromSuperview];
+    }
+}
+
+
+-(void)createFooterView{
+    
+    CGFloat viewH = 50;
+    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, Main_Screen_Height - 50, Main_Screen_Width, viewH)];
+    footerView.tag = 1234561234;
+    footerView.backgroundColor = [UIColor whiteColor];
+    
+    if ([self.courseDetailInfoModel.is_owner isEqualToString:@"y"]) {
+        
+        UIButton *rightView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, viewH)];
+        [rightView setTitle:@"修改课程" forState:UIControlStateNormal];
+        [rightView setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        rightView.titleLabel.font = [UIFont systemFontOfSize:17];
+        rightView.backgroundColor = EL_COLOR_RED;
+        rightView.tag = 3;
+        [rightView addTarget:self action:@selector(addCourseToMine:) forControlEvents:UIControlEventTouchUpInside];
+        [footerView addSubview:rightView];
+
+    }else{
+        CGFloat leftViewW = 120;
+        
+        UIButton *leftView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, leftViewW, viewH)];
+        [leftView setTitle:@"收藏" forState:UIControlStateNormal];
+        [leftView setTitleColor:EL_TEXTCOLOR_DARKGRAY forState:UIControlStateNormal];
+        leftView.titleLabel.font = [UIFont systemFontOfSize:17];
+        [leftView addTarget:self action:@selector(followCourseToMine:) forControlEvents:UIControlEventTouchUpInside];
+        [footerView addSubview:leftView];
+        
+        if ([self.courseDetailInfoModel.is_follow isEqualToString:@"y"]) {
+            [leftView setTitle:@"取消收藏" forState:UIControlStateNormal];
+            leftView.tag = 2;
+        }else{
+            [leftView setTitle:@"收藏" forState:UIControlStateNormal];
+            leftView.tag = 1;
+        }
+        
+        UIButton *rightView = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(leftView.frame), 0, Main_Screen_Width - leftViewW, viewH)];
+        [rightView setTitle:@"参加本课程" forState:UIControlStateNormal];
+        [rightView setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        rightView.titleLabel.font = [UIFont systemFontOfSize:17];
+        rightView.backgroundColor = EL_COLOR_RED;
+        [rightView addTarget:self action:@selector(addCourseToMine:) forControlEvents:UIControlEventTouchUpInside];
+        [footerView addSubview:rightView];
+        
+        if ([self.courseDetailInfoModel.is_buy isEqualToString:@"y"]) {
+            [rightView setTitle:@"观看课程" forState:UIControlStateNormal];
+            rightView.tag = 2;
+        }else{
+            [rightView setTitle:@"参加本课程" forState:UIControlStateNormal];
+            rightView.tag = 1;
+        }
+    }
+ 
+    
+    
+    self.footerView = footerView;
+    UIWindow * keyWindow = [[UIApplication sharedApplication] keyWindow];
+    
+    if (!keyWindow) {
+        keyWindow = [[[UIApplication sharedApplication] windows] firstObject];
+    }
+    UIView * tempView = [keyWindow viewWithTag:1234561234];
+    
+    if (!tempView) {
+        [keyWindow addSubview:self.footerView];
+    }
+    
+    
+    
 }
 
 
@@ -187,9 +295,41 @@
     return circleVC;
 }
 
--(void)createFooterView{
-    
+
+-(void)followCourseToMine:(UIButton *)btn{
+    BOOL follow = NO;
+    if (btn.tag ==1) {//收藏
+        follow = YES;
+    }else if (btn.tag ==2){//取消收藏
+        follow = NO;
+    }
+    [[CloudManager sharedInstance]asyncGetCourseFollowedWithCourseId:self.courseId andBool:follow completion:^(NSString *ret, CMError *error) {
+        if (error == nil) {
+            if (follow) {
+                self.courseDetailInfoModel.is_follow = @"y";
+            }else{
+                self.courseDetailInfoModel.is_follow = @"n";
+            }
+            [MBProgressHUD showSuccess:follow ?@"收藏成功":@"取消成功" toView:nil];
+            [self createFooterView];
+        }
+    }];
 }
 
+-(void)addCourseToMine:(UIButton *)btn{
+    if (btn.tag ==1) {//参加课程
+        [[CloudManager sharedInstance]asyncGetCourseNeedBuyWithCourseId:self.courseId completion:^(NSString *ret, CMError *error) {
+            if (error == nil) {
+                [MBProgressHUD showSuccess:@"参加成功" toView:nil];
+            }else{
+                
+            }
+        }];
+    }else if (btn.tag ==2){//观看课程
+        
+    }else if (btn.tag ==3){//修改课程
+        
+    }
+}
 
 @end

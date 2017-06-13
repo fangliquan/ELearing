@@ -48,7 +48,7 @@
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
                                @"token" : token?token:@"",
-                               @"cateId" : cateId?cateId:@"",
+                               @"pid" : cateId?cateId:@"",
                               };
     
     [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
@@ -201,6 +201,80 @@
         }
     }];
 }
+
+//课程 收藏
+- (void)asyncGetCourseFollowedWithCourseId:(NSString *)courseId andBool:(BOOL)follow completion:(void (^)(NSString*ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",follow? [self uriCoursefollow]:[self uriCourseunfollow]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"courseid" : courseId?courseId:@"",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                NSString *score =nil;
+                if ([[ret allKeys]containsObject:@"message"]) {
+                    score = [ret objectForKey:@"message"];
+                }
+                if (completion) {
+                    completion(score,nil);
+                }
+            }else{
+                [MBProgressHUD showError:baseModel.error_desc toView:nil];
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+}
+
+//参加课程
+- (void)asyncGetCourseNeedBuyWithCourseId:(NSString *)courseId  completion:(void (^)(NSString*ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseBuy]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"courseid" : courseId?courseId:@"",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                NSString *score =nil;
+                if ([[ret allKeys]containsObject:@"message"]) {
+                    score = [ret objectForKey:@"message"];
+                }
+                if (completion) {
+                    completion(score,nil);
+                }
+            }else{
+                [MBProgressHUD showError:baseModel.error_desc toView:nil];
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+}
+
+
+
 
 
 @end

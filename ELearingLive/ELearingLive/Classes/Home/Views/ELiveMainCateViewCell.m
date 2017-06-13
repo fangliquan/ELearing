@@ -7,7 +7,7 @@
 //
 
 #import "ELiveMainCateViewCell.h"
-
+#import "UcCourseIndex.h"
 @interface ELiveMainCateViewCell(){
     UILabel *titleLabel;
 }
@@ -53,9 +53,9 @@
     // Configure the view for the selected state
 }
 
--(void)setELiveMainCateModel:(ELiveMainCateModel *)eLiveMainCateModel{
-    _eLiveMainCateModel = eLiveMainCateModel;
-    titleLabel.text = eLiveMainCateModel.title;
+-(void)setCourseCategireMainItem:(UcCourseCategireMainItem *)courseCategireMainItem{
+    _courseCategireMainItem = courseCategireMainItem;
+    titleLabel.text = courseCategireMainItem.name;
 }
 
 
@@ -63,6 +63,61 @@
 @end
 
 @implementation ELiveMainCateModel
+
+
+
+@end
+
+@interface ELiveCateChildrenView (){
+    UILabel *titleLabel;
+}
+
+@end
+
+@implementation ELiveCateChildrenView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self createUI];
+    }
+    return self;
+}
+-(void)createUI{
+    
+    self.userInteractionEnabled = YES;
+    [self addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(itemClick)]];
+    titleLabel = [[UILabel alloc]init];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = EL_TEXTCOLOR_DARKGRAY;
+    titleLabel.text = @"111";
+    titleLabel.font = [UIFont systemFontOfSize:15];
+    
+    [self addSubview:titleLabel];
+    
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.equalTo(self).offset(6);
+        make.right.bottom.equalTo(self).offset(-6);
+    }];
+}
+
+-(void)setCourseCategireChildItem:(UcCourseCategireChildItem *)courseCategireChildItem{
+    _courseCategireChildItem = courseCategireChildItem;
+    titleLabel.text = courseCategireChildItem.name;
+}
+
+-(void)itemClick{
+    if (self.courseCateItemHandler) {
+        self.courseCateItemHandler(_courseCategireChildItem);
+    }
+}
+
++(CGFloat)childrenViewWidth:(NSString *)name{
+    CGFloat width = 12;
+    width +=[WWTextManager textSizeWithStringZeroSpace:name width:200 fontSize:15].width + 2;
+    return width;
+}
 
 
 

@@ -166,6 +166,11 @@
 
 ///course/evaluate 课程详情评价
 -(NSString *)uriCourseEvaluate;
+///course/follow 关注课程
+-(NSString *)uriCoursefollow;
+///course/unfollow 取消关注课程
+-(NSString *)uriCourseunfollow;
 
-
+///course/buy 购买课程
+-(NSString *)uriCourseBuy;
 @end

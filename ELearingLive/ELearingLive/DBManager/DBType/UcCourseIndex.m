@@ -14,10 +14,26 @@
 
 @implementation UcCourseCategireModel
 
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"list":[UcCourseCategireMainItem class]};
+}
 
 @end
 
+@implementation UcCourseCategireMainItem
+
+
+
+@end
 @implementation UcCourseCategireChildModel
+
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"children":[UcCourseCategireChildItem class]};
+}
+@end
+
+@implementation UcCourseCategireChildItem
+
 
 
 @end

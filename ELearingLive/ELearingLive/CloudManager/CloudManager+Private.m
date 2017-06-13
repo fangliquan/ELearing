@@ -579,4 +579,25 @@
     ret = [[NSString alloc] initWithFormat:@"%@/course/evaluate",ret];
     return ret;
 }
+
+-(NSString *)uriCoursefollow{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/follow",ret];
+    return ret;
+}
+///course/unfollow 取消关注课程
+-(NSString *)uriCourseunfollow{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/unfollow",ret];
+    return ret;
+}
+///course/buy 购买课程
+-(NSString *)uriCourseBuy{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/buy",ret];
+    return ret;
+}
 @end

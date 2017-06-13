@@ -15,18 +15,28 @@
 
 @interface UcCourseCategireModel : BaseModel
 
+@property(nonatomic,strong) NSArray *list;
+@end
+
+@interface UcCourseCategireMainItem : BaseModel
+
 @property(nonatomic,strong) NSString *catid;
 
 @property(nonatomic,strong) NSString *name;
 @end
 
+
 @interface UcCourseCategireChildModel : BaseModel
 
+@property(nonatomic,strong) NSArray *children;
+
+@property(nonatomic,strong) NSString *image;
+@end
+
+@interface UcCourseCategireChildItem : NSObject
 @property(nonatomic,strong) NSString *childid;
 
 @property(nonatomic,strong) NSString *name;
-
-@property(nonatomic,strong) NSString *image;
 @end
 
 @interface CourseDetailInfoModel : BaseModel
