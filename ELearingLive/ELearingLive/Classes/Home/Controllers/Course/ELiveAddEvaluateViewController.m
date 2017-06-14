@@ -9,7 +9,7 @@
 #import "ELiveAddEvaluateViewController.h"
 #import "CWStarRateView.h"
 #import "PHTextView.h"
-
+#import "CloudManager+Teacher.h"
 #import "CloudManager+Course.h"
 @interface ELiveAddEvaluateViewController ()<CWStarRateViewDelegate>{
     CWStarRateView *starRateView;
@@ -93,14 +93,27 @@
         [MBProgressHUD showError:@"添加评论内容" toView:nil];
         return;
     }
-     [[CloudManager sharedInstance] asyncAddCourseEvaluateListWithCourseId:self.courseId andContent:evaluateContent.text andScore:[NSString stringWithFormat:@"%0.2f",_newScorePercent] completion:^(NSString *ret, CMError *error) {
-         if (error == nil) {
-             [MBProgressHUD showSuccess:@"评论成功" toView:nil];
-             [self.navigationController popViewControllerAnimated:YES];
-         }else{
-            //[MBProgressHUD showError:@"评论失败" toView:nil];
-         }
-     }];
+    
+    if (_isTeacherEvaluate) {
+        [[CloudManager sharedInstance] asyncTeacherAddEvaluate:self.teacherId andContent:evaluateContent.text andScore:[NSString stringWithFormat:@"%0.2f",_newScorePercent] completion:^(NSString *ret, CMError *error) {
+            if (error == nil) {
+                [MBProgressHUD showSuccess:@"评论成功" toView:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                //[MBProgressHUD showError:@"评论失败" toView:nil];
+            }
+        }];
+    }else{
+        [[CloudManager sharedInstance] asyncAddCourseEvaluateListWithCourseId:self.courseId andContent:evaluateContent.text andScore:[NSString stringWithFormat:@"%0.2f",_newScorePercent] completion:^(NSString *ret, CMError *error) {
+            if (error == nil) {
+                [MBProgressHUD showSuccess:@"评论成功" toView:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                //[MBProgressHUD showError:@"评论失败" toView:nil];
+            }
+        }];
+    }
+
     
 }
 

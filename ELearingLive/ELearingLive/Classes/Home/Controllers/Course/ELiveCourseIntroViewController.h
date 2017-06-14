@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UcCourseIndex.h"
+#import "UcTeacherModel.h"
 @interface ELiveCourseIntroViewController : UITableViewController
 
 // 更新view frame 和 tableView frame
@@ -16,5 +17,5 @@
 @property (nonatomic, copy) void (^userHomePageHandler)(NSString *teacerId);
 
 @property(nonatomic,strong) CourseDetailInfoModel *courseDetailInfoModel;
-
+@property(nonatomic,strong) TeacherInfoModel *teacherInfoModel;
 @end

@@ -12,6 +12,7 @@
 
 #include "CloudManager+Teacher.h"
 #import "UcTeacherModel.h"
+#import "MJRefresh.h"
 @interface ELiveMineFocusViewController ()<UITableViewDelegate,UITableViewDataSource>{
     NSInteger pageIndex;
 }
@@ -113,7 +114,8 @@
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0.0001)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+
     
     [self.view addSubview:self.tableView];
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)])

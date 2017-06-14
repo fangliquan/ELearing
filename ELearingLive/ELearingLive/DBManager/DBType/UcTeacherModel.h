@@ -44,6 +44,8 @@
 @property(nonatomic,strong) NSString *students;
 @property(nonatomic,strong) NSString *is_follow;
 @property(nonatomic,strong) NSString *intro;
+@property(nonatomic,strong) NSString *tags;
+@property(nonatomic,strong) NSString *profit;
 @property(nonatomic,strong) NSString *follow_count;
 @property(nonatomic,strong) NSString *share_url;
 @property(nonatomic,strong) NSString *share_thumb;
@@ -61,12 +63,14 @@
 @interface TeacherCourseListItem : NSObject
 
 @property(strong,nonatomic) NSString *courseid;
+@property(strong,nonatomic) NSString *periodid;
 @property(nonatomic,strong) NSString *name;
 @property(nonatomic,strong) NSString *thumb;
 @property(nonatomic,strong) NSString *price;
 @property(nonatomic,strong) NSString *type;
 @property(nonatomic,strong) NSString *joins;
 @property(nonatomic,strong) NSString *time;
+@property(nonatomic,strong) NSString *teacher_name;
 
 @end
 
@@ -74,6 +78,10 @@
 @property(nonatomic,strong) NSString *count;
 @property(nonatomic,strong) NSString *totalpage;
 
+@property(nonatomic,strong) NSString *can_evaluate;
+@property(nonatomic,strong) NSString *evaluate_id;
+@property(nonatomic,strong) NSString *evaluate_content;
+@property(nonatomic,strong) NSString *evaluate_score;
 @property(nonatomic,strong) NSArray *list;
 @end
 

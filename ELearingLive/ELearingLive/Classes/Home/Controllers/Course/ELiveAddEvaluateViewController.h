@@ -13,4 +13,7 @@
 
 @property(nonatomic,strong) NSString *courseId;
 
+@property(nonatomic,strong) NSString *teacherId;
+
+@property(nonatomic,assign) BOOL isTeacherEvaluate;
 @end

@@ -101,9 +101,6 @@
         phTextView.text =_userTruthInfo.age;
     }
 
-    
-    
-
 }
 
 

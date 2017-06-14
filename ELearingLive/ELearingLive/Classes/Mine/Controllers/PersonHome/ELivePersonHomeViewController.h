@@ -10,4 +10,5 @@
 #import "MXSegmentedPagerController.h"
 @interface ELivePersonHomeViewController : MXSegmentedPagerController
 
+@property(nonatomic,strong) NSString *teacherId;
 @end

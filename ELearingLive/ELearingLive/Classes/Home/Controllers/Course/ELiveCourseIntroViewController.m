@@ -43,6 +43,26 @@
    
 }
 
+-(void)setTeacherInfoModel:(TeacherInfoModel *)teacherInfoModel{
+    _teacherInfoModel = teacherInfoModel;
+    [self createTeacherHeader];
+}
+
+-(void)createTeacherHeader{
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 50)];
+    headerView.backgroundColor = [UIColor whiteColor];
+    
+    CGFloat teacherIntroDespH = [WWTextManager textSizeWithStringZeroSpace:_courseDetailInfoModel.teacher_intro width:Main_Screen_Width - 20 fontSize:14].height +2;
+    UILabel *teacherIntroLabel = [[UILabel alloc]initWithFrame:CGRectMake(10,12, Main_Screen_Width - 20, teacherIntroDespH)];
+    teacherIntroLabel.text = _teacherInfoModel.intro;
+    teacherIntroLabel.textColor = EL_TEXTCOLOR_GRAY;
+    teacherIntroLabel.font = [UIFont systemFontOfSize:14];
+    teacherIntroLabel.numberOfLines = 0;
+    [headerView addSubview:teacherIntroLabel];
+    
+    headerView.frame = CGRectMake(0, 0, Main_Screen_Width, CGRectGetMaxY(teacherIntroLabel.frame) + 15);
+    self.tableView.tableHeaderView = headerView;
+}
 -(void)createHeaderView{
     
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 50)];
@@ -118,7 +138,7 @@
     [userHeader setImageWithURL:[NSURL URLWithString:_courseDetailInfoModel.teacehr_avatar] placeholderImage:[UIImage imageNamed:@"image_default_userheader"]];
     
     
-    UILabel *userNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(userHeader.frame) +6, CGRectGetMaxY(line2.frame) + 10, Main_Screen_Width - CGRectGetMaxX(userHeader.frame) - 12, 80)];
+    UILabel *userNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(userHeader.frame) +6, CGRectGetMinY(userHeader.frame) + 10, Main_Screen_Width - CGRectGetMaxX(userHeader.frame) - 12, 20)];
     userNameLabel.numberOfLines = 2;
     userNameLabel.text = _courseDetailInfoModel.teacher_name;
     userNameLabel.font = [UIFont systemFontOfSize:EL_TEXTFONT_FLOAT_TITLE];

@@ -213,6 +213,8 @@
 		0AB0ED431EDD881300270C9C /* UISearchBar+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED421EDD881300270C9C /* UISearchBar+Expand.m */; };
 		0AB0ED461EDD90D100270C9C /* ELiveMainCateViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED451EDD90D100270C9C /* ELiveMainCateViewCell.m */; };
 		0AB0ED4C1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED4B1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m */; };
+		0AED43801EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED437F1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m */; };
+		0AED43831EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED43821EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m */; };
 		0AEF07C21EBA2D8B0065A22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */; };
 		0AEF085A1EBA310E0065A22B /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF07FD1EBA310E0065A22B /* MBProgressHUD+MJ.m */; };
 		0AEF085B1EBA310E0065A22B /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF07FE1EBA310E0065A22B /* MBProgressHUD.bundle */; };
@@ -681,6 +683,10 @@
 		0AB0ED451EDD90D100270C9C /* ELiveMainCateViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveMainCateViewCell.m; sourceTree = "<group>"; };
 		0AB0ED4A1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveSearchCourseCateViewController.h; sourceTree = "<group>"; };
 		0AB0ED4B1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveSearchCourseCateViewController.m; sourceTree = "<group>"; };
+		0AED437E1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveTeacherEvaluateViewController.h; sourceTree = "<group>"; };
+		0AED437F1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveTeacherEvaluateViewController.m; sourceTree = "<group>"; };
+		0AED43811EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveTeacherHeaderCourseView.h; sourceTree = "<group>"; };
+		0AED43821EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveTeacherHeaderCourseView.m; sourceTree = "<group>"; };
 		0AEF07AF1EBA2D8B0065A22B /* ELearingLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELearingLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AEF07FC1EBA310E0065A22B /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
@@ -939,6 +945,8 @@
 				0A46AA4C1EDA6A290087E078 /* View */,
 				0A46AA491ED8729A0087E078 /* ELivePersonHomeViewController.h */,
 				0A46AA4A1ED8729A0087E078 /* ELivePersonHomeViewController.m */,
+				0AED437E1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.h */,
+				0AED437F1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m */,
 			);
 			path = PersonHome;
 			sourceTree = "<group>";
@@ -948,6 +956,8 @@
 			children = (
 				0A46AA4D1EDA6A5A0087E078 /* ELiveHomeHeaderView.h */,
 				0A46AA4E1EDA6A5A0087E078 /* ELiveHomeHeaderView.m */,
+				0AED43811EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.h */,
+				0AED43821EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2448,6 +2458,7 @@
 				0AEF09941EBED84E0065A22B /* MJRefreshStateHeader.m in Sources */,
 				0A6603FE1EDF064500927433 /* CloudManager+Private.m in Sources */,
 				0A66037F1EDF026200927433 /* YTKNetworkAgent.m in Sources */,
+				0AED43831EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m in Sources */,
 				0AEF093D1EBECF900065A22B /* NSURLConnection+BlocksKit.m in Sources */,
 				0A66042E1EDFA82000927433 /* NSObject+MJClass.m in Sources */,
 				0A6603D01EDF05B500927433 /* AFURLSessionManager.m in Sources */,
@@ -2457,6 +2468,7 @@
 				0A6603711EDF026200927433 /* NSObject+LKDBHelper.m in Sources */,
 				0A6603D61EDF05B500927433 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				0A6603741EDF026200927433 /* MyCJSONDeserializer.m in Sources */,
+				0AED43801EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m in Sources */,
 				0A66036C1EDF026200927433 /* GCDMulticastDelegate.m in Sources */,
 				0A46AA801EDA85D10087E078 /* ELiveSettingFaceBackViewController.m in Sources */,
 				0A6603DA1EDF05B500927433 /* UIRefreshControl+AFNetworking.m in Sources */,

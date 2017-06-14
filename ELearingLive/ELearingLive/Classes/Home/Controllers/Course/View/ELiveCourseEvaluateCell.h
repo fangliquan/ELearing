@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ELiveCourseEvaluateCellFrame,CourseEvaluateListItem;
+@class ELiveCourseEvaluateCellFrame,CourseEvaluateListItem,TeacherEvaluateListItem;
 @interface ELiveCourseEvaluateCell : UITableViewCell
 
 +(instancetype)cellWithTableView:(UITableView *)tableView ;
@@ -17,6 +17,8 @@
 @interface ELiveCourseEvaluateCellFrame: NSObject
 
 @property (nonatomic,strong) CourseEvaluateListItem *courseEvaluateListItem;
+
+@property(nonatomic,strong) TeacherEvaluateListItem *teacherEvaluateListItem;
 
 @property (nonatomic, assign) CGRect  headerFrame;
 @property (nonatomic, assign) CGRect  userNameLFrame;

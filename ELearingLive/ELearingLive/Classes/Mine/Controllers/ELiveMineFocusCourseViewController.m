@@ -52,7 +52,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     ELiveCourseItemCellFrame *cellFrem =[[ELiveCourseItemCellFrame alloc]init];
-    cellFrem.temp =@"  ";
+    //cellFrem.temp =@"  ";
     return cellFrem.cellHeight;
 }
 
@@ -60,7 +60,7 @@
     ELiveCourseItemCell *cell = [ELiveCourseItemCell cellWithTableView:tableView];
     
     ELiveCourseItemCellFrame *cellFrem =[[ELiveCourseItemCellFrame alloc]init];
-    cellFrem.temp =@"  ";
+    //cellFrem.temp =@"  ";
     cell.eLiveCourseItemCellFrame = cellFrem;
     // Configure the cell...
     

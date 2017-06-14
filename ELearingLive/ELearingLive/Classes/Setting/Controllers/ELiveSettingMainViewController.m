@@ -192,6 +192,7 @@
     }
     if (settingModel.type ==Setting_MineHome) {
         ELivePersonHomeViewController *homeVc = [[ELivePersonHomeViewController alloc]init];
+        homeVc.teacherId =[NSString stringWithFormat:@"%lld",[CloudManager sharedInstance].currentAccount.userLoginResponse.userId];
         [self.navigationController pushViewController:homeVc animated:YES];
     }else if (settingModel.type ==Setting_Focus_Teacher){
         ELiveMineFocusViewController *focusVc = [[ELiveMineFocusViewController alloc]init];

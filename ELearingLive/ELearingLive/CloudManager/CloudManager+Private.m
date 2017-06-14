@@ -540,6 +540,22 @@
 }
 
 
+///teacher/follow 关注讲师
+-(NSString *)uriTeacherfollow{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/teacher/follow",ret];
+    return ret;
+}
+///teacher/unfollow 取消关注讲师
+-(NSString *)uriTeacherunfollow{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/teacher/unfollow",ret];
+    return ret;
+}
+
+
 
 ///course/categires 课程主分类
 -(NSString *)uriCourseCategires{

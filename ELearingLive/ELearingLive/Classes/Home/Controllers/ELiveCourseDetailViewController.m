@@ -57,7 +57,7 @@
 
 -(void)getCourseDatail{
     __unsafe_unretained typeof(self) unself = self;
-    [[CloudManager sharedInstance]asyncGetCourseDetailInfoWithCourseId:_courseId andPeriodid:nil andMore:nil completion:^(CourseDetailInfoModel *ret, CMError *error) {
+    [[CloudManager sharedInstance]asyncGetCourseDetailInfoWithCourseId:_courseId andPeriodid:_chapterid andMore:nil completion:^(CourseDetailInfoModel *ret, CMError *error) {
         if (error ==nil) {
             unself.courseDetailInfoModel= ret;
             [unself configData];
@@ -131,7 +131,7 @@
 
 
 -(void)createFooterView{
-    
+    [self hideToolView];
     CGFloat viewH = 50;
     UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, Main_Screen_Height - 50, Main_Screen_Width, viewH)];
     footerView.tag = 1234561234;
@@ -234,6 +234,7 @@
     ELiveCourseIntroViewController * introVC = [[ELiveCourseIntroViewController alloc] initWithStyle:UITableViewStyleGrouped];
     introVC.userHomePageHandler =^(NSString *teacerId){
         ELivePersonHomeViewController *eliveVc = [[ELivePersonHomeViewController alloc]init];
+        eliveVc.teacherId = teacerId;
         [unself.navigationController pushViewController:eliveVc animated:YES];
     };
     introVC.title = @"简介";

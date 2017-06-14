@@ -13,4 +13,6 @@
 +(CGFloat)eLiveCourseDetailHeaderHeight;
 @property(nonatomic,strong) CourseDetailInfoModel *courseDetailInfoModel;
 
+
+
 @end

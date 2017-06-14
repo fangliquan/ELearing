@@ -187,8 +187,7 @@
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
                               @"token" : token?token:@"",
-                              @"teacherId" : teacherid?teacherid:@"1",
-                              
+                              @"teacherid" : teacherid?teacherid:@"1",
                               };
     
     [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
@@ -211,7 +210,7 @@
         }
     }];
 }
-- (void)asyncGetTeacherInfoWithId:(NSString *)teacherid andPage:(NSString *)page andPageSize:(NSString*)pagesize completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion{
+- (void)asyncGetTeacherCourseListWithId:(NSString *)teacherid andPage:(NSString *)page andPageSize:(NSString*)pagesize completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion{
     NSString *url = [NSString stringWithFormat:@"%@",[self uriTeacherCourseList]];
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
@@ -248,7 +247,7 @@
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
                               @"token" : token?token:@"",
-                              @"courseid" : courseId?courseId:@"",
+                              @"teacherid" : courseId?courseId:@"",
                               @"content" : content?content:@"",
                               @"score" : score?score:@"0",
                               };
@@ -278,13 +277,13 @@
     }];
 }
 //讲师评价列表
-- (void)asyncTeacherEvaluateListWithCourseId:(NSString *)courseId andPage:(NSString *)page  completion:(void (^)(TeacherEvaluateListModel *ret, CMError *error))completion{
+- (void)asyncTeacherEvaluateListWithTeacherId:(NSString *)teacherid andPage:(NSString *)page  completion:(void (^)(TeacherEvaluateListModel *ret, CMError *error))completion{
     NSString *url = [NSString stringWithFormat:@"%@",[self uriTeacherEvaluateList]];
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
                               @"token" : token?token:@"",
                               @"page" : page?page:@"1",
-                              @"courseid" : courseId?courseId:@"",
+                              @"teacherid" : teacherid?teacherid:@"",
                               };
     
     [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
@@ -295,6 +294,40 @@
                     completion(baseModel,nil);
                 }
             }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+}
+- (void)asyncGetTeacherFollowedWithTeacherId:(NSString *)teacherId andBool:(BOOL)follow completion:(void (^)(NSString*ret, CMError *error))completion{
+    
+    NSString *url = [NSString stringWithFormat:@"%@",follow? [self uriTeacherfollow]:[self uriTeacherunfollow]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"teacherid" : teacherId?teacherId:@"",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                NSString *score =nil;
+                if ([[ret allKeys]containsObject:@"message"]) {
+                    score = [ret objectForKey:@"message"];
+                }
+                if (completion) {
+                    completion(score,nil);
+                }
+            }else{
+                [MBProgressHUD showError:baseModel.error_desc toView:nil];
                 if (completion) {
                     completion(nil,error);
                 }

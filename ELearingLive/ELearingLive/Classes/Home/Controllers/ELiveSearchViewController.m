@@ -130,13 +130,13 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELiveCourseItemCellFrame *cellFrem =[[ELiveCourseItemCellFrame alloc]init];
-    cellFrem.temp =@"  ";
+    //cellFrem.temp =@"  ";
     return cellFrem.cellHeight;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELiveCourseItemCell *cell = [ELiveCourseItemCell cellWithTableView:tableView];
     ELiveCourseItemCellFrame *cellFrem =[[ELiveCourseItemCellFrame alloc]init];
-    cellFrem.temp =@"  ";
+    //cellFrem.temp =@"  ";
     cell.eLiveCourseItemCellFrame = cellFrem;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

@@ -10,4 +10,7 @@
 
 @interface ELiveCourseListViewController : UITableViewController
 
+@property(nonatomic,strong) NSString *teacherId;
+
+@property(nonatomic,assign) BOOL isFormTeacher;
 @end

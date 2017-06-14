@@ -25,11 +25,13 @@
 - (void)asyncGetTeacherInfoWithId:(NSString *)teacherid  completion:(void (^)(TeacherInfoModel *ret, CMError *error))completion;
 
 //将是课程列表 pagesize 可以不传
-- (void)asyncGetTeacherInfoWithId:(NSString *)teacherid andPage:(NSString *)page andPageSize:(NSString*)pagesize completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion;
+- (void)asyncGetTeacherCourseListWithId:(NSString *)teacherid andPage:(NSString *)page andPageSize:(NSString*)pagesize completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion;
 //评价讲师 /teacher/evaluate
 - (void)asyncTeacherAddEvaluate:(NSString *)courseId andContent:(NSString *)content andScore:(NSString*)score completion:(void (^)(NSString *ret, CMError *error))completion;
 //讲师评价列表
-- (void)asyncTeacherEvaluateListWithCourseId:(NSString *)courseId andPage:(NSString *)page  completion:(void (^)(TeacherEvaluateListModel *ret, CMError *error))completion;
+- (void)asyncTeacherEvaluateListWithTeacherId:(NSString *)teacherid andPage:(NSString *)page  completion:(void (^)(TeacherEvaluateListModel *ret, CMError *error))completion;
+//讲师关注
+- (void)asyncGetTeacherFollowedWithTeacherId:(NSString *)teacherId andBool:(BOOL)follow completion:(void (^)(NSString*ret, CMError *error))completion;
 
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ELiveCourseEvaluateCell.h"
 #import "UcCourseIndex.h"
+#import "UcTeacherModel.h"
 @interface ELiveCourseEvaluateCell(){
     UIImageView *headerView;
     UILabel *userNameLabel;
@@ -84,10 +85,18 @@
         timeLabel.frame = cellFrame.timeLFrame;
         commentLabel.frame = cellFrame.commentDespFrame;
         
-        [headerView setImageWithURL:[NSURL URLWithString:cellFrame.courseEvaluateListItem.avatar] placeholderImage:[UIImage imageNamed:@"image_default_userheader"]];
-        userNameLabel.text = cellFrame.courseEvaluateListItem.username;
-        timeLabel.text = cellFrame.courseEvaluateListItem.time;
-        commentLabel.text = cellFrame.courseEvaluateListItem.content;
+        if (cellFrame.courseEvaluateListItem) {
+            [headerView setImageWithURL:[NSURL URLWithString:cellFrame.courseEvaluateListItem.avatar] placeholderImage:[UIImage imageNamed:@"image_default_userheader"]];
+            userNameLabel.text = cellFrame.courseEvaluateListItem.username;
+            timeLabel.text = cellFrame.courseEvaluateListItem.time;
+            commentLabel.text = cellFrame.courseEvaluateListItem.content;
+        }else{
+            [headerView setImageWithURL:[NSURL URLWithString:cellFrame.teacherEvaluateListItem.avatar] placeholderImage:[UIImage imageNamed:@"image_default_userheader"]];
+            userNameLabel.text = cellFrame.teacherEvaluateListItem.username;
+            timeLabel.text = cellFrame.teacherEvaluateListItem.time;
+            commentLabel.text = cellFrame.teacherEvaluateListItem.content;
+        }
+
     }
 }
 
@@ -106,6 +115,24 @@
 
 @implementation ELiveCourseEvaluateCellFrame
 
+
+-(void)setTeacherEvaluateListItem:(TeacherEvaluateListItem *)teacherEvaluateListItem{
+    _teacherEvaluateListItem = teacherEvaluateListItem;
+    CGFloat marginX = 8;
+    CGFloat offsetY = 8;
+    
+    CGFloat headerWidth = 50;
+    CGFloat starWidth = 80;
+    _headerFrame = CGRectMake(marginX, offsetY, headerWidth, headerWidth);
+    _userNameLFrame = CGRectMake(CGRectGetMaxX(_headerFrame) +marginX, marginX *2, 200, 20);
+    _starFrame = CGRectMake(Main_Screen_Width - 90, marginX *2, starWidth, 20);
+    _timeLFrame = CGRectMake(CGRectGetMaxX(_headerFrame) + marginX, CGRectGetMaxY(_userNameLFrame) + 5, 220, 18);
+    
+    CGFloat textW = Main_Screen_Width  - CGRectGetMaxX(_headerFrame) - 2*marginX;
+    CGFloat textH = [WWTextManager textSizeWithStringZeroSpace: teacherEvaluateListItem.content width:textW fontSize:15].height + 2;
+    _commentDespFrame = CGRectMake(CGRectGetMaxX(_headerFrame) + marginX,  CGRectGetMaxY(_headerFrame) + 5, textW, textH);
+    _cellHeight = CGRectGetMaxY(_commentDespFrame) + offsetY;
+}
 
 -(void)setCourseEvaluateListItem:(CourseEvaluateListItem *)courseEvaluateListItem{
     _courseEvaluateListItem = courseEvaluateListItem;

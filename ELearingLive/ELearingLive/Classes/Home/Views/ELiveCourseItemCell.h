@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ELiveCourseItemCellFrame;
+@class ELiveCourseItemCellFrame,TeacherCourseListItem;
 
 @interface ELiveCourseItemCell : UITableViewCell
 
@@ -19,9 +19,17 @@
 
 @end
 
+@interface ELiveCourseItemView : UIView
+
+@property (nonatomic, copy) void (^teacherCourseItemBlock)(TeacherCourseListItem *courseItem);
+@property(nonatomic,strong) ELiveCourseItemCellFrame *eLiveCourseItemCellFrame;
+
+
+@end
+
 @interface ELiveCourseItemCellFrame: NSObject
 
-@property (nonatomic,strong) NSString *temp;
+@property (nonatomic,strong) TeacherCourseListItem *teacherCourseListItem;
 @property (nonatomic, assign) CGRect  iconFrame;
 @property (nonatomic, assign) CGRect  liveTagLFrame;
 @property (nonatomic, assign) CGRect  titleLFrame;

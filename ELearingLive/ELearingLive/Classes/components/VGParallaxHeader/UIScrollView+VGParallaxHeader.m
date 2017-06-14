@@ -12,6 +12,7 @@
 #import "PureLayout.h"
 
 #import "ELiveCourseDetailHeaderView.h"
+#import "ELiveHomeHeaderView.h"
 
 static char UIScrollViewVGParallaxHeader;
 static char UIScrollViewScrollCurrentViewDidScroll;
@@ -187,6 +188,12 @@ static void *VGParallaxHeaderObserverContext = &VGParallaxHeaderObserverContext;
 
                     if ([obj isMemberOfClass:[ELiveCourseDetailHeaderView class]]) {
                         ELiveCourseDetailHeaderView * showView = (ELiveCourseDetailHeaderView *)obj;
+                        showView.frame = CGRectMake(0, -self.contentOffset.y - self.parallaxHeader.updateHeight, CGRectGetWidth(showView.frame), self.parallaxHeader.updateHeight);
+                        [self postNotificationWithContentOffsetY:-self.contentOffset.y];
+                    }
+                    
+                    if ([obj isMemberOfClass:[ELiveTeacherHeaderView class]]) {
+                        ELiveTeacherHeaderView * showView = (ELiveTeacherHeaderView *)obj;
                         showView.frame = CGRectMake(0, -self.contentOffset.y - self.parallaxHeader.updateHeight, CGRectGetWidth(showView.frame), self.parallaxHeader.updateHeight);
                         [self postNotificationWithContentOffsetY:-self.contentOffset.y];
                     }

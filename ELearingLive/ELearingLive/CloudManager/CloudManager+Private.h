@@ -152,6 +152,12 @@
 -(NSString *)uriTeacherEvaluate;
 //评价讲师列表 /teacher/evaluatelist
 -(NSString *)uriTeacherEvaluateList;
+///teacher/follow 关注讲师
+-(NSString *)uriTeacherfollow;
+///teacher/unfollow 取消关注讲师
+-(NSString *)uriTeacherunfollow;
+
+
 
 ///course/categires 课程主分类
 -(NSString *)uriCourseCategires;
