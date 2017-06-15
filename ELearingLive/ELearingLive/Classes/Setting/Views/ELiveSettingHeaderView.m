@@ -75,7 +75,7 @@
     UILabel *inPriceL = [[UILabel alloc]initWithFrame:CGRectMake(0, 4, itemWidth, 20)];
     inPriceL.textAlignment = NSTextAlignmentCenter;
     inPriceL.textColor = [UIColor whiteColor];
-    inPriceL.text = @"12345";
+    inPriceL.text =  [CloudManager sharedInstance].currentAccount.userLoginResponse.profit;
     inPriceL.font = [UIFont systemFontOfSize:15];
     inPriceL.userInteractionEnabled = YES;
     [inPriceL addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(earningClick)]];
@@ -101,7 +101,7 @@
     UILabel *commentL = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(splitL1.frame), 4, itemWidth, 20)];
     commentL.textAlignment = NSTextAlignmentCenter;
     commentL.textColor = [UIColor whiteColor];
-    commentL.text = @"12345";
+    commentL.text =  [CloudManager sharedInstance].currentAccount.userLoginResponse.score;
     commentL.font = [UIFont systemFontOfSize:15];
     [bottomView addSubview:commentL];
     
@@ -122,7 +122,7 @@
     UILabel *fansL = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(splitL2.frame), 4, itemWidth, 20)];
     fansL.textAlignment = NSTextAlignmentCenter;
     fansL.textColor = [UIColor whiteColor];
-    fansL.text = @"12345";
+    fansL.text =  [CloudManager sharedInstance].currentAccount.userLoginResponse.fans;
     fansL.font = [UIFont systemFontOfSize:15];
     fansL.userInteractionEnabled = YES;
     [fansL addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(fansLableClick)]];

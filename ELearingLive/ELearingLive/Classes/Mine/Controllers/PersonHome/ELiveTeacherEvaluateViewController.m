@@ -52,23 +52,28 @@
     page ++;
     __unsafe_unretained typeof(self) unself = self;
     [[CloudManager sharedInstance]asyncTeacherEvaluateListWithTeacherId:_teacherId andPage:[NSString stringWithFormat:@"%ld",page] completion:^(TeacherEvaluateListModel *ret, CMError *error) {
-        unself.evaluateListModel = ret;
-        commentLabel.text = [NSString stringWithFormat:@"(%@评论)",ret.count] ;
-        starRateView.scorePercent =[ret.evaluate_score floatValue];
-        [unself.tableView reloadData];
-        if (ret.list.count <=0) {
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        if (error == nil) {
+            unself.evaluateListModel = ret;
+            commentLabel.text = [NSString stringWithFormat:@"(%@评论)",ret.count] ;
+            starRateView.scorePercent =[ret.evaluate_score floatValue];
+            [unself.tableView reloadData];
+            [unself configData:ret];
+            if (ret.list.count <=0) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
         }
+
     }];
 
 }
 
--(void)configData{
-    for (TeacherEvaluateListItem *commentItem in _evaluateListModel.list) {
+-(void)configData:(TeacherEvaluateListModel *)ret{
+    for (TeacherEvaluateListItem *commentItem in ret.list) {
         ELiveCourseEvaluateCellFrame *cellFrame = [[ELiveCourseEvaluateCellFrame alloc]init];
         cellFrame.teacherEvaluateListItem = commentItem;
         [_evaluatesArray addObject:cellFrame];
     }
+    [self.tableView reloadData];
 }
 - (void)updateViewControllerFrame:(CGRect)frame {
     
@@ -134,8 +139,6 @@
     ELiveCourseEvaluateCell *cell = [ELiveCourseEvaluateCell cellWithTableView:tableView];
     
     cell.cellFrame =  _evaluatesArray.count >indexPath.row ?_evaluatesArray[indexPath.row]:nil;
-    ;
-    
     return cell;
 }
 

@@ -264,6 +264,7 @@
     evaluteVC.addCourseEvaluateCommentHandler = ^{
         ELiveAddEvaluateViewController *addVc = [[ELiveAddEvaluateViewController alloc]init];
         addVc.teacherId = unself.teacherId;
+        addVc.isTeacherEvaluate = YES;
         [unself.navigationController pushViewController:addVc animated:YES];
     };
     [self.pages addObject:evaluteVC];

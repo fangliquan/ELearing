@@ -249,6 +249,9 @@
     
     ELiveCourseEvaluateViewController * evaluteVC = [[ELiveCourseEvaluateViewController alloc] init];
     evaluteVC.title =@"评论";
+    evaluteVC.pageViewReloadHandler = ^{
+        [unself.segmentedPager reloadData];
+    };
     evaluteVC.addCourseEvaluateCommentHandler = ^{
         ELiveAddEvaluateViewController *addVc = [[ELiveAddEvaluateViewController alloc]init];
         addVc.courseId = unself.courseId;
@@ -281,17 +284,9 @@
 - (UIViewController *)segmentedPager:(MXSegmentedPager *)segmentedPager viewControllerForPageAtIndex:(NSInteger)index {
 
     UIViewController * circleVC = self.pages.count > index ? self.pages[index] : nil;
-    
-    
     if ([circleVC isKindOfClass:[ELiveCourseEvaluateViewController class]]) {
         ELiveCourseEvaluateViewController *evaluateVc =  (ELiveCourseEvaluateViewController * )circleVC;
-        [evaluateVc updateViewControllerFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height - 64 - 44)];
-    }else if ([circleVC isKindOfClass:[ELiveCourseCatalogViewController class]]) {
-        ELiveCourseCatalogViewController *evaluateVc =  (ELiveCourseCatalogViewController * )circleVC;
-        [evaluateVc updateViewControllerFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height - 64 - 44)];
-    }else if ([circleVC isKindOfClass:[ELiveCourseCatalogViewController class]]) {
-        ELiveCourseCatalogViewController *evaluateVc =  (ELiveCourseCatalogViewController * )circleVC;
-        [evaluateVc updateViewControllerFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height - 64 - 44)];
+        [evaluateVc reloadTableView];
     }
     return circleVC;
 }

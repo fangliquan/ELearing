@@ -27,9 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _evaluatesArray = [NSMutableArray array];
-    [self configtableView];
-    [self createHeaderView];
+
     page = 0;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -38,8 +36,14 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+//-(void) reloadTableView{
+//    [self.tableView reloadData];
+//}
 -(void)setCourseId:(NSString *)courseId{
     _courseId = courseId;
+    self.evaluatesArray = [NSMutableArray array];
+    [self configtableView];
+    [self createHeaderView];
     [self getCourseEvaluate];
 }
 - (void)didReceiveMemoryWarning {
@@ -56,7 +60,13 @@
             unself.courseEvaluateListModel = ret;
             commentLabel.text = [NSString stringWithFormat:@"(%@评论)",_courseEvaluateListModel.count] ;
             starRateView.scorePercent =[_courseEvaluateListModel.evaluate_score floatValue];
-            [unself.tableView reloadData];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [unself.tableView reloadData];
+                [unself configData:ret];
+            });
+
+            
             if (ret.list.count <=0) {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
@@ -64,12 +74,16 @@
     }];
 }
 
--(void)configData{
-    for (CourseEvaluateListItem *commentItem in _courseEvaluateListModel.list) {
+-(void)configData:(CourseEvaluateListModel *)ret{
+    for (CourseEvaluateListItem *commentItem in ret.list) {
         ELiveCourseEvaluateCellFrame *cellFrame = [[ELiveCourseEvaluateCellFrame alloc]init];
         cellFrame.courseEvaluateListItem = commentItem;
         [_evaluatesArray addObject:cellFrame];
     }
+    [self.tableView reloadData];
+    
+
+    
 }
 - (void)updateViewControllerFrame:(CGRect)frame {
 
@@ -135,8 +149,6 @@
     ELiveCourseEvaluateCell *cell = [ELiveCourseEvaluateCell cellWithTableView:tableView];
     
     cell.cellFrame =  _evaluatesArray.count >indexPath.row ?_evaluatesArray[indexPath.row]:nil;
-;
-    
     return cell;
 }
 

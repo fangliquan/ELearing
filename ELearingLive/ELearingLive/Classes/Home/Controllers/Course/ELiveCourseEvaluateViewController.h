@@ -18,5 +18,8 @@
 
 @property (nonatomic, copy) void (^addCourseEvaluateCommentHandler)(void);
 
+@property (nonatomic, copy) void (^pageViewReloadHandler)(void);
 
+
+-(void) reloadTableView;
 @end

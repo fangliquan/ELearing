@@ -264,6 +264,7 @@
                     completion(score,nil);
                 }
             }else{
+                [MBProgressHUD showError:baseModel.error_desc toView:nil];
                 if (completion) {
                     completion(nil,error);
                 }

@@ -9,12 +9,13 @@
 #import "ELiveCourseEvaluateCell.h"
 #import "UcCourseIndex.h"
 #import "UcTeacherModel.h"
+#import "CWStarRateView.h"
 @interface ELiveCourseEvaluateCell(){
     UIImageView *headerView;
     UILabel *userNameLabel;
     UILabel *commentLabel;
     UILabel *timeLabel;
-    UIImageView *starView;
+    UIImageView *starRateView;
     
 }
 
@@ -46,11 +47,9 @@
     [self.contentView addSubview:headerView];
 
     
-    starView = [[UIImageView alloc]init];
-    starView.layer.masksToBounds = YES;
-    starView.layer.cornerRadius = 25;
-
-    [self.contentView addSubview:starView];
+    starRateView = [[UIImageView alloc] init];
+    starRateView.userInteractionEnabled = NO;
+    [self.contentView addSubview:starRateView];
     
     userNameLabel = [[UILabel alloc]init];
     userNameLabel.numberOfLines = 2;
@@ -80,7 +79,20 @@
     if (cellFrame) {
         _cellFrame = cellFrame;
         headerView.frame = cellFrame.headerFrame;
-        starView.frame = cellFrame.starFrame;
+        starRateView.frame = cellFrame.starFrame;
+        
+        
+        for ( UIView *view in starRateView.subviews) {
+            [view removeFromSuperview];
+        }
+        CWStarRateView *srateView = [[CWStarRateView alloc] initWithFrame:CGRectMake(0, 0, 100, 20) numberOfStars:5];
+        srateView.scorePercent =0;
+        srateView.allowIncompleteStar = YES;
+        srateView.hasAnimation = NO;
+        srateView.userInteractionEnabled = NO;
+        srateView.scorePercent = [cellFrame.courseEvaluateListItem.score floatValue];
+        [starRateView addSubview: srateView];
+        
         userNameLabel.frame = cellFrame.userNameLFrame;
         timeLabel.frame = cellFrame.timeLFrame;
         commentLabel.frame = cellFrame.commentDespFrame;
@@ -122,10 +134,10 @@
     CGFloat offsetY = 8;
     
     CGFloat headerWidth = 50;
-    CGFloat starWidth = 80;
+    CGFloat starWidth = 100;
     _headerFrame = CGRectMake(marginX, offsetY, headerWidth, headerWidth);
     _userNameLFrame = CGRectMake(CGRectGetMaxX(_headerFrame) +marginX, marginX *2, 200, 20);
-    _starFrame = CGRectMake(Main_Screen_Width - 90, marginX *2, starWidth, 20);
+    _starFrame = CGRectMake(Main_Screen_Width - 110, marginX *2, starWidth, 25);
     _timeLFrame = CGRectMake(CGRectGetMaxX(_headerFrame) + marginX, CGRectGetMaxY(_userNameLFrame) + 5, 220, 18);
     
     CGFloat textW = Main_Screen_Width  - CGRectGetMaxX(_headerFrame) - 2*marginX;
@@ -140,10 +152,10 @@
     CGFloat offsetY = 8;
     
     CGFloat headerWidth = 50;
-    CGFloat starWidth = 80;
+    CGFloat starWidth = 100;
     _headerFrame = CGRectMake(marginX, offsetY, headerWidth, headerWidth);
     _userNameLFrame = CGRectMake(CGRectGetMaxX(_headerFrame) +marginX, marginX *2, 200, 20);
-    _starFrame = CGRectMake(Main_Screen_Width - 90, marginX *2, starWidth, 20);
+    _starFrame = CGRectMake(Main_Screen_Width - 110, marginX *2, starWidth, 25);
     _timeLFrame = CGRectMake(CGRectGetMaxX(_headerFrame) + marginX, CGRectGetMaxY(_userNameLFrame) + 5, 220, 18);
     
     CGFloat textW = Main_Screen_Width  - CGRectGetMaxX(_headerFrame) - 2*marginX;
