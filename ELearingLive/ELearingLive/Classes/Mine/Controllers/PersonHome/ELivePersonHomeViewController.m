@@ -97,7 +97,7 @@
 -(void)createFooterView{
     
     [self hideToolView];
-    if (![self.teacherId isEqualToString:[NSString stringWithFormat:@"%lld",[CloudManager sharedInstance].currentAccount.userLoginResponse.userId]]) {
+    if (![self.teacherId isEqualToString:[NSString stringWithFormat:@"%@",[CloudManager sharedInstance].currentAccount.userLoginResponse.userid]]) {
         CGFloat viewH = 50;
         UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, Main_Screen_Height - 50, Main_Screen_Width, viewH)];
         footerView.tag = 123456123456;

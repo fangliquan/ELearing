@@ -215,6 +215,7 @@
 		0AB0ED4C1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0ED4B1EDD9CB900270C9C /* ELiveSearchCourseCateViewController.m */; };
 		0AED43801EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED437F1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m */; };
 		0AED43831EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED43821EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m */; };
+		0AED43861EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED43851EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m */; };
 		0AEF07C21EBA2D8B0065A22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */; };
 		0AEF085A1EBA310E0065A22B /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF07FD1EBA310E0065A22B /* MBProgressHUD+MJ.m */; };
 		0AEF085B1EBA310E0065A22B /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF07FE1EBA310E0065A22B /* MBProgressHUD.bundle */; };
@@ -687,6 +688,8 @@
 		0AED437F1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveTeacherEvaluateViewController.m; sourceTree = "<group>"; };
 		0AED43811EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveTeacherHeaderCourseView.h; sourceTree = "<group>"; };
 		0AED43821EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveTeacherHeaderCourseView.m; sourceTree = "<group>"; };
+		0AED43841EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveTeacherAddNewCourseViewController.h; sourceTree = "<group>"; };
+		0AED43851EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveTeacherAddNewCourseViewController.m; sourceTree = "<group>"; };
 		0AEF07AF1EBA2D8B0065A22B /* ELearingLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELearingLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AEF07FC1EBA310E0065A22B /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
@@ -1526,6 +1529,8 @@
 				0A6945381EC701F200D83DC1 /* ELiveCourseEvaluateViewController.m */,
 				0AB055A11EEECC85000A954F /* ELiveAddEvaluateViewController.h */,
 				0AB055A21EEECC85000A954F /* ELiveAddEvaluateViewController.m */,
+				0AED43841EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.h */,
+				0AED43851EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -2528,6 +2533,7 @@
 				0AB0ED3D1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m in Sources */,
 				0A54A3881ED31F3200421CC5 /* NSArray+PureLayout.m in Sources */,
 				0A46AA891EDA9E590087E078 /* ELiveMineEarningsViewController.m in Sources */,
+				0AED43861EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m in Sources */,
 				0AEF08731EBA310F0065A22B /* MKAnnotationView+WebCache.m in Sources */,
 				0AEF088C1EBA338E0065A22B /* ELiveMineMainViewController.m in Sources */,
 				0A69452B1EC6FC8800D83DC1 /* BaseViewController.m in Sources */,

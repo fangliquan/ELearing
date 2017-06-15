@@ -38,7 +38,7 @@
     LoginInfo *loginInfo = [[LoginInfo alloc]init];
     loginInfo.token = result.token;
     loginInfo.phone = result.phone;
-    loginInfo.userId = result.userId;
+    loginInfo.userId = result.userid;
     loginInfo.isLogined = 1;
     loginInfo.deviceId = result.token;
     [[DBManager sharedInstance] cleanTableData:[LoginInfo class]];

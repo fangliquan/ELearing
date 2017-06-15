@@ -59,3 +59,9 @@
 
 
 @end
+
+@implementation TeacherCreateCourseInfo
+
+
+
+@end

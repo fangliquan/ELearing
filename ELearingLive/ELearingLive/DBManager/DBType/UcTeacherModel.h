@@ -99,4 +99,17 @@
 
 
 
+@interface TeacherCreateCourseInfo : NSObject
 
+@property(nonatomic,strong) NSString *courseSubject;
+
+@property(nonatomic,strong) NSMutableArray *courseItemsTime;
+
+@property(nonatomic,strong) NSMutableArray *courseCates;
+
+@property(nonatomic,strong) UIImage *courseCover;
+
+@property(nonatomic,strong) NSString *courseIntro;
+
+
+@end

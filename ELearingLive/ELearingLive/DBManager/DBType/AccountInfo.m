@@ -179,7 +179,7 @@
 
 @implementation UserLoginResponse
 
-@synthesize  userId;
+@synthesize  userid;
 
 @synthesize phone;
 
@@ -196,7 +196,7 @@
 
 +(NSString *)getPrimaryKey
 {
-    return @"userId";
+    return @"userid";
 }
 
 +(NSString *)getTableName

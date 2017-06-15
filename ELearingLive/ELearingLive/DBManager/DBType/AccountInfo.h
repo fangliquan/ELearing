@@ -50,7 +50,7 @@
 
 #pragma mark - Login Info
 @interface LoginInfo : BaseModel
-@property (nonatomic, assign) long userId;
+@property (nonatomic, copy) NSString *userId;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *deviceId;
 @property (nonatomic, copy)   NSString * token;
@@ -74,7 +74,7 @@
 
 @interface UserLoginResponse : BaseModel
 
-@property(nonatomic,assign) long long  userId;
+@property(nonatomic,copy) NSString *userid;
 
 @property(copy,nonatomic) NSString *phone;
 
