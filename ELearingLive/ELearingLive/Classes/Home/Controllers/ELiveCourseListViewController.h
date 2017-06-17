@@ -13,4 +13,7 @@
 @property(nonatomic,strong) NSString *teacherId;
 
 @property(nonatomic,assign) BOOL isFormTeacher;
+
+@property(nonatomic,strong) NSString *cateId;
+
 @end

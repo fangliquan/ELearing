@@ -125,6 +125,7 @@
                     [unself moreCourseClick];
                 }else{
                     ELiveCourseListViewController *eliveVc = [[ELiveCourseListViewController alloc]init];
+                    eliveVc.cateId = model.catid;
                     eliveVc.hidesBottomBarWhenPushed = YES;
                     [unself.navigationController pushViewController:eliveVc animated:YES];
                 }

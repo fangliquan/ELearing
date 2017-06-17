@@ -12,6 +12,7 @@
 #import "GCDMulticastDelegate.h"
 #import "PublicUtil.h"
 #import  "UcCourseIndex.h"
+#import "UcTeacherModel.h"
 @implementation CloudManager (Course)
 
 //课程分类
@@ -44,7 +45,7 @@
 }
 //课程子分类
 - (void)asyncGetCourseChildCategiresWithCateId:(NSString *)cateId  completion:(void (^)(UcCourseCategireChildModel *ret, CMError *error))completion{
-    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseCategires]];
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseChildren]];
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
                                @"token" : token?token:@"",
@@ -273,7 +274,37 @@
 
 }
 
-
+- (void)asyncGetCourseListWithCateId:(NSString *)catesId andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion{
+    
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseEvaluatelist]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"catid" : catesId?catesId:@"",
+                              @"page" : page?page:@"",
+                              
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            TeacherCourseListModel * truthInfo = [TeacherCourseListModel mj_objectWithKeyValues:ret];
+            if ([truthInfo.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(truthInfo,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+}
 
 
 

@@ -216,6 +216,7 @@
 		0AED43801EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED437F1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m */; };
 		0AED43831EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED43821EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m */; };
 		0AED43861EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED43851EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m */; };
+		0AED43891EF34D1400EAD011 /* ELiveCreateCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED43881EF34D1400EAD011 /* ELiveCreateCourseCell.m */; };
 		0AEF07C21EBA2D8B0065A22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */; };
 		0AEF085A1EBA310E0065A22B /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF07FD1EBA310E0065A22B /* MBProgressHUD+MJ.m */; };
 		0AEF085B1EBA310E0065A22B /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AEF07FE1EBA310E0065A22B /* MBProgressHUD.bundle */; };
@@ -690,6 +691,8 @@
 		0AED43821EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveTeacherHeaderCourseView.m; sourceTree = "<group>"; };
 		0AED43841EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveTeacherAddNewCourseViewController.h; sourceTree = "<group>"; };
 		0AED43851EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveTeacherAddNewCourseViewController.m; sourceTree = "<group>"; };
+		0AED43871EF34D1400EAD011 /* ELiveCreateCourseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCreateCourseCell.h; sourceTree = "<group>"; };
+		0AED43881EF34D1400EAD011 /* ELiveCreateCourseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCreateCourseCell.m; sourceTree = "<group>"; };
 		0AEF07AF1EBA2D8B0065A22B /* ELearingLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELearingLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEF07C11EBA2D8B0065A22B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AEF07FC1EBA310E0065A22B /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
@@ -1148,6 +1151,8 @@
 				0A54A3C81ED5B8DC00421CC5 /* ELiveCourseCatalogCell.m */,
 				0A54A3CA1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.h */,
 				0A54A3CB1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.m */,
+				0AED43871EF34D1400EAD011 /* ELiveCreateCourseCell.h */,
+				0AED43881EF34D1400EAD011 /* ELiveCreateCourseCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2438,6 +2443,7 @@
 				0AEF09881EBED84E0065A22B /* MJRefreshBackFooter.m in Sources */,
 				0A66037C1EDF026200927433 /* YTKBatchRequestAgent.m in Sources */,
 				0AEF092C1EBECF900065A22B /* NSDictionary+BlocksKit.m in Sources */,
+				0AED43891EF34D1400EAD011 /* ELiveCreateCourseCell.m in Sources */,
 				0AEF09451EBECF900065A22B /* UIControl+BlocksKit.m in Sources */,
 				0A46AA8C1EDA9E780087E078 /* ELiveEarningsCell.m in Sources */,
 				0AEF08691EBA310E0065A22B /* MJPhotoLoadingView.m in Sources */,

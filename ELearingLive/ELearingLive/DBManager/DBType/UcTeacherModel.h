@@ -70,6 +70,7 @@
 @property(nonatomic,strong) NSString *type;
 @property(nonatomic,strong) NSString *joins;
 @property(nonatomic,strong) NSString *time;
+@property(nonatomic,strong) NSString *status;//课程状态  直播中 课程中 等等
 @property(nonatomic,strong) NSString *teacher_name;
 
 @end
@@ -111,5 +112,6 @@
 
 @property(nonatomic,strong) NSString *courseIntro;
 
+@property(nonatomic,assign) NSInteger  type;
 
 @end

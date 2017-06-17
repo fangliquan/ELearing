@@ -69,7 +69,7 @@
 @end
 
 @interface ELiveCateChildrenView (){
-    UILabel *titleLabel;
+    UIButton *titleLabel;
 }
 
 @end
@@ -86,25 +86,24 @@
 }
 -(void)createUI{
     
-    self.userInteractionEnabled = YES;
-    [self addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(itemClick)]];
-    titleLabel = [[UILabel alloc]init];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.textColor = EL_TEXTCOLOR_DARKGRAY;
-    titleLabel.text = @"111";
-    titleLabel.font = [UIFont systemFontOfSize:15];
-    
+//    self.userInteractionEnabled = YES;
+//    [self addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(itemClick)]];
+    titleLabel = [[UIButton alloc]init];
+    [titleLabel setTitleColor:EL_TEXTCOLOR_DARKGRAY forState:UIControlStateNormal];
+    titleLabel.titleLabel.font = [UIFont systemFontOfSize:15];
+    [titleLabel addTarget:self action:@selector(itemClick) forControlEvents:UIControlEventTouchUpInside];
+
     [self addSubview:titleLabel];
     
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.equalTo(self).offset(6);
-        make.right.bottom.equalTo(self).offset(-6);
+        make.top.left.equalTo(self).offset(3);
+        make.right.bottom.equalTo(self).offset(-3);
     }];
 }
 
 -(void)setCourseCategireChildItem:(UcCourseCategireChildItem *)courseCategireChildItem{
     _courseCategireChildItem = courseCategireChildItem;
-    titleLabel.text = courseCategireChildItem.name;
+    [titleLabel setTitle:courseCategireChildItem.name forState:UIControlStateNormal] ;
 }
 
 -(void)itemClick{

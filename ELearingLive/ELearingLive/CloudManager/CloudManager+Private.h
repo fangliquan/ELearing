@@ -161,6 +161,9 @@
 
 ///course/categires 课程主分类
 -(NSString *)uriCourseCategires;
+///course/children 课程子分类
+-(NSString *)uriCourseChildren;
+
 ///course/info 课程信息
 -(NSString *)uriCourserInfo;
 
@@ -176,7 +179,8 @@
 -(NSString *)uriCoursefollow;
 ///course/unfollow 取消关注课程
 -(NSString *)uriCourseunfollow;
-
+///course/list课程分类类别
+-(NSString *)uriCourseList;
 ///course/buy 购买课程
 -(NSString *)uriCourseBuy;
 @end

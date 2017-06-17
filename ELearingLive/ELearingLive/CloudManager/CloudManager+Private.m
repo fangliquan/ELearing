@@ -565,6 +565,13 @@
     return ret;
 }
 
+///course/children 课程子分类
+-(NSString *)uriCourseChildren{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/children",ret];
+    return ret;
+}
 ///course/info 课程信息
 -(NSString *)uriCourserInfo{
     NSString *ret = @"";
@@ -609,6 +616,14 @@
     ret = [[NSString alloc] initWithFormat:@"%@/course/unfollow",ret];
     return ret;
 }
+///course/list课程分类类别
+-(NSString *)uriCourseList{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/list",ret];
+    return ret;
+}
+
 ///course/buy 购买课程
 -(NSString *)uriCourseBuy{
     NSString *ret = @"";

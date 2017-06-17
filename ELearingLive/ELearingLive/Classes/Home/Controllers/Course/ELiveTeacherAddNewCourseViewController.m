@@ -117,29 +117,34 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.section1Arrays.count;
+    if (section ==2) {
+        return self.teacherCourseInfo.courseItemsTime.count;
+    }
+    return 1;
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 10.001f;
+    return 0.001f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section==2) {
+        return 40.001f;
+    }
     return 0.0001f;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     // ELeaingNewsItemCellFrame *itemFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
-    ELiveSettingUserInfoModel *model = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
-    if (model.type ==ELive_Set_User_Desp) {
-        return 260;
+    if (indexPath.section ==4 ||indexPath.section ==5) {
+        return 180;
     }
-    return 60;
+    return 80;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -153,11 +158,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //    ELiveSettingUserInfoModel *settingUserInfoModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
-    //    if (settingUserInfoModel.type ==ELive_Set_User_Phone) {
-    //        ELiveSettingBindPhoneViewController *vc = [[ELiveSettingBindPhoneViewController alloc]init];
-    //        [self.navigationController pushViewController:vc animated:YES];
-    //    }
+
     
 }
 

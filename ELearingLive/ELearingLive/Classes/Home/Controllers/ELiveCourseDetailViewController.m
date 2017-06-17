@@ -284,10 +284,7 @@
 - (UIViewController *)segmentedPager:(MXSegmentedPager *)segmentedPager viewControllerForPageAtIndex:(NSInteger)index {
 
     UIViewController * circleVC = self.pages.count > index ? self.pages[index] : nil;
-    if ([circleVC isKindOfClass:[ELiveCourseEvaluateViewController class]]) {
-        ELiveCourseEvaluateViewController *evaluateVc =  (ELiveCourseEvaluateViewController * )circleVC;
-        [evaluateVc reloadTableView];
-    }
+ 
     return circleVC;
 }
 

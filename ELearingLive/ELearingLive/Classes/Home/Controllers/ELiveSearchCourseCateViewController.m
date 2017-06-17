@@ -58,7 +58,7 @@
         if (error ==nil) {
             self.categireChildModel = ret;
             [self createHeaderView];
-            [self.tableView reloadData];
+            [self.tableViewContent reloadData];
         }
     }];
 }
@@ -66,20 +66,23 @@
 
 -(void)createHeaderView{
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width *3.2/5.0, 0)];
+    CGFloat viewWidth = Main_Screen_Width - Main_Screen_Width*1.5/5.0;
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth,0)];
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    CGFloat offsetAllY = 110;
+    CGFloat offsetAllY = 0;
 
-    UIImageView *headerLoopView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width *3.2/5.0, 100)];
-    [headerLoopView setImageWithURL:[NSURL URLWithString:_categireChildModel.image] placeholderImage:EL_Default_Image];
-    [headerView addSubview:headerLoopView];
-    
-    
-    CGFloat growthViewMaxWidth = Main_Screen_Width;
+    if (_categireChildModel.image && _categireChildModel.image.length >0) {
+        offsetAllY +=110;
+        UIImageView *headerLoopView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, 100)];
+        [headerLoopView setImageWithURL:[NSURL URLWithString:_categireChildModel.image] placeholderImage:EL_Default_Image];
+        [headerView addSubview:headerLoopView];
+    }
+
+    CGFloat growthViewMaxWidth = viewWidth;
     
     offsetAllY = offsetAllY + 8;
     CGFloat offsetX = 0;
-    CGFloat offsetY = offsetAllY;
+    CGFloat offsetY = 0;
     CGFloat marginX = 6;
     CGFloat childItemViewHight = 30;
     __unsafe_unretained typeof(self) unself = self;
@@ -91,23 +94,30 @@
         if (offsetX >= growthViewMaxWidth) {
             offsetX = itemWidth;
             offsetY +=1;
+            offsetAllY +=childItemViewHight;
         }
         offsetX +=marginX;
-        CGRect growthFrame = CGRectMake(offsetX - itemWidth, offsetY *(childItemViewHight + 2), itemWidth, childItemViewHight);
+        CGRect growthFrame = CGRectMake(offsetX - itemWidth, offsetAllY, itemWidth, childItemViewHight);
         
         ELiveCateChildrenView * growthItemView = [[ELiveCateChildrenView alloc]initWithFrame:growthFrame];
         growthItemView.courseCategireChildItem = readGrowthItem;
+        //growthItemView.backgroundColor = [UIColor redColor];
+        growthItemView.userInteractionEnabled = YES;
         growthItemView.courseCateItemHandler = ^(UcCourseCategireChildItem *childItem) {
-            
+//            ELiveCourseListViewController *vc = [[ELiveCourseListViewController alloc]init];
+//            vc.
+            ELiveCourseListViewController *detailVc = [[ELiveCourseListViewController alloc]init];
+            detailVc.cateId = childItem.childid;
+            [unself.navigationController pushViewController:detailVc animated:YES];
         };
         [headerView addSubview:growthItemView];
     }
 
-    offsetY +=8;
+    offsetAllY +=8;
     
     
     CGRect oldFrame = headerView.frame;
-    oldFrame.size.height = offsetY;
+    oldFrame.size.height = offsetAllY;
     
     headerView.frame = oldFrame;
     self.tableViewContent.tableHeaderView = headerView;
@@ -194,8 +204,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag ==2) {
-        ELiveCourseListViewController *detailVc = [[ELiveCourseListViewController alloc]init];
-        [self.navigationController pushViewController:detailVc animated:YES];
+  
     }else if (tableView.tag ==1){
        UcCourseCategireMainItem *mainItem =   self.cateMainArray.count >indexPath.row ?self.cateMainArray[indexPath.row]:nil;
         if (mainItem) {
