@@ -68,6 +68,7 @@
 @property(nonatomic,strong) NSString *thumb;
 @property(nonatomic,strong) NSString *price;
 @property(nonatomic,strong) NSString *type;
+
 @property(nonatomic,strong) NSString *joins;
 @property(nonatomic,strong) NSString *time;
 @property(nonatomic,strong) NSString *status;//课程状态  直播中 课程中 等等

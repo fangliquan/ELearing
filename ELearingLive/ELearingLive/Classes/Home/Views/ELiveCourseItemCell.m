@@ -104,7 +104,12 @@
     courseNumLabel.frame = eLiveCourseItemCellFrame.couseNumLFrame;
     titleLabel.text =  eLiveCourseItemCellFrame.teacherCourseListItem.name;
     courseNumLabel.text =  eLiveCourseItemCellFrame.teacherCourseListItem.periodid;
-    courseNumLabel.text = [NSString stringWithFormat:@"课时%@",eLiveCourseItemCellFrame.teacherCourseListItem.periodid];
+    if (eLiveCourseItemCellFrame.isMyFollow) {
+           courseNumLabel.text = eLiveCourseItemCellFrame.teacherCourseListItem.teacher_name;
+    }else{
+           courseNumLabel.text = [NSString stringWithFormat:@"课时%@",eLiveCourseItemCellFrame.teacherCourseListItem.periodid];
+    }
+ 
     liveTimeLabel.text =  eLiveCourseItemCellFrame.teacherCourseListItem.time;
     joinNumLabel.text = [NSString stringWithFormat:@"%@人已报名",eLiveCourseItemCellFrame.teacherCourseListItem.joins];
     if ([eLiveCourseItemCellFrame.teacherCourseListItem.price isEqualToString:@"0.00"]) {

@@ -20,7 +20,7 @@
 #import "ELiveMineEarningsViewController.h"
 
 #import "ELiveLoginViewController.h"
-
+#import "ELiveMineFocusCouseListViewController.h"
 #import "CloudManager+Teacher.h"
 @interface ELiveSettingMainViewController ()<UITableViewDelegate,UITableViewDataSource,CloudManagerDelegate>
 
@@ -200,9 +200,10 @@
         focusVc.isFans = NO;
         [self.navigationController pushViewController:focusVc animated:YES];
     }else if(settingModel.type == Setting_Focus_Course){
-        ELiveMineFocusCourseViewController *courseVc = [[ELiveMineFocusCourseViewController alloc]init];
+        ELiveMineFocusCouseListViewController *courseVc = [[ELiveMineFocusCouseListViewController alloc]init];
+       //ELiveMineFocusCourseViewController *courseVc = [[ELiveMineFocusCourseViewController alloc]init];
         courseVc.title = @"我的课程";
-        courseVc.showMoreBtn = NO;
+        //courseVc.showMoreBtn = NO;
         [self.navigationController pushViewController:courseVc animated:YES];
     }else if(settingModel.type == Setting_CouserM){
         ELiveMineCourseManagerViewController *courseVc = [[ELiveMineCourseManagerViewController alloc]init];

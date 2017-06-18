@@ -183,4 +183,8 @@
 -(NSString *)uriCourseList;
 ///course/buy 购买课程
 -(NSString *)uriCourseBuy;
+
+///uc/myfollowcourse
+-(NSString *)uriCourseMyFollower;
+
 @end

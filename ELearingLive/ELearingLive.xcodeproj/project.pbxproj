@@ -246,6 +246,7 @@
 		0AEA5F691EF64AF000B79A1F /* course_type_buy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F631EF64AF000B79A1F /* course_type_buy@2x.png */; };
 		0AEA5F6A1EF64AF000B79A1F /* course_type_buy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F641EF64AF000B79A1F /* course_type_buy@3x.png */; };
 		0AEA5F6D1EF65AFA00B79A1F /* UIImage+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA5F6C1EF65AFA00B79A1F /* UIImage+Expand.m */; };
+		0AEA5F701EF664B400B79A1F /* ELiveMineFocusCouseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA5F6F1EF664B400B79A1F /* ELiveMineFocusCouseListViewController.m */; };
 		0AED43801EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED437F1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m */; };
 		0AED43831EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED43821EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m */; };
 		0AED43861EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED43851EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m */; };
@@ -772,6 +773,8 @@
 		0AEA5F641EF64AF000B79A1F /* course_type_buy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "course_type_buy@3x.png"; sourceTree = "<group>"; };
 		0AEA5F6B1EF65AFA00B79A1F /* UIImage+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Expand.h"; sourceTree = "<group>"; };
 		0AEA5F6C1EF65AFA00B79A1F /* UIImage+Expand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Expand.m"; sourceTree = "<group>"; };
+		0AEA5F6E1EF664B400B79A1F /* ELiveMineFocusCouseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMineFocusCouseListViewController.h; sourceTree = "<group>"; };
+		0AEA5F6F1EF664B400B79A1F /* ELiveMineFocusCouseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveMineFocusCouseListViewController.m; sourceTree = "<group>"; };
 		0AED437E1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveTeacherEvaluateViewController.h; sourceTree = "<group>"; };
 		0AED437F1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveTeacherEvaluateViewController.m; sourceTree = "<group>"; };
 		0AED43811EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveTeacherHeaderCourseView.h; sourceTree = "<group>"; };
@@ -1978,6 +1981,8 @@
 				0AB0ED3F1EDD3FA900270C9C /* ELiveSettingAboutViewController.m */,
 				0A6604331EE0251D00927433 /* ELiveSettingApplyTeacherViewController.h */,
 				0A6604341EE0251D00927433 /* ELiveSettingApplyTeacherViewController.m */,
+				0AEA5F6E1EF664B400B79A1F /* ELiveMineFocusCouseListViewController.h */,
+				0AEA5F6F1EF664B400B79A1F /* ELiveMineFocusCouseListViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2536,6 +2541,7 @@
 			files = (
 				0AEF086C1EBA310E0065A22B /* MJPhotoView.m in Sources */,
 				0A6603641EDF026200927433 /* wwanconnect.c in Sources */,
+				0AEA5F701EF664B400B79A1F /* ELiveMineFocusCouseListViewController.m in Sources */,
 				0AB0ED371EDD1B3D00270C9C /* ELiveSettingUserInfoViewCell.m in Sources */,
 				0A6603771EDF026200927433 /* PublicUtil.m in Sources */,
 				0AEF08661EBA310E0065A22B /* MJPhoto.m in Sources */,

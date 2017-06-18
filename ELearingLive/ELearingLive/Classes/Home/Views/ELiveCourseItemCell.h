@@ -29,7 +29,7 @@
 
 @interface ELiveCourseItemCellFrame: NSObject
 
-@property (nonatomic,strong) TeacherCourseListItem *teacherCourseListItem;
+@property (nonatomic,strong)  TeacherCourseListItem *teacherCourseListItem;
 @property (nonatomic, assign) CGRect  iconFrame;
 @property (nonatomic, assign) CGRect  liveTagLFrame;
 @property (nonatomic, assign) CGRect  titleLFrame;
@@ -38,4 +38,6 @@
 @property (nonatomic, assign) CGRect  priceLFrame;
 @property (nonatomic, assign) CGRect  joinNumFrame;
 @property (nonatomic, assign) CGFloat cellHeight;
+
+@property(nonatomic,assign) BOOL isMyFollow;
 @end

@@ -342,5 +342,35 @@
     }];
 }
 
+//关注的课程列表
+- (void)asyncGetMyFollowedCourseListWithPage:(NSString *)page  completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseMyFollower]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"page" : page?page:@"1",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            TeacherCourseListModel * baseModel = [TeacherCourseListModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(baseModel,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+}
 
 @end

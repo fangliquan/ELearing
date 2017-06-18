@@ -33,5 +33,8 @@
 //讲师关注
 - (void)asyncGetTeacherFollowedWithTeacherId:(NSString *)teacherId andBool:(BOOL)follow completion:(void (^)(NSString*ret, CMError *error))completion;
 
+//关注的课程列表
+- (void)asyncGetMyFollowedCourseListWithPage:(NSString *)page  completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion;
+
 
 @end
