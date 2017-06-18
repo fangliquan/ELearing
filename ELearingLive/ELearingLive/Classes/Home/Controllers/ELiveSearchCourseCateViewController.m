@@ -106,9 +106,17 @@
         growthItemView.courseCateItemHandler = ^(UcCourseCategireChildItem *childItem) {
 //            ELiveCourseListViewController *vc = [[ELiveCourseListViewController alloc]init];
 //            vc.
-            ELiveCourseListViewController *detailVc = [[ELiveCourseListViewController alloc]init];
-            detailVc.cateId = childItem.childid;
-            [unself.navigationController pushViewController:detailVc animated:YES];
+            if (unself.isSelctCate) {
+                if (unself.selectedCateHandler) {
+                    unself.selectedCateHandler(childItem);
+                    [unself.navigationController popViewControllerAnimated:YES];
+                }
+            }else{
+                ELiveCourseListViewController *detailVc = [[ELiveCourseListViewController alloc]init];
+                detailVc.cateId = childItem.childid;
+                [unself.navigationController pushViewController:detailVc animated:YES];
+            }
+
         };
         [headerView addSubview:growthItemView];
     }

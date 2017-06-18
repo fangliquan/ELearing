@@ -15,7 +15,7 @@
 #import "WWTextManager.h"
 
 #import "WWExceptionRemindManager.h"
-//#import "WWPermissionManager.h"
+#import "WWPermissionManager.h"
 //#import "WWViewControllerManager.h"
 //#import "WawaAudioBookListView.h"
 //#import "WWTabBarReminderManager.h"
@@ -35,6 +35,6 @@
 #import "DateHelper.h"
 #import "MBProgressHUD+MJ.h"
 #import "MBProgressHUD.h"
-//#import "UIImage+Expand.h"
+#import "UIImage+Expand.h"
 //#import "UIImage+Resized.h"
 

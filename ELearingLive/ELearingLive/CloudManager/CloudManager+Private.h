@@ -163,15 +163,15 @@
 -(NSString *)uriCourseCategires;
 ///course/children 课程子分类
 -(NSString *)uriCourseChildren;
-
 ///course/info 课程信息
 -(NSString *)uriCourserInfo;
-
 ///course/chapterlist 课程详情目录
 -(NSString *)uriCourseChapterlist;
-
 ///course/evaluatelist 课程详情评价列表
 -(NSString *)uriCourseEvaluatelist;
+
+///course/create 创建课程
+-(NSString *)uriCourseCreate;
 
 ///course/evaluate 课程详情评价
 -(NSString *)uriCourseEvaluate;

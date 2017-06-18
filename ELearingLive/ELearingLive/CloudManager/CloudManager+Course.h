@@ -8,7 +8,7 @@
 
 #import "CloudManagerBase.h"
 
-@class UcCourseCategireChildModel,UcCourseCategireModel,CourseDetailInfoModel,CourseChapterlistModel,CourseEvaluateListModel,TeacherCourseListModel;
+@class UcCourseCategireChildModel,UcCourseCategireModel,CourseDetailInfoModel,CourseChapterlistModel,CourseEvaluateListModel,TeacherCourseListModel,TeacherCreateCourseInfo;
 @interface CloudManager (Course)
 //课程分类
 - (void)asyncGetCourseCategiresInfo:(void (^)(UcCourseCategireModel *ret, CMError *error))completion;
@@ -38,6 +38,8 @@
 
 //课程列表
 - (void)asyncGetCourseListWithCateId:(NSString *)catesId andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion;
+
+-(void)asyncCreateNewCourseWithCourseInfo:(TeacherCreateCourseInfo *)courseInfo completion:(void (^)(CourseDetailInfoModel*ret, CMError *error))completion;
 
 
 @end

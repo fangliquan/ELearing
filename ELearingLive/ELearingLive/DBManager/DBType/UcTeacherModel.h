@@ -114,4 +114,8 @@
 
 @property(nonatomic,assign) NSInteger  type;
 
+@property(nonatomic,strong) NSString *price;
+@property(nonatomic,strong) NSString *coursetype;
+@property(nonatomic,strong) NSString *password;
+
 @end

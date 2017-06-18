@@ -13,6 +13,7 @@
 #import "PublicUtil.h"
 #import  "UcCourseIndex.h"
 #import "UcTeacherModel.h"
+#import "ELiveCreateCourseCell.h"
 @implementation CloudManager (Course)
 
 //课程分类
@@ -306,6 +307,76 @@
     }];
 }
 
+
+
+-(void)asyncCreateNewCourseWithCourseInfo:(TeacherCreateCourseInfo *)courseInfo completion:(void (^)(CourseDetailInfoModel*ret, CMError *error))completion{
+    
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseCreate]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSString *catids = @"";
+    for (UcCourseCategireChildItem *cateItem in courseInfo.courseCates) {
+        if (![cateItem.childid isEqualToString:@"0"]) {
+            catids = [catids stringByAppendingString: [NSString stringWithFormat:@"%@,",cateItem.childid]];
+        }
+    }
+    if (catids.length >1) {
+        catids = [catids substringWithRange:NSMakeRange(0, catids.length -1)];
+    }
+    
+    NSString *periods = @"";
+    for (CreateTimeModel *timeItem in courseInfo.courseItemsTime) {
+        if (timeItem.courseTimestamp &&timeItem.courseTimestamp.length>0) {
+            periods = [periods stringByAppendingString: [NSString stringWithFormat:@"%@,",timeItem.courseTimestamp]];
+        }
+    }
+    
+    if (periods.length >1) {
+        periods = [periods substringWithRange:NSMakeRange(0, periods.length -1)];
+    }
+    
+    
+    NSData * upfile;
+    if (courseInfo.courseCover) {
+        upfile = [UIImage scaleImageToData:courseInfo.courseCover lessThanSize:PICTURE_LIMIT_SIZE_960];
+    }else{
+        upfile = [UIImage scaleImageToData:[UIImage imageNamed:@"sl_08_3x"] lessThanSize:PICTURE_LIMIT_SIZE_960];
+    }
+    
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"name" :courseInfo.courseSubject?courseInfo.courseSubject: @"",
+                              @"catids" :catids,
+                              @"upfile" : upfile,
+                              @"type" : @"course",
+                              @"desc" : courseInfo.courseIntro?courseInfo.courseIntro: @"",
+                              @"price" : courseInfo.price?courseInfo.price: @"",
+                              @"periods" : periods,
+                              @"password" : courseInfo.password?courseInfo.password: @"",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            CourseDetailInfoModel * truthInfo = [CourseDetailInfoModel mj_objectWithKeyValues:ret];
+            if ([truthInfo.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(truthInfo,nil);
+                }
+            }else{
+                 [MBProgressHUD showError:truthInfo.error_desc toView:nil];
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+    
+}
 
 
 @end

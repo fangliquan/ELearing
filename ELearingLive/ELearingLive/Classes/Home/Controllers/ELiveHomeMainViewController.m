@@ -221,7 +221,7 @@
 
 #pragma mark- TableView Line Width
 - (void )configtableView {
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height - 64) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height - 49) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0.0001)];

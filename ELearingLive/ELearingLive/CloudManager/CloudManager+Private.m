@@ -595,6 +595,13 @@
     return ret;
 }
 
+///course/create 创建课程
+-(NSString *)uriCourseCreate{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/create",ret];
+    return ret;
+}
 ///course/evaluate 课程详情评价
 -(NSString *)uriCourseEvaluate{
     NSString *ret = @"";

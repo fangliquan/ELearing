@@ -14,7 +14,8 @@
 #import "ELiveSettingMainViewController.h"
 
 #import "ELiveNavigationViewController.h"
-@interface ELiveTabBarViewController ()
+#import "ELiveTabBar.h"
+@interface ELiveTabBarViewController ()<UITabBarControllerDelegate>
 
 
 @property(nonatomic) UIInterfaceOrientationMask orietation;
@@ -26,6 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    ELiveTabBar *tabBar = [[ELiveTabBar alloc] initWithFrame:self.tabBar.frame];
+    [self setValue:tabBar forKey:@"tabBar"];
+    
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -71,9 +76,9 @@
     [self setupChildViewController:focus title:@"课程" imageName:@"tabbar_pics" selectedImageName:nil];
    // XAppDelegate.focus =focus;
     
-    ELiveCastMainViewController *picture = [[ELiveCastMainViewController alloc] init];
-    [self setupChildViewController:picture title:@"直播" imageName:@"tabbar_video" selectedImageName:nil];
-    //XAppDelegate.picture = picture;
+//    ELiveCastMainViewController *picture = [[ELiveCastMainViewController alloc] init];
+//    [self setupChildViewController:picture title:@"直播" imageName:@"tabbar_video" selectedImageName:nil];
+//    //XAppDelegate.picture = picture;
     
     ELiveMainMessageViewController *about = [[ELiveMainMessageViewController alloc] init];
     [self setupChildViewController:about title:@"消息" imageName:@"tabbar_message" selectedImageName:nil];
@@ -101,6 +106,8 @@
     ELiveNavigationViewController *nav = [[ELiveNavigationViewController alloc] initWithRootViewController:childVc];
     [self addChildViewController:nav];
 }
+
+
 
 
 
