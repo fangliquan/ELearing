@@ -73,6 +73,9 @@
 @property(nonatomic,strong) NSString *time;
 @property(nonatomic,strong) NSString *status;//课程状态  直播中 课程中 等等
 @property(nonatomic,strong) NSString *teacher_name;
+@property(nonatomic,strong) NSString *period_name;
+
+
 
 @end
 
@@ -119,4 +122,11 @@
 @property(nonatomic,strong) NSString *coursetype;
 @property(nonatomic,strong) NSString *password;
 
+@end
+
+
+@interface TeacherMyCourseModel : BaseModel
+@property(nonatomic,strong) NSArray *teach_list;
+
+@property(nonatomic,strong) NSArray *study_list;
 @end

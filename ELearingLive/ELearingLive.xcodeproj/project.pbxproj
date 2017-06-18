@@ -247,6 +247,14 @@
 		0AEA5F6A1EF64AF000B79A1F /* course_type_buy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F641EF64AF000B79A1F /* course_type_buy@3x.png */; };
 		0AEA5F6D1EF65AFA00B79A1F /* UIImage+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA5F6C1EF65AFA00B79A1F /* UIImage+Expand.m */; };
 		0AEA5F701EF664B400B79A1F /* ELiveMineFocusCouseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA5F6F1EF664B400B79A1F /* ELiveMineFocusCouseListViewController.m */; };
+		0AEA5F731EF6BEB100B79A1F /* ELiveCourseCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA5F721EF6BEB100B79A1F /* ELiveCourseCalendarViewController.m */; };
+		0AEA5F761EF6CB0900B79A1F /* DailyAttendanceHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEA5F751EF6CB0900B79A1F /* DailyAttendanceHeaderView.m */; };
+		0AEA5F791EF6CCBF00B79A1F /* left_sharp_change_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F771EF6CCBF00B79A1F /* left_sharp_change_time@2x.png */; };
+		0AEA5F7A1EF6CCBF00B79A1F /* left_sharp_change_time@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F781EF6CCBF00B79A1F /* left_sharp_change_time@3x.png */; };
+		0AEA5F7D1EF6CD0100B79A1F /* right_sharp_unenable_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F7B1EF6CD0100B79A1F /* right_sharp_unenable_time@2x.png */; };
+		0AEA5F7E1EF6CD0100B79A1F /* right_sharp_unenable_time@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F7C1EF6CD0100B79A1F /* right_sharp_unenable_time@3x.png */; };
+		0AEA5F811EF6CD1A00B79A1F /* right_sharp_enable_time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F7F1EF6CD1A00B79A1F /* right_sharp_enable_time@2x.png */; };
+		0AEA5F821EF6CD1A00B79A1F /* right_sharp_enable_time@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F801EF6CD1A00B79A1F /* right_sharp_enable_time@3x.png */; };
 		0AED43801EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED437F1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m */; };
 		0AED43831EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED43821EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.m */; };
 		0AED43861EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AED43851EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m */; };
@@ -775,6 +783,16 @@
 		0AEA5F6C1EF65AFA00B79A1F /* UIImage+Expand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Expand.m"; sourceTree = "<group>"; };
 		0AEA5F6E1EF664B400B79A1F /* ELiveMineFocusCouseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMineFocusCouseListViewController.h; sourceTree = "<group>"; };
 		0AEA5F6F1EF664B400B79A1F /* ELiveMineFocusCouseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveMineFocusCouseListViewController.m; sourceTree = "<group>"; };
+		0AEA5F711EF6BEB100B79A1F /* ELiveCourseCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCourseCalendarViewController.h; sourceTree = "<group>"; };
+		0AEA5F721EF6BEB100B79A1F /* ELiveCourseCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseCalendarViewController.m; sourceTree = "<group>"; };
+		0AEA5F741EF6CB0900B79A1F /* DailyAttendanceHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyAttendanceHeaderView.h; sourceTree = "<group>"; };
+		0AEA5F751EF6CB0900B79A1F /* DailyAttendanceHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyAttendanceHeaderView.m; sourceTree = "<group>"; };
+		0AEA5F771EF6CCBF00B79A1F /* left_sharp_change_time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_sharp_change_time@2x.png"; sourceTree = "<group>"; };
+		0AEA5F781EF6CCBF00B79A1F /* left_sharp_change_time@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_sharp_change_time@3x.png"; sourceTree = "<group>"; };
+		0AEA5F7B1EF6CD0100B79A1F /* right_sharp_unenable_time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_sharp_unenable_time@2x.png"; sourceTree = "<group>"; };
+		0AEA5F7C1EF6CD0100B79A1F /* right_sharp_unenable_time@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_sharp_unenable_time@3x.png"; sourceTree = "<group>"; };
+		0AEA5F7F1EF6CD1A00B79A1F /* right_sharp_enable_time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_sharp_enable_time@2x.png"; sourceTree = "<group>"; };
+		0AEA5F801EF6CD1A00B79A1F /* right_sharp_enable_time@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_sharp_enable_time@3x.png"; sourceTree = "<group>"; };
 		0AED437E1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveTeacherEvaluateViewController.h; sourceTree = "<group>"; };
 		0AED437F1EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveTeacherEvaluateViewController.m; sourceTree = "<group>"; };
 		0AED43811EF1869A00EAD011 /* ELiveTeacherHeaderCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveTeacherHeaderCourseView.h; sourceTree = "<group>"; };
@@ -1280,6 +1298,8 @@
 				0A54A3CB1ED5C16D00421CC5 /* ELiveCourseEvaluateCell.m */,
 				0AED43871EF34D1400EAD011 /* ELiveCreateCourseCell.h */,
 				0AED43881EF34D1400EAD011 /* ELiveCreateCourseCell.m */,
+				0AEA5F741EF6CB0900B79A1F /* DailyAttendanceHeaderView.h */,
+				0AEA5F751EF6CB0900B79A1F /* DailyAttendanceHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1668,6 +1688,8 @@
 				0AED43851EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m */,
 				0A1DF96E1EF5A21B005C48C2 /* ELiveTeacherSettingCourseTypeViewController.h */,
 				0A1DF96F1EF5A21B005C48C2 /* ELiveTeacherSettingCourseTypeViewController.m */,
+				0AEA5F711EF6BEB100B79A1F /* ELiveCourseCalendarViewController.h */,
+				0AEA5F721EF6BEB100B79A1F /* ELiveCourseCalendarViewController.m */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -2084,6 +2106,12 @@
 				0AEF08AB1EBD57480065A22B /* image_default_placeholder.png */,
 				0AEF08AC1EBD57480065A22B /* image_default_userheader.png */,
 				0A1DF9581EF5623F005C48C2 /* plus_addtopic_btnbg@2x.png */,
+				0AEA5F7F1EF6CD1A00B79A1F /* right_sharp_enable_time@2x.png */,
+				0AEA5F801EF6CD1A00B79A1F /* right_sharp_enable_time@3x.png */,
+				0AEA5F771EF6CCBF00B79A1F /* left_sharp_change_time@2x.png */,
+				0AEA5F781EF6CCBF00B79A1F /* left_sharp_change_time@3x.png */,
+				0AEA5F7B1EF6CD0100B79A1F /* right_sharp_unenable_time@2x.png */,
+				0AEA5F7C1EF6CD0100B79A1F /* right_sharp_unenable_time@3x.png */,
 				0A1DF9591EF5623F005C48C2 /* plus_addtopic_btnbg@3x.png */,
 			);
 			path = Images;
@@ -2477,6 +2505,7 @@
 				0A46AAA21EDAC6360087E078 /* login_qq_icon@3x.png in Resources */,
 				0A66036D1EDF026200927433 /* LICENSE in Resources */,
 				0A46AAA31EDAC6360087E078 /* login_qq_icon@2x.png in Resources */,
+				0AEA5F7E1EF6CD0100B79A1F /* right_sharp_unenable_time@3x.png in Resources */,
 				0A6604281EDFA82000927433 /* Info.plist in Resources */,
 				0A54A3B21ED4742500421CC5 /* tabbar_news@2x.png in Resources */,
 				0A0A563E1EE4DD6D00418F9A /* notLogin_circle_default@2x.png in Resources */,
@@ -2488,6 +2517,8 @@
 				0A54A3B61ED4742500421CC5 /* tabbar_video@2x.png in Resources */,
 				0A46AA701EDA6AC90087E078 /* sl_08_3x.png in Resources */,
 				0A54A39F1ED4724100421CC5 /* home_tt_04_@2x.png in Resources */,
+				0AEA5F791EF6CCBF00B79A1F /* left_sharp_change_time@2x.png in Resources */,
+				0AEA5F811EF6CD1A00B79A1F /* right_sharp_enable_time@2x.png in Resources */,
 				0A54A3991ED4724100421CC5 /* home_tt_01_@2x.png in Resources */,
 				0A54A3B71ED4742500421CC5 /* tabbar_video@3x.png in Resources */,
 				0AEF09951EBED84E0065A22B /* MJRefresh.bundle in Resources */,
@@ -2496,6 +2527,7 @@
 				0A46AAA11EDAC6360087E078 /* login_phone_icon@3x.png in Resources */,
 				0AEF08AE1EBD57480065A22B /* image_default_userheader.png in Resources */,
 				0A46AA641EDA6AC90087E078 /* sl_02_3x.png in Resources */,
+				0AEA5F7D1EF6CD0100B79A1F /* right_sharp_unenable_time@2x.png in Resources */,
 				0A46AAA41EDAC6360087E078 /* login_sina_icon@2x.png in Resources */,
 				0A46AA661EDA6AC90087E078 /* sl_03_3x.png in Resources */,
 				0A6945001EC6D86000D83DC1 /* title_moreBtn@2x.png in Resources */,
@@ -2512,10 +2544,12 @@
 				0A6945011EC6D86000D83DC1 /* title_moreBtn@3x.png in Resources */,
 				0A0A56411EE4DD6D00418F9A /* notLogin_default@3x.png in Resources */,
 				0A46AA6E1EDA6AC90087E078 /* sl_07_3x.png in Resources */,
+				0AEA5F821EF6CD1A00B79A1F /* right_sharp_enable_time@3x.png in Resources */,
 				0A46AA6A1EDA6AC90087E078 /* sl_05_3x.png in Resources */,
 				0A6603D11EDF05B500927433 /* LICENSE in Resources */,
 				0AEF07C21EBA2D8B0065A22B /* Assets.xcassets in Resources */,
 				0AEA5F6A1EF64AF000B79A1F /* course_type_buy@3x.png in Resources */,
+				0AEA5F7A1EF6CCBF00B79A1F /* left_sharp_change_time@3x.png in Resources */,
 				0A54A3B41ED4742500421CC5 /* tabbar_pics@2x.png in Resources */,
 				0AEA5F661EF64AF000B79A1F /* course_type_open@3x.png in Resources */,
 				0AB0559E1EEE15EB000A954F /* b27_icon_star_gray@2x.png in Resources */,
@@ -2556,6 +2590,7 @@
 				0AEF09511EBECF900065A22B /* MASLayoutConstraint.m in Sources */,
 				0A66042D1EDFA82000927433 /* MJPropertyType.m in Sources */,
 				0A1DF9481EF55511005C48C2 /* TZImageCropManager.m in Sources */,
+				0AEA5F731EF6BEB100B79A1F /* ELiveCourseCalendarViewController.m in Sources */,
 				0A6603751EDF026200927433 /* MyCJSONSerializer.m in Sources */,
 				0A6603CF1EDF05B500927433 /* AFURLResponseSerialization.m in Sources */,
 				0AEF09421EBECF900065A22B /* UIActionSheet+BlocksKit.m in Sources */,
@@ -2736,6 +2771,7 @@
 				0A6603691EDF026200927433 /* FMDatabasePool.m in Sources */,
 				0AB0ED461EDD90D100270C9C /* ELiveMainCateViewCell.m in Sources */,
 				0A92A27A1EC1FF7F002C2811 /* ELiveCourseDetailViewController.m in Sources */,
+				0AEA5F761EF6CB0900B79A1F /* DailyAttendanceHeaderView.m in Sources */,
 				0A66040D1EDF072C00927433 /* DateHelper.m in Sources */,
 				0AEF093B1EBECF900065A22B /* A2DynamicDelegate.m in Sources */,
 				0AEF09531EBECF900065A22B /* MASViewConstraint.m in Sources */,

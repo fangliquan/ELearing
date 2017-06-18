@@ -8,7 +8,7 @@
 
 #import "CloudManagerBase.h"
 #import "UserTruthInfo.h"
-@class UcMyFollowTeacherModel,TeacherInfoModel,TeacherCourseListModel,TeacherEvaluateListModel;
+@class UcMyFollowTeacherModel,TeacherInfoModel,TeacherCourseListModel,TeacherEvaluateListModel,TeacherMyCourseModel;
 @interface CloudManager (Teacher)
 
 - (void)asyncUserApplyForTeacher:(UserTruthInfo *)info  completion:(void (^)(NSString *ret, CMError *error))completion;
@@ -35,6 +35,11 @@
 
 //关注的课程列表
 - (void)asyncGetMyFollowedCourseListWithPage:(NSString *)page  completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion;
+
+
+//课程日历模式
+- (void)asyncGetMyCourseCarlendarListWithDate:(NSString *)date  completion:(void (^)(TeacherMyCourseModel *ret, CMError *error))completion;
+
 
 
 @end

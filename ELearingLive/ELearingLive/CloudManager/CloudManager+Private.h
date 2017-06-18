@@ -188,4 +188,8 @@
 -(NSString *)uriCourseMyFollower;
 ///course/search 搜索课程
 -(NSString *)uriCourseSearch;
+
+///course/mycourses 课程日历模式
+-(NSString *)uriCourseMyCourse;
+
 @end

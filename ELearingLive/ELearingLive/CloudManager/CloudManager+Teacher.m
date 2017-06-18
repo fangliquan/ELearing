@@ -372,5 +372,37 @@
     }];
 
 }
+//课程日历模式
+- (void)asyncGetMyCourseCarlendarListWithDate:(NSString *)date  completion:(void (^)(TeacherMyCourseModel *ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseMyCourse]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"day" : date?date:@"1",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            TeacherMyCourseModel * baseModel = [TeacherMyCourseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(baseModel,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+}
+
+
 
 @end

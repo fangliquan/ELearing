@@ -65,3 +65,10 @@
 
 
 @end
+
+@implementation TeacherMyCourseModel
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"teach_list":[TeacherCourseListItem class],@"study_list":[TeacherCourseListItem class]};
+}
+
+@end

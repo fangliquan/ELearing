@@ -22,6 +22,7 @@
 #import "ELiveLoginViewController.h"
 #import "ELiveMineFocusCouseListViewController.h"
 #import "CloudManager+Teacher.h"
+#import "ELiveCourseCalendarViewController.h"
 @interface ELiveSettingMainViewController ()<UITableViewDelegate,UITableViewDataSource,CloudManagerDelegate>
 
 @property(nonatomic,strong) NSMutableArray *section1Arrays;
@@ -206,7 +207,7 @@
         //courseVc.showMoreBtn = NO;
         [self.navigationController pushViewController:courseVc animated:YES];
     }else if(settingModel.type == Setting_CouserM){
-        ELiveMineCourseManagerViewController *courseVc = [[ELiveMineCourseManagerViewController alloc]init];
+        ELiveCourseCalendarViewController *courseVc = [[ELiveCourseCalendarViewController alloc]init];
         [self.navigationController pushViewController:courseVc animated:YES];
     }else if(settingModel.type == Setting_FaceBook){
         ELiveSettingFaceBackViewController *courseVc = [[ELiveSettingFaceBackViewController alloc]init];

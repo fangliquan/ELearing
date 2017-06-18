@@ -8,7 +8,7 @@
 
 #import "ELiveTabBarViewController.h"
 #import "ELiveHomeMainViewController.h"
-#import "ELiveMineFocusViewController.h"
+#import "ELiveCourseCalendarViewController.h"
 #import "ELiveCastMainViewController.h"
 #import "ELiveMainMessageViewController.h"
 #import "ELiveSettingMainViewController.h"
@@ -72,7 +72,7 @@
     [self setupChildViewController:news title:@"主页" imageName:@"tabbar_news" selectedImageName:nil];
     //XAppDelegate.news = news;
     
-    ELiveMineFocusViewController *focus = [[ELiveMineFocusViewController alloc] init];
+    ELiveCourseCalendarViewController *focus = [[ELiveCourseCalendarViewController alloc] init];
     [self setupChildViewController:focus title:@"课程" imageName:@"tabbar_pics" selectedImageName:nil];
    // XAppDelegate.focus =focus;
     

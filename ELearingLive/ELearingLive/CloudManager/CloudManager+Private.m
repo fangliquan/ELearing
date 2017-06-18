@@ -653,4 +653,13 @@
     ret = [[NSString alloc] initWithFormat:@"%@/course/search",ret];
     return ret;
 }
+
+
+///course/mycourses 课程日历模式
+-(NSString *)uriCourseMyCourse{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/mycourses",ret];
+    return ret;
+}
 @end
