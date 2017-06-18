@@ -378,5 +378,36 @@
     
 }
 
+- (void)asyncSearchCourseWithKeyword:(NSString *)keyword andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseSearch]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"keyword" : keyword?keyword:@"",
+                              @"page" : page?page:@"",
+                              
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            TeacherCourseListModel * truthInfo = [TeacherCourseListModel mj_objectWithKeyValues:ret];
+            if ([truthInfo.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(truthInfo,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+}
 
 @end

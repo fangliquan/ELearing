@@ -646,4 +646,11 @@
     ret = [[NSString alloc] initWithFormat:@"%@/uc/myfollowcourse",ret];
     return ret;
 }
+///course/search 搜索课程
+-(NSString *)uriCourseSearch{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/search",ret];
+    return ret;
+}
 @end

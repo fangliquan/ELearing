@@ -41,5 +41,7 @@
 
 -(void)asyncCreateNewCourseWithCourseInfo:(TeacherCreateCourseInfo *)courseInfo completion:(void (^)(CourseDetailInfoModel*ret, CMError *error))completion;
 
+//搜索
+- (void)asyncSearchCourseWithKeyword:(NSString *)keyword andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion;
 
 @end

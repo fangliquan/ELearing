@@ -11,6 +11,11 @@
 #import "UISearchBar+Expand.h"
 #import "MJRefresh.h"
 #import "ELiveCourseItemCell.h"
+#import "ELiveCourseDetailViewController.h"
+
+#import "UcTeacherModel.h"
+#import "CloudManager+Course.h"
+
 
 @interface ELiveSearchViewController () <UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -20,7 +25,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UISearchBar * searchBar;
-@property (nonatomic, strong) NSMutableArray *goodRecommdList;
+@property (nonatomic, strong) NSMutableArray *courseArrays;
 @property (nonatomic, strong) NSString *keyword;
 
 @end
@@ -31,7 +36,7 @@
     [super viewDidLoad];
     pageNumber = 0;
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    self.goodRecommdList = [NSMutableArray array];
+    self.courseArrays = [NSMutableArray array];
     [self setupNavigationBar];
     [self configtableView];
 }
@@ -100,17 +105,48 @@
 
 -(void)headerRefreshView{
     isHeaderRefresh = NO;
-    [self loadGoodsList];
+    [self loadCourseList];
 }
 
--(void)loadGoodsList{
+-(void)loadCourseList{
     
     if (isHeaderRefresh) {
         pageNumber = 0;
     }
-
+    pageNumber ++;
+   
+    [[CloudManager sharedInstance]asyncSearchCourseWithKeyword:self.searchBar.text andPage:[NSString stringWithFormat:@"%d",pageNumber] completion:^(TeacherCourseListModel *ret, CMError *error) {
+        [self.tableView.mj_footer endRefreshing];
+        if (error == nil) {
+            [self configData:ret];
+            if (ret.list.count <=0) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            if (self.courseArrays.count <=0) {
+                
+                self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindViewWithType:ExceptionRemindStyle_Empty];
+            }
+            
+        }else{
+            self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindView_LoadfailWithTarget:self action:@selector(loadCourseList)];
+        }
+    }];
     
 }
+
+-(void)configData:(TeacherCourseListModel *)ret{
+    for (TeacherCourseListItem *courseItem in ret.list) {
+        ELiveCourseItemCellFrame *cellFrame  = [[ELiveCourseItemCellFrame alloc]init];
+        cellFrame.teacherCourseListItem  = courseItem;
+        cellFrame.isMyFollow = YES;
+        [_courseArrays addObject:cellFrame];
+    }
+    
+    [self.tableView reloadData];
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -119,29 +155,35 @@
 
 #pragma mark - Table view data source
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.goodRecommdList.count;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ELiveCourseItemCellFrame *cellFrem =[[ELiveCourseItemCellFrame alloc]init];
-    //cellFrem.temp =@"  ";
-    return cellFrem.cellHeight;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ELiveCourseItemCell *cell = [ELiveCourseItemCell cellWithTableView:tableView];
-    ELiveCourseItemCellFrame *cellFrem =[[ELiveCourseItemCellFrame alloc]init];
-    //cellFrem.temp =@"  ";
-    cell.eLiveCourseItemCellFrame = cellFrem;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+    return _courseArrays.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    ELiveCourseItemCellFrame *cellFrem = self.courseArrays.count >indexPath.row?self.courseArrays[indexPath.row]:nil;
+    return cellFrem.cellHeight;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ELiveCourseItemCell *cell = [ELiveCourseItemCell cellWithTableView:tableView];
+    
+    cell.eLiveCourseItemCellFrame = self.courseArrays.count >indexPath.row?self.courseArrays[indexPath.row]:nil;
+    // Configure the cell...
+    
+    return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ELiveCourseItemCellFrame *cellFrem = self.courseArrays.count >indexPath.row?self.courseArrays[indexPath.row]:nil;
+    ELiveCourseDetailViewController *detailVc = [[ELiveCourseDetailViewController alloc]init];
+    detailVc.courseId = cellFrem.teacherCourseListItem.courseid;
+    detailVc.chapterid  = cellFrem.teacherCourseListItem.periodid;
+    [self.navigationController pushViewController:detailVc animated:YES];
+}
 
 
 
@@ -151,8 +193,8 @@
     self.tableView.backgroundColor = [UIColor colorWithRed:0.937 green:0.937 blue:0.957 alpha:1.00];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.tableFooterView = [[UIView alloc] init];
-//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshView)];
-//    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadGoodsList)];
+   self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshView)];
+  self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadCourseList)];
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

@@ -184,7 +184,8 @@
 ///course/buy 购买课程
 -(NSString *)uriCourseBuy;
 
-///uc/myfollowcourse
+///uc/myfollowcourse 我关注的课程
 -(NSString *)uriCourseMyFollower;
-
+///course/search 搜索课程
+-(NSString *)uriCourseSearch;
 @end
