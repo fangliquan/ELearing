@@ -10,4 +10,5 @@
 
 @interface ELiveCourseCalendarViewController : UIViewController
 
+@property(nonatomic,assign) BOOL isPushIn;
 @end

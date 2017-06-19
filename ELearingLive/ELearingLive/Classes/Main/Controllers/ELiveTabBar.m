@@ -8,6 +8,7 @@
 
 #import "ELiveTabBar.h"
 #import "ELiveTeacherAddNewCourseViewController.h"
+#import "ELiveCourseCalendarViewController.h"
 #import "JXButton.h"
 #define kCount 5
 
@@ -52,8 +53,16 @@
 }
 
 - (void)compose:(id)sender {
-    ELiveTeacherAddNewCourseViewController *cvc = [[ELiveTeacherAddNewCourseViewController alloc] init];
-    [[self getViewController] presentViewController:[[UINavigationController alloc] initWithRootViewController:cvc] animated:YES completion:nil];
+    
+    if ([[CloudManager sharedInstance].currentAccount.userLoginResponse.is_teacher isEqualToString:@"2"]) {
+        ELiveTeacherAddNewCourseViewController *cvc = [[ELiveTeacherAddNewCourseViewController alloc] init];
+        [[self getViewController] presentViewController:[[UINavigationController alloc] initWithRootViewController:cvc] animated:YES completion:nil];
+    }else{
+        ELiveCourseCalendarViewController *courseVc = [[ELiveCourseCalendarViewController alloc]init];
+        courseVc.isPushIn = YES;
+        [[self getViewController] presentViewController:[[UINavigationController alloc] initWithRootViewController:courseVc] animated:YES completion:nil];
+    }
+
 }
 
 - (UIViewController *)getViewController {

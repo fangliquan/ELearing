@@ -109,7 +109,7 @@
     }];
 
 }
--(void) updateCurrentIsTeacher:(NSInteger)isTeacher
+-(void) updateCurrentIsTeacher:(NSString *)isTeacher
 {
     DBManager *dbm = [DBManager sharedInstance];
     UserLoginResponse *loginRespone = [CloudManager sharedInstance].currentAccount.userLoginResponse;

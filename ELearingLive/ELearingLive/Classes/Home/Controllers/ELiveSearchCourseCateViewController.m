@@ -35,7 +35,10 @@
     
     [self configtableView];
     [self configtableViewContent];
-    [self setupNavigationBar];
+    if (!self.isSelctCate) {
+        [self setupNavigationBar];
+    }
+
     self.cateMainArray = [NSMutableArray array];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:nil action:nil];
     [self getCourseCategires];

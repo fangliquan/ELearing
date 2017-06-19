@@ -25,7 +25,7 @@
 
 @interface UserApplyTeacherState : BaseModel
 
-@property(assign,nonatomic) NSInteger is_teacher;//is_teacher是否老师 2是老师  1审核中  0不是老师
+@property(copy,nonatomic) NSString *is_teacher;//is_teacher是否老师 2是老师  1审核中  0不是老师
 
 
 @end

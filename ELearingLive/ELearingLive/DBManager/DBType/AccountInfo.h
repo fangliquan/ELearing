@@ -86,7 +86,7 @@
 @property(copy,nonatomic) NSString *students;
 @property(copy,nonatomic) NSString *score;
 @property(copy,nonatomic) NSString *profit;
-@property(nonatomic,assign) NSInteger  is_teacher;
+@property(nonatomic,copy) NSString *is_teacher;
 
 
 @property (nonatomic, copy)  NSString *token;
