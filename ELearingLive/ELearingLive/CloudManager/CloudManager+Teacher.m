@@ -169,18 +169,17 @@
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSData * upfile;
     if (image) {
-        upfile = [UIImage scaleImageToData:image lessThanSize:PICTURE_LIMIT_SIZE_960];
+        upfile = [UIImage scaleImageToData:image lessThanSize:PICTURE_LIMIT_SIZE_160];
     }else{
-        upfile = [UIImage scaleImageToData:[UIImage imageNamed:@"image_default_userheader"] lessThanSize:PICTURE_LIMIT_SIZE_960];
+        upfile = [UIImage scaleImageToData:[UIImage imageNamed:@"image_default_userheader"] lessThanSize:PICTURE_LIMIT_SIZE_160];
     }
     
     NSDictionary *tempDic = @{
                               @"token" : token?token:@"",
-                              @"upfile" : upfile,
-                              
+                              @"upfile" : upfile
                               };
     
-    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+    [GDHttpManager postPicInfoWithUrlStringComplate:url andImageData:upfile parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
         if (ret) {
             BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
             if ([baseModel.error_code isEqualToString:@"0"]) {
@@ -402,8 +401,8 @@
 }
 
 //关注的课程列表
-- (void)asyncGetMyFollowedCourseListWithPage:(NSString *)page  completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion{
-    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseMyFollower]];
+- (void)asyncGetMyFollowedCourseListWithPage:(NSString *)page andIsMyJoin:(BOOL)join   completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",join?[self uriCourseMyjoincourse]:[self uriCourseMyFollower]];
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
                               @"token" : token?token:@"",

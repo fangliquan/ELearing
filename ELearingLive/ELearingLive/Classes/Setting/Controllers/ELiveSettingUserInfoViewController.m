@@ -162,7 +162,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section ==0) {
-        return 80;
+        return 100;
     }else{
         return 60;
     }
@@ -171,13 +171,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELiveSettingUserInfoViewCell *cell = [ELiveSettingUserInfoViewCell cellWithTableView:tableView];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+ 
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.isUserInfo = YES;
     if (indexPath.section ==0) {
+        cell.headerImage = self.userHeader;
+        cell.updateUserHeaderHandler = ^{
+             [self addCourseCover];
+        };
         cell.settingUserInfoModel = self.sectionhArrays.count >indexPath.row ?self.sectionhArrays[indexPath.row]:nil;
         cell.userTruthInfo = self.userTruthInfo;
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     }else{
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.settingUserInfoModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
         cell.userTruthInfo = self.userTruthInfo;
     }
@@ -186,14 +192,14 @@
     return cell;
 }
 
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section ==0) {
         [self addCourseCover];
     }
-
-
 }
+
 
 
 -(void)addCourseCover{
@@ -236,6 +242,7 @@
     self.userHeader = originalImage;
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self updateUserAvator];
+        [self.tableView reloadData];
     });
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -256,6 +263,7 @@
             dispatch_sync(dispatch_get_main_queue(), ^{
                 
                 [self updateUserAvator];
+                [self.tableView reloadData];
             });
         });
     }
@@ -263,7 +271,9 @@
 
 
 -(void)updateUserAvator{
+    MBProgressHUD *hud = [MBProgressHUD showMessage:@"正在上传.." toView:nil];
     [[CloudManager sharedInstance]asyncUpdateUserHeaderImageWithimage:self.userHeader completion:^(NSString *ret, CMError *error) {
+        [hud hide:YES];
         if (error ==nil) {
             [MBProgressHUD showSuccess:@"头像更新成功" toView:nil];
         }else{
@@ -278,7 +288,6 @@
     self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0.0001)];
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0.0001)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     

@@ -24,4 +24,7 @@ typedef void (^HttpFailure)(NSError *error);
 //post请求
 +(void)postWithUrlStringComplate:(NSString *)urlString parameters:(NSDictionary *)parameters completion:(void (^)(NSDictionary *ret, CMError * error))completion ;
 
+//post请求
++(void)postPicInfoWithUrlStringComplate:(NSString *)urlString andImageData:(NSData *)imageData parameters:(NSDictionary *)parameters completion:(void (^)(NSDictionary *ret, CMError * error))completion ;
+
 @end

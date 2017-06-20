@@ -354,7 +354,8 @@
                               @"password" : courseInfo.password?courseInfo.password: @"",
                               };
     
-    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+
+    [GDHttpManager postPicInfoWithUrlStringComplate:url andImageData:upfile parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
         if (ret) {
             CourseDetailInfoModel * truthInfo = [CourseDetailInfoModel mj_objectWithKeyValues:ret];
             if ([truthInfo.error_code isEqualToString:@"0"]) {

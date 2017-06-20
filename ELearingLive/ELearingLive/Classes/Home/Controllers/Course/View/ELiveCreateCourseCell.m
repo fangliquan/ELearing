@@ -201,7 +201,7 @@
     _currentDate = formateDate;
     textField.text = dateValue;
     _createTimeModel.courseTime = dateValue;
-    _createTimeModel.courseTimestamp = [NSString stringWithFormat:@"%f", [formateDate timeIntervalSinceReferenceDate] *1000];
+    _createTimeModel.courseTimestamp = [NSString stringWithFormat:@"%f",[DateHelper timeIntervalOfChangedDate:formateDate]/1000];
 }
 
 

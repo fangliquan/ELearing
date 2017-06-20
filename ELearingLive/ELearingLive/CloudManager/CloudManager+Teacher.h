@@ -37,7 +37,7 @@
 - (void)asyncGetTeacherFollowedWithTeacherId:(NSString *)teacherId andBool:(BOOL)follow completion:(void (^)(NSString*ret, CMError *error))completion;
 
 //关注的课程列表
-- (void)asyncGetMyFollowedCourseListWithPage:(NSString *)page  completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion;
+- (void)asyncGetMyFollowedCourseListWithPage:(NSString *)page andIsMyJoin:(BOOL)join  completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion;
 
 
 //课程日历模式

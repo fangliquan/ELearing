@@ -24,7 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configtableView];
-    self.title = @"课程";
     page = 0;
     self.courseArrays = [NSMutableArray array];
     [self getMyFollowData];
@@ -38,7 +37,7 @@
 
 -(void)getMyFollowData{
     page ++;
-    [[CloudManager sharedInstance]asyncGetMyFollowedCourseListWithPage:[NSString stringWithFormat:@"%ld",page] completion:^(TeacherCourseListModel *ret, CMError *error) {
+    [[CloudManager sharedInstance]asyncGetMyFollowedCourseListWithPage:[NSString stringWithFormat:@"%ld",page] andIsMyJoin:self.isMyListen completion:^(TeacherCourseListModel *ret, CMError *error) {
         [self.tableView.mj_footer endRefreshing];
         if (error == nil) {
             [self configData:ret];

@@ -13,6 +13,7 @@
     
     UILabel *titleLable;
     PHTextView *phTextView;
+    UIImageView *userHeader;
 }
 
 @end
@@ -55,10 +56,20 @@
     phTextView.delegate = self;
     [self.contentView addSubview:phTextView];
     
+    
+    userHeader = [[UIImageView alloc]initWithFrame:CGRectMake(Main_Screen_Width - 100, 10, 80, 80)];
+    userHeader.hidden = YES;
+    userHeader.userInteractionEnabled = YES;
+    userHeader.layer.cornerRadius = 40;
+    userHeader.layer.masksToBounds = YES;
+    [userHeader addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userHeaderClick)]];
+    [self.contentView addSubview:userHeader];
+    
     [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.mas_left).offset(10);
         make.width.equalTo(@75);
-        make.top.equalTo (self.contentView.mas_top).offset (18);
+        make.centerY.equalTo(self.contentView.mas_centerY);
+       // make.top.equalTo (self.contentView.mas_top).offset (18);
     }];
     
     [phTextView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -67,6 +78,20 @@
         make.top.equalTo (self.contentView.mas_top).offset(8);
         make.bottom.equalTo(self.contentView.mas_bottom).offset(-8);
     }];
+}
+
+
+-(void)userHeaderClick{
+    if (self.updateUserHeaderHandler) {
+        self.updateUserHeaderHandler();
+    }
+}
+
+-(void)setHeaderImage:(UIImage *)headerImage{
+    if (headerImage) {
+        _headerImage = headerImage;
+        userHeader.image = headerImage;
+    }
 }
 
 -(void)setSettingUserInfoModel:(ELiveSettingUserInfoModel *)settingUserInfoModel{
@@ -103,8 +128,13 @@
     
     if (settingUserInfoModel.type ==ELive_Set_User_Header) {
         phTextView.hidden = YES;
+        userHeader.hidden = NO;
+        if (!self.headerImage) {
+            [userHeader setImageWithURL:[NSURL URLWithString:[CloudManager sharedInstance].currentAccount.userLoginResponse.avatar] placeholderImage:EL_Default_Image];
+        }
     }else{
-         phTextView.hidden = NO;
+        phTextView.hidden = NO;
+        userHeader.hidden = YES;
     }
 
 }

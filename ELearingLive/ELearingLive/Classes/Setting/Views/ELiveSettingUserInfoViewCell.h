@@ -32,6 +32,11 @@ typedef enum : NSUInteger {
 
 @property(nonatomic,strong) ELiveSettingUserInfoModel *settingUserInfoModel;
 @property(nonatomic,assign) BOOL isUserInfo;
+
+@property(nonatomic,strong) UIImage *headerImage;
+
+@property (nonatomic, copy) void (^updateUserHeaderHandler)(void);
+
 @end
 
 @interface ELiveSettingUserInfoModel : NSObject
@@ -41,6 +46,8 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong) NSString *title;
 
 @property(nonatomic, strong) NSString *content;
+
+
 
 
 @end

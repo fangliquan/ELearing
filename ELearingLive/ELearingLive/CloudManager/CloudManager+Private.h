@@ -105,6 +105,10 @@
 
 ///uc/myfollowcourse 我关注的课程
 -(NSString *)uriCourseMyFollower;
+
+////uc/myjoincourse 我听过的课程
+-(NSString *)uriCourseMyjoincourse;
+
 ///course/search 搜索课程
 -(NSString *)uriCourseSearch;
 

@@ -335,6 +335,14 @@
     ret = [[NSString alloc] initWithFormat:@"%@/uc/myfollowcourse",ret];
     return ret;
 }
+
+//////uc/myjoincourse 我听过的课程
+-(NSString *)uriCourseMyjoincourse{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/uc/myjoincourse",ret];
+    return ret;
+}
 ///course/search 搜索课程
 -(NSString *)uriCourseSearch{
     NSString *ret = @"";

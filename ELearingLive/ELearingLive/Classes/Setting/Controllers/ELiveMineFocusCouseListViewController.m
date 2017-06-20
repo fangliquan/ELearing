@@ -83,7 +83,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ELiveSettingModel *settingModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
     ELiveMineFocusCourseViewController *courseVc = [[ELiveMineFocusCourseViewController alloc]init];
-    courseVc.title = @"我的课程";
+    courseVc.title =indexPath.row==0? @"我听过的课程":@"我关注的课程";
+    if (indexPath.row ==0) {
+        courseVc.isMyListen = YES;
+    }
     courseVc.showMoreBtn = NO;
     [self.navigationController pushViewController:courseVc animated:YES];
 
