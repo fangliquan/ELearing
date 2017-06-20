@@ -277,7 +277,7 @@
 
 - (void)asyncGetCourseListWithCateId:(NSString *)catesId andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion{
     
-    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseEvaluatelist]];
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseList]];
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
                               @"token" : token?token:@"",

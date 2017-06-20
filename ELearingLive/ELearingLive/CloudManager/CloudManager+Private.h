@@ -109,6 +109,9 @@
 ////uc/myjoincourse 我听过的课程
 -(NSString *)uriCourseMyjoincourse;
 
+////uc/topiccourse 专题课程
+-(NSString *)uriCourseTopic;
+
 ///course/search 搜索课程
 -(NSString *)uriCourseSearch;
 

@@ -430,6 +430,38 @@
     }];
 
 }
+
+- (void)asyncGetTopicCourseListWithPage:(NSString *)page andTopicId:(NSString *)topicId  completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion{
+    
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseTopic]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"page" : page?page:@"1",
+                               @"topicid" : topicId?topicId:@"1",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            TeacherCourseListModel * baseModel = [TeacherCourseListModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(baseModel,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+}
 //课程日历模式
 - (void)asyncGetMyCourseCarlendarListWithDate:(NSString *)date  completion:(void (^)(TeacherMyCourseModel *ret, CMError *error))completion{
     NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseMyCourse]];

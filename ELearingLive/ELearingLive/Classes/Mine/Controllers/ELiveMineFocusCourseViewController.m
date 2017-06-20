@@ -26,13 +26,38 @@
     [self configtableView];
     page = 0;
     self.courseArrays = [NSMutableArray array];
-    [self getMyFollowData];
+    if (self.isTopicData) {
+         [self getTopicData];
+    }else{
+         [self getMyFollowData];
+    }
+   
     if (self.showMoreBtn) {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"title_moreBtn"] style:UIBarButtonItemStylePlain target:self action:@selector(searchMoreClick)];
         
     }
 
+}
+
+-(void)getTopicData{
+    page ++;
+    [[CloudManager sharedInstance]asyncGetTopicCourseListWithPage:[NSString stringWithFormat:@"%ld",page] andTopicId:_topicId completion:^(TeacherCourseListModel *ret, CMError *error) {
+        [self.tableView.mj_footer endRefreshing];
+        if (error == nil) {
+            [self configData:ret];
+            if (ret.list.count <=0) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            if (self.courseArrays.count <=0) {
+                
+                self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindViewWithType:ExceptionRemindStyle_Empty];
+            }
+            
+        }else{
+            self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindView_LoadfailWithTarget:self action:@selector(getMyFollowData)];
+        }
+    }];
 }
 
 -(void)getMyFollowData{

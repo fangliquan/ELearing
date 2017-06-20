@@ -21,6 +21,7 @@
     UILabel *allUserTitleLabel;
     
     NSInteger selectIndex;
+    UIButton *submitBtn;
 }
 
 
@@ -58,7 +59,7 @@
     
     UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0,Main_Screen_Height - 100, Main_Screen_Width, 100)];
     
-    UIButton *submitBtn = [[UIButton alloc]initWithFrame:CGRectMake(30,10, Main_Screen_Width - 60, 40)];
+    submitBtn = [[UIButton alloc]initWithFrame:CGRectMake(30,10, Main_Screen_Width - 60, 40)];
     submitBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [submitBtn setTitle:@"创建课程" forState:UIControlStateNormal];
     [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -100,7 +101,11 @@
         
     }
     
+    submitBtn.enabled = NO;
+    MBProgressHUD *hud = [MBProgressHUD showMessage:@"正在创建..." toView:nil];
     [[CloudManager sharedInstance]asyncCreateNewCourseWithCourseInfo:self.teacherCourseInfo completion:^(CourseDetailInfoModel *ret, CMError *error) {
+        [hud hide:YES];
+        submitBtn.enabled = YES;
         if (error ==nil) {
             [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"创建成功" style:UIAlertViewStyleDefault cancelButtonTitle:@"取消" otherButtonTitles:@[@"分享"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 [self cancelBtn];

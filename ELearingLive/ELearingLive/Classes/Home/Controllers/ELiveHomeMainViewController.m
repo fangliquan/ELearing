@@ -81,7 +81,7 @@
 }
 
 -(void)createHeaderView{
-    
+    __unsafe_unretained typeof(self) unself = self;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0)];
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     CGFloat offsetY = 0;
@@ -94,7 +94,10 @@
             [imageArrays addObject:slider.thumb];
         }
         LoopView *headerLoopView =[[LoopView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 180) imageUrls:imageArrays loopPictures:_homeIndex.slider handler:^(UIViewController *vc) {
-            
+            if (vc) {
+                 [unself.navigationController pushViewController:vc animated:YES];
+            }
+           
         }];
         [headerView addSubview:headerLoopView];
     }
@@ -113,7 +116,7 @@
         CGFloat height = itemHeight + margingY + 20 + margingY;
         UIView *courseView = [[UIView alloc]initWithFrame:CGRectMake(0, offsetY, Main_Screen_Width, height)];
         courseView.backgroundColor = [UIColor whiteColor];
-        __unsafe_unretained typeof(self) unself = self;
+        
         NSInteger catesCount = catesArray.count;
         for (int i = 1; i <catesCount; i ++) {
             IndexCatesModel *cateModel = catesArray.count >i?catesArray[i]:nil;

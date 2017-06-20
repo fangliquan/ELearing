@@ -40,6 +40,9 @@
 - (void)asyncGetMyFollowedCourseListWithPage:(NSString *)page andIsMyJoin:(BOOL)join  completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion;
 
 
+- (void)asyncGetTopicCourseListWithPage:(NSString *)page andTopicId:(NSString *)topicId  completion:(void (^)(TeacherCourseListModel *ret, CMError *error))completion;
+
+
 //课程日历模式
 - (void)asyncGetMyCourseCarlendarListWithDate:(NSString *)date  completion:(void (^)(TeacherMyCourseModel *ret, CMError *error))completion;
 

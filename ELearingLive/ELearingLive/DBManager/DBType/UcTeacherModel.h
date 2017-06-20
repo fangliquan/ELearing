@@ -58,6 +58,8 @@
 @property(nonatomic,strong) NSString *totalpage;
 
 @property(nonatomic,strong) NSArray *list;
+
+@property(nonatomic,strong) IndexSliderModel *topic;
 @end
 
 @interface TeacherCourseListItem : NSObject

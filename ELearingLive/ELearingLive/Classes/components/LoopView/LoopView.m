@@ -8,7 +8,7 @@
 
 #import "LoopView.h"
 #import "UIButton+WebCache.h"
-
+#import "ELiveMineFocusCourseViewController.h"
 @interface LoopView()<UIScrollViewDelegate> {
     UIScrollView *_sc;
     UIPageControl *_pageControl;
@@ -246,23 +246,15 @@
         NSObject * loopPicModel = _loopPicturesArray.count >index? _loopPicturesArray[index] :nil;
         if ([loopPicModel isKindOfClass:[IndexSliderModel class]]) {
             IndexSliderModel *activity = (IndexSliderModel *)loopPicModel;
-            UIViewController *vc = nil;
-//            //添加判断
-//            
-//            if ([type isEqualToString:@"native"]) {
-//                ProductDetailViewController *vc1 = [[ProductDetailViewController alloc] init];
-//                vc1.hidesBottomBarWhenPushed = YES;
-//                vc1.goodId = [activity.extra.goodsId longLongValue];
-//                vc = vc1;
-//                
-//            }else if([type isEqualToString:@"webview"]){
-//                NSString *url = activity.linkUrl;
-//                TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURLString:url];
-//                webViewController.showActionButton = NO;
-//                webViewController.hidesBottomBarWhenPushed = YES;
-//                vc = webViewController;
-//            }
-            _callBackViewController(vc);
+            
+            ELiveMineFocusCourseViewController *courseVc = [[ELiveMineFocusCourseViewController alloc]init];
+            courseVc.title = activity.title;
+            courseVc.hidesBottomBarWhenPushed = YES;
+            courseVc.isTopicData = YES;
+            courseVc.topicId = activity.topicid;
+            
+            courseVc.showMoreBtn = NO;
+            _callBackViewController(courseVc);
         }
     }
 }

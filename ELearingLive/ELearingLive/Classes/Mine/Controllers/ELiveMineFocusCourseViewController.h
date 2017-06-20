@@ -13,4 +13,8 @@
 @property(nonatomic,assign) BOOL showMoreBtn;
 
 @property(nonatomic,assign) BOOL isMyListen;
+
+@property(nonatomic,assign) BOOL isTopicData;
+
+@property(nonatomic,strong) NSString *topicId;
 @end
