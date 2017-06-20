@@ -15,4 +15,12 @@
 #define DEFAULT_SERVER_TOKEN @"YR9qwPqd8FjnVCVNtKLsbPVsYWfa87hb"
 
 
+#define WEIXIN_APPID        @""   
+
+#define WEIBO_APPID     @""        // 微博 appId
+#define WEIBO_APPKEY    @""      // 微博 appKey
+#define TENCENT_APPID   @""        // 腾讯 appId
+#define TENCENT_APPKEY  @""  // 腾讯 appKey
+
+
 #endif

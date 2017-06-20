@@ -1,6 +1,6 @@
 //
 //  WWTextManager.m
-//  wwface
+//  
 //
 //  Created by pc on 16/12/15.
 //  Copyright © 2016年 fo. All rights reserved.

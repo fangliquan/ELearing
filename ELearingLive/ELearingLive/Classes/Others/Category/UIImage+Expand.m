@@ -1,6 +1,6 @@
 //
 //  UIlabel+JamesLabel.m
-//  wwface
+//  
 //
 //  Created by James on 14/11/10.
 //  Copyright (c) 2014年 fo. All rights reserved.

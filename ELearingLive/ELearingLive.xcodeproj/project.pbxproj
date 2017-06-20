@@ -44,6 +44,22 @@
 		0A280DA81EEB8FA7005FF3BB /* exception_EmptyDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A280DA71EEB8FA7005FF3BB /* exception_EmptyDefault.png */; };
 		0A280DAB1EEBA1BE005FF3BB /* CloudManager+Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A280DAA1EEBA1BE005FF3BB /* CloudManager+Course.m */; };
 		0A280DAE1EEBD46A005FF3BB /* UcCourseIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A280DAD1EEBD46A005FF3BB /* UcCourseIndex.m */; };
+		0A3428201EF9820900FA5FE2 /* ShareRecordUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3428141EF9820900FA5FE2 /* ShareRecordUtil.m */; };
+		0A3428211EF9820900FA5FE2 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3428161EF9820900FA5FE2 /* libWeiboSDK.a */; };
+		0A3428221EF9820900FA5FE2 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A3428171EF9820900FA5FE2 /* WeiboSDK.bundle */; };
+		0A3428231EF9820900FA5FE2 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34281A1EF9820900FA5FE2 /* libWeChatSDK.a */; };
+		0A3428241EF9820900FA5FE2 /* WawaShareUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A34281F1EF9820900FA5FE2 /* WawaShareUtil.m */; };
+		0A3428291EF9827200FA5FE2 /* HYActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3428271EF9827200FA5FE2 /* HYActivityView.m */; };
+		0A34282D1EF982EB00FA5FE2 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34282B1EF982EB00FA5FE2 /* TencentOpenAPI.framework */; };
+		0A34282E1EF982EB00FA5FE2 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A34282C1EF982EB00FA5FE2 /* TencentOpenApi_IOS_Bundle.bundle */; };
+		0A3428321EF984D000FA5FE2 /* WechatPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3428311EF984D000FA5FE2 /* WechatPayManager.m */; };
+		0A3428401EF9866C00FA5FE2 /* AppDelegate+OpenURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3428391EF9866C00FA5FE2 /* AppDelegate+OpenURL.m */; };
+		0A3428411EF9866C00FA5FE2 /* AppDelegate+Wechat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A34283B1EF9866C00FA5FE2 /* AppDelegate+Wechat.m */; };
+		0A3428421EF9866C00FA5FE2 /* AppDelegate+Weibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A34283D1EF9866C00FA5FE2 /* AppDelegate+Weibo.m */; };
+		0A3428461EF9873000FA5FE2 /* AlipayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3428451EF9873000FA5FE2 /* AlipayManager.m */; };
+		0A3428491EF9875A00FA5FE2 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A3428471EF9875A00FA5FE2 /* AlipaySDK.bundle */; };
+		0A34284A1EF9875A00FA5FE2 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3428481EF9875A00FA5FE2 /* AlipaySDK.framework */; };
+		0A34284C1EF9886300FA5FE2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A34284B1EF9886300FA5FE2 /* QuartzCore.framework */; };
 		0A3A75221EC6C6BE000DE748 /* ELiveCourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */; };
 		0A46AA471ED7291D0087E078 /* ELiveMessageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA461ED7291D0087E078 /* ELiveMessageViewCell.m */; };
 		0A46AA4B1ED8729A0087E078 /* ELivePersonHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A46AA4A1ED8729A0087E078 /* ELivePersonHomeViewController.m */; };
@@ -255,7 +271,6 @@
 		0ABA8A411EF8044700F83770 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA8A2E1EF8044700F83770 /* FSCalendarStickyHeader.m */; };
 		0ABA8A421EF8044700F83770 /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA8A301EF8044700F83770 /* FSCalendarTransitionCoordinator.m */; };
 		0ABA8A431EF8044700F83770 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABA8A321EF8044700F83770 /* FSCalendarWeekdayView.m */; };
-		0ABA8A441EF8044700F83770 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ABA8A331EF8044700F83770 /* Info.plist */; };
 		0AEA5F651EF64AF000B79A1F /* course_type_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F5F1EF64AF000B79A1F /* course_type_open@2x.png */; };
 		0AEA5F661EF64AF000B79A1F /* course_type_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F601EF64AF000B79A1F /* course_type_open@3x.png */; };
 		0AEA5F671EF64AF000B79A1F /* course_type_suo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEA5F611EF64AF000B79A1F /* course_type_suo@2x.png */; };
@@ -450,6 +465,35 @@
 		0A280DAA1EEBA1BE005FF3BB /* CloudManager+Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CloudManager+Course.m"; sourceTree = "<group>"; };
 		0A280DAC1EEBD46A005FF3BB /* UcCourseIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UcCourseIndex.h; sourceTree = "<group>"; };
 		0A280DAD1EEBD46A005FF3BB /* UcCourseIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UcCourseIndex.m; sourceTree = "<group>"; };
+		0A3428131EF9820900FA5FE2 /* ShareRecordUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareRecordUtil.h; sourceTree = "<group>"; };
+		0A3428141EF9820900FA5FE2 /* ShareRecordUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareRecordUtil.m; sourceTree = "<group>"; };
+		0A3428161EF9820900FA5FE2 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		0A3428171EF9820900FA5FE2 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		0A3428181EF9820900FA5FE2 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		0A34281A1EF9820900FA5FE2 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		0A34281B1EF9820900FA5FE2 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		0A34281C1EF9820900FA5FE2 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		0A34281D1EF9820900FA5FE2 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		0A34281E1EF9820900FA5FE2 /* WawaShareUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WawaShareUtil.h; sourceTree = "<group>"; };
+		0A34281F1EF9820900FA5FE2 /* WawaShareUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WawaShareUtil.m; sourceTree = "<group>"; };
+		0A3428261EF9827200FA5FE2 /* HYActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYActivityView.h; sourceTree = "<group>"; };
+		0A3428271EF9827200FA5FE2 /* HYActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYActivityView.m; sourceTree = "<group>"; };
+		0A3428281EF9827200FA5FE2 /* ShareTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTypeDef.h; sourceTree = "<group>"; };
+		0A34282B1EF982EB00FA5FE2 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		0A34282C1EF982EB00FA5FE2 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		0A3428301EF984D000FA5FE2 /* WechatPayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatPayManager.h; sourceTree = "<group>"; };
+		0A3428311EF984D000FA5FE2 /* WechatPayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WechatPayManager.m; sourceTree = "<group>"; };
+		0A3428381EF9866C00FA5FE2 /* AppDelegate+OpenURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+OpenURL.h"; sourceTree = "<group>"; };
+		0A3428391EF9866C00FA5FE2 /* AppDelegate+OpenURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+OpenURL.m"; sourceTree = "<group>"; };
+		0A34283A1EF9866C00FA5FE2 /* AppDelegate+Wechat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Wechat.h"; sourceTree = "<group>"; };
+		0A34283B1EF9866C00FA5FE2 /* AppDelegate+Wechat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Wechat.m"; sourceTree = "<group>"; };
+		0A34283C1EF9866C00FA5FE2 /* AppDelegate+Weibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Weibo.h"; sourceTree = "<group>"; };
+		0A34283D1EF9866C00FA5FE2 /* AppDelegate+Weibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Weibo.m"; sourceTree = "<group>"; };
+		0A3428441EF9873000FA5FE2 /* AlipayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlipayManager.h; sourceTree = "<group>"; };
+		0A3428451EF9873000FA5FE2 /* AlipayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlipayManager.m; sourceTree = "<group>"; };
+		0A3428471EF9875A00FA5FE2 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		0A3428481EF9875A00FA5FE2 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		0A34284B1EF9886300FA5FE2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0A3A75201EC6C6BE000DE748 /* ELiveCourseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCourseListViewController.h; sourceTree = "<group>"; };
 		0A3A75211EC6C6BE000DE748 /* ELiveCourseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseListViewController.m; sourceTree = "<group>"; };
 		0A46AA451ED7291D0087E078 /* ELiveMessageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveMessageViewCell.h; sourceTree = "<group>"; };
@@ -822,7 +866,6 @@
 		0ABA8A301EF8044700F83770 /* FSCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
 		0ABA8A311EF8044700F83770 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		0ABA8A321EF8044700F83770 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
-		0ABA8A331EF8044700F83770 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AEA5F5F1EF64AF000B79A1F /* course_type_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "course_type_open@2x.png"; sourceTree = "<group>"; };
 		0AEA5F601EF64AF000B79A1F /* course_type_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "course_type_open@3x.png"; sourceTree = "<group>"; };
 		0AEA5F611EF64AF000B79A1F /* course_type_suo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "course_type_suo@2x.png"; sourceTree = "<group>"; };
@@ -1080,6 +1123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A34284C1EF9886300FA5FE2 /* QuartzCore.framework in Frameworks */,
 				0A1DF96C1EF59DCD005C48C2 /* Photos.framework in Frameworks */,
 				0A1DF96D1EF59DCD005C48C2 /* PhotosUI.framework in Frameworks */,
 				0A1DF9691EF59DC3005C48C2 /* AssetsLibrary.framework in Frameworks */,
@@ -1089,12 +1133,16 @@
 				0A66039E1EDF033B00927433 /* CoreMotion.framework in Frameworks */,
 				0A66039C1EDF033400927433 /* CoreText.framework in Frameworks */,
 				0A66039A1EDF031A00927433 /* CoreTelephony.framework in Frameworks */,
+				0A34282D1EF982EB00FA5FE2 /* TencentOpenAPI.framework in Frameworks */,
 				0A6603981EDF031100927433 /* SystemConfiguration.framework in Frameworks */,
+				0A3428211EF9820900FA5FE2 /* libWeiboSDK.a in Frameworks */,
 				0A6603961EDF030500927433 /* Foundation.framework in Frameworks */,
 				0A6603941EDF02FB00927433 /* CoreGraphics.framework in Frameworks */,
 				0A6603921EDF02F000927433 /* Security.framework in Frameworks */,
 				0A6603901EDF02E400927433 /* libc++.tbd in Frameworks */,
 				0A66038E1EDF02D600927433 /* libz.tbd in Frameworks */,
+				0A34284A1EF9875A00FA5FE2 /* AlipaySDK.framework in Frameworks */,
+				0A3428231EF9820900FA5FE2 /* libWeChatSDK.a in Frameworks */,
 				0A66038C1EDF02C800927433 /* libz.1.2.5.tbd in Frameworks */,
 				0A66038A1EDF02B600927433 /* CFNetwork.framework in Frameworks */,
 				0A6603881EDF029300927433 /* UIKit.framework in Frameworks */,
@@ -1138,6 +1186,93 @@
 				0A1DF9431EF55511005C48C2 /* UIView+Layout.m */,
 			);
 			path = TZImagePickerController;
+			sourceTree = "<group>";
+		};
+		0A3428121EF9820900FA5FE2 /* ThirdPartyShare */ = {
+			isa = PBXGroup;
+			children = (
+				0A3428131EF9820900FA5FE2 /* ShareRecordUtil.h */,
+				0A3428141EF9820900FA5FE2 /* ShareRecordUtil.m */,
+				0A3428151EF9820900FA5FE2 /* SinaWeibo */,
+				0A3428191EF9820900FA5FE2 /* TencentWeixin */,
+				0A34281E1EF9820900FA5FE2 /* WawaShareUtil.h */,
+				0A34281F1EF9820900FA5FE2 /* WawaShareUtil.m */,
+			);
+			path = ThirdPartyShare;
+			sourceTree = "<group>";
+		};
+		0A3428151EF9820900FA5FE2 /* SinaWeibo */ = {
+			isa = PBXGroup;
+			children = (
+				0A3428161EF9820900FA5FE2 /* libWeiboSDK.a */,
+				0A3428171EF9820900FA5FE2 /* WeiboSDK.bundle */,
+				0A3428181EF9820900FA5FE2 /* WeiboSDK.h */,
+			);
+			path = SinaWeibo;
+			sourceTree = "<group>";
+		};
+		0A3428191EF9820900FA5FE2 /* TencentWeixin */ = {
+			isa = PBXGroup;
+			children = (
+				0A34281A1EF9820900FA5FE2 /* libWeChatSDK.a */,
+				0A34281B1EF9820900FA5FE2 /* WechatAuthSDK.h */,
+				0A34281C1EF9820900FA5FE2 /* WXApi.h */,
+				0A34281D1EF9820900FA5FE2 /* WXApiObject.h */,
+			);
+			path = TencentWeixin;
+			sourceTree = "<group>";
+		};
+		0A3428251EF9827200FA5FE2 /* HYActivityView */ = {
+			isa = PBXGroup;
+			children = (
+				0A3428261EF9827200FA5FE2 /* HYActivityView.h */,
+				0A3428271EF9827200FA5FE2 /* HYActivityView.m */,
+				0A3428281EF9827200FA5FE2 /* ShareTypeDef.h */,
+			);
+			path = HYActivityView;
+			sourceTree = "<group>";
+		};
+		0A34282A1EF982EB00FA5FE2 /* TencentQQ */ = {
+			isa = PBXGroup;
+			children = (
+				0A34282B1EF982EB00FA5FE2 /* TencentOpenAPI.framework */,
+				0A34282C1EF982EB00FA5FE2 /* TencentOpenApi_IOS_Bundle.bundle */,
+			);
+			path = TencentQQ;
+			sourceTree = "<group>";
+		};
+		0A34282F1EF984D000FA5FE2 /* WechatPayManager */ = {
+			isa = PBXGroup;
+			children = (
+				0A3428301EF984D000FA5FE2 /* WechatPayManager.h */,
+				0A3428311EF984D000FA5FE2 /* WechatPayManager.m */,
+			);
+			name = WechatPayManager;
+			path = ThirdPartyShare/WechatPayManager;
+			sourceTree = "<group>";
+		};
+		0A3428331EF9866C00FA5FE2 /* AppDelegateCategory */ = {
+			isa = PBXGroup;
+			children = (
+				0A3428381EF9866C00FA5FE2 /* AppDelegate+OpenURL.h */,
+				0A3428391EF9866C00FA5FE2 /* AppDelegate+OpenURL.m */,
+				0A34283A1EF9866C00FA5FE2 /* AppDelegate+Wechat.h */,
+				0A34283B1EF9866C00FA5FE2 /* AppDelegate+Wechat.m */,
+				0A34283C1EF9866C00FA5FE2 /* AppDelegate+Weibo.h */,
+				0A34283D1EF9866C00FA5FE2 /* AppDelegate+Weibo.m */,
+			);
+			path = AppDelegateCategory;
+			sourceTree = "<group>";
+		};
+		0A3428431EF9873000FA5FE2 /* AlipayManager */ = {
+			isa = PBXGroup;
+			children = (
+				0A3428471EF9875A00FA5FE2 /* AlipaySDK.bundle */,
+				0A3428481EF9875A00FA5FE2 /* AlipaySDK.framework */,
+				0A3428441EF9873000FA5FE2 /* AlipayManager.h */,
+				0A3428451EF9873000FA5FE2 /* AlipayManager.m */,
+			);
+			path = AlipayManager;
 			sourceTree = "<group>";
 		};
 		0A46AA481ED872520087E078 /* PersonHome */ = {
@@ -1357,6 +1492,7 @@
 		0A6603081EDF01F000927433 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A34284B1EF9886300FA5FE2 /* QuartzCore.framework */,
 				0A1DF96A1EF59DCD005C48C2 /* Photos.framework */,
 				0A1DF96B1EF59DCD005C48C2 /* PhotosUI.framework */,
 				0A1DF9681EF59DC3005C48C2 /* AssetsLibrary.framework */,
@@ -1834,7 +1970,6 @@
 				0ABA8A301EF8044700F83770 /* FSCalendarTransitionCoordinator.m */,
 				0ABA8A311EF8044700F83770 /* FSCalendarWeekdayView.h */,
 				0ABA8A321EF8044700F83770 /* FSCalendarWeekdayView.m */,
-				0ABA8A331EF8044700F83770 /* Info.plist */,
 			);
 			path = FSCalendar;
 			sourceTree = "<group>";
@@ -1896,6 +2031,12 @@
 			isa = PBXGroup;
 			children = (
 				0ABA8A121EF8044700F83770 /* FSCalendar */,
+				0A3428431EF9873000FA5FE2 /* AlipayManager */,
+				0A3428331EF9866C00FA5FE2 /* AppDelegateCategory */,
+				0A34282F1EF984D000FA5FE2 /* WechatPayManager */,
+				0A34282A1EF982EB00FA5FE2 /* TencentQQ */,
+				0A3428251EF9827200FA5FE2 /* HYActivityView */,
+				0A3428121EF9820900FA5FE2 /* ThirdPartyShare */,
 				0A1DF9281EF55511005C48C2 /* TZImagePickerController */,
 				0AB055991EEE15EB000A954F /* StarRetingView */,
 				0A6604271EDFA82000927433 /* MJExtension */,
@@ -2598,12 +2739,12 @@
 				0A46AAA31EDAC6360087E078 /* login_qq_icon@2x.png in Resources */,
 				0AEA5F7E1EF6CD0100B79A1F /* right_sharp_unenable_time@3x.png in Resources */,
 				0A6604281EDFA82000927433 /* Info.plist in Resources */,
+				0A34282E1EF982EB00FA5FE2 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				0A54A3B21ED4742500421CC5 /* tabbar_news@2x.png in Resources */,
 				0A0A563E1EE4DD6D00418F9A /* notLogin_circle_default@2x.png in Resources */,
 				0AEA5F671EF64AF000B79A1F /* course_type_suo@2x.png in Resources */,
 				0A6603651EDF026200927433 /* LICENSE.txt in Resources */,
 				0A54A3BB1ED4769400421CC5 /* tabbar_message@3x.png in Resources */,
-				0ABA8A441EF8044700F83770 /* Info.plist in Resources */,
 				0AEF085B1EBA310E0065A22B /* MBProgressHUD.bundle in Resources */,
 				0A54A3A21ED4724100421CC5 /* home_tt_05_@3x.png in Resources */,
 				0A54A3B61ED4742500421CC5 /* tabbar_video@2x.png in Resources */,
@@ -2619,7 +2760,9 @@
 				0A46AAA11EDAC6360087E078 /* login_phone_icon@3x.png in Resources */,
 				0AEF08AE1EBD57480065A22B /* image_default_userheader.png in Resources */,
 				0A46AA641EDA6AC90087E078 /* sl_02_3x.png in Resources */,
+				0A3428221EF9820900FA5FE2 /* WeiboSDK.bundle in Resources */,
 				0AEA5F7D1EF6CD0100B79A1F /* right_sharp_unenable_time@2x.png in Resources */,
+				0A3428491EF9875A00FA5FE2 /* AlipaySDK.bundle in Resources */,
 				0A46AAA41EDAC6360087E078 /* login_sina_icon@2x.png in Resources */,
 				0A46AA661EDA6AC90087E078 /* sl_03_3x.png in Resources */,
 				0A6945001EC6D86000D83DC1 /* title_moreBtn@2x.png in Resources */,
@@ -2673,6 +2816,7 @@
 				0AEF08661EBA310E0065A22B /* MJPhoto.m in Sources */,
 				0A6604021EDF064500927433 /* DBManagerBase.m in Sources */,
 				0AEF08BD1EBECE0A0065A22B /* NSString+Common.m in Sources */,
+				0A3428321EF984D000FA5FE2 /* WechatPayManager.m in Sources */,
 				0AEF094C1EBECF900065A22B /* JSONKit.m in Sources */,
 				0A1DF9511EF55511005C48C2 /* UIView+Layout.m in Sources */,
 				0A54A3831ED31F3200421CC5 /* MXPagerView.m in Sources */,
@@ -2680,6 +2824,7 @@
 				0A54A3871ED31F3200421CC5 /* ALView+PureLayout.m in Sources */,
 				0ABA8A3C1EF8044700F83770 /* FSCalendarDelegationFactory.m in Sources */,
 				0A6603CE1EDF05B500927433 /* AFURLRequestSerialization.m in Sources */,
+				0A3428241EF9820900FA5FE2 /* WawaShareUtil.m in Sources */,
 				0AEF09511EBECF900065A22B /* MASLayoutConstraint.m in Sources */,
 				0A66042D1EDFA82000927433 /* MJPropertyType.m in Sources */,
 				0A1DF9481EF55511005C48C2 /* TZImageCropManager.m in Sources */,
@@ -2704,6 +2849,7 @@
 				0A6603D81EDF05B500927433 /* UIImageView+AFNetworking.m in Sources */,
 				0A1DF9491EF55511005C48C2 /* TZImageManager.m in Sources */,
 				0A46AA4F1EDA6A5A0087E078 /* ELiveHomeHeaderView.m in Sources */,
+				0A3428401EF9866C00FA5FE2 /* AppDelegate+OpenURL.m in Sources */,
 				0AEF08791EBA310F0065A22B /* SDWebImageDownloaderOperation.m in Sources */,
 				0A1DF9571EF559E2005C48C2 /* LiveTimePickerView.m in Sources */,
 				0AEF094A1EBECF900065A22B /* UIView+BlocksKit.m in Sources */,
@@ -2724,6 +2870,7 @@
 				0AEF09931EBED84E0065A22B /* MJRefreshNormalHeader.m in Sources */,
 				0AEF092B1EBECF900065A22B /* NSArray+BlocksKit.m in Sources */,
 				0AEF09961EBED84E0065A22B /* MJRefreshConst.m in Sources */,
+				0A3428411EF9866C00FA5FE2 /* AppDelegate+Wechat.m in Sources */,
 				0ABA8A381EF8044700F83770 /* FSCalendarCell.m in Sources */,
 				0ABA8A371EF8044700F83770 /* FSCalendarCalculator.m in Sources */,
 				0A6604081EDF064500927433 /* VersionInfo.m in Sources */,
@@ -2798,6 +2945,7 @@
 				0A54A38B1ED31F3200421CC5 /* THSegmentedPager.m in Sources */,
 				0A1DF9471EF55511005C48C2 /* TZGifPhotoPreviewController.m in Sources */,
 				0A6603711EDF026200927433 /* NSObject+LKDBHelper.m in Sources */,
+				0A3428461EF9873000FA5FE2 /* AlipayManager.m in Sources */,
 				0A6603D61EDF05B500927433 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				0A6603741EDF026200927433 /* MyCJSONDeserializer.m in Sources */,
 				0AED43801EF172ED00EAD011 /* ELiveTeacherEvaluateViewController.m in Sources */,
@@ -2808,6 +2956,7 @@
 				0AEF08951EBA34350065A22B /* ELiveCastMainViewController.m in Sources */,
 				0A6603631EDF026200927433 /* UIDevice-Hardware.m in Sources */,
 				0AB055A31EEECC85000A954F /* ELiveAddEvaluateViewController.m in Sources */,
+				0A3428291EF9827200FA5FE2 /* HYActivityView.m in Sources */,
 				0AEF08B31EBECDB80065A22B /* WWTextManager.m in Sources */,
 				0AEF08BC1EBECE0A0065A22B /* NSObject+CommonBlock.m in Sources */,
 				0AEF09351EBECF900065A22B /* NSObject+BKBlockExecution.m in Sources */,
@@ -2883,6 +3032,7 @@
 				0A66040D1EDF072C00927433 /* DateHelper.m in Sources */,
 				0AEF093B1EBECF900065A22B /* A2DynamicDelegate.m in Sources */,
 				0AEF09531EBECF900065A22B /* MASViewConstraint.m in Sources */,
+				0A3428201EF9820900FA5FE2 /* ShareRecordUtil.m in Sources */,
 				0A66042A1EDFA82000927433 /* MJFoundation.m in Sources */,
 				0A54A3851ED31F3200421CC5 /* MXSegmentedPager.m in Sources */,
 				0AEF08771EBA310F0065A22B /* SDWebImageDecoder.m in Sources */,
@@ -2910,6 +3060,7 @@
 				0A6604291EDFA82000927433 /* MJExtensionConst.m in Sources */,
 				0AEF098F1EBED84E0065A22B /* MJRefreshBackGifFooter.m in Sources */,
 				0AEF087C1EBA310F0065A22B /* UIButton+WebCache.m in Sources */,
+				0A3428421EF9866C00FA5FE2 /* AppDelegate+Weibo.m in Sources */,
 				0A6604031EDF064500927433 /* AccountInfo.m in Sources */,
 				0AEF09521EBECF900065A22B /* MASViewAttribute.m in Sources */,
 				0AEF085C1EBA310E0065A22B /* MBProgressHUD.m in Sources */,
@@ -3050,12 +3201,22 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9YY3S9BBZ6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ELearingLive/Classes/components/TencentQQ",
+					"$(PROJECT_DIR)/ELearingLive/Classes/components/AlipayManager",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ELearingLive/Classes/Others/ELearingLive-Prefix.pch";
 				INFOPLIST_FILE = ELearingLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ELearingLive/Classes/components/ThirdPartyShare/SinaWeibo",
+					"$(PROJECT_DIR)/ELearingLive/Classes/components/ThirdPartyShare/TencentWeixin",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.microleo.ELearingLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3070,12 +3231,22 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9YY3S9BBZ6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ELearingLive/Classes/components/TencentQQ",
+					"$(PROJECT_DIR)/ELearingLive/Classes/components/AlipayManager",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ELearingLive/Classes/Others/ELearingLive-Prefix.pch";
 				INFOPLIST_FILE = ELearingLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ELearingLive/Classes/components/ThirdPartyShare/SinaWeibo",
+					"$(PROJECT_DIR)/ELearingLive/Classes/components/ThirdPartyShare/TencentWeixin",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.microleo.ELearingLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

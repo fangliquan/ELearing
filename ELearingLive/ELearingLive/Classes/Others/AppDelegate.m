@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "ELiveTabBarViewController.h"
 #import "CloudManager+Login.h"
+#import "AppDelegate+Weibo.h"
+#import "AppDelegate+Wechat.h"
+#import "AppDelegate+OpenURL.h"
 @interface AppDelegate ()
 
 @end
@@ -27,7 +30,11 @@
     ELiveTabBarViewController *vc = [[ELiveTabBarViewController alloc] init];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
-    
+//    
+//    [self initWeibo];
+//    [self initWechat];
+//    
+//    [self initTencent];
     [[CloudManager sharedInstance]asyncCurrrentDeviceInit:^(VersionInfo *ret, CMError *error) {
         
     }];
