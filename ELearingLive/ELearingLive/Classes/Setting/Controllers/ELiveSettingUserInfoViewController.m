@@ -11,12 +11,17 @@
 #import "ELiveSettingBindPhoneViewController.h"
 #import "UserTruthInfo.h"
 #import "CloudManager+Teacher.h"
-@interface ELiveSettingUserInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "TZImagePickerController.h"
+@interface ELiveSettingUserInfoViewController ()<UITableViewDelegate,UITableViewDataSource,TZImagePickerControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
+@property(nonatomic,strong) NSMutableArray *sectionhArrays;
 
 @property(nonatomic,strong) NSMutableArray *section1Arrays;
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) UserTruthInfo *userTruthInfo;
+
+@property(nonatomic,strong) UIImage *userHeader;
 
 @end
 
@@ -25,6 +30,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.sectionhArrays = [NSMutableArray array];
+    
+    ELiveSettingUserInfoModel *settingModelH = [[ELiveSettingUserInfoModel alloc]init];
+    settingModelH.type =ELive_Set_User_Header;
+    settingModelH.title = @"头像";
+    [self.sectionhArrays addObject:settingModelH];
+    
+    
     self.section1Arrays = [NSMutableArray array];
     
     self.userTruthInfo = [[UserTruthInfo alloc]init];
@@ -125,12 +138,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.section1Arrays.count;
+    if (section ==0) {
+        return self.sectionhArrays.count;
+    }else{
+        return self.section1Arrays.count;
+    }
+    
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -142,28 +160,116 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    // ELeaingNewsItemCellFrame *itemFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
     
-    return 60;
+    if (indexPath.section ==0) {
+        return 80;
+    }else{
+        return 60;
+    }
+    // ELeaingNewsItemCellFrame *itemFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELiveSettingUserInfoViewCell *cell = [ELiveSettingUserInfoViewCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.settingUserInfoModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
-    cell.userTruthInfo = self.userTruthInfo;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.isUserInfo = YES;
+    if (indexPath.section ==0) {
+        cell.settingUserInfoModel = self.sectionhArrays.count >indexPath.row ?self.sectionhArrays[indexPath.row]:nil;
+        cell.userTruthInfo = self.userTruthInfo;
+    }else{
+        cell.settingUserInfoModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
+        cell.userTruthInfo = self.userTruthInfo;
+    }
+  
     //cell.eLeaingNewsItemCellFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    ELiveSettingUserInfoModel *settingUserInfoModel = self.section1Arrays.count >indexPath.row ?self.section1Arrays[indexPath.row]:nil;
-//    if (settingUserInfoModel.type ==ELive_Set_User_Phone) {
-//        ELiveSettingBindPhoneViewController *vc = [[ELiveSettingBindPhoneViewController alloc]init];
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }
+    if (indexPath.section ==0) {
+        [self addCourseCover];
+    }
 
+
+}
+
+
+-(void)addCourseCover{
+    typeof(self) __weak weakSelf = self;
+    UIActionSheet * actionSheet = [UIActionSheet bk_actionSheetWithTitle:@"请选择" destructiveTitle:@"拍一张" otherButtonTitles:@[@"从手机相册选择"] cancelButtonTitle:@"取消" andDidDismissBlock:^(UIActionSheet *sheet, NSInteger buttonIndex) {
+        if(buttonIndex == 0) {
+            if (![WWPermissionManager hasPermissionForCapture]) return;
+            UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+            picker.delegate = weakSelf;
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            }else{
+                picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+            }
+            [self presentViewController:picker animated:YES completion:nil];
+        } else if(buttonIndex == 1){
+            if (![WWPermissionManager hasPermissionForPhotoGallery]) return;
+            [weakSelf chooseFromPhotos];
+        }
+    }];
+    [actionSheet showInView:self.view];
+}
+
+- (void)chooseFromPhotos {
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+    imagePickerVc.allowPickingVideo = NO;
+    imagePickerVc.maxImagesCount = 1;
+    imagePickerVc.autoDismiss = YES;
+    imagePickerVc.barItemTextColor = EL_COLOR_RED;
+    imagePickerVc.barItemTextFont = [UIFont systemFontOfSize:18];
+    imagePickerVc.allowPickingOriginalPhoto = YES;
+    [self presentViewController:imagePickerVc animated:YES completion:NULL];
+}
+
+#pragma mark- UIImagePickerControllerDelegate UINavigationControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage * originalImage = info[UIImagePickerControllerOriginalImage];
+    
+    self.userHeader = originalImage;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [self updateUserAvator];
+    });
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark- TZImagePickerControllerDelegate
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {
+    if (photos.count>0) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            for (UIImage * photo in photos) {
+                self.userHeader = photo;
+            }
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                
+                [self updateUserAvator];
+            });
+        });
+    }
+}
+
+
+-(void)updateUserAvator{
+    [[CloudManager sharedInstance]asyncUpdateUserHeaderImageWithimage:self.userHeader completion:^(NSString *ret, CMError *error) {
+        if (error ==nil) {
+            [MBProgressHUD showSuccess:@"头像更新成功" toView:nil];
+        }else{
+            [MBProgressHUD showSuccess:@"头像更新失败" toView:nil];
+        }
+    }];
 }
 
 #pragma mark- TableView Line Width

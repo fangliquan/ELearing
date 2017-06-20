@@ -18,6 +18,8 @@ typedef enum : NSUInteger {
     ELive_Set_User_ID,
     ELive_Set_User_Email,
     ELive_Set_User_Desp,
+    
+    ELive_Set_User_Header,
 } ELive_Set_UserInfoType;
 @class ELiveSettingUserInfoModel,UserTruthInfo;
 @interface ELiveSettingUserInfoViewCell : UITableViewCell
@@ -29,6 +31,7 @@ typedef enum : NSUInteger {
 @property(nonatomic,strong) UserTruthInfo *userTruthInfo;
 
 @property(nonatomic,strong) ELiveSettingUserInfoModel *settingUserInfoModel;
+@property(nonatomic,assign) BOOL isUserInfo;
 @end
 
 @interface ELiveSettingUserInfoModel : NSObject

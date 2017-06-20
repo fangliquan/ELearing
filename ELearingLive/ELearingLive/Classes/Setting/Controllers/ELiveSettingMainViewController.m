@@ -97,7 +97,7 @@
 
 
 -(void)loadApplyState{
-    [[CloudManager sharedInstance]asyncUserIsApplyForTeacher:^(NSInteger ret, CMError *error) {
+    [[CloudManager sharedInstance]asyncUserIsApplyForTeacher:^(NSString *ret, CMError *error) {
         [self didUpdateUserInfoWithUserInfoResponse:nil];
     }];
 }

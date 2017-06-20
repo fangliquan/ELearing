@@ -17,9 +17,12 @@
 
 - (void)asyncMyFollowTeacherWithPage:(NSString *)page  completion:(void (^)(UcMyFollowTeacherModel *ret, CMError *error))completion;
 
+
+- (void)asyncUpdateUserHeaderImageWithimage:(UIImage *)image  completion:(void (^)(NSString *ret, CMError *error))completion;
+
 - (void)asyncUpdateUserTruthInfo:(void (^)(UserTruthInfo *ret, CMError *error))completion;
 
-- (void)asyncUserIsApplyForTeacher:(void (^)(NSInteger ret, CMError *error))completion;
+- (void)asyncUserIsApplyForTeacher:(void (^)(NSString *ret, CMError *error))completion;
 
 //讲师信息
 - (void)asyncGetTeacherInfoWithId:(NSString *)teacherid  completion:(void (^)(TeacherInfoModel *ret, CMError *error))completion;

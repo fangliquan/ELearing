@@ -120,7 +120,21 @@
     [_delegates didUpdateUserInfoWithUserInfoResponse:loginRespone];
     
 }
-- (void)asyncUserIsApplyForTeacher:(void (^)(NSInteger ret, CMError *error))completion{
+
+-(void) updatUserHeaderAvatar:(NSString *)file
+{
+    DBManager *dbm = [DBManager sharedInstance];
+    UserLoginResponse *loginRespone = [CloudManager sharedInstance].currentAccount.userLoginResponse;
+    loginRespone.avatar = file;
+    [dbm saveSyncDataLoginResultInfoWithUserLoginReslut:loginRespone];
+    _currentAccount = [dbm loadAccountInfo];//must reload from db again!!!
+    
+    [_delegates didUpdateUserInfoWithUserInfoResponse:loginRespone];
+    
+}
+
+
+- (void)asyncUserIsApplyForTeacher:(void (^)(NSString *ret, CMError *error))completion{
     NSString *url = [NSString stringWithFormat:@"%@",[self uriUcIsTeacher]];
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
@@ -144,6 +158,51 @@
         }else {
             if (completion) {
                 completion(0,error);
+            }
+        }
+    }];
+
+}
+
+- (void)asyncUpdateUserHeaderImageWithimage:(UIImage *)image  completion:(void (^)(NSString *ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriUcUserAvatar]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSData * upfile;
+    if (image) {
+        upfile = [UIImage scaleImageToData:image lessThanSize:PICTURE_LIMIT_SIZE_960];
+    }else{
+        upfile = [UIImage scaleImageToData:[UIImage imageNamed:@"image_default_userheader"] lessThanSize:PICTURE_LIMIT_SIZE_960];
+    }
+    
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"upfile" : upfile,
+                              
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                NSString *avtar =nil;
+                if ([[ret allKeys]containsObject:@"file"]) {
+                    avtar = [ret objectForKey:@"file"];
+                }
+                if (avtar && avtar.length >0) {
+                    [self updatUserHeaderAvatar:avtar];
+                }
+                if (completion) {
+                    completion(avtar,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
             }
         }
     }];

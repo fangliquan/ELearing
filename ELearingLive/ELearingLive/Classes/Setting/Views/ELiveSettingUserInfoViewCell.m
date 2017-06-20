@@ -100,9 +100,27 @@
         phTextView.placeholder = @"请输入年龄";
         phTextView.text =_userTruthInfo.age;
     }
+    
+    if (settingUserInfoModel.type ==ELive_Set_User_Header) {
+        phTextView.hidden = YES;
+    }else{
+         phTextView.hidden = NO;
+    }
 
 }
 
+
+-(void)setIsUserInfo:(BOOL)isUserInfo{
+    _isUserInfo = isUserInfo;
+    if (isUserInfo) {
+        phTextView.backgroundColor = [UIColor whiteColor];
+        phTextView.textAlignment = NSTextAlignmentRight;
+    }else{
+        phTextView.backgroundColor = [UIColor colorWithRed:223/255.0 green:223/255.0 blue:223/255.0 alpha:0.6];
+        phTextView.textAlignment = NSTextAlignmentLeft;
+    }
+        
+}
 
 -(void)textViewDidEndEditing:(UITextView *)textView{
     if (textView.text.length >0) {

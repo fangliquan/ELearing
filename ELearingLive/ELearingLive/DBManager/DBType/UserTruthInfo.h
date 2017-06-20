@@ -21,6 +21,8 @@
 @property(nonatomic,copy) NSString  *commpany;
 @property(nonatomic,copy) NSString  *profession;
 
+
+
 @end
 
 @interface UserApplyTeacherState : BaseModel
