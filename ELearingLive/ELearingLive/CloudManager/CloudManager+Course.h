@@ -45,12 +45,13 @@
 //搜索
 - (void)asyncSearchCourseWithKeyword:(NSString *)keyword andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion;
 //直播推流
-- (void)asyncStartPushCourseWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid  completion:(void (^)( CoursePushInfoModel*ret, CMError *error))completion;
+- (void)asyncStartPushCourseWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid  completion:(void (^)(CoursePushInfoModel*ret, CMError *error))completion;
 //结束推流
 - (void)asyncStopPushCourseWithPeriodid:(NSString *)periodid  completion:(void (^)(NSString*ret, CMError *error))completion;
 //上传推流结束
 - (void)asyncUploadPushCourseWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid andSecond:(NSString *)second completion:(void (^)( NSString*ret, CMError *error))completion;
-
+//直播播放详情
+- (void)asyncPushCourseInfoWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid completion:(void (^)( CourseDetailInfoModel*ret, CMError *error))completion;
 
 
 @end

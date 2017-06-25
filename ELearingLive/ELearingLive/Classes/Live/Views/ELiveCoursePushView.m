@@ -18,13 +18,17 @@
 
 @property(nonatomic,assign) BOOL  isScreenHorizontal;
 
+@property(nonatomic,assign) BOOL  livePlayer;
+
+
 @end
 
 @implementation ELiveCoursePushView
 /* 推流模式（横屏or竖屏）*/
-- (instancetype)initWithFrame:(CGRect)frame andisScreenHorizontal:(BOOL)isScreenHorizontal
+- (instancetype)initWithFrame:(CGRect)frame andLivePlayer:(BOOL)livePlayer  andisScreenHorizontal:(BOOL)isScreenHorizontal
 {
     _isScreenHorizontal = isScreenHorizontal;
+    _livePlayer  = livePlayer;
     self = [super initWithFrame:frame];
     if (self) {
         [self createUI];
@@ -42,7 +46,7 @@
     
     
     
-    ELiveCourseFooterView *footerView = [[ELiveCourseFooterView alloc]initWithFrame:CGRectMake(0, self.bounds.size.height - 60, Main_Screen_Width, 64) andLivePlayer:NO andisScreenHorizontal:_isScreenHorizontal];
+    ELiveCourseFooterView *footerView = [[ELiveCourseFooterView alloc]initWithFrame:CGRectMake(0, self.bounds.size.height - 60, Main_Screen_Width, 64) andLivePlayer:_livePlayer andisScreenHorizontal:_isScreenHorizontal];
     
     self.footerView = footerView;
     

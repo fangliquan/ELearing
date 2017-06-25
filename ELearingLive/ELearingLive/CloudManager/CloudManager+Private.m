@@ -396,6 +396,14 @@
     ret = [[NSString alloc] initWithFormat:@"%@/course/postprogress",ret];
     return ret;
 }
+///course/playinfo获取播放详情
+
+-(NSString *)uriCoursePlayinfo{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/playinfo",ret];
+    return ret;
+}
 
 
 @end

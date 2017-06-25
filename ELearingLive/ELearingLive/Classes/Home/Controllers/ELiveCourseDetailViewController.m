@@ -348,8 +348,9 @@
         [paymentView show:ret];
         
     }else{
-        ELiveCourseReViewViewController *liveReVc = [[ELiveCourseReViewViewController alloc]init];
-        [self.navigationController pushViewController:liveReVc animated:YES];
+        [ELiveCourseReViewViewController presentFromViewController:self courseId:self.courseId periodid:self.courseDetailInfoModel.periodid completion:^{
+            
+        }];
         
     }
     

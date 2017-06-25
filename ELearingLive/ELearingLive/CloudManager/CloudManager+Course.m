@@ -558,6 +558,38 @@
         }
     }];
 }
+//直播播放详情
+- (void)asyncPushCourseInfoWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid completion:(void (^)( CourseDetailInfoModel*ret, CMError *error))completion{
+    
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCoursePlayinfo]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"courseid" : courseId?courseId:@"",
+                              @"periodid" : periodid?periodid:@"",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            CourseDetailInfoModel * truthInfo = [CourseDetailInfoModel mj_objectWithKeyValues:ret];
+            if ([truthInfo.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(truthInfo,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+}
 
 
 @end

@@ -39,6 +39,7 @@
 @property(nonatomic,strong) NSString *name;
 @end
 
+@class CoursePlayDetailAdModel;
 @interface CourseDetailInfoModel : BaseModel
 @property(nonatomic,strong) NSString *courseid;
 @property(nonatomic,strong) NSString *periodid;
@@ -73,8 +74,20 @@
 @property(nonatomic,strong) NSString *share_thumb;
 @property(nonatomic,strong) NSString *share_title;
 @property(nonatomic,strong) NSString *share_desp;
+
+@property(nonatomic,strong) NSString *second;
+@property(nonatomic,strong) NSString *play;//播放地址
+@property(nonatomic,strong) NSString *is_live;//是否直播
+
+@property(nonatomic,strong) CoursePlayDetailAdModel *ad;
+
 @end
 
+@interface CoursePlayDetailAdModel : NSObject
+@property(nonatomic,strong) NSString *pic;
+@property(nonatomic,strong) NSString *url;
+@property(nonatomic,strong) NSString *title;
+@end
 
 @interface CourseChapterlistModel : BaseModel
 @property(nonatomic,strong) NSString *courseid;

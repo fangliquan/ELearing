@@ -43,6 +43,11 @@
 
 
 @end
+@implementation CoursePlayDetailAdModel
+
+
+
+@end
 
 @implementation CourseChapterlistModel
 

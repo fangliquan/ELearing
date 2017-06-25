@@ -126,4 +126,7 @@
 -(NSString *)uriCourseFinish;
 ///course/postprogress
 -(NSString *)uriCoursePostprogress;
+///course/playinfo获取播放详情
+
+-(NSString *)uriCoursePlayinfo;
 @end

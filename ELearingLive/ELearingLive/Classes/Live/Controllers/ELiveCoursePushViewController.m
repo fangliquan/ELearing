@@ -14,6 +14,7 @@
 #import "ELiveCoursePushView.h"
 #import "CloudManager+Course.h"
 #import "UcCourseIndex.h"
+#import "HUDHelper.h"
 @interface ELiveCoursePushViewController ()<AlivcLiveSessionDelegate>
 
 @property (nonatomic, strong) AlivcLiveSession *liveSession;
@@ -146,7 +147,7 @@
 }
 
 -(void)createPushView{
-    ELiveCoursePushView *pushView = [[ELiveCoursePushView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) andisScreenHorizontal:YES];
+    ELiveCoursePushView *pushView = [[ELiveCoursePushView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) andLivePlayer:NO  andisScreenHorizontal:YES];
     pushView.closeLiveHandler = ^{
         [self buttonCloseClick];
     };

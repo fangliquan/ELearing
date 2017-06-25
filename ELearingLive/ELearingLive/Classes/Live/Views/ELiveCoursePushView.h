@@ -15,6 +15,6 @@
 @property (nonatomic, copy) void (^changeCarmeLiveHandler)(void);
 
 
-- (instancetype)initWithFrame:(CGRect)frame andisScreenHorizontal:(BOOL)isScreenHorizontal;
+- (instancetype)initWithFrame:(CGRect)frame andLivePlayer:(BOOL)livePlayer  andisScreenHorizontal:(BOOL)isScreenHorizontal;
 
 @end
