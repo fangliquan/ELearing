@@ -72,7 +72,7 @@ typedef void (^AlipayAuthorizationResultHandler)(NSString * account, NSString * 
 
 @interface AlipayManager : NSObject
 
-+ (void)paymentWithInfo:(NSDictionary *)payInfo result:(AlipayResultHandler)result;
++ (void)paymentWithInfo:(NSString *)payInfo result:(AlipayResultHandler)result;
 + (BOOL)handleOpenURL:(NSURL *)url;
 /**
  *  支付宝授权登录 API

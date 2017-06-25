@@ -15,5 +15,6 @@
 
 @property(nonatomic,strong) UcMyFollowTeacherItem *myFollowTeacherItem;
 
+@property(nonatomic,assign) BOOL isFans;
 + (CGFloat)heightForCellWithModel:(UcMyFollowTeacherItem *)teacherItem;
 @end

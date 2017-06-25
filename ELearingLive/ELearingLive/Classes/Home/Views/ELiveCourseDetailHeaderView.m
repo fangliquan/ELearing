@@ -46,7 +46,7 @@
 -(void)setCourseDetailInfoModel:(CourseDetailInfoModel *)courseDetailInfoModel{
     _courseDetailInfoModel = courseDetailInfoModel;
     [iconView setImageWithURL:[NSURL URLWithString:courseDetailInfoModel.thumb] placeholderImage:[UIImage imageNamed:@"sl_08_3x"]];
-    if ([courseDetailInfoModel.type isEqualToString:@"live"]) {
+    if ([courseDetailInfoModel.course_type isEqualToString:@"live"]) {
         liveTagLabel.text = @"直播中";
     }else{
         liveTagLabel.text = @"课程中";

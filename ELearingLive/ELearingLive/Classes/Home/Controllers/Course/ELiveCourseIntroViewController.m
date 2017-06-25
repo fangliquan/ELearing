@@ -89,7 +89,7 @@
     }
     
     UILabel *commentLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLabel.frame) + 5,80, 20)];
-    commentLabel.text = [NSString stringWithFormat:@"%@阅读",_courseDetailInfoModel.hits];// @"45人报名";
+    commentLabel.text = [NSString stringWithFormat:@"%@人报名",_courseDetailInfoModel.joins];// @"45人报名";
     commentLabel.textColor = EL_TEXTCOLOR_GRAY;
     commentLabel.font = [UIFont systemFontOfSize:13];
     [headerView addSubview:commentLabel];
@@ -135,7 +135,7 @@
     [userHeader addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userHomePageClick)]];
     [headerView addSubview:userHeader];
     
-    [userHeader setImageWithURL:[NSURL URLWithString:_courseDetailInfoModel.teacehr_avatar] placeholderImage:[UIImage imageNamed:@"image_default_userheader"]];
+    [userHeader setImageWithURL:[NSURL URLWithString:_courseDetailInfoModel.teacher_avatar] placeholderImage:[UIImage imageNamed:@"image_default_userheader"]];
     
     
     UILabel *userNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(userHeader.frame) +6, CGRectGetMinY(userHeader.frame) + 10, Main_Screen_Width - CGRectGetMaxX(userHeader.frame) - 12, 20)];

@@ -102,6 +102,8 @@
 -(NSString *)uriCourseList;
 ///course/buy 购买课程
 -(NSString *)uriCourseBuy;
+///payment/ beforepayorder
+-(NSString *)uriCoursebeforepayorder;
 
 ///uc/myfollowcourse 我关注的课程
 -(NSString *)uriCourseMyFollower;

@@ -55,18 +55,19 @@
 @property(nonatomic,strong) NSString *time;
 @property(nonatomic,strong) NSString *status;
 @property(nonatomic,strong) NSString *hits;
-
+@property(nonatomic,strong) NSString *joins;
 @property(nonatomic,strong) NSString *is_buy;
 @property(nonatomic,strong) NSString *is_follow;
 @property(nonatomic,strong) NSString *is_owner;
 @property(nonatomic,strong) NSString *type;
+@property(nonatomic,strong) NSString *course_type;
 
 @property(nonatomic,strong) NSString *teacherid;
 
-@property(nonatomic,strong) NSString *teacehr_avatar;
+@property(nonatomic,strong) NSString *teacher_avatar;
 
 @property(nonatomic,strong) NSString *teacher_name;
-
+@property(nonatomic,strong) NSString *teacher_follows;
 @property(nonatomic,strong) NSString *teacher_intro;
 @property(nonatomic,strong) NSString *share_url;
 @property(nonatomic,strong) NSString *share_thumb;
@@ -127,6 +128,29 @@
 @property(nonatomic,strong) NSString *content;
 @end
 
+
+
+
+
+@interface CourseBuyReasultModel : BaseModel
+
+@property(nonatomic,strong) NSString *orderid;
+@property(nonatomic,strong) NSString *need_pay;
+@property(nonatomic,strong) NSString *total_amount;
+@property(nonatomic,strong) NSString *is_pay;
+
+@end
+
+
+
+@interface CoursePayReasultModel : BaseModel
+
+@property(nonatomic,strong) NSString *type;
+@property(nonatomic,strong) NSDictionary *payinfo;
+
+@property(nonatomic,strong) NSString *aliPay;
+@property(nonatomic,strong) NSDictionary *weichatPay;
+@end
 
 
 

@@ -288,6 +288,8 @@
     self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0.0001)];
+   
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0.0001)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     

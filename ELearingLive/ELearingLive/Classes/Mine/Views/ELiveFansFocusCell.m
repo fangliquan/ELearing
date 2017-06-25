@@ -50,7 +50,7 @@
     titleLabel.textAlignment = NSTextAlignmentLeft;
     [self.contentView addSubview:titleLabel];
     
-    uFollowBtn = [[UIButton alloc]initWithFrame:CGRectMake(Main_Screen_Width - 80, 15, 70, 30)];
+    uFollowBtn = [[UIButton alloc]initWithFrame:CGRectMake(Main_Screen_Width - 80, 15, 75, 30)];
     uFollowBtn.backgroundColor = EL_COLOR_RED;
     [uFollowBtn setTitle:@"取消关注" forState:UIControlStateNormal];
     [uFollowBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -68,6 +68,7 @@
     despLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(userHeaderIcon.frame) +5, CGRectGetMaxY(userHeaderIcon.frame)+5, Main_Screen_Width -CGRectGetMaxX(userHeaderIcon.frame) -20 , 20)];
     despLabel.font = [UIFont systemFontOfSize:15];
     despLabel.textColor = EL_TEXTCOLOR_GRAY;
+    despLabel.numberOfLines = 3;
     despLabel.textAlignment = NSTextAlignmentLeft;
     [self.contentView addSubview:despLabel];
 }
@@ -86,12 +87,29 @@
         oldFrame.size.height = height;
         despLabel.frame = oldFrame;
         
+        
+        
     }
+}
+-(void)setIsFans:(BOOL)isFans{
+    _isFans = isFans;
+    if (isFans) {
+        uFollowBtn.hidden = YES;
+    }else{
+        uFollowBtn.hidden = NO;
+    }
+    
 }
 + (CGFloat)heightForCellWithModel:(UcMyFollowTeacherItem *)teacherItem{
     CGFloat height = 66;
     CGFloat introH = [WWTextManager textSizeWithStringZeroSpace:teacherItem.intro width: Main_Screen_Width -58 -20  fontSize:15].height + 5;
-    height = height +introH;
+    CGFloat maxH = [WWTextManager textOfAlineHeightWithFontSize:15] *3;
+    if (introH >maxH) {
+        height = height +maxH;
+    }else{
+        height = height +introH;
+    }
+    
     return height;
 }
 

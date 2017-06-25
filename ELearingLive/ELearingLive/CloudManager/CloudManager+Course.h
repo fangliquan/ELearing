@@ -8,7 +8,7 @@
 
 #import "CloudManagerBase.h"
 
-@class UcCourseCategireChildModel,UcCourseCategireModel,CourseDetailInfoModel,CourseChapterlistModel,CourseEvaluateListModel,TeacherCourseListModel,TeacherCreateCourseInfo;
+@class UcCourseCategireChildModel,UcCourseCategireModel,CourseDetailInfoModel,CourseChapterlistModel,CourseEvaluateListModel,TeacherCourseListModel,TeacherCreateCourseInfo,CourseBuyReasultModel,CoursePayReasultModel;
 @interface CloudManager (Course)
 //课程分类
 - (void)asyncGetCourseCategiresInfo:(void (^)(UcCourseCategireModel *ret, CMError *error))completion;
@@ -32,9 +32,10 @@
 //课程 收藏
 - (void)asyncGetCourseFollowedWithCourseId:(NSString *)courseId andBool:(BOOL)follow completion:(void (^)(NSString*ret, CMError *error))completion;
 
-//参加课程
-- (void)asyncGetCourseNeedBuyWithCourseId:(NSString *)courseId  completion:(void (^)(NSString*ret, CMError *error))completion;
-
+//参加课程购买
+- (void)asyncGetCourseNeedBuyWithCourseId:(NSString *)courseId andPwd:(NSString *)pwd completion:(void (^)(CourseBuyReasultModel*ret, CMError *error))completion;
+//支付
+- (void)asyncGetPaymentWithOrderId:(NSString *)orderId andType:(NSString *)type completion:(void (^)(CoursePayReasultModel*ret, CMError *error))completion;
 
 //课程列表
 - (void)asyncGetCourseListWithCateId:(NSString *)catesId andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion;

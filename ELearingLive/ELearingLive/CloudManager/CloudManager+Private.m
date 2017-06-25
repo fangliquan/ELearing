@@ -327,7 +327,14 @@
     ret = [[NSString alloc] initWithFormat:@"%@/course/buy",ret];
     return ret;
 }
-
+///payment/ beforepayorder
+-(NSString *)uriCoursebeforepayorder{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/payment/beforepayorder",ret];
+    return ret;
+    
+}
 ///uc/myfollowcourse
 -(NSString *)uriCourseMyFollower{
     NSString *ret = @"";

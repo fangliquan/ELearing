@@ -240,24 +240,21 @@
 }
 
 //参加课程
-- (void)asyncGetCourseNeedBuyWithCourseId:(NSString *)courseId  completion:(void (^)(NSString*ret, CMError *error))completion{
+- (void)asyncGetCourseNeedBuyWithCourseId:(NSString *)courseId andPwd:(NSString *)pwd  completion:(void (^)(CourseBuyReasultModel*ret, CMError *error))completion{
     NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseBuy]];
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
     NSDictionary *tempDic = @{
                               @"token" : token?token:@"",
                               @"courseid" : courseId?courseId:@"",
+                              @"password" : pwd?pwd:@"",
                               };
     
     [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
         if (ret) {
-            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            CourseBuyReasultModel * baseModel = [CourseBuyReasultModel mj_objectWithKeyValues:ret];
             if ([baseModel.error_code isEqualToString:@"0"]) {
-                NSString *score =nil;
-                if ([[ret allKeys]containsObject:@"message"]) {
-                    score = [ret objectForKey:@"message"];
-                }
                 if (completion) {
-                    completion(score,nil);
+                    completion(baseModel,nil);
                 }
             }else{
                 [MBProgressHUD showError:baseModel.error_desc toView:nil];
@@ -274,6 +271,60 @@
     }];
 
 }
+
+//支付
+- (void)asyncGetPaymentWithOrderId:(NSString *)orderId andType:(NSString *)type completion:(void (^)(CoursePayReasultModel*ret, CMError *error))completion{
+    
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCoursebeforepayorder]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"orderid" : orderId?orderId:@"",
+                              @"type" : type?type:@"1",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            CoursePayReasultModel * baseModel = [CoursePayReasultModel mj_objectWithKeyValues:ret];
+            
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                
+                if ([baseModel.type isEqualToString:@"1"]) {
+                    
+                    NSString *payurl =  [baseModel.payinfo mj_JSONString];
+                    NSMutableString *responseString = [NSMutableString stringWithString:payurl];
+                    NSString *character = nil;
+                    for (int i = 0; i < responseString.length; i ++) {
+                        character = [responseString substringWithRange:NSMakeRange(i, 1)];
+                        if ([character isEqualToString:@"\\"])
+                            [responseString deleteCharactersInRange:NSMakeRange(i, 1)];
+                    }
+                  
+                    baseModel.aliPay = responseString;
+                    
+                }else{
+                    baseModel.weichatPay = baseModel.payinfo ;
+                }
+                if (completion) {
+                    completion(baseModel,nil);
+                }
+            }else{
+                [MBProgressHUD showError:baseModel.error_desc toView:nil];
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+}
+
+
+
 
 - (void)asyncGetCourseListWithCateId:(NSString *)catesId andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion{
     

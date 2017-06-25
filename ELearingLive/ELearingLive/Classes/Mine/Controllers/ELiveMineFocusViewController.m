@@ -48,16 +48,32 @@
 -(void)getMyFollerTeacher{
     pageIndex ++;
     [[CloudManager sharedInstance]asyncMyFollowTeacherWithPage:[NSString stringWithFormat:@"%ld",pageIndex] completion:^(UcMyFollowTeacherModel *ret, CMError *error) {
+        [self.tableView.mj_footer endRefreshing];
         if (error ==nil) {
-            [self.followTeachers addObjectsFromArray:ret.list];
-            [self.tableView reloadData];
+           // [self.followTeachers addObjectsFromArray:ret.list];
+            [self converData:ret.list];
             if (ret.list.count <=0 && self.followTeachers.count <=0) {
                 self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindViewWithType:ExceptionRemindStyle_Empty];
+            }
+            if (ret.list.count <=0) {
+                  [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
         }else{
             self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindView_LoadfailWithTarget:self action:@selector(loadData)];
         }
     }];
+}
+
+-(void)converData:(NSArray*)ret{
+    
+    if (_isFans) {
+        [_myfans addObjectsFromArray:ret];
+    }else{
+        [_followTeachers addObjectsFromArray:ret];
+    }
+    
+    [self.tableView reloadData];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -87,13 +103,23 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     // ELeaingNewsItemCellFrame *itemFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
-    
-    return 66;
+    if (_isFans) {
+        return [ELiveFansFocusCell heightForCellWithModel: self.myfans.count >indexPath.row ?self.myfans[indexPath.row]:nil];
+    }else{
+        return [ELiveFansFocusCell heightForCellWithModel: self.followTeachers.count >indexPath.row ?self.followTeachers[indexPath.row]:nil];
+    }
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELiveFansFocusCell *cell = [ELiveFansFocusCell cellWithTableView:tableView];
-    //cell.eLeaingNewsItemCellFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
+    
+    if (_isFans) {
+         cell.myFollowTeacherItem = self.myfans.count >indexPath.row ?self.myfans[indexPath.row]:nil;
+    }else{
+         cell.myFollowTeacherItem = self.followTeachers.count >indexPath.row ?self.followTeachers[indexPath.row]:nil;
+    }
+   
     return cell;
 }
 

@@ -10,4 +10,7 @@
 
 @interface ELiveTeacherAddNewCourseViewController : UIViewController
 
+@property(nonatomic,assign) BOOL isEdit;
+
+@property(nonatomic,strong) NSString *courseId;
 @end

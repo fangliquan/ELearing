@@ -90,37 +90,25 @@
 }
 
 #pragma mark- 支付
-- (void)paymentWithInfo:(NSDictionary *)payInfo result:(AlipayResultHandler)result {
+- (void)paymentWithInfo:(NSString *)payInfo result:(AlipayResultHandler)result {
     
     _callBack = [result copy];
-    NSString *contentStr = [payInfo valueForKey:@"content"];//支付Order对象
-    NSString *orderJsonStr = [payInfo valueForKey:@"order"];//新版本阿里支付 server加密好的url
-    _order = [AlixPayOrder mj_objectWithKeyValues:contentStr];
+//    NSString *contentStr = [payInfo valueForKey:@"content"];//支付Order对象
+//    NSString *orderJsonStr = [payInfo valueForKey:@"order"];//新版本阿里支付 server加密好的url
+    _order = [AlixPayOrder mj_objectWithKeyValues:payInfo];
 
     NSString *appScheme = @"elive";
     
-    if (orderJsonStr) {
-        __block UIWindow* window = nil;
+    if (payInfo) {
         NSURL * myURL_APP_A = [NSURL URLWithString:@"alipay:"];
-        UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
-        bgView.backgroundColor = [UIColor whiteColor];
-        bgView.tag = 12345678;
-        
+
         if (![[UIApplication sharedApplication] canOpenURL:myURL_APP_A]) {
             //如果没有安装支付宝
-            NSArray *array = [[UIApplication sharedApplication] windows];
-            window = [array firstObject];
-            if (window) {
-                [window.rootViewController.view addSubview:bgView];
-                [window setHidden:NO];
-            }
+            [UIAlertView bk_alertViewWithTitle:@"提示" message:@"请安装支付宝"];
         }
-        [[AlipaySDK defaultService] payOrder:orderJsonStr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-            if (window) {
-                [window setHidden:YES];
-                [bgView removeFromSuperview];
-                window = nil;
-            }
+        NSURL *url = [NSURL URLWithString:payInfo];
+        [[AlipaySDK defaultService] payOrder:url.absoluteString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+
             if (_callBack) {
                 _callBack([self requestFromResultDic:resultDic], [self succeedWithDic:resultDic]);
             }
@@ -129,7 +117,7 @@
 }
 
 
-+ (void)paymentWithInfo:(NSDictionary *)payInfo result:(AlipayResultHandler)result {
++ (void)paymentWithInfo:(NSString *)payInfo result:(AlipayResultHandler)result {
     [[AlipayManager sharedManager] paymentWithInfo:payInfo result:result];
 }
 //支付成功处理

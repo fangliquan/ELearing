@@ -16,6 +16,12 @@
 #import "CloudManager+Course.h"
 #import "UcCourseIndex.h"
 #import "ELiveAddEvaluateViewController.h"
+#import "ELivePaymentView.h"
+#import "AlipayManager.h"
+#import "WechatPayManager.h"
+
+#import "ELiveCourseReViewViewController.h"
+#import "ELiveTeacherAddNewCourseViewController.h"
 @interface ELiveCourseDetailViewController (){
     
 }
@@ -26,6 +32,7 @@
 @property (nonatomic, strong) ELiveCourseDetailHeaderView * headerView;
 
 @property(nonatomic,strong) CourseDetailInfoModel *courseDetailInfoModel;
+@property(nonatomic,strong) CourseBuyReasultModel *courseBuyReasultModel;
 
 @property(nonatomic,strong)  ELiveCourseCatalogViewController * catelogVC;
 @property(nonatomic,strong)  ELiveCourseIntroViewController * introVC;
@@ -311,18 +318,73 @@
 
 -(void)addCourseToMine:(UIButton *)btn{
     if (btn.tag ==1) {//参加课程
-        [[CloudManager sharedInstance]asyncGetCourseNeedBuyWithCourseId:self.courseId completion:^(NSString *ret, CMError *error) {
-            if (error == nil) {
-                [MBProgressHUD showSuccess:@"参加成功" toView:nil];
-            }else{
-                
-            }
-        }];
+            [[CloudManager sharedInstance]asyncGetCourseNeedBuyWithCourseId:self.courseId andPwd:nil completion:^(CourseBuyReasultModel *ret, CMError *error) {
+                if (error == nil) {
+                    self.courseBuyReasultModel = ret;
+                    [self converbuyReasult:ret];
+                }
+            }];
     }else if (btn.tag ==2){//观看课程
+        ELiveCourseReViewViewController *liveReVc = [[ELiveCourseReViewViewController alloc]init];
+        [self.navigationController pushViewController:liveReVc animated:YES];
         
     }else if (btn.tag ==3){//修改课程
+        ELiveTeacherAddNewCourseViewController *editVc = [[ELiveTeacherAddNewCourseViewController alloc]init];
+        editVc.isEdit = YES;
+        editVc.courseId = self.courseId;
+        [self.navigationController pushViewController:editVc animated:YES];
         
     }
 }
+
+-(void)converbuyReasult:(CourseBuyReasultModel *)ret{
+    if ([ret.is_pay isEqualToString:@"n"]) {
+        ELivePaymentView *paymentView = [[ELivePaymentView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
+        paymentView.userSelectPayActionBlock=^(int payment){
+            [self selectPayment:payment];
+        };
+        [paymentView show:ret];
+        
+    }else{
+        ELiveCourseReViewViewController *liveReVc = [[ELiveCourseReViewViewController alloc]init];
+        [self.navigationController pushViewController:liveReVc animated:YES];
+        
+    }
+    
+}
+-(void)selectPayment:(int)payment {
+    
+    MBProgressHUD *hud = [MBProgressHUD showMessage:@"正在加载..." toView:nil];
+    [[CloudManager sharedInstance]asyncGetPaymentWithOrderId:self.courseBuyReasultModel.orderid andType:[NSString stringWithFormat:@"%d",payment] completion:^(CoursePayReasultModel *ret, CMError *error) {
+        if (error ==nil) {
+            if (payment ==1) {
+                [AlipayManager paymentWithInfo:ret.aliPay result:^(NSURLRequest *request, BOOL succeed) {
+                    if (succeed) {
+                        hud.labelText = @"支付成功";
+                        [hud hide:YES afterDelay:1];
+                        
+                    }else{
+                        hud.labelText = @"支付失败";
+                        [hud hide:YES afterDelay:1];
+                    }
+                }];
+            }else{
+                [WechatPayManager wechatPaymentWithInfo:ret.weichatPay result:^(NSURLRequest *request, BOOL succeed) {
+                    if (succeed) {
+                        hud.labelText = @"支付成功";
+                        [hud hide:YES afterDelay:1];
+                        
+                    }else{
+                        hud.labelText = @"支付失败";
+                        [hud hide:YES afterDelay:1];
+                    }
+                }];
+            }
+        }
+    }];
+
+}
+
+
 
 @end

@@ -82,3 +82,15 @@
 
 
 @end
+@implementation CourseBuyReasultModel
+
+
+
+@end
+
+
+@implementation CoursePayReasultModel
+
+
+
+@end

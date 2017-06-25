@@ -91,6 +91,13 @@
 		0A46AAA51EDAC6360087E078 /* login_sina_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA9D1EDAC6360087E078 /* login_sina_icon@3x.png */; };
 		0A46AAA61EDAC6360087E078 /* login_weixin_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA9E1EDAC6360087E078 /* login_weixin_icon@2x.png */; };
 		0A46AAA71EDAC6360087E078 /* login_weixin_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A46AA9F1EDAC6360087E078 /* login_weixin_icon@3x.png */; };
+		0A5497991EFBFC6B00977256 /* ELivePaymentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5497981EFBFC6B00977256 /* ELivePaymentView.m */; };
+		0A54979E1EFC059E00977256 /* pay_ali@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54979A1EFC059E00977256 /* pay_ali@2x.png */; };
+		0A54979F1EFC059E00977256 /* pay_ali@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54979B1EFC059E00977256 /* pay_ali@3x.png */; };
+		0A5497A01EFC059E00977256 /* pay_wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54979C1EFC059E00977256 /* pay_wechat@2x.png */; };
+		0A5497A11EFC059E00977256 /* pay_wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54979D1EFC059E00977256 /* pay_wechat@3x.png */; };
+		0A5497A41EFC090000977256 /* ELiveCourseReViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5497A31EFC090000977256 /* ELiveCourseReViewViewController.m */; };
+		0A5497A71EFC092100977256 /* ELiveCoursePushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5497A61EFC092100977256 /* ELiveCoursePushViewController.m */; };
 		0A54A3831ED31F3200421CC5 /* MXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A3681ED31F3100421CC5 /* MXPagerView.m */; };
 		0A54A3841ED31F3200421CC5 /* MXSegmentedPager+ParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A36A1ED31F3100421CC5 /* MXSegmentedPager+ParallaxHeader.m */; };
 		0A54A3851ED31F3200421CC5 /* MXSegmentedPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54A36C1ED31F3100421CC5 /* MXSegmentedPager.m */; };
@@ -540,6 +547,16 @@
 		0A46AA9D1EDAC6360087E078 /* login_sina_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_sina_icon@3x.png"; sourceTree = "<group>"; };
 		0A46AA9E1EDAC6360087E078 /* login_weixin_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_weixin_icon@2x.png"; sourceTree = "<group>"; };
 		0A46AA9F1EDAC6360087E078 /* login_weixin_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_weixin_icon@3x.png"; sourceTree = "<group>"; };
+		0A5497971EFBFC6B00977256 /* ELivePaymentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELivePaymentView.h; sourceTree = "<group>"; };
+		0A5497981EFBFC6B00977256 /* ELivePaymentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELivePaymentView.m; sourceTree = "<group>"; };
+		0A54979A1EFC059E00977256 /* pay_ali@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_ali@2x.png"; sourceTree = "<group>"; };
+		0A54979B1EFC059E00977256 /* pay_ali@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_ali@3x.png"; sourceTree = "<group>"; };
+		0A54979C1EFC059E00977256 /* pay_wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_wechat@2x.png"; sourceTree = "<group>"; };
+		0A54979D1EFC059E00977256 /* pay_wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pay_wechat@3x.png"; sourceTree = "<group>"; };
+		0A5497A21EFC090000977256 /* ELiveCourseReViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCourseReViewViewController.h; sourceTree = "<group>"; };
+		0A5497A31EFC090000977256 /* ELiveCourseReViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCourseReViewViewController.m; sourceTree = "<group>"; };
+		0A5497A51EFC092100977256 /* ELiveCoursePushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCoursePushViewController.h; sourceTree = "<group>"; };
+		0A5497A61EFC092100977256 /* ELiveCoursePushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELiveCoursePushViewController.m; sourceTree = "<group>"; };
 		0A54A3671ED31F3100421CC5 /* MXPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXPagerView.h; sourceTree = "<group>"; };
 		0A54A3681ED31F3100421CC5 /* MXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXPagerView.m; sourceTree = "<group>"; };
 		0A54A3691ED31F3100421CC5 /* MXSegmentedPager+ParallaxHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MXSegmentedPager+ParallaxHeader.h"; sourceTree = "<group>"; };
@@ -1271,6 +1288,8 @@
 				0A3428481EF9875A00FA5FE2 /* AlipaySDK.framework */,
 				0A3428441EF9873000FA5FE2 /* AlipayManager.h */,
 				0A3428451EF9873000FA5FE2 /* AlipayManager.m */,
+				0A5497971EFBFC6B00977256 /* ELivePaymentView.h */,
+				0A5497981EFBFC6B00977256 /* ELivePaymentView.m */,
 			);
 			path = AlipayManager;
 			sourceTree = "<group>";
@@ -2083,6 +2102,10 @@
 			children = (
 				0AEF08931EBA34350065A22B /* ELiveCastMainViewController.h */,
 				0AEF08941EBA34350065A22B /* ELiveCastMainViewController.m */,
+				0A5497A21EFC090000977256 /* ELiveCourseReViewViewController.h */,
+				0A5497A31EFC090000977256 /* ELiveCourseReViewViewController.m */,
+				0A5497A51EFC092100977256 /* ELiveCoursePushViewController.h */,
+				0A5497A61EFC092100977256 /* ELiveCoursePushViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2327,6 +2350,10 @@
 				0A54A3A31ED4742500421CC5 /* tabbar */,
 				0A54A38E1ED4724100421CC5 /* home */,
 				0A6944FE1EC6D86000D83DC1 /* title_moreBtn@2x.png */,
+				0A54979A1EFC059E00977256 /* pay_ali@2x.png */,
+				0A54979B1EFC059E00977256 /* pay_ali@3x.png */,
+				0A54979C1EFC059E00977256 /* pay_wechat@2x.png */,
+				0A54979D1EFC059E00977256 /* pay_wechat@3x.png */,
 				0A6944FF1EC6D86000D83DC1 /* title_moreBtn@3x.png */,
 				0AEA5F5F1EF64AF000B79A1F /* course_type_open@2x.png */,
 				0AEA5F601EF64AF000B79A1F /* course_type_open@3x.png */,
@@ -2693,7 +2720,7 @@
 				TargetAttributes = {
 					0AEF07AE1EBA2D8B0065A22B = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9YY3S9BBZ6;
+						DevelopmentTeam = 9ZG3W9L6NH;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -2724,6 +2751,7 @@
 				0AEF08A01EBA36770065A22B /* Info.plist in Resources */,
 				0A54A3B11ED4742500421CC5 /* tabbar_news1@3x.png in Resources */,
 				0A54A3B01ED4742500421CC5 /* tabbar_news1@2x.png in Resources */,
+				0A5497A01EFC059E00977256 /* pay_wechat@2x.png in Resources */,
 				0A54A3A11ED4724100421CC5 /* home_tt_05_@2x.png in Resources */,
 				0A54A39D1ED4724100421CC5 /* home_tt_03_@2x.png in Resources */,
 				0AEA5F681EF64AF000B79A1F /* course_type_suo@3x.png in Resources */,
@@ -2731,10 +2759,13 @@
 				0A280DA81EEB8FA7005FF3BB /* exception_EmptyDefault.png in Resources */,
 				0AEA5F691EF64AF000B79A1F /* course_type_buy@2x.png in Resources */,
 				0A46AA681EDA6AC90087E078 /* sl_04_3x.png in Resources */,
+				0A54979E1EFC059E00977256 /* pay_ali@2x.png in Resources */,
 				0A46AA6C1EDA6AC90087E078 /* sl_06_3x.png in Resources */,
+				0A54979F1EFC059E00977256 /* pay_ali@3x.png in Resources */,
 				0A54A39B1ED4724100421CC5 /* home_tt_02_@2x.png in Resources */,
 				0A54A39A1ED4724100421CC5 /* home_tt_01_@3x.png in Resources */,
 				0A46AAA21EDAC6360087E078 /* login_qq_icon@3x.png in Resources */,
+				0A5497A11EFC059E00977256 /* pay_wechat@3x.png in Resources */,
 				0A66036D1EDF026200927433 /* LICENSE in Resources */,
 				0A46AAA31EDAC6360087E078 /* login_qq_icon@2x.png in Resources */,
 				0AEA5F7E1EF6CD0100B79A1F /* right_sharp_unenable_time@3x.png in Resources */,
@@ -2979,6 +3010,7 @@
 				0A54A38C1ED31F3200421CC5 /* UIScrollView+VGParallaxHeader.m in Sources */,
 				0AEF087F1EBA310F0065A22B /* UIImage+WebP.m in Sources */,
 				0AEF09561EBECF900065A22B /* View+MASAdditions.m in Sources */,
+				0A5497991EFBFC6B00977256 /* ELivePaymentView.m in Sources */,
 				0AEF098B1EBED84E0065A22B /* MJRefreshHeader.m in Sources */,
 				0AB0ED3A1EDD35A600270C9C /* ELiveSettingBindAppViewCell.m in Sources */,
 				0AEF09471EBECF900065A22B /* UIImagePickerController+BlocksKit.m in Sources */,
@@ -2990,6 +3022,7 @@
 				0A6603811EDF026200927433 /* YTKNetworkPrivate.m in Sources */,
 				0AEF087A1EBA310F0065A22B /* SDWebImageManager.m in Sources */,
 				0AEF099E1EBED9520065A22B /* PinYin.m in Sources */,
+				0A5497A71EFC092100977256 /* ELiveCoursePushViewController.m in Sources */,
 				0A6603661EDF026200927433 /* README.markdown in Sources */,
 				0AEF08751EBA310F0065A22B /* SDImageCache.m in Sources */,
 				0A46AA771EDA7E780087E078 /* ELiveSettingCell.m in Sources */,
@@ -3012,6 +3045,7 @@
 				0AEF085A1EBA310E0065A22B /* MBProgressHUD+MJ.m in Sources */,
 				0A92A27E1EC200B0002C2811 /* ELiveHomeClassesHeaderView.m in Sources */,
 				0AB0ED3D1EDD35CE00270C9C /* ELiveSettingBindOtherAppViewController.m in Sources */,
+				0A5497A41EFC090000977256 /* ELiveCourseReViewViewController.m in Sources */,
 				0A54A3881ED31F3200421CC5 /* NSArray+PureLayout.m in Sources */,
 				0A46AA891EDA9E590087E078 /* ELiveMineEarningsViewController.m in Sources */,
 				0AED43861EF2D14F00EAD011 /* ELiveTeacherAddNewCourseViewController.m in Sources */,
@@ -3200,7 +3234,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9YY3S9BBZ6;
+				DEVELOPMENT_TEAM = 9ZG3W9L6NH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ELearingLive/Classes/components/TencentQQ",
@@ -3217,7 +3251,7 @@
 					"$(PROJECT_DIR)/ELearingLive/Classes/components/ThirdPartyShare/SinaWeibo",
 					"$(PROJECT_DIR)/ELearingLive/Classes/components/ThirdPartyShare/TencentWeixin",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.microleo.ELearingLive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elive.leo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3230,7 +3264,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9YY3S9BBZ6;
+				DEVELOPMENT_TEAM = 9ZG3W9L6NH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ELearingLive/Classes/components/TencentQQ",
@@ -3247,8 +3281,9 @@
 					"$(PROJECT_DIR)/ELearingLive/Classes/components/ThirdPartyShare/SinaWeibo",
 					"$(PROJECT_DIR)/ELearingLive/Classes/components/ThirdPartyShare/TencentWeixin",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.microleo.ELearingLive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elive.leo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
