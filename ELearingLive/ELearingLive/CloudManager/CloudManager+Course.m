@@ -462,4 +462,102 @@
 
 }
 
+//直播推流
+- (void)asyncStartPushCourseWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid  completion:(void (^)( CoursePushInfoModel*ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseStart]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"courseid" : courseId?courseId:@"",
+                              @"periodid" : periodid?periodid:@"",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            CoursePushInfoModel * baseModel = [CoursePushInfoModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(baseModel,nil);
+                }
+            }else{
+                [MBProgressHUD showError:baseModel.error_desc toView:nil];
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
+    
+}
+
+//结束推流
+- (void)asyncStopPushCourseWithPeriodid:(NSString *)periodid  completion:(void (^)(NSString*ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseStart]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"periodid" : periodid?periodid:@"",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(@"OK",nil);
+                }
+            }else{
+                [MBProgressHUD showError:baseModel.error_desc toView:nil];
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+}
+//上传推流结束
+- (void)asyncUploadPushCourseWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid andSecond:(NSString *)second completion:(void (^)( NSString*ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriCourseStart]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"courseid" : courseId?courseId:@"",
+                              @"periodid" : periodid?periodid:@"",
+                              @"second" : second?second:@"1234",
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            BaseModel * baseModel = [BaseModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(@"OK",nil);
+                }
+            }else{
+                [MBProgressHUD showError:baseModel.error_desc toView:nil];
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+}
+
+
 @end

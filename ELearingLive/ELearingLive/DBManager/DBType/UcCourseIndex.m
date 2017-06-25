@@ -94,3 +94,8 @@
 
 
 @end
+@implementation CoursePushInfoModel
+
+
+
+@end

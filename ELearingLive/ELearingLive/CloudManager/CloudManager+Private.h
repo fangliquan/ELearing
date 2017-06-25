@@ -120,4 +120,10 @@
 ///course/mycourses 课程日历模式
 -(NSString *)uriCourseMyCourse;
 
+///course/start 开始直播推流
+-(NSString *)uriCourseStart;
+///course/finish 直播推流结束
+-(NSString *)uriCourseFinish;
+///course/postprogress
+-(NSString *)uriCoursePostprogress;
 @end

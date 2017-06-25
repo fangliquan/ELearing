@@ -152,5 +152,14 @@
 @property(nonatomic,strong) NSDictionary *weichatPay;
 @end
 
+@interface CoursePushInfoModel : BaseModel
+@property(nonatomic,strong) NSString *push;
+@property(nonatomic,strong) NSString *periodid;
+@property(nonatomic,strong) NSString *share_url;
+@property(nonatomic,strong) NSString *share_thumb;
+@property(nonatomic,strong) NSString *share_title;
+@property(nonatomic,strong) NSString *share_desp;
+@end
+
 
 

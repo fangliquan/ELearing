@@ -10,4 +10,11 @@
 
 @interface ELiveCourseReViewViewController : UIViewController
 
+@property(nonatomic,strong) NSString *courseId;
+@property(nonatomic,strong) NSString *periodid;
+
+@property(nonatomic,strong) UIViewController *viewController;
++ (void)presentFromViewController:(UIViewController *)viewController courseId:(NSString *)courseId  periodid:(NSString *)periodid completion:(void(^)())completion;
+
+
 @end

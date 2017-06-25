@@ -15,7 +15,7 @@
 #import "CloudManager+Course.h"
 #import "DailyAttendanceHeaderView.h"
 #import "ELiveTeacherAddNewCourseViewController.h"
-
+#import "ELiveCoursePushViewController.h"
 #import "FSCalendar.h"
 @interface ELiveCourseCalendarViewController ()<UITableViewDelegate,UITableViewDataSource,FSCalendarDataSource,FSCalendarDelegate,UIGestureRecognizerDelegate>{
     NSUInteger page;
@@ -70,8 +70,21 @@
 }
 
 -(void)startCourseClick{
-    ELiveTeacherAddNewCourseViewController *cvc = [[ELiveTeacherAddNewCourseViewController alloc] init];
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:cvc] animated:YES completion:nil];
+    if (self.teachArrays.count>0) {
+        if (self.teachArrays.count <=0) {
+            ELiveCourseItemCellFrame *cellFrem = [self.teachArrays firstObject];
+            [ELiveCoursePushViewController presentFromViewController:self courseId:cellFrem.teacherCourseListItem.courseid periodid:cellFrem.teacherCourseListItem.periodid completion:^{
+                
+            }];
+        }
+    }else{
+        [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"您还没有要开课的课程哦,是否要创建课程" style:UIAlertViewStyleDefault cancelButtonTitle:@"取消" otherButtonTitles:@[@"创建课程"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex ==1) {
+                ELiveTeacherAddNewCourseViewController *cvc = [[ELiveTeacherAddNewCourseViewController alloc] init];
+                [self presentViewController:[[UINavigationController alloc] initWithRootViewController:cvc] animated:YES completion:nil];
+            }
+        }];
+    }
 }
 - (void)setupNav {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
@@ -267,10 +280,18 @@
         
         cellFrem = _studyArrays.count >indexPath.row?_studyArrays[indexPath.row]:nil;
     }
-    ELiveCourseDetailViewController *detailVc = [[ELiveCourseDetailViewController alloc]init];
-    detailVc.courseId = cellFrem.teacherCourseListItem.courseid;
-    detailVc.chapterid  = cellFrem.teacherCourseListItem.periodid;
-    [self.navigationController pushViewController:detailVc animated:YES];
+    
+    if (indexPath.section ==0) {
+        [ELiveCoursePushViewController presentFromViewController:self courseId:cellFrem.teacherCourseListItem.courseid periodid:cellFrem.teacherCourseListItem.periodid completion:^{
+            
+        }];
+    }else{
+        ELiveCourseDetailViewController *detailVc = [[ELiveCourseDetailViewController alloc]init];
+        detailVc.courseId = cellFrem.teacherCourseListItem.courseid;
+        detailVc.chapterid  = cellFrem.teacherCourseListItem.periodid;
+        [self.navigationController pushViewController:detailVc animated:YES];
+    }
+
 }
 
 

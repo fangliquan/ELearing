@@ -7,15 +7,29 @@
 //
 
 #import "ELiveCourseReViewViewController.h"
-
+#import "RootNavigationViewController.h"
 @interface ELiveCourseReViewViewController ()
 
 @end
 
 @implementation ELiveCourseReViewViewController
 
+
++ (void)presentFromViewController:(UIViewController *)viewController courseId:(NSString *)courseId  periodid:(NSString *)periodid completion:(void(^)())completion{
+    ELiveCourseReViewViewController *pushVc = [[ELiveCourseReViewViewController alloc]init];
+    pushVc.courseId = courseId;
+    pushVc.periodid = periodid;
+    pushVc.viewController = viewController;
+    RootNavigationViewController *naVC = [[RootNavigationViewController alloc] initWithRootViewController:pushVc];
+    naVC.hidesBottomBarWhenPushed = YES;
+    naVC.navigationBarHidden = YES;
+    [viewController presentViewController: naVC animated:YES completion:completion];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }
 

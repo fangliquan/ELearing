@@ -36,8 +36,17 @@
     
     [self createFooterView:YES];
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenTextView)]];
+    if (self.isEdit) {
+        
+    }
     
 }
+
+-(void)getCourseData{
+    
+}
+
+
 - (void)setupNav {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
    // self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(send)];

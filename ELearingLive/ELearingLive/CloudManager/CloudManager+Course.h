@@ -8,7 +8,7 @@
 
 #import "CloudManagerBase.h"
 
-@class UcCourseCategireChildModel,UcCourseCategireModel,CourseDetailInfoModel,CourseChapterlistModel,CourseEvaluateListModel,TeacherCourseListModel,TeacherCreateCourseInfo,CourseBuyReasultModel,CoursePayReasultModel;
+@class UcCourseCategireChildModel,UcCourseCategireModel,CourseDetailInfoModel,CourseChapterlistModel,CourseEvaluateListModel,TeacherCourseListModel,TeacherCreateCourseInfo,CourseBuyReasultModel,CoursePayReasultModel,CoursePushInfoModel;
 @interface CloudManager (Course)
 //课程分类
 - (void)asyncGetCourseCategiresInfo:(void (^)(UcCourseCategireModel *ret, CMError *error))completion;
@@ -44,5 +44,13 @@
 
 //搜索
 - (void)asyncSearchCourseWithKeyword:(NSString *)keyword andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion;
+//直播推流
+- (void)asyncStartPushCourseWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid  completion:(void (^)( CoursePushInfoModel*ret, CMError *error))completion;
+//结束推流
+- (void)asyncStopPushCourseWithPeriodid:(NSString *)periodid  completion:(void (^)(NSString*ret, CMError *error))completion;
+//上传推流结束
+- (void)asyncUploadPushCourseWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid andSecond:(NSString *)second completion:(void (^)( NSString*ret, CMError *error))completion;
+
+
 
 @end

@@ -22,6 +22,10 @@
     
     NSInteger selectIndex;
     UIButton *submitBtn;
+    
+    UIImageView *priceUserBtn;
+    UIImageView *suoUserBtn;
+    UIImageView *allUserBtn;
 }
 
 
@@ -136,8 +140,8 @@
 
     CGFloat imageW = Main_Screen_Width/ 3.0;
     
-    UIImageView *allUserBtn= [[UIImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(courseDespLabel.frame) + 20, imageW, 50)];
-    allUserBtn.image = [UIImage imageNamed:@"course_type_open"];
+    allUserBtn= [[UIImageView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(courseDespLabel.frame) + 20, imageW, 50)];
+    allUserBtn.image = [UIImage imageNamed:@"course_set_free_y"];
     allUserBtn.contentMode = UIViewContentModeScaleAspectFit;
     allUserBtn.layer.masksToBounds = YES;
     //allUserBtn.layer.cornerRadius = 25;
@@ -147,9 +151,9 @@
     
     
     
-    UIImageView *suoUserBtn= [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(allUserBtn.frame), CGRectGetMaxY(courseDespLabel.frame) + 20, imageW, 50)];
+    suoUserBtn= [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(allUserBtn.frame), CGRectGetMaxY(courseDespLabel.frame) + 20, imageW, 50)];
     suoUserBtn.layer.masksToBounds = YES;
-    suoUserBtn.image = [UIImage imageNamed:@"course_type_suo"];
+    suoUserBtn.image = [UIImage imageNamed:@"course_set_psw_n"];
     //suoUserBtn.layer.cornerRadius = 25;
     suoUserBtn.contentMode = UIViewContentModeScaleAspectFit;
     suoUserBtn.userInteractionEnabled = YES;
@@ -157,9 +161,9 @@
     [self.view  addSubview:suoUserBtn];
     
     
-    UIImageView *priceUserBtn= [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(suoUserBtn.frame), CGRectGetMaxY(courseDespLabel.frame) + 20, imageW, 50)];
+    priceUserBtn= [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(suoUserBtn.frame), CGRectGetMaxY(courseDespLabel.frame) + 20, imageW, 50)];
     priceUserBtn.layer.masksToBounds = YES;
-    priceUserBtn.image = [UIImage imageNamed:@"course_type_buy"];
+    priceUserBtn.image = [UIImage imageNamed:@"course_set_price_n"];
     //priceUserBtn.layer.cornerRadius = 25;
     priceUserBtn.contentMode = UIViewContentModeScaleAspectFit;
     priceUserBtn.userInteractionEnabled = YES;
@@ -228,6 +232,9 @@
     allUserTitleLabel.hidden = YES;
     selectIndex = 2;
     
+    priceUserBtn.image = [UIImage imageNamed:@"course_set_price_n"];
+    suoUserBtn.image = [UIImage imageNamed:@"course_set_psw_y"];
+    allUserBtn.image = [UIImage imageNamed:@"course_set_free_n"];
 
 }
 -(void)allUserBtnClick{
@@ -235,6 +242,9 @@
     priceView.hidden = YES;
     allUserTitleLabel.hidden = NO;
     selectIndex =1;
+    priceUserBtn.image = [UIImage imageNamed:@"course_set_price_n"];
+    suoUserBtn.image = [UIImage imageNamed:@"course_set_psw_n"];
+    allUserBtn.image = [UIImage imageNamed:@"course_set_free_y"];
 }
 
 -(void)buyUserBtnClick{
@@ -242,6 +252,10 @@
     priceView.hidden = NO;
     allUserTitleLabel.hidden = YES;
     selectIndex = 3;
+    
+    priceUserBtn.image = [UIImage imageNamed:@"course_set_price_y"];
+    suoUserBtn.image = [UIImage imageNamed:@"course_set_psw_n"];
+    allUserBtn.image = [UIImage imageNamed:@"course_set_free_n"];
 }
 
 - (void)didReceiveMemoryWarning {

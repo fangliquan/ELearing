@@ -325,14 +325,16 @@
                 }
             }];
     }else if (btn.tag ==2){//观看课程
-        ELiveCourseReViewViewController *liveReVc = [[ELiveCourseReViewViewController alloc]init];
-        [self.navigationController pushViewController:liveReVc animated:YES];
+        [ELiveCourseReViewViewController presentFromViewController:self courseId:self.courseId periodid:self.courseDetailInfoModel.periodid completion:^{
+            
+        }];
         
     }else if (btn.tag ==3){//修改课程
         ELiveTeacherAddNewCourseViewController *editVc = [[ELiveTeacherAddNewCourseViewController alloc]init];
         editVc.isEdit = YES;
         editVc.courseId = self.courseId;
-        [self.navigationController pushViewController:editVc animated:YES];
+        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:editVc] animated:YES completion:nil];
+       // [self.navigationController pushViewController:editVc animated:YES];
         
     }
 }

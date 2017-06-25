@@ -375,4 +375,27 @@
     ret = [[NSString alloc] initWithFormat:@"%@/course/mycourses",ret];
     return ret;
 }
+///course/start 开始直播推流
+-(NSString *)uriCourseStart{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/start",ret];
+    return ret;
+}
+///course/finish 直播推流结束
+-(NSString *)uriCourseFinish{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/finish",ret];
+    return ret;
+}
+///course/postprogress
+-(NSString *)uriCoursePostprogress{
+   NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/postprogress",ret];
+    return ret;
+}
+
+
 @end
