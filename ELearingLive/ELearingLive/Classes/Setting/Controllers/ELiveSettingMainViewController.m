@@ -49,7 +49,7 @@
         ELiveSettingModel *settingModel = [[ELiveSettingModel alloc]init];
         
         if (i ==0) {
-            if ([CloudManager sharedInstance].currentAccount.userLoginResponse.is_teacher) {
+            if ([[CloudManager sharedInstance].currentAccount.userLoginResponse.is_teacher isEqualToString:@"2"]) {
                 settingModel.type = Setting_MineHome;
                 settingModel.title = @"我的主页";
             }else{
@@ -269,7 +269,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
     
         ELiveSettingModel *settingModel = [[ELiveSettingModel alloc]init];
-        if (userLoginResponse.is_teacher) {
+        if ([userLoginResponse.is_teacher isEqualToString:@"2"]) {
      
             settingModel.type = Setting_MineHome;
             settingModel.title = @"我的主页";

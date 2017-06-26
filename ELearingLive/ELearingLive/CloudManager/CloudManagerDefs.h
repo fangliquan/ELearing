@@ -22,5 +22,6 @@
 #define TENCENT_APPID   @""        // 腾讯 appId
 #define TENCENT_APPKEY  @""  // 腾讯 appKey
 
+#define ALiPay_APPID   @"2017030205996016"
 
 #endif

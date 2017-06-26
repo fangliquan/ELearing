@@ -8,9 +8,16 @@
 
 #import "ELiveMineEarningsViewController.h"
 #import "ELiveEarningsCell.h"
-@interface ELiveMineEarningsViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "UcCourseIndex.h"
+#import "CloudManager+Teacher.h"
+#import "MJRefresh.h"
+@interface ELiveMineEarningsViewController ()<UITableViewDelegate,UITableViewDataSource>{
+    
+     NSInteger page;
+}
 
 @property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,strong) NSMutableArray *incomeArrays;
 
 @end
 
@@ -18,10 +25,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    page =0;
+    _incomeArrays = [NSMutableArray array];
     [self configtableView];
+    
     // Do any additional setup after loading the view.
 }
 
+-(void)getCourseIncomeData{
+    page ++;
+    [[CloudManager sharedInstance]asyncMyIncomingsWithPage:[NSString stringWithFormat:@"%ld",page] completion:^(MyIncomingsModel *ret, CMError *error) {
+        [self.tableView.mj_footer endRefreshing];
+        if (error ==nil) {
+            // [self.followTeachers addObjectsFromArray:ret.list];
+            [self converData:ret.list];
+            if (ret.list.count <=0 && self.incomeArrays.count <=0) {
+                self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindViewWithType:ExceptionRemindStyle_Empty];
+            }
+            if (ret.list.count <=0) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+        }else{
+            self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindView_LoadfailWithTarget:self action:@selector(getCourseIncomeData)];
+        }
+    }];
+}
+
+-(void)converData:(NSArray *)ret{
+    [self.incomeArrays addObjectsFromArray:ret];
+    [self.tableView reloadData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -35,7 +68,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return _incomeArrays.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.001f;
@@ -53,7 +86,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ELiveEarningsCell *cell = [ELiveEarningsCell cellWithTableView:tableView];
-    //cell.eLeaingNewsItemCellFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
+    cell.incomingsModelItem = self.incomeArrays.count >indexPath.row ?self.incomeArrays[indexPath.row]:nil;
     return cell;
 }
 
@@ -73,7 +106,8 @@
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 0.0001)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getCourseIncomeData)];
+
     
     [self.view addSubview:self.tableView];
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)])

@@ -174,5 +174,19 @@
 @property(nonatomic,strong) NSString *share_desp;
 @end
 
+@interface MyIncomingsModelItem : NSObject
+
+@property(nonatomic,strong) NSString *type;
+@property(nonatomic,strong) NSString *balance;
+@property(nonatomic,strong) NSString *amount;
+@property(nonatomic,strong) NSString *time;
+
+@end
 
 
+@interface MyIncomingsModel : BaseModel
+@property(nonatomic,strong) NSString *count;
+@property(nonatomic,strong) NSString *pagecount;
+
+@property(nonatomic,strong) NSArray *list;
+@end

@@ -7,6 +7,7 @@
 //
 
 #import "ELiveEarningsCell.h"
+#import "UcCourseIndex.h"
 
 @interface ELiveEarningsCell(){
     UILabel *titleLabel;
@@ -56,5 +57,12 @@
     earingLabel.text = @"80￥";
     earingLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:earingLabel];
+}
+
+-(void)setIncomingsModelItem:(MyIncomingsModelItem *)incomingsModelItem{
+    _incomingsModelItem = incomingsModelItem;
+    titleLabel.text = incomingsModelItem.type;
+    timeLabel.text = incomingsModelItem.time;
+    earingLabel.text = incomingsModelItem.amount;
 }
 @end

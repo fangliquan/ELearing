@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class MyIncomingsModelItem;
 @interface ELiveEarningsCell : UITableViewCell
 
 +(instancetype)cellWithTableView:(UITableView *)tableView ;
 
+@property(nonatomic,strong) MyIncomingsModelItem *incomingsModelItem;
 + (CGFloat)heightForCellWithModel:(NSString *)remark ;
 
 @end

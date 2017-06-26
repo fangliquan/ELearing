@@ -365,6 +365,8 @@
     
     addImageView  = [[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLable.frame) +10, Main_Screen_Width - 20, 140)];
     addImageView.backgroundColor = [UIColor whiteColor];
+    addImageView.contentMode = UIViewContentModeScaleAspectFill;
+    addImageView.layer.masksToBounds = YES;
     addImageView.userInteractionEnabled = YES;
     [addImageView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addCourseCoverClick)]];
     [self.contentView addSubview:addImageView];

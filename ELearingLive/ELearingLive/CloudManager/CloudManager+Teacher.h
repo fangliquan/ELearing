@@ -8,7 +8,7 @@
 
 #import "CloudManagerBase.h"
 #import "UserTruthInfo.h"
-@class UcMyFollowTeacherModel,TeacherInfoModel,TeacherCourseListModel,TeacherEvaluateListModel,TeacherMyCourseModel;
+@class UcMyFollowTeacherModel,TeacherInfoModel,TeacherCourseListModel,TeacherEvaluateListModel,TeacherMyCourseModel,MyIncomingsModel;
 @interface CloudManager (Teacher)
 
 - (void)asyncUserApplyForTeacher:(UserTruthInfo *)info  completion:(void (^)(NSString *ret, CMError *error))completion;
@@ -16,6 +16,9 @@
 - (void)asyncUpdateUserTruthInfo:(UserTruthInfo *)info  completion:(void (^)(NSString *ret, CMError *error))completion;
 
 - (void)asyncMyFollowTeacherWithPage:(NSString *)page  completion:(void (^)(UcMyFollowTeacherModel *ret, CMError *error))completion;
+
+- (void)asyncMyFansWithPage:(NSString *)page  completion:(void (^)(UcMyFollowTeacherModel *ret, CMError *error))completion;
+- (void)asyncMyIncomingsWithPage:(NSString *)page  completion:(void (^)(MyIncomingsModel *ret, CMError *error))completion;
 
 
 - (void)asyncUpdateUserHeaderImageWithimage:(UIImage *)image  completion:(void (^)(NSString *ret, CMError *error))completion;

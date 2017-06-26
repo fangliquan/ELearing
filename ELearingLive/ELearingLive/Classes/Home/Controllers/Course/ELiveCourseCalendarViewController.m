@@ -69,6 +69,12 @@
     [self.tableView.panGestureRecognizer requireGestureRecognizerToFail:panGesture];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:YES];
+}
+
 -(void)startCourseClick{
     if (self.teachArrays.count>0) {
         if (self.teachArrays.count <=0) {

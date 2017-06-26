@@ -12,6 +12,7 @@
 #import "GCDMulticastDelegate.h"
 #import "PublicUtil.h"
 #import "UcTeacherModel.h"
+#import "UcCourseIndex.h"
 @implementation CloudManager (Teacher)
 - (void)asyncUserApplyForTeacher:(UserTruthInfo *)info  completion:(void (^)(NSString *ret, CMError *error))completion{
     NSString *url = [NSString stringWithFormat:@"%@",[self uriUcAuthTeacher]];
@@ -238,7 +239,66 @@
     }];
 }
 
-
+- (void)asyncMyFansWithPage:(NSString *)page  completion:(void (^)(UcMyFollowTeacherModel *ret, CMError *error))completion{
+    
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriUcMyFans]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"page" : page?page:@"1",
+                              
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            UcMyFollowTeacherModel * baseModel = [UcMyFollowTeacherModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(baseModel,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+}
+- (void)asyncMyIncomingsWithPage:(NSString *)page  completion:(void (^)(MyIncomingsModel *ret, CMError *error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriUcMyIncomings]];
+    NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
+    NSDictionary *tempDic = @{
+                              @"token" : token?token:@"",
+                              @"page" : page?page:@"1",
+                              
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            MyIncomingsModel * baseModel = [MyIncomingsModel mj_objectWithKeyValues:ret];
+            if ([baseModel.error_code isEqualToString:@"0"]) {
+                if (completion) {
+                    completion(baseModel,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else {
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+    
+}
 //老师信息
 - (void)asyncGetTeacherInfoWithId:(NSString *)teacherid  completion:(void (^)(TeacherInfoModel *ret, CMError *error))completion{
     NSString *url = [NSString stringWithFormat:@"%@",[self uriTeacherInfo]];

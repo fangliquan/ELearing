@@ -70,7 +70,7 @@
 }
 -(void)loadApplyState{
     [[CloudManager sharedInstance]asyncUserIsApplyForTeacher:^(NSString *ret, CMError *error) {
-        if (ret ==0) {//is_teacher是否老师 2是老师  1审核中  0不是老师
+        if ([ret isEqualToString:@"0"]) {//is_teacher是否老师 2是老师  1审核中  0不是老师
             [self createData];
             [self createFooterView:YES];
         }else{

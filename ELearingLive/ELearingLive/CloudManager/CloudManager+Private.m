@@ -405,5 +405,20 @@
     return ret;
 }
 
+///uc/myfans 我的粉丝
+-(NSString *)uriUcMyFans{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/uc/myfans",ret];
+    return ret;
+}
+
+///uc/incomings 收益
+-(NSString *)uriUcMyIncomings{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/uc/incomings",ret];
+    return ret;
+}
 
 @end

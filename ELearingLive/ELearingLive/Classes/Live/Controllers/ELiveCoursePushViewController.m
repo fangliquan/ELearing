@@ -149,49 +149,54 @@
 -(void)createPushView{
     ELiveCoursePushView *pushView = [[ELiveCoursePushView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) andLivePlayer:NO  andisScreenHorizontal:YES];
     pushView.closeLiveHandler = ^{
-        [self buttonCloseClick];
+        [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"要关闭当前的直播吗" style:UIAlertViewStyleDefault cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex ==1) {
+                [self buttonCloseClick];
+            }
+        }];
+
     };
     
     [self.view addSubview:pushView];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-}
-
--(BOOL)shouldAutorotate
-{
-    return NO;
-}
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+//{
+//    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+//}
+//
+//-(BOOL)shouldAutorotate
+//{
+//    return YES;
+//}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:YES];
+   [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 }
 #pragma mark - AlivcLiveVideo Delegate
 - (void)alivcLiveVideoLiveSession:(AlivcLiveSession *)session error:(NSError *)error{
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSString *msg = [NSString stringWithFormat:@"%zd %@",error.code, error.localizedDescription];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Live Error" message:msg delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"重新连接", nil];
-        alertView.delegate = self;
-        [alertView show];
-    });
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        NSString *msg = [NSString stringWithFormat:@"%zd %@",error.code, error.localizedDescription];
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Live Error" message:msg delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"重新连接", nil];
+//        alertView.delegate = self;
+//        [alertView show];
+//    });
     
     NSLog(@"liveSession Error : %@", error);
 }
 
 - (void)alivcLiveVideoLiveSessionNetworkSlow:(AlivcLiveSession *)session {
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前网络环境较差" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-    [alertView show];
-    self.textView.text = @"网速过慢，影响推流效果，拉流端会造成卡顿等，建议暂停直播";
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前网络环境较差" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//    [alertView show];
+//    self.textView.text = @"网速过慢，影响推流效果，拉流端会造成卡顿等，建议暂停直播";
     NSLog(@"网速过慢");
     
 }
@@ -203,11 +208,11 @@
 
 
 - (void)alivcLiveVideoReconnectTimeout:(AlivcLiveSession *)session error:(NSError *)error {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"重连超时-error:%ld", error.code] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        
-        [alertView show];
-    });
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"重连超时-error:%ld", error.code] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        
+//        [alertView show];
+//    });
     NSLog(@"重连超时");
 }
 

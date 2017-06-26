@@ -39,12 +39,30 @@
 
 -(void)loadData{
     if (self.isFans){
-        
+        [self getMyFansData];
     }else{
         [self getMyFollerTeacher];
     }
 }
 
+-(void)getMyFansData{
+    pageIndex ++;
+    [[CloudManager sharedInstance]asyncMyFansWithPage:[NSString stringWithFormat:@"%ld",pageIndex] completion:^(UcMyFollowTeacherModel *ret, CMError *error) {
+        [self.tableView.mj_footer endRefreshing];
+        if (error ==nil) {
+            // [self.followTeachers addObjectsFromArray:ret.list];
+            [self converData:ret.list];
+            if (ret.list.count <=0 && self.followTeachers.count <=0) {
+                self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindViewWithType:ExceptionRemindStyle_Empty];
+            }
+            if (ret.list.count <=0) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+        }else{
+            self.tableView.tableFooterView = [WWExceptionRemindManager exceptionRemindView_LoadfailWithTarget:self action:@selector(loadData)];
+        }
+    }];
+}
 -(void)getMyFollerTeacher{
     pageIndex ++;
     [[CloudManager sharedInstance]asyncMyFollowTeacherWithPage:[NSString stringWithFormat:@"%ld",pageIndex] completion:^(UcMyFollowTeacherModel *ret, CMError *error) {

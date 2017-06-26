@@ -129,4 +129,9 @@
 ///course/playinfo获取播放详情
 
 -(NSString *)uriCoursePlayinfo;
+
+///uc/myfans 我的粉丝
+-(NSString *)uriUcMyFans;
+///uc/incomings 收益
+-(NSString *)uriUcMyIncomings;
 @end

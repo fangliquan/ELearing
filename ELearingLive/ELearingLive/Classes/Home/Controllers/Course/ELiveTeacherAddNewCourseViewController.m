@@ -178,12 +178,12 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     // ELeaingNewsItemCellFrame *itemFrame = self.newsArrays.count >indexPath.row ?self.newsArrays[indexPath.row]:nil;
     if (indexPath.section ==3) {
-        return 180;
+        return 190;
     }
     if (indexPath.section ==4) {
-        return 180;
+        return 190;
     }
-    return 80;
+    return 90;
 }
 
 

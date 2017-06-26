@@ -104,3 +104,18 @@
 
 
 @end
+
+@implementation MyIncomingsModelItem
+
+
+
+@end
+
+@implementation MyIncomingsModel
+
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"list":[MyIncomingsModelItem class]};
+}
+
+
+@end

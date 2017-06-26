@@ -139,6 +139,8 @@
 		0A57F5671EE5B5980071D5D6 /* UserTruthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A57F5661EE5B5980071D5D6 /* UserTruthInfo.m */; };
 		0A57F56A1EE700EE0071D5D6 /* CloudManager+Index.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A57F5691EE700EE0071D5D6 /* CloudManager+Index.m */; };
 		0A57F56D1EE7059A0071D5D6 /* HomeIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A57F56C1EE7059A0071D5D6 /* HomeIndex.m */; };
+		0A6313CE1F014F5700F5D5B7 /* AliyunPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A85D49B1EFFEE9B00A660C9 /* AliyunPlayerSDK.framework */; };
+		0A6313CF1F014F5700F5D5B7 /* AliyunPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A85D49B1EFFEE9B00A660C9 /* AliyunPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A66035E1EDF026200927433 /* RPMDeviceManager+Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A66030B1EDF026200927433 /* RPMDeviceManager+Device.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0A66035F1EDF026200927433 /* RPMDeviceManager+OS.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A66030D1EDF026200927433 /* RPMDeviceManager+OS.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0A6603601EDF026200927433 /* RPMDeviceManager+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A66030F1EDF026200927433 /* RPMDeviceManager+Private.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -368,7 +370,7 @@
 		0A85D48F1EFFB1FF00A660C9 /* ww_user_upgrade_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A85D4251EFFB1FE00A660C9 /* ww_user_upgrade_icon.png */; };
 		0A85D4961EFFEA9300A660C9 /* HUDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A85D4941EFFEA9300A660C9 /* HUDHelper.m */; };
 		0A85D49A1EFFEE4A00A660C9 /* AliyunPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A85D4991EFFEE4A00A660C9 /* AliyunPlayerSDK.framework */; };
-		0A85D49C1EFFEE9B00A660C9 /* AliyunPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A85D49B1EFFEE9B00A660C9 /* AliyunPlayerSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0A85D49C1EFFEE9B00A660C9 /* AliyunPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A85D49B1EFFEE9B00A660C9 /* AliyunPlayerSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0A92A2791EC1FF7F002C2811 /* ELiveHomeMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A92A2731EC1FF7F002C2811 /* ELiveHomeMainViewController.m */; };
 		0A92A27A1EC1FF7F002C2811 /* ELiveCourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A92A2751EC1FF7F002C2811 /* ELiveCourseDetailViewController.m */; };
 		0A92A27B1EC1FF7F002C2811 /* ELiveCourseItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A92A2781EC1FF7F002C2811 /* ELiveCourseItemCell.m */; };
@@ -534,6 +536,20 @@
 		0AEF099A1EBED84E0065A22B /* WWRefreshStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF09861EBED84E0065A22B /* WWRefreshStyle.m */; };
 		0AEF099E1EBED9520065A22B /* PinYin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF099D1EBED9520065A22B /* PinYin.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0A6313D01F014F5800F5D5B7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0A6313CF1F014F5700F5D5B7 /* AliyunPlayerSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0A0A56341EE3E27100418F9A /* ELiveCastMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELiveCastMainCell.h; sourceTree = "<group>"; };
@@ -1406,6 +1422,7 @@
 				0A34284C1EF9886300FA5FE2 /* QuartzCore.framework in Frameworks */,
 				0A1DF96C1EF59DCD005C48C2 /* Photos.framework in Frameworks */,
 				0A1DF96D1EF59DCD005C48C2 /* PhotosUI.framework in Frameworks */,
+				0A6313CE1F014F5700F5D5B7 /* AliyunPlayerSDK.framework in Frameworks */,
 				0A1DF9691EF59DC3005C48C2 /* AssetsLibrary.framework in Frameworks */,
 				0A6603A41EDF035B00927433 /* Accelerate.framework in Frameworks */,
 				0A6603A21EDF035100927433 /* libstdc++.6.0.9.tbd in Frameworks */,
@@ -3143,6 +3160,7 @@
 				0AEF07AB1EBA2D8B0065A22B /* Sources */,
 				0AEF07AC1EBA2D8B0065A22B /* Frameworks */,
 				0AEF07AD1EBA2D8B0065A22B /* Resources */,
+				0A6313D01F014F5800F5D5B7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

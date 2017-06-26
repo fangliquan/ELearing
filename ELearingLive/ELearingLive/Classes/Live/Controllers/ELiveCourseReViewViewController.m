@@ -20,19 +20,20 @@
 #import "UcCourseIndex.h"
 #import "HUDHelper.h"
 #import "ELiveCoursePushView.h"
-@interface ELiveCourseReViewViewController ()
+@interface ELiveCourseReViewViewController (){
+    
+    AliVcMediaPlayer* mPlayer;
+}
 
 
-@property (nonatomic, strong) AliVcMediaPlayer* mPlayer;
+
 @property (nonatomic, strong) UIView *mPlayerView;
-
+@property(nonatomic,strong)  ELiveCoursePushView *pushView;
 @property(nonatomic,strong) CourseDetailInfoModel *courseInfo;
 
 @end
 
 @implementation ELiveCourseReViewViewController
-@synthesize mPlayer;
-@synthesize mPlayerView;
 
 
 + (void)presentFromViewController:(UIViewController *)viewController courseId:(NSString *)courseId  periodid:(NSString *)periodid completion:(void(^)())completion{
@@ -64,23 +65,62 @@
     [self getPlayInfo];
     [self createPushView];
     // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:)name:UIDeviceOrientationDidChangeNotification object:nil];
+    
+}
+- (void)orientChange:(NSNotification *)noti
+    {
+        
+        NSDictionary* ntfDict = [noti userInfo];
+        
+        UIDeviceOrientation  orient = [UIDevice currentDevice].orientation;
+        
+        switch (orient)
+        {
+            case UIDeviceOrientationPortrait:
+                [self updateFrame];
+                break;
+            case UIDeviceOrientationLandscapeLeft:
+                  [self updateFrame];
+                break;
+            case UIDeviceOrientationPortraitUpsideDown:
+                break;
+            case UIDeviceOrientationLandscapeRight:
+                break;
+            default:
+                break;
+        }
 }
 
+
+-(void)updateFrame{
+     _mPlayerView.frame = CGRectMake(0, 0,Main_Screen_Width,Main_Screen_Height);
+     self.pushView.frame = CGRectMake(0, 0,Main_Screen_Width,Main_Screen_Height);
+}
 -(void)getPlayInfo{
+    MBProgressHUD *hud = [MBProgressHUD showMessage:@""];
     [[CloudManager sharedInstance]asyncPushCourseInfoWithCourseId:_courseId andPeriodid:_periodid completion:^(CourseDetailInfoModel *ret, CMError *error) {
+        [hud hide:YES];
         if (error ==nil) {
             self.courseInfo = ret;
             if (ret.play &&ret.play.length >0) {
                 if ([ret.is_live isEqualToString:@"y"]) {
                     [self PlayMoive];
+                }else{
+                    [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"直播已结束" style:UIAlertViewStyleDefault cancelButtonTitle:nil otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }];
                 }
             }else{
-                
                 [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"视频地址获取失败" style:UIAlertViewStyleDefault cancelButtonTitle:nil otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                   
+                       [self dismissViewControllerAnimated:YES completion:nil];
                 }];
             }
         
+        }else{
+            [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"视频地址获取失败" style:UIAlertViewStyleDefault cancelButtonTitle:nil otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
         }
     }];
 }
@@ -88,25 +128,28 @@
 - (void) PlayMoive
 {
 
-    mPlayerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
-    mPlayerView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:mPlayerView];
+    _mPlayerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,Main_Screen_Width,Main_Screen_Height)];
+    _mPlayerView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_mPlayerView];
     
     //new the player
     mPlayer = [[AliVcMediaPlayer alloc] init];
-    
-    
-    //create player, and  set the show view
-    [mPlayer create:mPlayerView];
-    
-    //register notifications
-    [self addPlayerObserver];
-    
     mPlayer.mediaType = MediaType_AUTO;
     mPlayer.timeout = 25000;
     mPlayer.dropBufferDuration = 8000;
-
+    //create player, and  set the show view
+    [mPlayer create:_mPlayerView];
     
+    //register notifications
+   
+    
+
+    //注册准备完成通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(OnVideoPrepared:) name:AliVcMediaPlayerLoadDidPreparedNotification object:mPlayer];
+    //注册错误通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(OnVideoError:) name:AliVcMediaPlayerPlaybackErrorNotification object:mPlayer];
     //prepare and play the video
     AliVcMovieErrorCode err = [mPlayer prepareToPlay:[NSURL URLWithString:self.courseInfo.play]];
     if(err != ALIVC_SUCCESS) {
@@ -120,7 +163,7 @@
         return;
     }
     
-    
+    //[self addPlayerObserver];
     //[self performSelector:@selector(hideControls:) withObject:nil afterDelay:fadeDelay];
     
     [self showLoadingIndicators];
@@ -142,13 +185,26 @@
 */
 
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    //[[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationLandscapeLeft animated: NO ];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    //[[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationPortrait animated: NO ];
+}
+
+
 
 -(void)createPushView{
-    ELiveCoursePushView *pushView = [[ELiveCoursePushView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) andLivePlayer:NO  andisScreenHorizontal:YES];
+    ELiveCoursePushView *pushView = [[ELiveCoursePushView alloc]initWithFrame:CGRectMake(0, 0,Main_Screen_Width, Main_Screen_Height) andLivePlayer:NO  andisScreenHorizontal:YES];
     pushView.closeLiveHandler = ^{
         [self closePlay];
     };
-    
+    self.pushView = pushView;
     [self.view addSubview:pushView];
 }
 
@@ -193,44 +249,44 @@
     NSString* error_msg = @"未知错误";
     AliVcMovieErrorCode error_code = mPlayer.errorCode;
     
-    switch (error_code) {
-        case ALIVC_ERR_FUNCTION_DENIED:
-            error_msg = @"未授权";
-            break;
-        case ALIVC_ERR_ILLEGALSTATUS:
-            error_msg = @"非法的播放流程";
-            break;
-        case ALIVC_ERR_INVALID_INPUTFILE:
-            error_msg = @"无法打开";
-            [self hideLoadingIndicators];
-            break;
-        case ALIVC_ERR_NO_INPUTFILE:
-            error_msg = @"无输入文件";
-            [self hideLoadingIndicators];
-            break;
-        case ALIVC_ERR_NO_NETWORK:
-            error_msg = @"网络连接失败";
-            break;
-        case ALIVC_ERR_NO_SUPPORT_CODEC:
-            error_msg = @"不支持的视频编码格式";
-            [self hideLoadingIndicators];
-            break;
-        case ALIVC_ERR_NO_VIEW:
-            error_msg = @"无显示窗口";
-            [self hideLoadingIndicators];
-            break;
-        case ALIVC_ERR_NO_MEMORY:
-            error_msg = @"内存不足";
-            break;
-        case ALIVC_ERR_DOWNLOAD_TIMEOUT:
-            error_msg = @"网络超时";
-            break;
-        case ALIVC_ERR_UNKOWN:
-            error_msg = @"未知错误";
-            break;
-        default:
-            break;
-    }
+//    switch (error_code) {
+//        case ALIVC_ERR_FUNCTION_DENIED:
+//            error_msg = @"未授权";
+//            break;
+//        case ALIVC_ERR_ILLEGALSTATUS:
+//            error_msg = @"非法的播放流程";
+//            break;
+//        case ALIVC_ERR_INVALID_INPUTFILE:
+//            error_msg = @"无法打开";
+//            [self hideLoadingIndicators];
+//            break;
+//        case ALIVC_ERR_NO_INPUTFILE:
+//            error_msg = @"无输入文件";
+//            [self hideLoadingIndicators];
+//            break;
+//        case ALIVC_ERR_NO_NETWORK:
+//            error_msg = @"网络连接失败";
+//            break;
+//        case ALIVC_ERR_NO_SUPPORT_CODEC:
+//            error_msg = @"不支持的视频编码格式";
+//            [self hideLoadingIndicators];
+//            break;
+//        case ALIVC_ERR_NO_VIEW:
+//            error_msg = @"无显示窗口";
+//            [self hideLoadingIndicators];
+//            break;
+//        case ALIVC_ERR_NO_MEMORY:
+//            error_msg = @"内存不足";
+//            break;
+//        case ALIVC_ERR_DOWNLOAD_TIMEOUT:
+//            error_msg = @"网络超时";
+//            break;
+//        case ALIVC_ERR_UNKOWN:
+//            error_msg = @"未知错误";
+//            break;
+//        default:
+//            break;
+//    }
     
     //NSLog(error_msg);
     
@@ -250,9 +306,10 @@
     else if(error_code > 500 || error_code == ALIVC_ERR_FUNCTION_DENIED) {
         
         [mPlayer reset];
-//        UIAlertView *alter = [[UIAlertView alloc] initWithTitle:[mSourceURL absoluteString] message:error_msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        
-//        [alter show];
+        [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"视频地址获取失败" style:UIAlertViewStyleDefault cancelButtonTitle:nil otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+
         return;
     }
     
@@ -327,18 +384,6 @@
         [mPlayer play];
 
     }
-}
-
-
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
-}
-
--(BOOL)shouldAutorotate
-{
-    return NO;
 }
 
 
