@@ -109,7 +109,7 @@
 @interface TeacherCreateCourseInfo : NSObject
 
 @property(nonatomic,strong) NSString *courseSubject;
-
+@property(strong,nonatomic) NSString *courseid;
 @property(nonatomic,strong) NSMutableArray *courseItemsTime;
 
 @property(nonatomic,strong) NSMutableArray *courseCates;

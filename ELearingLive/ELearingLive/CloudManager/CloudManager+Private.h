@@ -84,6 +84,12 @@
 -(NSString *)uriCourseChildren;
 ///course/info 课程信息
 -(NSString *)uriCourserInfo;
+///course/infoforedit
+-(NSString *)uriCourseInfoForEdit;
+///course/save
+-(NSString *)uriCourseInfoSave;
+
+
 ///course/chapterlist 课程详情目录
 -(NSString *)uriCourseChapterlist;
 ///course/evaluatelist 课程详情评价列表

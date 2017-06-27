@@ -25,6 +25,8 @@
 @property(nonatomic,strong) NSString *courseTime;
 @property(nonatomic,strong) NSString *coursePId;
 
+@property(nonatomic,strong) NSString *name;
+
 @property(nonatomic,strong) NSString *courseTimestamp;
 
 @property(nonatomic,assign) BOOL isAddCourse;

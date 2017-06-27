@@ -46,6 +46,8 @@
     selectIndex = 1;
 }
 
+
+
 -(void)hiddenTextView{
     [self.view endEditing:YES];
 }
@@ -65,18 +67,39 @@
     
     submitBtn = [[UIButton alloc]initWithFrame:CGRectMake(30,10, Main_Screen_Width - 60, 40)];
     submitBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [submitBtn setTitle:@"创建课程" forState:UIControlStateNormal];
+   
     [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     submitBtn.backgroundColor = enable? EL_COLOR_RED:CELL_BORDER_COLOR;
     submitBtn.layer.masksToBounds = YES;
     submitBtn.enabled = enable;
     submitBtn.layer.cornerRadius = 5;
-    [submitBtn addTarget:self action:@selector(saveCourseClick) forControlEvents:UIControlEventTouchUpInside];
+    if (self.isEdit) {
+        [submitBtn setTitle:@"保存课程" forState:UIControlStateNormal];
+        [submitBtn addTarget:self action:@selector(editCourseClick) forControlEvents:UIControlEventTouchUpInside];
+    }else{
+        [submitBtn setTitle:@"创建课程" forState:UIControlStateNormal];
+        [submitBtn addTarget:self action:@selector(saveCourseClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+
     [footerView addSubview:submitBtn];
     [self.view  addSubview: footerView];
 }
 
 
+-(void)editCourseClick{
+    MBProgressHUD *hud = [MBProgressHUD showMessage:@"正在保存..." toView:nil];
+    [[CloudManager sharedInstance]asyncSaveEditCourseWithCourseInfo:self.teacherCourseInfo completion:^(CourseDetailInfoModel *ret, CMError *error) {
+        [hud hide:YES];
+        submitBtn.enabled = YES;
+        if (error ==nil) {
+            [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"课程修改成功" style:UIAlertViewStyleDefault cancelButtonTitle:@"取消" otherButtonTitles:@[@"分享"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                [self cancelBtn];
+            }];
+        }else{
+            
+        }
+    }];
+}
 -(void)saveCourseClick{
     
     if (selectIndex ==1) {
@@ -111,7 +134,7 @@
         [hud hide:YES];
         submitBtn.enabled = YES;
         if (error ==nil) {
-            [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"创建成功" style:UIAlertViewStyleDefault cancelButtonTitle:@"取消" otherButtonTitles:@[@"分享"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"课程创建成功" style:UIAlertViewStyleDefault cancelButtonTitle:@"取消" otherButtonTitles:@[@"分享"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 [self cancelBtn];
             }];
         }else{

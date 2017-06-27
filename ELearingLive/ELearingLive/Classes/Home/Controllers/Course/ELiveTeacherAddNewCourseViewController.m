@@ -13,10 +13,13 @@
 #import "UcCourseIndex.h"
 #import "TZImagePickerController.h"
 #import "ELiveTeacherSettingCourseTypeViewController.h"
+
+#import "CloudManager+Course.h"
 @interface ELiveTeacherAddNewCourseViewController ()<UITableViewDelegate,UITableViewDataSource,TZImagePickerControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) TeacherCreateCourseInfo *teacherCourseInfo;
+@property(nonatomic,strong) CourseEditInfoModel *courseEditInfoModel;
 
 @end
 
@@ -31,26 +34,67 @@
     self.teacherCourseInfo.courseCates = [NSMutableArray array];
     self.teacherCourseInfo.courseItemsTime = [NSMutableArray array];
     
-    [self createData];
+
     [self configtableView];
     
     [self createFooterView:YES];
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenTextView)]];
     if (self.isEdit) {
-        
+        [self getCourseData];
+    }else{
+        [self createData];
     }
     
 }
 
 -(void)getCourseData{
-    
+    MBProgressHUD *hud = [MBProgressHUD showMessage:@"正在加载..." toView:nil];
+    [[CloudManager sharedInstance]asyncGetCourseEditInfoWithCourseId:_courseId completion:^(CourseEditInfoModel *ret, CMError *error) {
+        [hud hide:YES];
+        if (error == nil) {
+            self.courseEditInfoModel = ret;
+            [self changeEditInfoData];
+        }
+    }];
 }
 
+-(void)changeEditInfoData{
+    for (CoursePeriodItemModel *couseTimes in self.courseEditInfoModel.periods) {
+        
+        CreateTimeModel *addCourse2 = [[CreateTimeModel alloc]init];
+        addCourse2.isAddCourse = NO;
+        addCourse2.name = couseTimes.name;
+        //addCourse2.name = couseTimes.name;
+        addCourse2.courseTimestamp = couseTimes.time;
+        addCourse2.courseTime = [DateHelper stringFormatOfTime:[couseTimes.time integerValue]*1000 style:WWTimeStringDateOfLineLongStyle];
+        [self.teacherCourseInfo.courseItemsTime addObject:addCourse2];
+    }
+    self.teacherCourseInfo.courseIntro = self.courseEditInfoModel.desc;
+    self.teacherCourseInfo.courseSubject = self.courseEditInfoModel.name;
+    
+    self.teacherCourseInfo.courseCover = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.courseEditInfoModel.thumb]]];
+    
+    self.teacherCourseInfo.courseid = self.courseEditInfoModel.courseid;
+    
+    CreateTimeModel *addCourse = [[CreateTimeModel alloc]init];
+    addCourse.isAddCourse = YES;
+    [self.teacherCourseInfo.courseItemsTime addObject:addCourse];
+    
+    UcCourseCategireChildItem *cateItem = [[UcCourseCategireChildItem alloc]init];
+    cateItem.childid = @"0";
+    [self.teacherCourseInfo.courseCates addObject:cateItem];
+    
+    self.teacherCourseInfo.price = self.courseEditInfoModel.price;
+    //self.teacherCourseInfo.type =self.courseEditInfoModel.course_type;
+    
+    [self.tableView reloadData];
+    
+}
 
 - (void)setupNav {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
    // self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(send)];
-    //self.navigationItem.rightBarButtonItem.enabled = NO;
+    //self.navigationItem.rightBarButtonItem.enabled = NO;_time	__NSCFString *	@"1498575600"	0x00006080002362a0
 }
 
 - (void)cancel {
@@ -70,6 +114,7 @@
     CreateTimeModel *addCourse = [[CreateTimeModel alloc]init];
     addCourse.isAddCourse = YES;
     [self.teacherCourseInfo.courseItemsTime addObject:addCourse];
+    
     
     UcCourseCategireChildItem *cateItem = [[UcCourseCategireChildItem alloc]init];
     cateItem.childid = @"0";
@@ -133,14 +178,18 @@
         [MBProgressHUD showError:@"请添加封面" toView:nil];
         return;
     }
+
+        if (_teacherCourseInfo.courseCates.count <2) {
+            [MBProgressHUD showError:@"请添加分类" toView:nil];
+            return;
+        }
     
-    if (_teacherCourseInfo.courseCates.count <2) {
-        [MBProgressHUD showError:@"请添加分类" toView:nil];
-        return;
-    }
     
     ELiveTeacherSettingCourseTypeViewController *typeVc = [[ELiveTeacherSettingCourseTypeViewController alloc]init];
     typeVc.teacherCourseInfo = self.teacherCourseInfo;
+    typeVc.isEdit = self.isEdit;
+    typeVc.courseId = self.courseId;
+    
     [self.navigationController pushViewController:typeVc animated:YES];
 }
 

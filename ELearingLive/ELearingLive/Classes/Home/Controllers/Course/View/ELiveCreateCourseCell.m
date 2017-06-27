@@ -215,7 +215,7 @@
         self.livePickerView.hidden = YES;
         titleLable.text = @"添加课时";
     }else{
-        titleLable.text = [NSString stringWithFormat:@"课时%@开始时间",createTimeModel.coursePId];
+        titleLable.text = [NSString stringWithFormat:@"%@",createTimeModel.name?createTimeModel.name:[NSString stringWithFormat:@"课时 %@",createTimeModel.coursePId]];
         textField.text = createTimeModel.courseTime;
         textField.hidden = NO;
         deleBtn.hidden = NO;

@@ -10,4 +10,9 @@
 @class TeacherCreateCourseInfo;
 @interface ELiveTeacherSettingCourseTypeViewController : UIViewController
 @property(nonatomic,strong) TeacherCreateCourseInfo *teacherCourseInfo;
+@property(nonatomic,assign) BOOL isEdit;
+
+@property(nonatomic,strong) NSString *courseId;
+
+
 @end

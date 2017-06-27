@@ -8,16 +8,22 @@
 
 #import "CloudManagerBase.h"
 
-@class UcCourseCategireChildModel,UcCourseCategireModel,CourseDetailInfoModel,CourseChapterlistModel,CourseEvaluateListModel,TeacherCourseListModel,TeacherCreateCourseInfo,CourseBuyReasultModel,CoursePayReasultModel,CoursePushInfoModel;
+@class UcCourseCategireChildModel,UcCourseCategireModel,CourseDetailInfoModel,CourseChapterlistModel,CourseEvaluateListModel,TeacherCourseListModel,TeacherCreateCourseInfo,CourseBuyReasultModel,CoursePayReasultModel,CoursePushInfoModel,CourseEditInfoModel;
 @interface CloudManager (Course)
 //课程分类
 - (void)asyncGetCourseCategiresInfo:(void (^)(UcCourseCategireModel *ret, CMError *error))completion;
 //课程子分类
 - (void)asyncGetCourseChildCategiresWithCateId:(NSString *)cateId  completion:(void (^)(UcCourseCategireChildModel *ret, CMError *error))completion;
 
+//创建课程
+-(void)asyncCreateNewCourseWithCourseInfo:(TeacherCreateCourseInfo *)courseInfo completion:(void (^)(CourseDetailInfoModel*ret, CMError *error))completion;
+
+-(void)asyncSaveEditCourseWithCourseInfo:(TeacherCreateCourseInfo *)courseInfo completion:(void (^)(CourseDetailInfoModel*ret, CMError *error))completion;
 
 //课程详情
 - (void)asyncGetCourseDetailInfoWithCourseId:(NSString *)courseId andPeriodid:(NSString *)periodid andMore:(NSString *)more  completion:(void (^)( CourseDetailInfoModel*ret, CMError *error))completion;
+//课程编辑
+- (void)asyncGetCourseEditInfoWithCourseId:(NSString *)courseId completion:(void (^)(CourseEditInfoModel*ret, CMError *error))completion;
 
 ///course/chapterlist 课程详情目录
 //课程x详情目录
@@ -39,8 +45,6 @@
 
 //课程列表
 - (void)asyncGetCourseListWithCateId:(NSString *)catesId andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion;
-
--(void)asyncCreateNewCourseWithCourseInfo:(TeacherCreateCourseInfo *)courseInfo completion:(void (^)(CourseDetailInfoModel*ret, CMError *error))completion;
 
 //搜索
 - (void)asyncSearchCourseWithKeyword:(NSString *)keyword andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion;

@@ -268,6 +268,14 @@
     ret = [[NSString alloc] initWithFormat:@"%@/course/info",ret];
     return ret;
 }
+///course/save
+-(NSString *)uriCourseInfoSave{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/save",ret];
+    return ret;
+}
+
 ///course/chapterlist 课程详情目录
 -(NSString *)uriCourseChapterlist{
     NSString *ret = @"";
@@ -404,7 +412,13 @@
     ret = [[NSString alloc] initWithFormat:@"%@/course/playinfo",ret];
     return ret;
 }
-
+///course/infoforedit
+-(NSString *)uriCourseInfoForEdit{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/course/infoforedit",ret];
+    return ret;
+}
 ///uc/myfans 我的粉丝
 -(NSString *)uriUcMyFans{
     NSString *ret = @"";

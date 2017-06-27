@@ -69,6 +69,8 @@
 
 -(void)getHomdeIndexData{
     [[CloudManager sharedInstance]asyncGetHomeIndexData:^(HomeIndex *ret, CMError *error) {
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_header endRefreshing];
         if (error ==nil) {
             self.homeIndex = ret;
             self.newsArrays = [NSMutableArray arrayWithArray:ret.recommand];
@@ -232,7 +234,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getHomdeIndexData)];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
 
     [self.view addSubview:self.tableView];

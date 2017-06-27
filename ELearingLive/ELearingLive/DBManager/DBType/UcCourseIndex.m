@@ -38,6 +38,15 @@
 
 @end
 
+@implementation CourseEditInfoModel
+
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"periods":[CoursePeriodItemModel class]};
+}
+
+
+@end
+
 @implementation CourseDetailInfoModel
 
 

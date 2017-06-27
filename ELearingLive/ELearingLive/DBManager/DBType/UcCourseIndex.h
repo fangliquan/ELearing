@@ -39,6 +39,25 @@
 @property(nonatomic,strong) NSString *name;
 @end
 
+@class CoursePeriodItemModel;
+@interface CourseEditInfoModel : BaseModel
+@property(nonatomic,strong) NSString *courseid;
+@property(nonatomic,strong) NSString *name;
+
+@property(nonatomic,strong) NSString *thumb;
+
+@property(nonatomic,strong) NSString *price;
+
+@property(nonatomic,strong) NSString *desc;
+@property(nonatomic,strong) NSString *course_type;
+
+@property(nonatomic,strong) NSString *teacher_name;
+@property(nonatomic,strong) NSString *tags;
+
+@property(nonatomic,strong) NSArray *periods;
+
+@end
+
 @class CoursePlayDetailAdModel;
 @interface CourseDetailInfoModel : BaseModel
 @property(nonatomic,strong) NSString *courseid;
@@ -109,6 +128,7 @@
 @interface CoursePeriodItemModel : NSObject
 @property(nonatomic,strong) NSString *periodid;
 @property(nonatomic,strong) NSString *name;
+@property(nonatomic,strong) NSString *time;
 @property(nonatomic,strong) NSString *is_download;
 @property(nonatomic,strong) NSString *is_free;
 @end

@@ -66,8 +66,8 @@
     __unsafe_unretained typeof(self) unself = self;
     [[CloudManager sharedInstance]asyncGetCourseDetailInfoWithCourseId:_courseId andPeriodid:_chapterid andMore:nil completion:^(CourseDetailInfoModel *ret, CMError *error) {
         if (error ==nil) {
-            unself.courseDetailInfoModel= ret;
-            [unself configData];
+            self.courseDetailInfoModel= ret;
+            [self configData];
         }
     }];
 }
