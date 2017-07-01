@@ -68,6 +68,7 @@
 }
 
 -(void)getHomdeIndexData{
+    
     [[CloudManager sharedInstance]asyncGetHomeIndexData:^(HomeIndex *ret, CMError *error) {
         [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];

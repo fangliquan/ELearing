@@ -64,7 +64,9 @@
 
 -(void)getCourseDatail{
     __unsafe_unretained typeof(self) unself = self;
+    MBProgressHUD *hud = [MBProgressHUD showMessage:@"正在加载..." toView:nil];
     [[CloudManager sharedInstance]asyncGetCourseDetailInfoWithCourseId:_courseId andPeriodid:_chapterid andMore:nil completion:^(CourseDetailInfoModel *ret, CMError *error) {
+        [hud hide:YES];
         if (error ==nil) {
             self.courseDetailInfoModel= ret;
             [self configData];
@@ -317,18 +319,30 @@
 }
 
 -(void)addCourseToMine:(UIButton *)btn{
-    if (btn.tag ==1) {//参加课程
+    if (btn.tag ==1 || btn.tag ==2) {//参加课程
+        
+        if ([self.courseDetailInfoModel.course_type isEqualToString:@"3"]) {
+            [UIAlertView bk_showAlertViewWithTitle:@"提示"message:@"请输入课程密码" style:UIAlertViewStyleSecureTextInput cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                if (buttonIndex ==1) {
+                    UITextField *pwField = [alertView textFieldAtIndex:0];
+                    [[CloudManager sharedInstance]asyncGetCourseNeedBuyWithCourseId:self.courseId andPwd:pwField.text completion:^(CourseBuyReasultModel *ret, CMError *error) {
+                        if (error == nil) {
+                            self.courseBuyReasultModel = ret;
+                            [self converbuyReasult:ret];
+                        }
+                    }];
+                }
+            }];
+        
+        }else{
             [[CloudManager sharedInstance]asyncGetCourseNeedBuyWithCourseId:self.courseId andPwd:nil completion:^(CourseBuyReasultModel *ret, CMError *error) {
                 if (error == nil) {
                     self.courseBuyReasultModel = ret;
                     [self converbuyReasult:ret];
                 }
             }];
-    }else if (btn.tag ==2){//观看课程
-        [ELiveCourseReViewViewController presentFromViewController:self courseId:self.courseId periodid:self.courseDetailInfoModel.periodid completion:^{
-            
-        }];
-        
+        }
+
     }else if (btn.tag ==3){//修改课程
         ELiveTeacherAddNewCourseViewController *editVc = [[ELiveTeacherAddNewCourseViewController alloc]init];
         editVc.isEdit = YES;
@@ -337,6 +351,13 @@
        // [self.navigationController pushViewController:editVc animated:YES];
         
     }
+//    
+//    else if (){//观看课程
+//        [ELiveCourseReViewViewController presentFromViewController:self courseId:self.courseId periodid:self.courseDetailInfoModel.periodid completion:^{
+//            
+//        }];
+//        
+//    }
 }
 
 -(void)converbuyReasult:(CourseBuyReasultModel *)ret{

@@ -280,6 +280,7 @@
         
         [self.section1Arrays removeObjectAtIndex:0];
         [self.section1Arrays insertObject:settingModel atIndex:0];
+        [self createHeaderView];
         [self.tableView reloadData];
     });
 

@@ -189,7 +189,7 @@
     typeVc.teacherCourseInfo = self.teacherCourseInfo;
     typeVc.isEdit = self.isEdit;
     typeVc.courseId = self.courseId;
-    
+    typeVc.course_type = self.courseEditInfoModel.course_type;
     [self.navigationController pushViewController:typeVc animated:YES];
 }
 

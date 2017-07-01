@@ -44,6 +44,16 @@
     
     [self createFooterView:YES];
     selectIndex = 1;
+    if ([_course_type isEqualToString:@"1"]) {
+        selectIndex = 1;
+        [self allUserBtnClick];
+    }else if ([_course_type isEqualToString:@"2"]){
+        selectIndex = 3;
+        [self suoUserBtnClick];
+    }else if ([_course_type isEqualToString:@"3"]){
+        selectIndex = 2;
+        [self buyUserBtnClick];
+    }
 }
 
 
