@@ -8,7 +8,7 @@
 
 #import "CloudManagerBase.h"
 
-@class UserLoginResponse,VersionInfo;
+@class UserLoginResponse,VersionInfo,UMSocialUserInfoResponse;
 @interface CloudManager (Login)
 
 //init
@@ -61,6 +61,9 @@
 
 //QQ绑定手机
 - (void)asyncBindQQUser:(NSString *)openId accessToken:(NSString *)accessToken phone:(NSString *)phone password:(NSString *)password completion:(void (^)(UserLoginResponse *ret,CMError *error))completion;
+//umeng 微信登录
+-(void)asyncWeichatLoginWithUMInfo:(UMSocialUserInfoResponse *)userInfoRespons andType:(NSString *)type completion:(void (^)(UserLoginResponse *ret, CMError * error))completion ;
+
 
 
 @end

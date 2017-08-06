@@ -21,7 +21,7 @@
 @end
 
 
-@interface ELiveCateChildrenView : UIView
+@interface ELiveCateChildrenView : UIButton
 
 @property(nonatomic,strong) UcCourseCategireChildItem *courseCategireChildItem;
 

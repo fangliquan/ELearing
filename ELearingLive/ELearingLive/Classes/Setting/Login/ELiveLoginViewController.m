@@ -99,20 +99,20 @@
     
     CGFloat loginBtnH = 70;
     
-    UIButton *qqbtnLogin = [[UIButton alloc]initWithFrame:CGRectMake(Main_Screen_Width/2.0 - loginBtnH/2.0, CGRectGetMaxY(otherTitleL.frame) + 30, loginBtnH, loginBtnH)];
-    [qqbtnLogin setImage:[UIImage imageNamed:@"login_weixin_icon"] forState:UIControlStateNormal];
-    [qqbtnLogin addTarget:self action:@selector(weixinClick) forControlEvents:UIControlEventTouchUpInside];
+    UIButton *weixinLogin = [[UIButton alloc]initWithFrame:CGRectMake(Main_Screen_Width/2.0 - loginBtnH/2.0, CGRectGetMaxY(otherTitleL.frame) + 30, loginBtnH, loginBtnH)];
+    [weixinLogin setImage:[UIImage imageNamed:@"login_weixin_icon"] forState:UIControlStateNormal];
+    [weixinLogin addTarget:self action:@selector(weixinClick) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:weixinLogin];
+    
+    UIButton *qqbtnLogin = [[UIButton alloc]initWithFrame:CGRectMake(Main_Screen_Width/2.0 - loginBtnH/2.0 - loginBtnH - 20, CGRectGetMaxY(otherTitleL.frame) + 30, loginBtnH, loginBtnH)];
+    [qqbtnLogin setImage:[UIImage imageNamed:@"login_qq_icon"] forState:UIControlStateNormal];
+    [qqbtnLogin addTarget:self action:@selector(getAuthWithUserInfoFromQQ) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:qqbtnLogin];
     
-    UIButton *weixinbtnLogin = [[UIButton alloc]initWithFrame:CGRectMake(Main_Screen_Width/2.0 - loginBtnH/2.0 - loginBtnH - 20, CGRectGetMaxY(otherTitleL.frame) + 30, loginBtnH, loginBtnH)];
-    [weixinbtnLogin setImage:[UIImage imageNamed:@"login_qq_icon"] forState:UIControlStateNormal];
-
-    [headerView addSubview:weixinbtnLogin];
     
-    
-    UIButton *sinbtnLogin = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(qqbtnLogin.frame) + 20, CGRectGetMaxY(otherTitleL.frame) + 30, loginBtnH, loginBtnH)];
+    UIButton *sinbtnLogin = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(weixinLogin.frame) + 20, CGRectGetMaxY(otherTitleL.frame) + 30, loginBtnH, loginBtnH)];
     [sinbtnLogin setImage:[UIImage imageNamed:@"login_sina_icon"] forState:UIControlStateNormal];
-    
+    [sinbtnLogin addTarget:self action:@selector(getAuthWithUserInfoFromSina) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:sinbtnLogin];
     
     [phoneTextL becomeFirstResponder];
@@ -175,26 +175,116 @@
     
     [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:self completion:^(id result, NSError *error) {
         
-        UMSocialUserInfoResponse *resp = result;
-        
-        // 第三方登录数据(为空表示平台未提供)
-        // 授权数据
-        NSLog(@" uid: %@", resp.uid);
-        NSLog(@" openid: %@", resp.openid);
-        NSLog(@" accessToken: %@", resp.accessToken);
-        NSLog(@" refreshToken: %@", resp.refreshToken);
-        NSLog(@" expiration: %@", resp.expiration);
-        
-        // 用户数据
-        NSLog(@" name: %@", resp.name);
-        NSLog(@" iconurl: %@", resp.iconurl);
-        NSLog(@" gender: %@", resp.unionGender);
-        
-        // 第三方平台SDK原始数据
-        NSLog(@" originalResponse: %@", resp.originalResponse);
+        if (error ==nil) {
+            UMSocialUserInfoResponse *resp = result;
+            // 第三方登录数据(为空表示平台未提供)
+            // 授权数据
+            NSLog(@" uid: %@", resp.uid);
+            NSLog(@" openid: %@", resp.openid);
+            NSLog(@" accessToken: %@", resp.accessToken);
+            NSLog(@" refreshToken: %@", resp.refreshToken);
+            NSLog(@" expiration: %@", resp.expiration);
+            
+            // 用户数据
+            NSLog(@" name: %@", resp.name);
+            NSLog(@" iconurl: %@", resp.iconurl);
+            NSLog(@" gender: %@", resp.unionGender);
+            
+            // 第三方平台SDK原始数据
+            NSLog(@" originalResponse: %@", resp.originalResponse);
+            [[CloudManager sharedInstance]asyncWeichatLoginWithUMInfo:resp andType:@"1" completion:^(UserLoginResponse *ret, CMError *error) {
+                if (error ==nil) {
+                    if (self.loginSuccessRefreshHandler) {
+                        self.loginSuccessRefreshHandler();
+                    }
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            }];
+        }
+ 
+ 
     }];
     
 }
+
+/*
+新浪微博：
+
+授权并获取用户信息(获取uid、access token及用户名等)
+// 在需要进行获取用户信息的UIViewController中加入如下代码
+*/
+- (void)getAuthWithUserInfoFromSina
+{
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_Sina currentViewController:nil completion:^(id result, NSError *error) {
+        if (error) {
+            
+        } else {
+            UMSocialUserInfoResponse *resp = result;
+            
+            // 授权信息
+            NSLog(@"Sina uid: %@", resp.uid);
+            NSLog(@"Sina accessToken: %@", resp.accessToken);
+            NSLog(@"Sina refreshToken: %@", resp.refreshToken);
+            NSLog(@"Sina expiration: %@", resp.expiration);
+            
+            // 用户信息
+            NSLog(@"Sina name: %@", resp.name);
+            NSLog(@"Sina iconurl: %@", resp.iconurl);
+            NSLog(@"Sina gender: %@", resp.unionGender);
+            
+            // 第三方平台SDK源数据
+            NSLog(@"Sina originalResponse: %@", resp.originalResponse);
+            
+            [[CloudManager sharedInstance]asyncWeichatLoginWithUMInfo:resp andType:@"2" completion:^(UserLoginResponse *ret, CMError *error) {
+                if (error ==nil) {
+                    if (self.loginSuccessRefreshHandler) {
+                        self.loginSuccessRefreshHandler();
+                    }
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            }];
+        }
+    }];
+}
+/*
+qq：
+
+授权并获取用户信息(获取uid、access token及用户名等)
+ */
+- (void)getAuthWithUserInfoFromQQ
+{
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:nil completion:^(id result, NSError *error) {
+        if (error) {
+            
+        } else {
+            UMSocialUserInfoResponse *resp = result;
+            
+            // 授权信息
+            NSLog(@"QQ uid: %@", resp.uid);
+            NSLog(@"QQ openid: %@", resp.openid);
+            NSLog(@"QQ accessToken: %@", resp.accessToken);
+            NSLog(@"QQ expiration: %@", resp.expiration);
+            
+            // 用户信息
+            NSLog(@"QQ name: %@", resp.name);
+            NSLog(@"QQ iconurl: %@", resp.iconurl);
+            NSLog(@"QQ gender: %@", resp.unionGender);
+            
+            // 第三方平台SDK源数据
+            NSLog(@"QQ originalResponse: %@", resp.originalResponse);
+            [[CloudManager sharedInstance]asyncWeichatLoginWithUMInfo:resp andType:@"3" completion:^(UserLoginResponse *ret, CMError *error) {
+                if (error ==nil) {
+                    if (self.loginSuccessRefreshHandler) {
+                        self.loginSuccessRefreshHandler();
+                    }
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            }];
+        }
+    }];
+}
+
+
 -(void)hiddenTextView{
     [self.view endEditing:YES];
 }

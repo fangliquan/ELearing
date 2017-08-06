@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "UMSocialPlatformConfig.h"
 
+
 @interface UMSocialResponse : NSObject
 
 @property (nonatomic, copy) NSString  *uid;

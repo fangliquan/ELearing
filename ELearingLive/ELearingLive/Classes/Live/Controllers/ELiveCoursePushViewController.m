@@ -27,10 +27,6 @@
 @property (nonatomic, assign) AVCaptureDevicePosition currentPosition;
 /* 曝光度记录 */
 @property (nonatomic, assign) CGFloat exposureValue;
-// UI
-@property (weak, nonatomic) IBOutlet UISlider *skinSlider;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UIButton *muteButton;
 
 // 调试
 @property (nonatomic, strong) CTCallCenter *callCenter;
@@ -351,11 +347,11 @@
     self.currentPosition = self.liveSession.devicePosition;
 }
 
-- (IBAction)skinButtonClick:(UIButton *)button {
-    button.selected = !button.isSelected;
-    [self.skinSlider setHidden:!button.selected];
-    [self.liveSession setEnableSkin:button.isSelected];
-}
+//- (IBAction)skinButtonClick:(UIButton *)button {
+//    button.selected = !button.isSelected;
+//    [self.skinSlider setHidden:!button.selected];
+//    [self.liveSession setEnableSkin:button.isSelected];
+//}
 
 - (IBAction)skinSliderAction:(UISlider *)sender {
     

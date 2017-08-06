@@ -8,21 +8,25 @@
 
 #import "ELiveCourseReViewViewController.h"
 #import "RootNavigationViewController.h"
-
-
 #import <AliyunPlayerSDK/AliyunPlayerSDK.h>
-
 #import <MediaPlayer/MediaPlayer.h>
-
 #import <AVFoundation/AVAudioSession.h>
-
 #import "CloudManager+Course.h"
 #import "UcCourseIndex.h"
 #import "HUDHelper.h"
 #import "ELiveCoursePushView.h"
-@interface ELiveCourseReViewViewController (){
+
+#import "ZFPlayer.h"
+#import "NetworkStatusMonitor.h"
+#import "UIViewController+ZFPlayerRotation.h"
+#import "UINavigationController+ZFPlayerRotation.h"
+#import "ELiveLiveReViewPlayHeader.h"
+@interface ELiveCourseReViewViewController ()<ZFPlayerDelegate,NetworkStatusObserver>{
     
     AliVcMediaPlayer* mPlayer;
+    NetworkStatusMonitor *_netWorkStatusMonitor;//网络监测
+    NetworkStatus _liveNetWorkStatus;//当前网络状态
+    BOOL _canPlayInViaWWAN;
 }
 
 
@@ -31,12 +35,20 @@
 @property(nonatomic,strong)  ELiveCoursePushView *pushView;
 @property(nonatomic,strong) CourseDetailInfoModel *courseInfo;
 
+@property(nonatomic, strong) ZFPlayerView        *playerView;
+@property(nonatomic, strong) ZFPlayerControlView *controlView;
+@property(nonatomic, strong) ZFPlayerModel       *playerModel;
+@property(nonatomic,strong) ELiveLiveReViewPlayHeader *reViewPlayHeader;
+
 @end
 
 @implementation ELiveCourseReViewViewController
 
 
+
 + (void)presentFromViewController:(UIViewController *)viewController courseId:(NSString *)courseId  periodid:(NSString *)periodid completion:(void(^)())completion{
+   
+    
     ELiveCourseReViewViewController *pushVc = [[ELiveCourseReViewViewController alloc]init];
     pushVc.courseId = courseId;
     pushVc.periodid = periodid;
@@ -51,7 +63,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    _canPlayInViaWWAN = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(becomeActive)
@@ -63,11 +75,12 @@
                                                object:nil];
 
     [self getPlayInfo];
-    [self createPushView];
+   // [self createPushView];
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:)name:UIDeviceOrientationDidChangeNotification object:nil];
     
 }
+
 - (void)orientChange:(NSNotification *)noti
     {
         
@@ -78,14 +91,15 @@
         switch (orient)
         {
             case UIDeviceOrientationPortrait:
-                [self updateFrame];
+                [self updateFrame:UIDeviceOrientationPortrait];
                 break;
             case UIDeviceOrientationLandscapeLeft:
-                  [self updateFrame];
+                [self updateFrame:UIDeviceOrientationLandscapeLeft];
                 break;
             case UIDeviceOrientationPortraitUpsideDown:
                 break;
             case UIDeviceOrientationLandscapeRight:
+                [self updateFrame:UIDeviceOrientationLandscapeLeft];
                 break;
             default:
                 break;
@@ -93,12 +107,19 @@
 }
 
 
--(void)updateFrame{
-     _mPlayerView.frame = CGRectMake(0, 0,Main_Screen_Width,Main_Screen_Height);
-     self.pushView.frame = CGRectMake(0, 0,Main_Screen_Width,Main_Screen_Height);
+-(void)updateFrame:(UIDeviceOrientation)oriention{
+    if (oriention == UIDeviceOrientationPortrait) {
+        _mPlayerView.frame = CGRectMake(0, 0,Main_Screen_Width,Main_Screen_Height);
+
+    }else{
+        _mPlayerView.frame = CGRectMake(0, 0,Main_Screen_Width,Main_Screen_Height);
+        [mPlayer create:_mPlayerView];
+    }
+  
 }
+
 -(void)getPlayInfo{
-    MBProgressHUD *hud = [MBProgressHUD showMessage:@""];
+    MBProgressHUD *hud = [MBProgressHUD showMessage:@"" toView:self.view];
     [[CloudManager sharedInstance]asyncPushCourseInfoWithCourseId:_courseId andPeriodid:_periodid completion:^(CourseDetailInfoModel *ret, CMError *error) {
         [hud hide:YES];
         if (error ==nil) {
@@ -188,12 +209,25 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-    //[[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationLandscapeLeft animated: NO ];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+    [_netWorkStatusMonitor removeNetworkStatusObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    _netWorkStatusMonitor = [NetworkStatusMonitor getInstance];
+    [_netWorkStatusMonitor addNetworkStatusObserver:self];
+    _liveNetWorkStatus  = [[NetworkStatusMonitor getInstance] getNetworkStatus];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    [_netWorkStatusMonitor removeNetworkStatusObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //[self.topicCloumnDetailHeader hiddenPlayIcon:NO];
+    [self.playerView pause];
+    [self.playerView resetPlayer];
+    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     //[[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationPortrait animated: NO ];
 }
 
@@ -413,6 +447,8 @@
                                              selector:@selector(OnEndCache:)
                                                  name:AliVcMediaPlayerEndCachingNotification object:mPlayer];
 }
+
+
 
 -(void)removePlayerObserver
 {

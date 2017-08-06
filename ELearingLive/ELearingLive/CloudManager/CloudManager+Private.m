@@ -435,4 +435,19 @@
     return ret;
 }
 
+
+////passport/extlogin 第三方登录
+-(NSString *)uriPassportLogin{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/passport/extlogin",ret];
+    return ret;
+}
+///passport/extbind 绑定
+-(NSString *)uriPassportBind{
+    NSString *ret = @"";
+    ret = [self uriBase];
+    ret = [[NSString alloc] initWithFormat:@"%@/passport/extbind",ret];
+    return ret;
+}
 @end

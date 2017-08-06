@@ -16,6 +16,7 @@
 
 
 #define WEIXIN_APPID        @"wxdb6c30ead8084a88"
+#define WeiXin_appSecret @"7a1b4289f55ab5ce3b83b8e07dba0c73"
 
 #define WEIBO_APPID     @""        // 微博 appId
 #define WEIBO_APPKEY    @""      // 微博 appKey

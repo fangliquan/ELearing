@@ -10,6 +10,8 @@
 
 #import "CloudManager+Course.h"
 #import "UcTeacherModel.h"
+#import "UcCourseIndex.h"
+#import <UShareUI/UShareUI.h>
 @interface ELiveTeacherSettingCourseTypeViewController (){
     
     UIView *priceView;
@@ -103,7 +105,11 @@
         submitBtn.enabled = YES;
         if (error ==nil) {
             [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"课程修改成功" style:UIAlertViewStyleDefault cancelButtonTitle:@"取消" otherButtonTitles:@[@"分享"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                [self cancelBtn];
+                if (buttonIndex ==1) {
+                    [self shareClick:ret];
+                }else{
+                    [self cancelBtn];
+                }
             }];
         }else{
             
@@ -145,12 +151,48 @@
         submitBtn.enabled = YES;
         if (error ==nil) {
             [UIAlertView bk_showAlertViewWithTitle:@"提示" message:@"课程创建成功" style:UIAlertViewStyleDefault cancelButtonTitle:@"取消" otherButtonTitles:@[@"分享"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                [self cancelBtn];
+                if (buttonIndex ==1) {
+                    [self shareClick:ret];
+                }else{
+                    [self cancelBtn];
+                }
+         
             }];
         }else{
             
         }
     }];
+}
+
+
+-(void)shareClick:(CourseDetailInfoModel *)ret{
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_Sina),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine)]];
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        // 根据获取的platformType确定所选平台进行下一步操作
+        
+        //创建分享消息对象
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        
+        //创建网页内容对象
+        NSString* thumbURL =  ret.share_thumb;
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:ret.share_title descr:ret.share_desp thumImage:thumbURL];
+        //设置网页地址
+        shareObject.webpageUrl = ret.share_url;
+        
+        //分享消息对象设置分享内容对象
+        messageObject.shareObject = shareObject;
+        
+        //调用分享接口
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+           [self cancelBtn];
+            
+        }];
+        
+    }];
+}
+- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType
+{
+
 }
 
 -(void)createUI{

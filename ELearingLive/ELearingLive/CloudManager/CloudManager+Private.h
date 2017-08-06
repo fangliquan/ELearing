@@ -140,4 +140,10 @@
 -(NSString *)uriUcMyFans;
 ///uc/incomings 收益
 -(NSString *)uriUcMyIncomings;
+
+////passport/extlogin 第三方登录
+-(NSString *)uriPassportLogin;
+///passport/extbind 绑定
+-(NSString *)uriPassportBind;
+
 @end

@@ -70,24 +70,25 @@
 -(void)createHeaderView{
     
     CGFloat viewWidth = Main_Screen_Width - Main_Screen_Width*1.5/5.0;
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth,0)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, viewWidth,0)];
     headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    headerView.userInteractionEnabled = YES;
     CGFloat offsetAllY = 0;
 
     if (_categireChildModel.image && _categireChildModel.image.length >0) {
         offsetAllY +=110;
-        UIImageView *headerLoopView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, 100)];
+        UIImageView *headerLoopView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 10, viewWidth, 100)];
         [headerLoopView setImageWithURL:[NSURL URLWithString:_categireChildModel.image] placeholderImage:EL_Default_Image];
         [headerView addSubview:headerLoopView];
     }
 
     CGFloat growthViewMaxWidth = viewWidth;
     
-    offsetAllY = offsetAllY + 8;
+    offsetAllY = offsetAllY + 10;
     CGFloat offsetX = 0;
     CGFloat offsetY = 0;
     CGFloat marginX = 6;
-    CGFloat childItemViewHight = 30;
+    CGFloat childItemViewHight = 40;
     __unsafe_unretained typeof(self) unself = self;
     for (int i = 0; i < _categireChildModel.children.count;  i ++) {
         UcCourseCategireChildItem *readGrowthItem = _categireChildModel.children[i];
@@ -105,7 +106,6 @@
         ELiveCateChildrenView * growthItemView = [[ELiveCateChildrenView alloc]initWithFrame:growthFrame];
         growthItemView.courseCategireChildItem = readGrowthItem;
         //growthItemView.backgroundColor = [UIColor redColor];
-        growthItemView.userInteractionEnabled = YES;
         growthItemView.courseCateItemHandler = ^(UcCourseCategireChildItem *childItem) {
 //            ELiveCourseListViewController *vc = [[ELiveCourseListViewController alloc]init];
 //            vc.

@@ -138,8 +138,7 @@
         paySucceed = NO;
     }
     
-    NSString * url = @"";//[NSString stringWithFormat:@"%@%@?result=%@&orderNumber=%@&sessionKey=%@", BASE_URL.absoluteString, _payOrder.returnUrl, result, _payOrder.tradeNumber, [CloudManager sharedInstance].currentAccount.loginInfo.sessionKey];
-    
+    NSString * url = [NSString stringWithFormat:@"%@%@?result=%@&orderNumber=%@", DEFAULT_SERVER_ADDRESS, _payOrder.returnUrl, result, _payOrder.tradeNumber];
     DLog(@"WechatResultURL: %@", url);
     
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];

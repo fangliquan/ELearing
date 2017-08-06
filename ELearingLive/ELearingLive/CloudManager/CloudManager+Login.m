@@ -11,6 +11,7 @@
 #import "CMError.h"
 #import "GCDMulticastDelegate.h"
 #import "PublicUtil.h"
+#import <UMSocialCore/UMSocialCore.h>
 @implementation CloudManager (Login)
 
 #pragma mark - api
@@ -127,6 +128,63 @@
             }
         }
     }];
+    
+}
+
+//umeng 微信登录
+-(void)asyncWeichatLoginWithUMInfo:(UMSocialUserInfoResponse *)userInfoRespons andType:(NSString *)type  completion:(void (^)(UserLoginResponse *ret, CMError * error))completion{
+    NSString *url = [NSString stringWithFormat:@"%@",[self uriPassportLogin]];
+    // NSString *pwd = [WWTextManager md5:password];
+    VersionInfo *versionInfo = [[DBManager sharedInstance]loadTableFirstData:[VersionInfo class] Condition:@""];
+    NSString *token = versionInfo.token?versionInfo.token: [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSString *cityStr = @"";
+    
+    NSDictionary *tempDic = @{
+                              @"token" : token,
+                              @"type" : type,
+                              @"openid" : userInfoRespons.openid?userInfoRespons.openid:@"",
+                              @"unionid" : userInfoRespons.unionId?userInfoRespons.unionId:@"",
+                              @"accesstoken" : userInfoRespons.accessToken?userInfoRespons.accessToken:@"",
+                              
+                              @"refreshtoken" : userInfoRespons.refreshToken?userInfoRespons.refreshToken:@"",
+                              @"expiration" : userInfoRespons.expiration?userInfoRespons.expiration:@"",
+                              @"name" : userInfoRespons.name?userInfoRespons.name:@"",
+                              @"city" : @"",
+                              @"prvinice" : @"",
+                              @"country" : @"",
+                              @"gender" : userInfoRespons.gender?userInfoRespons.gender:@"",
+                              @"iconurl" : userInfoRespons.iconurl?userInfoRespons.iconurl:@"",
+                    
+                              };
+    
+    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+        if (ret) {
+            NSDictionary *retDict =ret;
+            UserLoginResponse * userLoginResponse = [UserLoginResponse mj_objectWithKeyValues:retDict];
+            if ([userLoginResponse.error_code isEqualToString:@"0"]) {
+                userLoginResponse.token = token;
+                [self _operationsAfterLogin];
+                if (userLoginResponse) {
+                    [self _updatePersist:userLoginResponse];
+                }
+                
+                [_delegates didUpdateUserInfoWithUserInfoResponse:userLoginResponse];
+                if (completion) {
+                    completion(userLoginResponse,nil);
+                }
+            }else{
+                if (completion) {
+                    completion(nil,error);
+                }
+            }
+            
+        }else{
+            if (completion) {
+                completion(nil,error);
+            }
+        }
+    }];
+
     
 }
 
