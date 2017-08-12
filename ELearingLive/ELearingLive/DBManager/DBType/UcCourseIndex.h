@@ -176,13 +176,19 @@
 
 
 
-@interface CoursePayReasultModel : BaseModel
+@interface CoursePayWeiXinReasultModel : BaseModel
 
 @property(nonatomic,strong) NSString *type;
 @property(nonatomic,strong) NSDictionary *payinfo;
 
-@property(nonatomic,strong) NSString *aliPay;
-@property(nonatomic,strong) NSDictionary *weichatPay;
+@end
+
+
+@interface CourseAliPayReasultModel : BaseModel
+
+@property(nonatomic,strong) NSString *type;
+@property(nonatomic,strong) NSString *payinfo;
+
 @end
 
 @interface CoursePushInfoModel : BaseModel

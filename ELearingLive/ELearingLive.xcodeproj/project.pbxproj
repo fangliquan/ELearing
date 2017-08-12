@@ -832,6 +832,7 @@
 		0A6313E61F0558ED00F5D5B7 /* libUMSocialLog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocialLog.a; sourceTree = "<group>"; };
 		0A6313E81F0558ED00F5D5B7 /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
 		0A6313E91F0558ED00F5D5B7 /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UShareUI.framework; sourceTree = "<group>"; };
+		0A64C6EB1F3ED4010003621C /* ELearingLive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ELearingLive.entitlements; sourceTree = "<group>"; };
 		0A66030A1EDF026200927433 /* RPMDeviceManager+Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RPMDeviceManager+Device.h"; sourceTree = "<group>"; };
 		0A66030B1EDF026200927433 /* RPMDeviceManager+Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RPMDeviceManager+Device.m"; sourceTree = "<group>"; };
 		0A66030C1EDF026200927433 /* RPMDeviceManager+OS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RPMDeviceManager+OS.h"; sourceTree = "<group>"; };
@@ -2726,6 +2727,7 @@
 		0AEF07B11EBA2D8B0065A22B /* ELearingLive */ = {
 			isa = PBXGroup;
 			children = (
+				0A64C6EB1F3ED4010003621C /* ELearingLive.entitlements */,
 				0A6603DC1EDF064400927433 /* CloudManager */,
 				0A6603E61EDF064400927433 /* DBManager */,
 				0A6603FB1EDF064400927433 /* HttpManager */,
@@ -3461,8 +3463,13 @@
 				TargetAttributes = {
 					0AEF07AE1EBA2D8B0065A22B = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 9ZG3W9L6NH;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 56FY7G8EG6;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -4122,8 +4129,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = ELearingLive/ELearingLive.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9ZG3W9L6NH;
+				DEVELOPMENT_TEAM = 56FY7G8EG6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4150,10 +4158,10 @@
 					"$(PROJECT_DIR)/ELearingLive/Classes/components/UMSocial/UMSocialSDKPlugin",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.showshow.qgpxlive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qgpx.qgpxlive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "2511bd8e-0eb6-4f05-8f18-c6d26bae98c8";
+				PROVISIONING_PROFILE_SPECIFIER = leoqgpxlive;
 			};
 			name = Debug;
 		};
@@ -4162,8 +4170,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9ZG3W9L6NH;
+				CODE_SIGN_ENTITLEMENTS = ELearingLive/ELearingLive.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 56FY7G8EG6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4190,10 +4199,10 @@
 					"$(PROJECT_DIR)/ELearingLive/Classes/components/UMSocial/UMSocialSDKPlugin",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.showshow.qgpxlive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qgpx.qgpxlive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "45ed875a-c1d7-4e8b-890a-b5a9e86e9060";
+				PROVISIONING_PROFILE_SPECIFIER = qgpxlive_appstrore;
 			};
 			name = Release;
 		};

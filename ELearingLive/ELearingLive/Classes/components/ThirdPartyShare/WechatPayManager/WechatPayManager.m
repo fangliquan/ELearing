@@ -64,15 +64,15 @@
         if (wXAppSupport) {
             _payCallBack = result;
             
-            _payOrder = [WechatpayOrder mj_objectWithKeyValues:payInfo[@"content"]];
+            _payOrder = [WechatpayOrder mj_objectWithKeyValues:payInfo];
             
             PayReq * req    = [[PayReq alloc] init];
-            req.openID      = WEIXIN_APPID;//_payOrder.appId;
-            req.partnerId   = _payOrder.partnerid;
-            req.prepayId    = _payOrder.prepayid;
-            req.nonceStr    = _payOrder.noncestr;
-            req.timeStamp   = _payOrder.timestamp;
-            req.package     = _payOrder.package;
+            req.openID      = WEIXIN_APPID;
+            req.partnerId   = _payOrder.mch_id;
+            req.prepayId    = _payOrder.prepay_id;
+            req.nonceStr    = _payOrder.nonce_str;
+            req.timeStamp   = _payOrder.time;
+            req.package     = _payOrder.package_name;
             req.sign        = _payOrder.sign;
             
             [WXApi sendReq:req];

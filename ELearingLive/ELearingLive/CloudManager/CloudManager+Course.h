@@ -41,7 +41,7 @@
 //参加课程购买
 - (void)asyncGetCourseNeedBuyWithCourseId:(NSString *)courseId andPwd:(NSString *)pwd completion:(void (^)(CourseBuyReasultModel*ret, CMError *error))completion;
 //支付
-- (void)asyncGetPaymentWithOrderId:(NSString *)orderId andType:(NSString *)type completion:(void (^)(CoursePayReasultModel*ret, CMError *error))completion;
+- (void)asyncGetPaymentWithOrderId:(NSString *)orderId andType:(NSString *)type completion:(void (^)(NSObject*ret, CMError *error))completion;
 
 //课程列表
 - (void)asyncGetCourseListWithCateId:(NSString *)catesId andPage:(NSString *)page completion:(void (^)(TeacherCourseListModel*ret, CMError *error))completion;

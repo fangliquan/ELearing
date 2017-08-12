@@ -15,12 +15,12 @@
 
 /*********** PayReq 需要的参数 ************/
 @property (nonatomic, copy) NSString * appid;
-@property (nonatomic, copy) NSString * partnerid;
-@property (nonatomic, copy) NSString * prepayid;
-@property (nonatomic, copy) NSString * noncestr;
-@property (nonatomic, copy) NSString * package;
+@property (nonatomic, copy) NSString * mch_id;
+@property (nonatomic, copy) NSString * prepay_id;
+@property (nonatomic, copy) NSString * nonce_str;
+@property (nonatomic, copy) NSString * package_name;
 @property (nonatomic, copy) NSString * sign;
-@property (nonatomic, assign) UInt32 timestamp;
+@property (nonatomic, assign) UInt32 time;
 
 /*********** 支付结果回调 需要的参数 ************/
 @property (nonatomic, copy) NSString * tradeNumber;

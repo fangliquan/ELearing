@@ -303,7 +303,7 @@
 }
 
 //支付
-- (void)asyncGetPaymentWithOrderId:(NSString *)orderId andType:(NSString *)type completion:(void (^)(CoursePayReasultModel*ret, CMError *error))completion{
+- (void)asyncGetPaymentWithOrderId:(NSString *)orderId andType:(NSString *)type completion:(void (^)(NSObject*ret, CMError *error))completion{
     
     NSString *url = [NSString stringWithFormat:@"%@",[self uriCoursebeforepayorder]];
     NSString *token = [CloudManager sharedInstance].currentAccount.userLoginResponse.token;
@@ -313,35 +313,32 @@
                               @"type" : type?type:@"1",
                               };
     
-    [GDHttpManager postWithUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
+    [GDHttpManager postWithPayUrlStringComplate:url parameters:tempDic completion:^(NSDictionary *ret, CMError *error) {
         if (ret) {
-            CoursePayReasultModel * baseModel = [CoursePayReasultModel mj_objectWithKeyValues:ret];
             
-            if ([baseModel.error_code isEqualToString:@"0"]) {
-                
-                if ([baseModel.type isEqualToString:@"1"]) {
-                    
-                    NSString *payurl =  [baseModel.payinfo mj_JSONString];
-                    NSMutableString *responseString = [NSMutableString stringWithString:payurl];
-                    NSString *character = nil;
-                    for (int i = 0; i < responseString.length; i ++) {
-                        character = [responseString substringWithRange:NSMakeRange(i, 1)];
-                        if ([character isEqualToString:@"\\"])
-                            [responseString deleteCharactersInRange:NSMakeRange(i, 1)];
+            if ([type isEqualToString:@"1"]) {
+                 CoursePayWeiXinReasultModel *baseModel = [CoursePayWeiXinReasultModel mj_objectWithKeyValues:ret];
+                if ([baseModel.error_code isEqualToString:@"0"]) {
+                    if (completion) {
+                        completion(baseModel,nil);
                     }
-                  
-                    baseModel.aliPay = responseString;
-                    
                 }else{
-                    baseModel.weichatPay = baseModel.payinfo ;
-                }
-                if (completion) {
-                    completion(baseModel,nil);
+                    [MBProgressHUD showError:baseModel.error_desc toView:nil];
+                    if (completion) {
+                        completion(nil,error);
+                    }
                 }
             }else{
-                [MBProgressHUD showError:baseModel.error_desc toView:nil];
-                if (completion) {
-                    completion(nil,error);
+                CourseAliPayReasultModel *baseModel = [CourseAliPayReasultModel mj_objectWithKeyValues:ret];
+                if ([baseModel.error_code isEqualToString:@"0"]) {
+                    if (completion) {
+                        completion(baseModel,nil);
+                    }
+                }else{
+                    [MBProgressHUD showError:baseModel.error_desc toView:nil];
+                    if (completion) {
+                        completion(nil,error);
+                    }
                 }
             }
             

@@ -101,9 +101,13 @@
 
 
 @end
+@implementation CoursePayWeiXinReasultModel
 
 
-@implementation CoursePayReasultModel
+
+@end
+
+@implementation CourseAliPayReasultModel
 
 
 

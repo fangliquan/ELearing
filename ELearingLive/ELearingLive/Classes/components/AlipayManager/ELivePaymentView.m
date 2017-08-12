@@ -259,14 +259,14 @@
 -(void)payWechatTap{
     [self hidden];
     if (self.userSelectPayActionBlock) {
-        self.userSelectPayActionBlock(2);
+        self.userSelectPayActionBlock(1);
     }
 }
 
 -(void)payAliTap{
     [self hidden];
     if (self.userSelectPayActionBlock) {
-        self.userSelectPayActionBlock(1);
+        self.userSelectPayActionBlock(2);
     }
 }
 

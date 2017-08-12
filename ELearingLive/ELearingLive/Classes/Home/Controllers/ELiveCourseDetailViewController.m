@@ -378,30 +378,33 @@
 }
 -(void)selectPayment:(int)payment {
     
-    MBProgressHUD *hud = [MBProgressHUD showMessage:@"正在加载..." toView:nil];
-    [[CloudManager sharedInstance]asyncGetPaymentWithOrderId:self.courseBuyReasultModel.orderid andType:[NSString stringWithFormat:@"%d",payment] completion:^(CoursePayReasultModel *ret, CMError *error) {
+    MBProgressHUD *hud = [MBProgressHUD showMessage:@"正在加载..." toView:self.view];
+    [[CloudManager sharedInstance]asyncGetPaymentWithOrderId:self.courseBuyReasultModel.orderid andType:[NSString stringWithFormat:@"%d",payment] completion:^(NSObject *ret, CMError *error) {
+        [hud hide:YES];
         if (error ==nil) {
-            if (payment ==1) {
-                [AlipayManager paymentWithInfo:ret.aliPay result:^(NSURLRequest *request, BOOL succeed) {
-                    if (succeed) {
-                        hud.labelText = @"支付成功";
-                        [hud hide:YES afterDelay:1];
-                        
-                    }else{
-                        hud.labelText = @"支付失败";
-                        [hud hide:YES afterDelay:1];
-                    }
+            if (payment ==2) {
+                CourseAliPayReasultModel *alipayModel = (CourseAliPayReasultModel*)ret;
+                [AlipayManager paymentWithInfo:alipayModel.payinfo result:^(NSURLRequest *request, BOOL succeed) {
+//                    if (succeed) {
+//                        hud.labelText = @"支付成功";
+//                        [hud hide:YES afterDelay:1];
+//                        
+//                    }else{
+//                        hud.labelText = @"支付失败";
+//                        [hud hide:YES afterDelay:1];
+//                    }
                 }];
             }else{
-                [WechatPayManager wechatPaymentWithInfo:ret.weichatPay result:^(NSURLRequest *request, BOOL succeed) {
-                    if (succeed) {
-                        hud.labelText = @"支付成功";
-                        [hud hide:YES afterDelay:1];
-                        
-                    }else{
-                        hud.labelText = @"支付失败";
-                        [hud hide:YES afterDelay:1];
-                    }
+                CoursePayWeiXinReasultModel *weixinModel = (CoursePayWeiXinReasultModel*)ret;
+                [WechatPayManager wechatPaymentWithInfo:weixinModel.payinfo result:^(NSURLRequest *request, BOOL succeed) {
+//                    if (succeed) {
+//                        hud.labelText = @"支付成功";
+//                        [hud hide:YES afterDelay:1];
+//                        
+//                    }else{
+//                        hud.labelText = @"支付失败";
+//                        [hud hide:YES afterDelay:1];
+//                    }
                 }];
             }
         }
